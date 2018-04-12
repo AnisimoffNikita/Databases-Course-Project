@@ -7,7 +7,7 @@ import Servant (Handler)
 
 data AppContext = AppContext {
     pipePool :: Pool Pipe
-  , databaseName :: Text
-  }
+  , databaseName :: String
+}
 
-type App = ReaderT AppContext
+type App = ReaderT AppContext Handler

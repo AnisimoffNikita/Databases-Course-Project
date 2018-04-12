@@ -8,12 +8,12 @@ import qualified Data.Bson as Bson
 
 type TID = Text
 
-data TestData = TestData {
-    tid           :: TID
+data TestData = TestData
+  { tid           :: TID
   , name          :: Text
   , description   :: Text
   , creationDate  :: UTCTime
   , passingNumber :: Integer
   , question      :: Text
-} deriving (Show, Eq)
+  } deriving (Show, Eq)
 

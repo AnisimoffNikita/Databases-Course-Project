@@ -38,7 +38,7 @@ selectAllCol :: Mongo.Select a => a
 selectAllCol = Mongo.select [] collection
 
 selectColByTID :: Mongo.Select a => Text -> a
-selectColByTID tid = Mongo.select [tidColumn =: tid] collection
+selectColByTID tid = Mongo.select [tidColumn =: oid] collection
   where
     oid = read (unpack tid) :: Mongo.ObjectId
 

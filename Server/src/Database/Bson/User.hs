@@ -1,3 +1,5 @@
+{-# LANGUAGE TypeSynonymInstances #-}
+
 module Database.Bson.User (
     uidColumn
   , usernameColumn
@@ -15,7 +17,7 @@ module Database.Bson.User (
   , passingDateColumn
 ) where
 
-import Data.Text (Text, pack)
+import Data.Text (Text, pack, unpack)
 import Data.Bson (Document, (=:))
 import qualified Data.Bson as Bson
 import Database.Bson.Class
@@ -51,6 +53,11 @@ instance FromDocument User where
       <*> Bson.lookup resultsColumn document
       <*> Bson.lookup tidListColumn document
 
+instance ToObjectId UID where
+  toObjectId uid = read (unpack uid) :: Bson.ObjectId
+
+instance FromObjectId UID where
+  fromObjectId = pack . show
 
 instance ToDocument TestResult where
   toDocument TestResult{..} =

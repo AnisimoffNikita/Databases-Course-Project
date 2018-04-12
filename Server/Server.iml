@@ -164,5 +164,10 @@
     <orderEntry type="library" name="x509-validation-1.6.10" level="project" />
     <orderEntry type="library" name="zlib-0.6.2" level="project" />
     <orderEntry type="library" name="byteable-0.1.1" level="project" />
+    <orderEntry type="library" name="resource-pool-0.2.3.2" level="project" />
+    <orderEntry type="library" name="dotenv-0.5.2.4" level="project" />
+    <orderEntry type="library" name="megaparsec-6.4.1" level="project" />
+    <orderEntry type="library" name="parser-combinators-0.4.0" level="project" />
+    <orderEntry type="library" name="yaml-0.8.29" level="project" />
   </component>
 </module>

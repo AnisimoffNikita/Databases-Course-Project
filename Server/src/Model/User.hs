@@ -11,8 +11,8 @@ import Model.TestData (TID)
 
 type UID = Text
 
-data User = User {
-    uid         :: UID
+data User = User
+  { uid         :: UID
   , username    :: Text
   , password    :: Text
   , email       :: Text
@@ -23,15 +23,15 @@ data User = User {
   , sex         :: Maybe Sex
   , results     :: [TestResult]
   , tidList     :: [TID]
-} deriving (Show, Eq)
+  } deriving (Show, Eq)
 
 data Sex
   = Male
   | Female
   deriving (Show, Read, Eq)
 
-data TestResult = TestResult {
-    testKey     :: Text
+data TestResult = TestResult
+  { testKey     :: Text
   , result      :: Text
   , passingDate :: UTCTime
-} deriving (Show, Eq)
+  } deriving (Show, Eq)
