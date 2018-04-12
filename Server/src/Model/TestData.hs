@@ -6,8 +6,10 @@ import Data.Time
 import Data.Bson (Document, (=:))
 import qualified Data.Bson as Bson
 
+type TID = Text
+
 data TestData = TestData {
-    _id           :: Text
+    tid           :: TID
   , name          :: Text
   , description   :: Text
   , creationDate  :: UTCTime

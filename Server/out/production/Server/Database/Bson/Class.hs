@@ -1,4 +1,7 @@
-module Database.Bson.Class where
+module Database.Bson.Class (
+    FromDocument(fromDocument)
+  , ToDocument(toDocument)
+) where
 
 import qualified Data.Bson as Bson
 

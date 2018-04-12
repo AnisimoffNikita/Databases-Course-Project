@@ -4,23 +4,16 @@ module Lib
     ( someFunc
     ) where
 
-import Database.MongoDB    (Action, Document, Document, Value, access,
-                            close, connect, delete, exclude, find,
-                            host, insertMany, master, project, rest,
-                            select, sort, (=:))
+import Database.MongoDB 
 import Control.Monad.Trans (liftIO)
+
+import Database.Queries.User
 
 
 someFunc :: IO ()
 someFunc = do
     pipe <- connect (host "127.0.0.1")
-    e <- access pipe master "baseball" (clearTeams)
-    print e
-    e <- access pipe master "baseball" (insertTeams)
-    print e
-    e <- access pipe master "baseball" (nationalLeagueTeams)
     close pipe
-    print e
 
 run :: Action IO ()
 run = do

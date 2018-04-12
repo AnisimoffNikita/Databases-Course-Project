@@ -9,8 +9,8 @@ module Database.Queries.User (
   , updateSecondName
   , updateSex
   , updateBirthDay
-  , addUserTest
-  , removeUserTest
+  , addTest
+  , removeTest
   , addTestResult
   , getUser
   , deleteUser
@@ -80,15 +80,15 @@ updateBirthDay uid birthday = Mongo.modify
                           (selectColByUID uid)
                           ["$set" =: [ birthdayColumn =: birthday]]
 
-addUserTest :: UID -> TID -> Mongo.Action IO ()
-addUserTest uid tid = Mongo.modify
-                        (selectColByUID uid)
-                        ["$push" =: [ tidListColumn =: tid]]
+addTest :: UID -> TID -> Mongo.Action IO ()
+addTest uid tid = Mongo.modify
+                  (selectColByUID uid)
+                  ["$push" =: [ tidListColumn =: tid]]
 
-removeUserTest :: UID -> TID -> Mongo.Action IO ()
-removeUserTest uid tid = Mongo.modify
-                          (selectColByUID uid)
-                          ["$pull" =: [ tidListColumn =: tid]]
+removeTest :: UID -> TID -> Mongo.Action IO ()
+removeTest uid tid = Mongo.modify
+                  (selectColByUID uid)
+                  ["$pull" =: [ tidListColumn =: tid]]
 
 addTestResult :: UID -> TestResult -> Mongo.Action IO ()
 addTestResult uid testResult = Mongo.modify
