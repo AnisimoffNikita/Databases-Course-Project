@@ -24,8 +24,7 @@ import qualified Database.MongoDB as Mongo
 import Data.Time (UTCTime)
 
 import Model.User
-import Model.TestData(TID)
-import Database.Bson.User
+import Model.Types
 import Database.Bson.Class
 
 isUserExist :: Text -> Mongo.Action IO Bool
@@ -33,89 +32,89 @@ isUserExist username = do
   exist <- Mongo.findOne $ selectColByUID username
   return $ exist == Nothing
 
-newUser :: User -> Mongo.Action IO UID
+newUser :: User -> Mongo.Action IO ID
 newUser user = do
   let user' = Mongo.exclude [uidColumn] (toDocument user)
   oid <- Mongo.insert collection user'
   return $ pack.show $ oid
 
-getUser :: UID -> Mongo.Action IO (Maybe User)
+getUser :: ID -> Mongo.Action IO (Maybe User)
 getUser uid = do
   jx <- Mongo.findOne (selectColByUID uid)
   return $ jx >>= fromDocument
 
-updateUsername :: UID -> Text -> Mongo.Action IO ()
+updateUsername :: ID -> Text -> Mongo.Action IO ()
 updateUsername uid username =
   Mongo.modify
     (selectColByUID uid)
     ["$set" =: [ usernameColumn =: username]]
 
-updatePassword :: UID -> Text -> Mongo.Action IO ()
+updatePassword :: ID -> Text -> Mongo.Action IO ()
 updatePassword uid password =
   Mongo.modify
     (selectColByUID uid)
     ["$set" =: [ passwordColumn =: password]]
 
-updateEmail :: UID -> Text -> Mongo.Action IO ()
+updateEmail :: ID -> Text -> Mongo.Action IO ()
 updateEmail uid email =
   Mongo.modify
     (selectColByUID uid)
     ["$set" =: [ emailColumn =: email]]
 
-updateAvatar :: UID -> Text -> Mongo.Action IO ()
+updateAvatar :: ID -> Text -> Mongo.Action IO ()
 updateAvatar uid avatar =
   Mongo.modify
     (selectColByUID uid)
     ["$set" =: [ avatarColumn =: avatar]]
 
-updateFirstName :: UID -> Maybe Text -> Mongo.Action IO ()
+updateFirstName :: ID -> Maybe Text -> Mongo.Action IO ()
 updateFirstName uid firstName =
   Mongo.modify
     (selectColByUID uid)
     ["$set" =: [ firstNameColumn =: firstName]]
 
-updateSecondName :: UID -> Maybe Text -> Mongo.Action IO ()
+updateSecondName :: ID -> Maybe Text -> Mongo.Action IO ()
 updateSecondName uid secondName =
   Mongo.modify
     (selectColByUID uid)
     ["$set" =: [ secondNameColumn =: secondName]]
 
-updateSex :: UID -> Maybe Sex -> Mongo.Action IO ()
+updateSex :: ID -> Maybe Sex -> Mongo.Action IO ()
 updateSex uid sex =
   Mongo.modify
     (selectColByUID uid)
     ["$set" =: [ sexColumn =: sex]]
 
-updateBirthDay :: UID -> Maybe UTCTime -> Mongo.Action IO ()
+updateBirthDay :: ID -> Maybe UTCTime -> Mongo.Action IO ()
 updateBirthDay uid birthday =
   Mongo.modify
     (selectColByUID uid)
     ["$set" =: [ birthdayColumn =: birthday]]
 
-addUserTest :: UID -> TID -> Mongo.Action IO ()
+addUserTest :: ID -> ID -> Mongo.Action IO ()
 addUserTest uid tid =
   Mongo.modify
     (selectColByUID uid)
     ["$push" =: [ tidListColumn =: tid]]
 
-addTestResult :: UID -> TestResult -> Mongo.Action IO ()
+addTestResult :: ID -> TestResult -> Mongo.Action IO ()
 addTestResult uid testResult =
   Mongo.modify
     (selectColByUID uid)
     ["$push" =: [ resultsColumn =: testResult]]
 
-deleteUserTest :: UID -> TID -> Mongo.Action IO ()
+deleteUserTest :: ID -> ID -> Mongo.Action IO ()
 deleteUserTest uid tid =
   Mongo.modify
     (selectColByUID uid)
     ["$pull" =: [ tidListColumn =: tid]]
 
-getUserTests :: UID -> Mongo.Action IO (Maybe [TID])
+getUserTests :: ID -> Mongo.Action IO (Maybe [ID])
 getUserTests uid = do
   x <- getUser uid
   return $ tidList <$> x
 
-deleteUser :: UID -> Mongo.Action IO ()
+deleteUser :: ID -> Mongo.Action IO ()
 deleteUser uid =
   Mongo.deleteOne (selectColByUID uid)
 

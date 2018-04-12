@@ -1,3 +1,5 @@
+{-# LANGUAGE TypeSynonymInstances #-}
+
 module Database.Bson.TestData (
     tidColumn
   , nameColumn
@@ -7,10 +9,11 @@ module Database.Bson.TestData (
   , questionColumn
 ) where
 
-import Data.Text (Text, pack)
+import Data.Text (Text, pack, unpack)
 import Data.Bson (Document, (=:))
 import qualified Data.Bson as Bson
 import Database.Bson.Class
+
 
 import Model.TestData
 
@@ -34,6 +37,12 @@ instance FromDocument TestData where
       <*> Bson.lookup creationDateColumn document
       <*> Bson.lookup passingNumberColumn document
       <*> Bson.lookup questionColumn document
+
+instance ToObjectId TID where
+  toObjectId uid = read (unpack uid) :: Bson.ObjectId
+
+instance FromObjectId TID where
+  fromObjectId = pack . show
 
 tidColumn           = "_id"           :: Bson.Label
 nameColumn          = "name"          :: Bson.Label

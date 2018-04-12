@@ -13,7 +13,6 @@
     <orderEntry type="library" name="Cabal-2.0.1.1" level="project" />
     <orderEntry type="library" name="MonadRandom-0.5.1" level="project" />
     <orderEntry type="library" name="aeson-1.2.4.0" level="project" />
-    <orderEntry type="library" name="aeson-compat-0.3.7.1" level="project" />
     <orderEntry type="library" name="ansi-terminal-0.8.0.2" level="project" />
     <orderEntry type="library" name="ansi-wl-pprint-0.6.8.2" level="project" />
     <orderEntry type="library" name="appar-0.1.4" level="project" />
@@ -37,7 +36,6 @@
     <orderEntry type="library" name="bsb-http-chunked-0.0.0.2" level="project" />
     <orderEntry type="library" name="bsb-http-chunked-0.0.0.2" level="project" />
     <orderEntry type="library" name="bson-0.3.2.3" level="project" />
-    <orderEntry type="library" name="bson-mapping-0.1.5.1" level="project" />
     <orderEntry type="library" name="byteorder-1.0.4" level="project" />
     <orderEntry type="library" name="byteorder-1.0.4" level="project" />
     <orderEntry type="library" name="bytestring-0.10.8.2" level="project" />
@@ -83,7 +81,6 @@
     <orderEntry type="library" name="integer-logarithms-1.0.2.1" level="project" />
     <orderEntry type="library" name="iproute-1.7.3" level="project" />
     <orderEntry type="library" name="lifted-base-0.2.3.12" level="project" />
-    <orderEntry type="library" name="lucid-2.9.10" level="project" />
     <orderEntry type="library" name="memory-0.14.16" level="project" />
     <orderEntry type="library" name="mime-types-0.1.0.7" level="project" />
     <orderEntry type="library" name="mmorph-1.1.2" level="project" />

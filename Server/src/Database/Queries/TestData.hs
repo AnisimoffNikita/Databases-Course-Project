@@ -12,11 +12,11 @@ import qualified Database.MongoDB as Mongo
 import Data.Time (UTCTime)
 
 import Model.TestData
-import Database.Bson.TestData
 import Database.Bson.Class
+import Model.Types
 
 
-newTest :: TestData -> Mongo.Action IO TID
+newTest :: TestData -> Mongo.Action IO ID
 newTest test = do
   let test' = Mongo.exclude [tidColumn] (toDocument test)
   oid <- Mongo.insert collection test'
@@ -25,10 +25,10 @@ newTest test = do
 updateTest :: TestData -> Mongo.Action IO ()
 updateTest testData = Mongo.replace (selectColByTID $ tid testData) (toDocument testData)
 
-getTest :: TID -> Mongo.Action IO (Maybe Mongo.Document)
+getTest :: ID -> Mongo.Action IO (Maybe Mongo.Document)
 getTest tid = Mongo.findOne (selectColByTID tid)
 
-deleteTest :: TID -> Mongo.Action IO ()
+deleteTest :: ID -> Mongo.Action IO ()
 deleteTest tid = Mongo.deleteOne (selectColByTID tid)
 
 getAllTests :: Mongo.Action IO [Mongo.Document]
