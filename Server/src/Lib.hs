@@ -7,7 +7,7 @@ module Lib
 import Database.MongoDB 
 import Control.Monad.Trans (liftIO)
 
-import Database.Queries.User
+import Database.Queries
 
 
 someFunc :: IO ()

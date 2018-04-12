@@ -21,12 +21,12 @@ load env = do
   port   <- read <$> fromMaybe "3000" <$> lookupEnv "PORT"
   dbHost <- fromMaybe "localhost" <$> lookupEnv "DB_HOST"
   dbPort <- read <$> fromMaybe "27017" <$> lookupEnv "DB_PORT"
-  dbName <- fromMaybe "spreadsheets" <$> lookupEnv "DB_NAME"
+  dbName <- fromMaybe "testSystem" <$> lookupEnv "DB_NAME"
   return Config{..}
   where
     config = defaultConfig { configPath = [fileName] }
     fileName = ".env" ++ envPostfix env
 
-envPostfix ∷ Env → String
+envPostfix ∷ Env -> String
 envPostfix Prod = ""
 envPostfix Test = ".test"

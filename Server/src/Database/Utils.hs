@@ -9,7 +9,7 @@ import Database.MongoDB
 import Types
 import Config
 
--- | Creates a striped resource pool of MongoDB pipes.
+
 mkPool ∷ Config -> IO (Pool Pipe)
 mkPool config = createPool pipe close 5 60 5
   where
