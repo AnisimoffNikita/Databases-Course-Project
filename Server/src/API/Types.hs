@@ -5,17 +5,16 @@ import Data.Time
 import Data.Text (Text)
 import GHC.Generics
 
-import Model.User(TestResult, User, Sex)
 
-data UserRegister = UserRegister
-  { username    :: Text
-  , password    :: Text
-  , email       :: Text
-  , firstName   :: Maybe Text
-  , secondName  :: Maybe Text
-  , sex         :: Maybe Sex
-  , birthday    :: Maybe UTCTime
-  } deriving (Eq, Show, Generic)
-
-instance FromJSON UserRegister
-
+--data UserRegister = UserRegister
+--  { username    :: Text
+--  , password    :: Text
+--  , email       :: Text
+--  , firstName   :: Maybe Text
+--  , secondName  :: Maybe Text
+--  , sex         :: Maybe Sex
+--  , birthday    :: Maybe UTCTime
+--  } deriving (Eq, Show, Generic)
+--
+--instance FromJSON UserRegister
+--
