@@ -8,13 +8,15 @@ module Model.TestData
   , questionColumn
   ) where
 
-import Data.Time
-import GHC.Generics
-import Model.Types
-import Data.Text (Text, pack, unpack)
+import Data.Aeson (FromJSON, ToJSON)
 import Data.Bson (Document, (=:))
 import qualified Data.Bson as Bson
+import Data.Text (Text, pack, unpack)
+import Data.Time (UTCTime)
+import GHC.Generics (Generic)
+
 import Database.Bson.Class
+import Model.Types
 
 data TestData = TestData
   { tid           :: ID
@@ -25,6 +27,8 @@ data TestData = TestData
   , question      :: Text
   } deriving (Show, Eq, Generic)
 
+instance FromJSON TestData
+instance ToJSON TestData
 
 instance ToDocument TestData where
   toDocument TestData{..} =
@@ -36,11 +40,10 @@ instance ToDocument TestData where
     , questionColumn      =: question
     ]
 
-
 instance FromDocument TestData where
   fromDocument document =
     TestData
-      <$> fmap (pack . show) (Bson.lookup tidColumn document :: Maybe Bson.ObjectId)
+      <$> fmap fromObjectId (Bson.lookup tidColumn document)
       <*> Bson.lookup nameColumn document
       <*> Bson.lookup descriptionColumn document
       <*> Bson.lookup creationDateColumn document

@@ -48,6 +48,34 @@ mkSex "Female"  = Just Female
 mkSex _         = Nothing
 
 
+-- TestResult type
+data TestResult = TestResult
+  { testKey     :: Text
+  , result      :: Text
+  , passingDate :: UTCTime
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON TestResult
+instance ToJSON TestResult
+
+instance Bson.Val TestResult where
+  val tr = Bson.Doc $ toDocument tr
+  cast' (Bson.Doc doc) = fromDocument doc
+
+instance ToDocument TestResult where
+  toDocument TestResult{..} =
+    [ testKeyColumn     =: testKey
+    , resultColumn      =: result
+    , passingDateColumn =: passingDate
+    ]
+
+instance FromDocument TestResult where
+  fromDocument document =
+    TestResult
+      <$> Bson.lookup testKeyColumn document
+      <*> Bson.lookup resultColumn document
+      <*> Bson.lookup passingDateColumn document
+
 
 data User = User
   { uid         :: ID
@@ -62,18 +90,6 @@ data User = User
   , results     :: [TestResult]
   , tidList     :: [ID]
   } deriving (Show, Eq, Generic)
-
-
-
-
--- TestResult type
-data TestResult = TestResult
-  { testKey     :: Text
-  , result      :: Text
-  , passingDate :: UTCTime
-  } deriving (Show, Eq, Generic)
-
-
 
 instance ToDocument User where
   toDocument User{..} =
@@ -93,7 +109,7 @@ instance ToDocument User where
 instance FromDocument User where
   fromDocument document =
     User
-      <$> fmap (pack . show) (Bson.lookup uidColumn document :: Maybe Bson.ObjectId)
+      <$> fmap fromObjectId (Bson.lookup uidColumn document)
       <*> Bson.lookup usernameColumn document
       <*> Bson.lookup passwordColumn document
       <*> Bson.lookup emailColumn document
@@ -104,27 +120,6 @@ instance FromDocument User where
       <*> Bson.lookup sexColumn document
       <*> Bson.lookup resultsColumn document
       <*> Bson.lookup tidListColumn document
-
-
-instance ToDocument TestResult where
-  toDocument TestResult{..} =
-    [ testKeyColumn     =: testKey
-    , resultColumn      =: result
-    , passingDateColumn =: passingDate
-    ]
-
-instance FromDocument TestResult where
-  fromDocument document =
-    TestResult
-      <$> Bson.lookup testKeyColumn document
-      <*> Bson.lookup resultColumn document
-      <*> Bson.lookup passingDateColumn document
-
-
-instance Bson.Val TestResult where
-  val tr = Bson.Doc $ toDocument tr
-  cast' (Bson.Doc doc) = fromDocument doc
-
 
 
 

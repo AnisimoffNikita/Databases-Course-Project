@@ -9,7 +9,6 @@ import Database.MongoDB
 import Types
 import Config
 
-
 mkPool :: Config -> IO (Pool Pipe)
 mkPool config = createPool pipe close 5 60 5
   where
@@ -22,4 +21,4 @@ runDb op = do
   pool <- asks pipePool
   name <- asks databaseName
   liftIO $ withResource pool $
-    \pipe -> access pipe master (pack name) op
+    \pipe -> access pipe master name op

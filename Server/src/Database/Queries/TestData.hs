@@ -6,6 +6,7 @@ module Database.Queries.TestData (
   , getAllTests
 ) where
 
+import Control.Monad.IO.Class
 import Data.Text
 import Database.MongoDB((=:))
 import qualified Database.MongoDB as Mongo
@@ -16,7 +17,10 @@ import Database.Bson.Class
 import Model.Types
 
 
-newTest :: TestData -> Mongo.Action IO ID
+newTest :: Control.Monad.IO.Class.MonadIO m
+        => (Mongo.Action m a -> m a)
+        -> TestData
+        -> m a
 newTest test = do
   let test' = Mongo.exclude [tidColumn] (toDocument test)
   oid <- Mongo.insert collection test'

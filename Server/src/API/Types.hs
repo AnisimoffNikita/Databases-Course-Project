@@ -7,10 +7,6 @@ import GHC.Generics
 
 import Model.User(TestResult, User, Sex)
 
-instance ToJSON TestResult
-
-instance ToJSON User
-
 data UserRegister = UserRegister
   { username    :: Text
   , password    :: Text

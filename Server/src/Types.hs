@@ -4,10 +4,11 @@ import Control.Monad.Reader (ReaderT)
 import Data.Pool (Pool)
 import Database.MongoDB (Pipe)
 import Servant (Handler)
+import Data.Text (Text)
 
 data AppContext = AppContext {
     pipePool :: Pool Pipe
-  , databaseName :: String
+  , databaseName :: Text
 }
 
 type App = ReaderT AppContext Handler
