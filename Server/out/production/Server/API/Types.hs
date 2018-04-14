@@ -6,15 +6,3 @@ import Data.Text (Text)
 import GHC.Generics
 
 
---data UserRegister = UserRegister
---  { username    :: Text
---  , password    :: Text
---  , email       :: Text
---  , firstName   :: Maybe Text
---  , secondName  :: Maybe Text
---  , sex         :: Maybe Sex
---  , birthday    :: Maybe UTCTime
---  } deriving (Eq, Show, Generic)
---
---instance FromJSON UserRegister
---

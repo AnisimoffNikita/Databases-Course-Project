@@ -8,44 +8,47 @@
 {-# LANGUAGE DeriveGeneric              #-}
 
 module Model.User
-  (
+  ( User(..)
+  , TestResult(..)
   ) where
 
-
-import Data.Aeson
+import Control.Monad.Reader
+import qualified Data.Aeson as Aeson
 import Data.Text
 import Data.Time
-
-import GHC.Generics
-import Control.Monad.IO.Class  (liftIO)
 import Database.Persist
 import Database.Persist.MongoDB
 import Database.Persist.TH
-import Control.Monad.Reader
+import GHC.Generics
 import Language.Haskell.TH.Syntax
 
-import Database.Persist.TH
+import Utils.Types
 
-share [mkPersist (mkPersistSettings (ConT ''MongoContext)), mkMigrate "migrateAll"] [persistLowerCase|
+share [mkPersist (mkPersistSettings (ConT ''MongoContext))] [persistLowerCase|
 TestResult
-  testKey     Text
-  result      Text
-  passingDate UTCTime
-  deriving Eq Read Show Generic
+  testKey       Text
+  result        Text
+  passingDate   UTCTime
+  deriving      Eq Read Show Generic
 User
-  username    Text
-  password    Text
-  email       Text
-  avatar      Text
-  firstName   Text Maybe
-  secondName  Text Maybe
-  birthDay    UTCTime Maybe
-  sex         Int Maybe
-  Email       email
-  Username    username
-  deriving Eq Read Show Generic
+  username      Text
+  password      Text
+  email         Text
+  avatar        Text
+  firstName     Text Maybe
+  secondName    Text Maybe
+  birthDay      UTCTime Maybe
+  sex           Int Maybe
+  createdTests  [ObjectId]
+  passedTests   [TestResult]
+  Email         email
+  Username      username
+  deriving      Eq Read Show Generic
 |]
 
 
-instance FromJSON User
-instance ToJSON User
+instance Aeson.FromJSON TestResult
+instance Aeson.ToJSON TestResult
+
+instance Aeson.FromJSON User
+instance Aeson.ToJSON User

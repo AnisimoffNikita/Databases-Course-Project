@@ -13,8 +13,6 @@ import qualified Database.MongoDB as Mongo
 import Data.Time (UTCTime)
 
 import Model.TestData
-import Database.Bson.Class
-import Model.Types
 
 --
 --newTest :: Control.Monad.IO.Class.MonadIO m

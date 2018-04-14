@@ -6,8 +6,8 @@
 {-# LANGUAGE TemplateHaskell            #-}
 {-# LANGUAGE DeriveGeneric              #-}
 
-module Model.TestData
-  ( TestData(..)
+module Model.Quiz
+  (
   ) where
 
 import Control.Monad.Reader
@@ -20,8 +20,8 @@ import Database.Persist.TH
 import GHC.Generics
 import Language.Haskell.TH.Syntax
 
-share [mkPersist (mkPersistSettings (ConT ''MongoContext)), mkMigrate "migrateAll"] [persistLowerCase|
-TestData
+share [mkPersist (mkPersistSettings (ConT ''MongoContext))] [persistLowerCase|
+Quiz
   name          Text
   description   Text
   creationDate  UTCTime
@@ -30,5 +30,5 @@ TestData
   deriving Eq Read Show Generic
 |]
 
-instance FromJSON TestData
-instance ToJSON TestData
+instance FromJSON Quiz
+instance ToJSON Quiz

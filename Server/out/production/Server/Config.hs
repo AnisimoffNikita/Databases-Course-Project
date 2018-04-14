@@ -1,13 +1,36 @@
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Config where
 
+import Control.Exception (throwIO)
 import Control.Monad (void)
-import System.Environment (lookupEnv)
 import Data.Maybe (fromMaybe)
+import Configuration.Dotenv (loadFile)
+import Configuration.Dotenv.Types (defaultConfig, configPath)
+import System.Environment (lookupEnv)
 
 
 data Config = Config
-  { port    :: Int
-  , dbHost  :: String
-  , dbPort  :: Int
-  , dbName  :: String
-  } deriving (Show)
+  { dbHost :: String
+  , dbPort :: Int
+  , dbName :: String
+  , dbUser :: String
+  , dbPass :: String
+  }
+
+data Environment
+    = Development
+    | Production
+    deriving (Eq, Show, Read)
+
+
+load :: IO Config
+load = do
+  void $ loadFile config
+  dbHost <- fromMaybe "localhost" <$> lookupEnv "DB_HOSTNAME"
+  dbName <- fromMaybe "spreadsheets" <$> lookupEnv "DB_NAME"
+  dbPort <- read <$> fromMaybe "27017" <$> lookupEnv "DB_PORT"
+  dbUser <- fromMaybe "user" <$> lookupEnv "DB_PORT"
+  dbPass <- fromMaybe "pass" <$> lookupEnv "DB_PORT"
+  return Config{..}
+  where
+    config = defaultConfig { configPath = [".config"] }
