@@ -194,5 +194,9 @@
     <orderEntry type="library" name="profunctors-5.2.2" level="project" />
     <orderEntry type="library" name="reflection-2.1.3" level="project" />
     <orderEntry type="library" name="semigroupoids-5.2.2" level="project" />
+    <orderEntry type="library" name="dotenv-0.5.2.4" level="project" />
+    <orderEntry type="library" name="megaparsec-6.4.1" level="project" />
+    <orderEntry type="library" name="parser-combinators-0.4.0" level="project" />
+    <orderEntry type="library" name="yaml-0.8.29" level="project" />
   </component>
 </module>

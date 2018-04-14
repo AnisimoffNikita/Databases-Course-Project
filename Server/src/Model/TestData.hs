@@ -21,8 +21,6 @@ import GHC.Generics
 import Language.Haskell.TH.Syntax
 
 share [mkPersist (mkPersistSettings (ConT ''MongoContext)), mkMigrate "migrateAll"] [persistLowerCase|
-Question
-
 TestData
   name          Text
   description   Text

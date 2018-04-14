@@ -21,10 +21,10 @@ import Database.Persist.MongoDB
 import Database.Persist.TH
 import GHC.Generics
 import Language.Haskell.TH.Syntax
-import Utils.Types
-import Control.Lens
 
-share [mkPersist (mkPersistSettings (ConT ''MongoContext)), mkMigrate "migrateAll"] [persistLowerCase|
+import Utils.Types
+
+share [mkPersist (mkPersistSettings (ConT ''MongoContext))] [persistLowerCase|
 TestResult
   testKey       Text
   result        Text
