@@ -8,6 +8,16 @@ import Servant.Auth.Server.SetCookieOrphan ()
 import API.Types
 import Model.User
 
+type Check auths =
+       Auth auths User
+    :> "isLoggedIn"
+    :> Post '[JSON] (Maybe Text)
+
+type Protected =
+       "user"
+    :> ReqBody '[JSON] Text
+    :> Post '[JSON] (Maybe User)
+
 type Unprotected =
        "login"
     :> ReqBody '[JSON] Login
@@ -18,28 +28,21 @@ type Unprotected =
     :> ReqBody '[JSON] User
     :> PostNoContent '[JSON] NoContent
   :<|> "confirmUser"
-    :> ReqBody '[JSON] User
+    :> ReqBody '[JSON] Text
     :> PostNoContent '[JSON] NoContent
 
+type API auths =
+       Check auths
+  :<|> Auth auths User
+    :> Protected
+  :<|> Unprotected
 
-type Protected =
-       "checkLogin"
-    :> Post '[JSON] Bool
-  :<|> "user"
-    :> Post '[JSON] User
-  :<|> "user"
-    :> "update"
-    :> Post '[JSON] User
---  :<|> "quiz"
---    :> "list"
---    :> Post '[JSON] User
---  :<|> "quiz"
---    :> ReqBody '[JSON] Int
---    :> Post '[JSON] User
 
-type V1 auths = (Auth auths User :> Protected) :<|> Unprotected
-
-type API auths = "v1" :> V1 auths
 
 apiProxy :: Proxy (API '[Cookie])
 apiProxy = Proxy
+
+type AppContextType = '[CookieSettings, JWTSettings]
+
+contextProxy :: Proxy AppContextType
+contextProxy = Proxy

@@ -12,6 +12,8 @@ import Data.Aeson
 import Data.Time
 import Data.Text (Text)
 import GHC.Generics
+import Servant.Auth.Server
+import Servant.Auth.Server.SetCookieOrphan ()
 
 import Model.Types
 import Model.User
@@ -43,6 +45,10 @@ data QuizQuestion = QuizQuestion
 instance ToJSON QuizQuestion
 instance FromJSON QuizQuestion
 
+instance ToJWT User
+instance FromJWT User
+
+
 
 data ResponseResult a = ResponseError
   { code :: Int
@@ -54,7 +60,3 @@ data ResponseResult a = ResponseError
 
 instance ToJSON a => ToJSON (ResponseResult a)
 instance FromJSON a => FromJSON (ResponseResult a)
-
-
-instance ToJWT User
-instance FromJWT User

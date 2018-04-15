@@ -15,19 +15,32 @@ import Database.Persist.MongoDB
 import Database.Persist.TH
 
 import API.API
-import API.Handlers
+import API.Handler
 
+import Database.Utils
 import Config
 import Types
 
-nt :: AppContext -> AppM a -> Handler a
+nt :: HandlerContext -> AppM a -> Handler a
 nt s x = runReaderT x s
 
-app :: CookieSettings -> JWTSettings -> AppContext -> Application
-app cookieCfg jwtCfg s =
-  serveWithContext apiProxy cfg $
-                   hoistServerWithContext apiProxy contextProxy (nt s) (handlers cookieCfg jwtCfg)
-  where
-    cfg = cookieCfg :. jwtCfg :. EmptyContext
-    contextProxy = Proxy :: Proxy (CookieSettings ': JWTSettings ': '[])
+app :: Context AppContextType -> HandlerContext -> Application
+app context s =
+  serveWithContext apiProxy context $
+                   hoistServerWithContext apiProxy contextProxy (nt s) handler
 
+
+startApp :: IO ()
+startApp = do
+  myKey <- generateKey
+  let
+    jwtCfg = defaultJWTSettings myKey
+    cookieCfg = defaultCookieSettings
+    appContext = cookieCfg :. jwtCfg :. EmptyContext
+
+  dbConfig <- load Development
+  pool <- makePool dbConfig
+  let
+    handlerContext = HandlerContext pool cookieCfg jwtCfg
+
+  run 7249 $ app appContext handlerContext

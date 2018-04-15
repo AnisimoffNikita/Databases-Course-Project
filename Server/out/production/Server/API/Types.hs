@@ -45,6 +45,10 @@ data QuizQuestion = QuizQuestion
 instance ToJSON QuizQuestion
 instance FromJSON QuizQuestion
 
+instance ToJWT User
+instance FromJWT User
+
+
 
 data ResponseResult a = ResponseError
   { code :: Int
@@ -56,7 +60,3 @@ data ResponseResult a = ResponseError
 
 instance ToJSON a => ToJSON (ResponseResult a)
 instance FromJSON a => FromJSON (ResponseResult a)
-
-
-instance ToJWT User
-instance FromJWT User
