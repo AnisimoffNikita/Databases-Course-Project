@@ -6,6 +6,7 @@
 {-# LANGUAGE TemplateHaskell            #-}
 {-# LANGUAGE TypeFamilies               #-}
 {-# LANGUAGE DeriveGeneric              #-}
+{-# LANGUAGE FlexibleInstances #-}
 
 module Model.User
    where
@@ -21,16 +22,17 @@ import Database.Persist.TH
 import GHC.Generics (Generic)
 import Language.Haskell.TH.Syntax
 
-import Utils.Types
+import Model.Types
 
 
-share[mkPersist (mkPersistSettings (ConT ''MongoContext)) { mpsPrefixFields = False }] [persistLowerCase|
-QuizResult
+
+share[mkPersist (mkPersistSettings (ConT ''MongoContext))] [persistLowerCase|
+QuizResult json
   testKey         Text
   result          Text
   passingDate     UTCTime
   deriving        Eq Read Show Generic
-User
+User json
   username        Text
   password        Text
   email           Text
@@ -38,20 +40,14 @@ User
   firstName       Text Maybe
   secondName      Text Maybe
   birthDay        UTCTime Maybe
-  sex             Int Maybe
+  sex             Gender Maybe
   createdQuizzes  [ObjectId]
   passedQuizzes   [QuizResult]
   deriving        Eq Read Show Generic
 |]
 
+
 createUserIndexes :: MonadIO m =>  Action m ()
 createUserIndexes = do
   ensureIndex $ (index "user" ["username" =: (1::Int)]) {iUnique = True}
   ensureIndex $ (index "user" ["email" =: (1::Int)]) {iUnique = True}
-
-
-instance FromJSON QuizResult
-instance ToJSON QuizResult
-
-instance FromJSON User
-instance ToJSON User

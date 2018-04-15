@@ -1,20 +1,14 @@
 module Database.Queries
-  ( module Database.Queries.User
-  , module Database.Queries.TestData
+  (
   ) where
 
 import Database.Queries.User
-import Database.Queries.TestData
 
 import Control.Monad.Reader (MonadIO, MonadReader, asks, liftIO)
-import Database.Persist.MongoDB (runMongoDBPool)
-import Database.Persist.TH  (mkMigrate, mkPersist, persistLowerCase,
-                                       share, sqlSettings)
+import Database.Persist.MongoDB
+import Database.Persist.TH
 
-import App
+import Types
 import Config
-
-runDb :: AppM
-runDb query = do
-    pool <- asks configPool
-    liftIO $ runSqlPool query pool
+import Database.Utils
+import Model.User
