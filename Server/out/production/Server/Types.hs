@@ -7,11 +7,11 @@ import Servant (Handler)
 import Servant.Auth.Server
 import Servant.Auth.Server.SetCookieOrphan ()
 
-data AppContext = AppContext
+data HandlerContext = HandlerContext
   { connection  :: ConnectionPool
   , cookie      :: CookieSettings
   , jwt         :: JWTSettings
   }
 
-type AppM = ReaderT AppContext Handler
+type AppM = ReaderT HandlerContext Handler
 

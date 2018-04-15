@@ -2,6 +2,7 @@ module App where
 
 import Network.Wai
 import Network.Wai.Handler.Warp
+import Network.Wai.Logger (withStdoutLogger)
 import Model.User
 import Control.Monad.Reader (runReaderT, ask)
 import Control.Monad.Trans (lift)
@@ -33,14 +34,14 @@ app context s =
 startApp :: IO ()
 startApp = do
   myKey <- generateKey
+  dbConfig <- load Development
+  pool <- makePool dbConfig
   let
     jwtCfg = defaultJWTSettings myKey
     cookieCfg = defaultCookieSettings
     appContext = cookieCfg :. jwtCfg :. EmptyContext
-
-  dbConfig <- load Development
-  pool <- makePool dbConfig
-  let
     handlerContext = HandlerContext pool cookieCfg jwtCfg
 
-  run 7249 $ app appContext handlerContext
+  withStdoutLogger $ \aplogger -> do
+    let settings = setPort 8080 $ setLogger aplogger defaultSettings
+    runSettings settings $ app appContext handlerContext
