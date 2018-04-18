@@ -8,13 +8,11 @@ import Servant.Auth.Server.SetCookieOrphan ()
 import API.Types
 import Model.User
 
-type Check auths =
-       Auth auths User
-    :> "isLoggedIn"
-    :> Post '[JSON] (Maybe Text)
 
 type Protected =
-       "user"
+       "isLoggedIn"
+    :> Post '[JSON] (Maybe Text)
+  :<|> "user"
     :> ReqBody '[JSON] Text
     :> Post '[JSON] (Maybe User)
 
@@ -32,8 +30,7 @@ type Unprotected =
     :> PostNoContent '[JSON] NoContent
 
 type API auths =
-       Check auths
-  :<|> Auth auths User
+       Auth auths User
     :> Protected
   :<|> Unprotected
 

@@ -12,7 +12,12 @@ instance Aeson.ToJSON ObjectId where
   toJSON = Aeson.toJSON . pack . show
 
 instance Aeson.FromJSON ObjectId where
-  parseJSON (Aeson.String v) = return . read . unpack $ v
+  parseJSON (Aeson.String v) =
+    case readed of
+      Just oid -> return oid
+      Nothing -> mzero
+    where
+      readed = readMayObjectId $ v
   parseJSON _ = mzero
 
 

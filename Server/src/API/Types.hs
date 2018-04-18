@@ -27,6 +27,7 @@ data Login = Login
 instance ToJSON Login
 instance FromJSON Login
 
+
 data QuizPreview = QuizPreview
   { name :: Text
   , description :: Text
@@ -44,6 +45,8 @@ data QuizQuestion = QuizQuestion
 
 instance ToJSON QuizQuestion
 instance FromJSON QuizQuestion
+
+
 
 instance ToJWT User
 instance FromJWT User

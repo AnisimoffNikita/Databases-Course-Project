@@ -13,15 +13,17 @@ import Types
 
 
 handler :: ServerT (API auths) AppM
-handler = check :<|> protected :<|> unprotected
+handler = protected :<|> unprotected
 
 
-check :: ServerT (Check auths) AppM
-check = checkLogin
+protected :: AuthResult User -> ServerT Protected AppM
+protected authResult =
+       getLoggedIn authResult
+  :<|> getUser authResult
 
-checkLogin :: AuthResult User -> AppM (Maybe Text)
-checkLogin (Authenticated user) = loggedIn
-checkLogin _ = notLoggedIn
+getLoggedIn :: AuthResult User -> AppM (Maybe Text)
+getLoggedIn (Authenticated user) = loggedIn
+getLoggedIn _ = notLoggedIn
 
 loggedIn :: AppM (Maybe Text)
 loggedIn = undefined
@@ -29,13 +31,7 @@ loggedIn = undefined
 notLoggedIn :: AppM (Maybe Text)
 notLoggedIn = undefined
 
-
-
-protected :: AuthResult User -> ServerT Protected AppM
-protected (Authenticated user) =
-       getUser
-
-getUser :: Text -> AppM (Maybe User)
+getUser :: AuthResult User -> Text -> AppM (Maybe User)
 getUser oid = undefined
 
 unprotected :: ServerT Unprotected AppM
@@ -45,8 +41,9 @@ unprotected =
   :<|> confirmUser
 
 login :: Login -> AppM (Headers '[ Header "Set-Cookie" SetCookie
-                                    , Header "Set-Cookie" SetCookie]
-                                   NoContent)
+                                 , Header "Set-Cookie" SetCookie
+                                 ]
+                                 NoContent)
 login user = undefined
 
 newUser :: User -> AppM NoContent
