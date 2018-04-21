@@ -16,31 +16,19 @@ import Utils
 
 
 handler :: ServerT (API auths) AppM
-handler = protected
+handler = userAPI
 
 
-protected :: AuthResult Login -> ServerT Protected AppM
-protected authResult =
-       getLoggedIn authResult
-  :<|> login
+
+userAPI :: AuthResult Login -> ServerT UserAPI AppM
+userAPI authResult =
+       login
   :<|> newUser
-  :<|> confirmUser
+  :<|> getUsername authResult
 
-  -- :<|> getUser authResult
-
-getLoggedIn :: AuthResult Login -> AppM (Maybe Text)
-getLoggedIn (Authenticated user) = loggedIn $ loginUsername user
-getLoggedIn _ = notLoggedIn
-
-loggedIn :: Text -> AppM (Maybe Text)
-loggedIn username = return $ Just username
-
-notLoggedIn :: AppM (Maybe Text)
-notLoggedIn = return Nothing
-
-getUser :: AuthResult User -> Text -> AppM (Maybe User)
-getUser oid = undefined
-
+getUsername :: AuthResult Login -> AppM (Maybe Text)
+getUsername (Authenticated user) = return . Just . loginUsername $ user
+getUsername _ = return Nothing
 
 
 login :: Login -> AppM (Headers '[ Header "Set-Cookie" SetCookie
@@ -73,7 +61,6 @@ newUser :: UserRegister -> AppM (Headers '[ Header "Set-Cookie" SetCookie
 newUser reg = do
   let
     user = userRegisterToUser reg
-    logged = userRegisterToLogin reg
     getByUsername = getBy . UniqueUsername . userUsername $ user
     getByEmail = getBy . UniqueEmail . userEmail $ user
   pool <- asks connectionPool
@@ -83,8 +70,6 @@ newUser reg = do
   else do
     let
       action = insert user
+      logged = userRegisterToLogin reg
     key <- liftIO $ runMongoDBPoolDef action pool
     login logged
-
-confirmUser :: Text -> AppM NoContent
-confirmUser jwt = undefined
