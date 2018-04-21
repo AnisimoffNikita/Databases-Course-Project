@@ -9,7 +9,6 @@ import Control.Monad.Trans (lift)
 import Config
 import Servant
 import Servant.Auth.Server
-import Servant.Auth.Server.SetCookieOrphan ()
 import Servant.Server
 import Database.Persist
 import Database.Persist.MongoDB
@@ -40,7 +39,7 @@ startApp = do
     jwtCfg = defaultJWTSettings myKey
     cookieCfg = defaultCookieSettings
     appContext = cookieCfg :. jwtCfg :. EmptyContext
-    handlerContext = HandlerContext pool cookieCfg jwtCfg
+    handlerContext = HandlerContext pool jwtCfg
 
   withStdoutLogger $ \aplogger -> do
     let settings = setPort 8080 $ setLogger aplogger defaultSettings

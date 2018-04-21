@@ -1,6 +1,7 @@
 module API.API where
 
 import Data.Text(Text)
+import Data.ByteString (ByteString)
 import Servant
 import Servant.Auth.Server
 import Servant.Auth.Server.SetCookieOrphan ()
@@ -11,27 +12,21 @@ import Model.Model
 type UserAPI =
        "login"
     :> ReqBody '[JSON] Login
-    :> PostNoContent '[JSON] (Headers '[ Header "Set-Cookie" SetCookie
-                                       , Header "Set-Cookie" SetCookie
-                                       ]
-                                       NoContent)
+    :> Post '[JSON] Tokens
   :<|> "new"
     :> ReqBody '[JSON] UserRegister
-    :> PostNoContent '[JSON] (Headers '[ Header "Set-Cookie" SetCookie
-                                       , Header "Set-Cookie" SetCookie
-                                       ]
-                                       NoContent)
+    :> Post '[JSON] Tokens
   :<|> "username"
     :> Post '[JSON] (Maybe Text)
 
 
 type API auths =
-       Auth auths Login
+       Auth auths JWTData
     :> ( "user"
       :> UserAPI)
 
 
-apiProxy :: Proxy (API '[Cookie])
+apiProxy :: Proxy (API '[JWT])
 apiProxy = Proxy
 
 type AppContextType = '[CookieSettings, JWTSettings]

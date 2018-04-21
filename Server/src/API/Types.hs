@@ -1,10 +1,12 @@
 module API.Types
   ( Login(..)
-  , userRegisterToLogin
+  , JWTData(..)
   , UserRegister(..)
   , userRegisterToUser
+  , userRegisterToLogin
   , QuizPreview(..)
   , QuizQuestion(..)
+  , Tokens(.. )
   , ResponseResult
   , module Model.Model
   )
@@ -33,13 +35,14 @@ data Login = Login
 instance ToJSON Login
 instance FromJSON Login
 
-instance ToJWT Login
-instance FromJWT Login
+data JWTData = JWTData
+  { jwtUsername :: Text
+  } deriving (Eq, Show, Read, Generic)
 
-userRegisterToLogin :: UserRegister -> Login
-userRegisterToLogin UserRegister{..} =
-  Login registerUsername registerPassword
-
+instance ToJSON JWTData
+instance FromJSON JWTData
+instance ToJWT JWTData
+instance FromJWT JWTData
 
 data UserRegister = UserRegister
   { registerUsername :: Text
@@ -50,17 +53,17 @@ data UserRegister = UserRegister
 instance ToJSON UserRegister
 instance FromJSON UserRegister
 
-instance ToJWT UserRegister
-instance FromJWT UserRegister
-
-instance ToForm UserRegister
-instance FromForm UserRegister
 
 userRegisterToUser :: UserRegister -> User
 userRegisterToUser UserRegister{..} =
   User registerUsername (hashMD5 registerPassword)
     registerEmail avatarDefault
     Nothing Nothing Nothing Nothing [] []
+
+userRegisterToLogin :: UserRegister -> Login
+userRegisterToLogin UserRegister{..} =
+  Login registerUsername registerPassword
+
 
 
 data QuizPreview = QuizPreview
@@ -81,6 +84,12 @@ data QuizQuestion = QuizQuestion
 instance ToJSON QuizQuestion
 instance FromJSON QuizQuestion
 
+data Tokens = Tokens
+  { tokensJwt :: Text
+  } deriving (Eq, Show, Read, Generic)
+
+instance ToJSON Tokens
+instance FromJSON Tokens
 
 data ResponseResult a = ResponseError
   { code :: Int
@@ -92,3 +101,4 @@ data ResponseResult a = ResponseError
 
 instance ToJSON a => ToJSON (ResponseResult a)
 instance FromJSON a => FromJSON (ResponseResult a)
+
