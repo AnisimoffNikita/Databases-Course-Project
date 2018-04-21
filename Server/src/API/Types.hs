@@ -1,31 +1,66 @@
 module API.Types
   ( Login(..)
+  , userRegisterToLogin
+  , UserRegister(..)
+  , userRegisterToUser
   , QuizPreview(..)
   , QuizQuestion(..)
   , ResponseResult
-  , module Model.User
-  , module Model.Quiz
+  , module Model.Model
   )
  where
 
 import Data.Aeson
+import Data.ByteString (ByteString)
 import Data.Time
 import Data.Text (Text)
 import GHC.Generics
+import Servant.API.ContentTypes
 import Servant.Auth.Server
 import Servant.Auth.Server.SetCookieOrphan ()
+import Web.FormUrlEncoded
 
 import Model.Types
-import Model.User
-import Model.Quiz
+import Model.Model
+import Utils
+
 
 data Login = Login
-  { username :: String
-  , password :: String
+  { loginUsername :: Text
+  , loginPassword :: Text
   } deriving (Eq, Show, Read, Generic)
 
 instance ToJSON Login
 instance FromJSON Login
+
+instance ToJWT Login
+instance FromJWT Login
+
+userRegisterToLogin :: UserRegister -> Login
+userRegisterToLogin UserRegister{..} =
+  Login registerUsername registerPassword
+
+
+data UserRegister = UserRegister
+  { registerUsername :: Text
+  , registerEmail :: Text
+  , registerPassword :: Text
+  } deriving (Eq, Show, Read, Generic)
+
+instance ToJSON UserRegister
+instance FromJSON UserRegister
+
+instance ToJWT UserRegister
+instance FromJWT UserRegister
+
+instance ToForm UserRegister
+instance FromForm UserRegister
+
+userRegisterToUser :: UserRegister -> User
+userRegisterToUser UserRegister{..} =
+  User registerUsername (hashMD5 registerPassword)
+    registerEmail avatarDefault
+    Nothing Nothing Nothing Nothing [] []
 
 
 data QuizPreview = QuizPreview
@@ -45,12 +80,6 @@ data QuizQuestion = QuizQuestion
 
 instance ToJSON QuizQuestion
 instance FromJSON QuizQuestion
-
-
-
-instance ToJWT User
-instance FromJWT User
-
 
 
 data ResponseResult a = ResponseError

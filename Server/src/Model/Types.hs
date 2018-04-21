@@ -10,6 +10,7 @@ import GHC.Generics
 
 instance Aeson.ToJSON ObjectId where
   toJSON = Aeson.toJSON . pack . show
+  
 
 instance Aeson.FromJSON ObjectId where
   parseJSON (Aeson.String v) =

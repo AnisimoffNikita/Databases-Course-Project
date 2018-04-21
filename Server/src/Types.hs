@@ -8,7 +8,7 @@ import Servant.Auth.Server
 import Servant.Auth.Server.SetCookieOrphan ()
 
 data HandlerContext = HandlerContext
-  { connection  :: ConnectionPool
+  { connectionPool  :: ConnectionPool
   , cookie      :: CookieSettings
   , jwt         :: JWTSettings
   }

@@ -6,34 +6,31 @@ import Servant.Auth.Server
 import Servant.Auth.Server.SetCookieOrphan ()
 
 import API.Types
-import Model.User
+import Model.Model
 
 
 type Protected =
-       "isLoggedIn"
+       "getLoggedIn"
     :> Post '[JSON] (Maybe Text)
-  :<|> "user"
-    :> ReqBody '[JSON] Text
-    :> Post '[JSON] (Maybe User)
-
-type Unprotected =
-       "login"
+  :<|> "login"
     :> ReqBody '[JSON] Login
     :> PostNoContent '[JSON] (Headers '[ Header "Set-Cookie" SetCookie
-                                       , Header "Set-Cookie" SetCookie]
-                                      NoContent)
+                                       , Header "Set-Cookie" SetCookie
+                                       ]
+                                       NoContent)
   :<|> "newUser"
-    :> ReqBody '[JSON] User
-    :> PostNoContent '[JSON] NoContent
+    :> ReqBody '[FormUrlEncoded] UserRegister
+    :> PostNoContent '[JSON] (Headers '[ Header "Set-Cookie" SetCookie
+                                       , Header "Set-Cookie" SetCookie
+                                       ]
+                                       NoContent)
   :<|> "confirmUser"
     :> ReqBody '[JSON] Text
     :> PostNoContent '[JSON] NoContent
 
 type API auths =
-       Auth auths User
+       Auth auths Login
     :> Protected
-  :<|> Unprotected
-
 
 
 apiProxy :: Proxy (API '[Cookie])

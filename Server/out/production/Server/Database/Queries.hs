@@ -11,4 +11,4 @@ import Database.Persist.TH
 import Types
 import Config
 import Database.Utils
-import Model.User
+

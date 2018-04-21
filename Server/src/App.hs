@@ -3,7 +3,7 @@ module App where
 import Network.Wai
 import Network.Wai.Handler.Warp
 import Network.Wai.Logger (withStdoutLogger)
-import Model.User
+import Model.Model
 import Control.Monad.Reader (runReaderT, ask)
 import Control.Monad.Trans (lift)
 import Config

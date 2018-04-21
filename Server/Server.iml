@@ -208,5 +208,6 @@
     <orderEntry type="library" name="servant-auth-0.3.0.0" level="project" />
     <orderEntry type="library" name="cookie-0.4.3" level="project" />
     <orderEntry type="library" name="servant-auth-server-0.3.2.0" level="project" />
+    <orderEntry type="library" name="cryptohash-md5-0.11.100.1" level="project" />
   </component>
 </module>
