@@ -209,5 +209,7 @@
     <orderEntry type="library" name="cookie-0.4.3" level="project" />
     <orderEntry type="library" name="servant-auth-server-0.3.2.0" level="project" />
     <orderEntry type="library" name="cryptohash-md5-0.11.100.1" level="project" />
+    <orderEntry type="library" name="base-unicode-symbols-0.2.2.4" level="project" />
+    <orderEntry type="library" name="wai-cors-0.2.6" level="project" />
   </component>
 </module>

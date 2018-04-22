@@ -18,10 +18,10 @@ module Database.Queries.User (
 --  , getAllUsers
 ) where
 
-import Data.Text (Text, pack)
-import Database.MongoDB((=:))
-import qualified Database.MongoDB as Mongo
-import Data.Time (UTCTime)
+--import Data.Text (Text, pack)
+--import Database.MongoDB((=:))
+--import qualified Database.MongoDB as Mongo
+--import Data.Time (UTCTime)
 --
 --import Model.User
 --import Model.Types

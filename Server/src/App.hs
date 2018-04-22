@@ -1,6 +1,7 @@
 module App where
 
 import Network.Wai
+import Network.Wai.Middleware.Cors (corsRequestHeaders, cors, simpleCorsResourcePolicy, corsOrigins )
 import Network.Wai.Handler.Warp
 import Network.Wai.Logger (withStdoutLogger)
 import Model.Model
@@ -43,4 +44,13 @@ startApp = do
 
   withStdoutLogger $ \aplogger -> do
     let settings = setPort 8080 $ setLogger aplogger defaultSettings
-    runSettings settings $ app appContext handlerContext
+    runSettings settings $ corsWithContentType $ app appContext handlerContext
+
+
+corsWithContentType :: Middleware
+corsWithContentType = cors (const $ Just policy)
+    where
+      policy = simpleCorsResourcePolicy
+        { corsRequestHeaders = ["Content-Type"]
+        , corsOrigins = Just (["http://localhost:3000"], True)
+        }

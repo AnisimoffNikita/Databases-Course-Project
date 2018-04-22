@@ -35,6 +35,13 @@ data Login = Login
 instance ToJSON Login
 instance FromJSON Login
 
+data Tokens = Tokens
+  { tokensJwt :: Text
+  } deriving (Eq, Show, Read, Generic)
+
+instance ToJSON Tokens
+instance FromJSON Tokens
+
 data JWTData = JWTData
   { jwtUsername :: Text
   } deriving (Eq, Show, Read, Generic)
@@ -44,6 +51,7 @@ instance FromJSON JWTData
 instance ToJWT JWTData
 instance FromJWT JWTData
 
+
 data UserRegister = UserRegister
   { registerUsername :: Text
   , registerEmail :: Text
@@ -52,7 +60,6 @@ data UserRegister = UserRegister
 
 instance ToJSON UserRegister
 instance FromJSON UserRegister
-
 
 userRegisterToUser :: UserRegister -> User
 userRegisterToUser UserRegister{..} =
@@ -84,12 +91,7 @@ data QuizQuestion = QuizQuestion
 instance ToJSON QuizQuestion
 instance FromJSON QuizQuestion
 
-data Tokens = Tokens
-  { tokensJwt :: Text
-  } deriving (Eq, Show, Read, Generic)
 
-instance ToJSON Tokens
-instance FromJSON Tokens
 
 data ResponseResult a = ResponseError
   { code :: Int
