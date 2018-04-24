@@ -6,7 +6,7 @@ cache:
         - $HOME/.ghc
         - $HOME/.cabal
         - $HOME/.stack
-        - .stack-work
+        - Server/.stack-work
 
 before_install:
 # Download and unpack the stack executable
