@@ -16,12 +16,13 @@ before_install:
 
 script:
  - echo "$(ghc --version) [$(ghc --print-project-git-commit-id 2> /dev/null || echo '?')]"
- - GHC_OPTIONS="-Werror"
+ # - GHC_OPTIONS="-Werror"
  - |
    set -ex
    # Run tests
    cd Server/
-   stack --no-terminal build --ghc-options="$GHC_OPTIONS"
+   stack --no-terminal setup
+   stack --no-terminal build 
    cd ..
    set +ex
 
