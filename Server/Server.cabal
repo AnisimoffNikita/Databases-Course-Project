@@ -1,0 +1,108 @@
+-- This file has been generated from package.yaml by hpack version 0.20.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: d7d29d75e068657491476c3926743f31bdbc1840de06e59e3d1a2b8bf075620f
+
+name:           Server
+version:        0.1.0.0
+description:    Please see the README on Github at <https://github.com/githubuser/Server#readme>
+homepage:       https://github.com/githubuser/Server#readme
+bug-reports:    https://github.com/githubuser/Server/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2018 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/Server
+
+library
+  hs-source-dirs:
+      src
+  default-extensions: OverloadedStrings DataKinds DeriveGeneric TypeOperators RecordWildCards RankNTypes TypeFamilies TypeOperators StandaloneDeriving UndecidableInstances
+  build-depends:
+      base >=4.7 && <5
+    , aeson
+    , base16-bytestring
+    , bytestring
+    , bson
+    , cookie
+    , containers
+    , cryptohash-md5
+    , directory
+    , dotenv
+    , http-api-data
+    , http-media
+    , mongoDB
+    , mtl
+    , network
+    , persistent
+    , persistent-template
+    , persistent-mongoDB
+    , random
+    , servant
+    , servant-auth
+    , servant-auth-server
+    , servant-server
+    , string-conversions
+    , template-haskell
+    , transformers
+    , text
+    , time
+    , wai
+    , wai-cors
+    , wai-logger
+    , warp
+  exposed-modules:
+      API.API
+    , API.Handler
+    , API.Types
+    , Database.Queries.User
+    , Database.Queries
+    , Database.Utils
+    , Model.Types
+    , Model.Model
+    , App
+    , Config
+    , Lib
+    , Types
+    , Utils
+  other-modules:
+      Paths_Server
+  default-language: Haskell2010
+  ghc-options: -ddump-splices -ddump-to-file
+
+
+executable Server-exe
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Server
+    , base >=4.7 && <5
+  other-modules:
+      Paths_Server
+  default-language: Haskell2010
+
+test-suite Server-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Server
+    , base >=4.7 && <5
+  other-modules:
+      Paths_Server
+  default-language: Haskell2010
