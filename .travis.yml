@@ -28,9 +28,8 @@ script:
  - |
    set -ex
    # Run tests
-   stack --no-terminal test --ghc-options="$GHC_OPTIONS"
+   cd Server/
+   stack --no-terminal build --ghc-options="$GHC_OPTIONS"
    set +ex
-after_success:
- - |
-   # Build and ship binary
-   ./.travis/attach-binary.sh
+
+
