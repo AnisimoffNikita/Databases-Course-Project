@@ -1,10 +1,12 @@
-module API.User.API where
+module API.User.API
+where
 
-import Data.Text(Text)
-import Servant
+import           Data.Text                      ( Text )
+import           Servant
 
-import API.User.Types
+import           API.User.Types
 
+import           Data.Aeson
 
 type UserAPI =
        "login"

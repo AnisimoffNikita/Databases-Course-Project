@@ -1,4 +1,3 @@
-{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Config where
 
 import Control.Monad (void)
@@ -16,6 +15,7 @@ data Config = Config
   , dbPass :: String
   }
 
+
 data Environment
     = Development
     | Production
@@ -30,7 +30,7 @@ load' = do
   void $ loadFile config
   dbHost <- fromMaybe "localhost" <$> lookupEnv "DB_HOSTNAME"
   dbName <- fromMaybe "spreadsheets" <$> lookupEnv "DB_NAME"
-  dbPort <- read <$> fromMaybe "27017" <$> lookupEnv "DB_PORT"
+  dbPort <- read . fromMaybe "27017" <$> lookupEnv "DB_PORT"
   dbUser <- fromMaybe "user" <$> lookupEnv "DB_PORT"
   dbPass <- fromMaybe "pass" <$> lookupEnv "DB_PORT"
   dbAuth <- return True

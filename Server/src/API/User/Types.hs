@@ -1,19 +1,13 @@
 module API.User.Types where
 
 import Data.Aeson
-import Data.ByteString (ByteString)
-import Data.Time
 import Data.Text (Text)
 import GHC.Generics
-import Servant.API.ContentTypes
 import Servant.Auth.Server
 import Servant.Auth.Server.SetCookieOrphan ()
-import Web.FormUrlEncoded
 
-import Model.Types
 import Model.Model
 import Utils
-
 
 data Login = Login
   { loginUsername :: Text

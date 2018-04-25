@@ -41,7 +41,6 @@ startApp = do
     runSettings settings $ corsWithContentType $ app appContext handlerContext
 
 
-
 corsWithContentType :: Middleware
 corsWithContentType = cors (const $ Just policy)
     where
