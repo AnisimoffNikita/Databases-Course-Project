@@ -1,6 +1,6 @@
 flags: {}
 packages:
-- .
+- '.'
 extra-deps:
 - cookie-0.4.3
 - servant-auth-0.3.0.0

@@ -1,23 +1,11 @@
 module API.API where
 
-import Data.Text(Text)
-import Data.ByteString (ByteString)
 import Servant
 import Servant.Auth.Server
 import Servant.Auth.Server.SetCookieOrphan ()
 
-import API.Types
-import Model.Model
-
-type UserAPI =
-       "login"
-    :> ReqBody '[JSON] Login
-    :> Post '[JSON] Tokens
-  :<|> "new"
-    :> ReqBody '[JSON] UserRegister
-    :> Post '[JSON] Tokens
-  :<|> "username"
-    :> Post '[JSON] (Maybe Text)
+import API.User.API
+import API.User.Types
 
 
 type API auths =

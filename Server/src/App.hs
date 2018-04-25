@@ -4,23 +4,17 @@ import Network.Wai
 import Network.Wai.Middleware.Cors (corsRequestHeaders, cors, simpleCorsResourcePolicy, corsOrigins )
 import Network.Wai.Handler.Warp
 import Network.Wai.Logger (withStdoutLogger)
-import Model.Model
-import Control.Monad.Reader (runReaderT, ask)
-import Control.Monad.Trans (lift)
+import Control.Monad.Reader (runReaderT)
 import Config
 import Servant
 import Servant.Auth.Server
-import Servant.Server
-import Database.Persist
-import Database.Persist.MongoDB
-import Database.Persist.TH
 
 import API.API
 import API.Handler
 
 import Database.Utils
-import Config
 import Types
+
 
 nt :: HandlerContext -> AppM a -> Handler a
 nt s x = runReaderT x s
@@ -45,6 +39,7 @@ startApp = do
   withStdoutLogger $ \aplogger -> do
     let settings = setPort 8080 $ setLogger aplogger defaultSettings
     runSettings settings $ corsWithContentType $ app appContext handlerContext
+
 
 
 corsWithContentType :: Middleware

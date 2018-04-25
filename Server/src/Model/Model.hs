@@ -12,18 +12,17 @@ module Model.Model
    where
 
 import Control.Monad.IO.Class (MonadIO)
-import Data.Aeson (FromJSON, ToJSON)
 import Data.ByteString (ByteString)
 import Data.Text (Text)
 import Data.Time (UTCTime)
-import Database.MongoDB (ensureIndex, index, iUnique, iDropDups)
-import Database.Persist
+import Database.MongoDB (index, iUnique, ensureIndex)
 import Database.Persist.MongoDB
 import Database.Persist.TH
 import GHC.Generics (Generic)
 import Language.Haskell.TH.Syntax
 
 import Model.Types
+
 
 share[mkPersist (mkPersistSettings (ConT ''MongoContext))] [persistLowerCase|
 Question json
@@ -38,7 +37,7 @@ Quiz json
   creationDate    UTCTime
   passingNumber   Int
   questions       [Question]
-  deriving Eq Read Show Generic
+  deriving        Eq Read Show Generic
 
 QuizResult json
   testKey         Text
@@ -61,7 +60,6 @@ User
   UniqueEmail     email
   deriving        Eq Read Show Generic
 |]
-
 
 createUserIndexes :: MonadIO m =>  Action m ()
 createUserIndexes = do

@@ -1,13 +1,11 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 module Config where
 
-import Control.Exception (throwIO)
 import Control.Monad (void)
 import Data.Maybe (fromMaybe)
 import Configuration.Dotenv (loadFile)
 import Configuration.Dotenv.Types (defaultConfig, configPath)
 import System.Environment (lookupEnv)
-
 
 data Config = Config
   { dbHost :: String

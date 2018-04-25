@@ -66,6 +66,9 @@ library
       API.API
     , API.Handler
     , API.Types
+    , API.User.API
+    , API.User.Handler
+    , API.User.Types
     , Database.Queries.User
     , Database.Queries
     , Database.Utils
@@ -79,7 +82,8 @@ library
   other-modules:
       Paths_Server
   default-language: Haskell2010
-  ghc-options: -ddump-splices -ddump-to-file
+  ghc-options: 
+  -- -ddump-splices -ddump-to-file
 
 
 executable Server-exe

@@ -1,15 +1,14 @@
 module Utils where
 
-import Control.Monad.Error.Class (MonadError)
-import Control.Monad.Trans.Maybe (runMaybeT)
-import Data.ByteString.Base16
+import Data.ByteString (ByteString)
 import Data.Text
-import Servant.Server
 
-import Data.Text.Encoding (decodeUtf8, encodeUtf8)
+import Data.Text.Encoding (encodeUtf8)
 import Crypto.Hash.MD5 (hash)
 
-avatarDefault = "no_avatar.png" :: Text
+avatarDefault :: Text
+avatarDefault = "no_avatar.png"
 
 
+hashMD5 :: Text -> ByteString
 hashMD5 = hash.encodeUtf8

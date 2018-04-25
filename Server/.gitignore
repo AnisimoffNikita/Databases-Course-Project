@@ -1,5 +1,4 @@
 .stack-work/
-Server.cabal
 *~
 dist
 dist-*

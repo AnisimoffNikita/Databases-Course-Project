@@ -9,7 +9,6 @@ import Control.Monad.Trans (liftIO)
 import Data.Aeson (FromJSON, ToJSON)
 import GHC.Generics (Generic)
 import Network.Wai.Handler.Warp (run)
-import System.Environment (getArgs)
 import Servant
 import Servant.Auth.Server
 import Servant.Auth.Server.SetCookieOrphan ()
