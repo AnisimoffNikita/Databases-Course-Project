@@ -21,6 +21,13 @@ import           API.API
 import           API.User.Types
 import           API.Types
 
+instance ElmType Role
+instance ElmType a => ElmType (ResponseResult a)
+instance ElmType Login
+instance ElmType Tokens
+instance ElmType JWTData
+instance ElmType UserRegister
+instance ElmType Profile
 
 instance HasForeign lang ftype sublayout
     => HasForeign lang ftype (Auth '[JWT] JWTData :> sublayout) where
@@ -53,31 +60,13 @@ genElm = do
             toElmTypeSource (Proxy :: Proxy (ResponseResult Profile)) :
             toElmDecoderSource (Proxy :: Proxy (ResponseResult Profile)) :
             toElmEncoderSource (Proxy :: Proxy (ResponseResult Profile)) :
+
+            toElmTypeSource (Proxy :: Proxy (ResponseResult [Profile])) :
+            toElmDecoderSource (Proxy :: Proxy (ResponseResult [Profile])) :
+            toElmEncoderSource (Proxy :: Proxy (ResponseResult [Profile])) :
             generateElmForAPI apiProxy
-  writeFile "/home/nikita/client/Api.elm" $ intercalate "\n\n" $ map unpack code
+  writeFile "../Client/src/Api.elm" $ intercalate "\n\n" $ map unpack code
 
 
-spec :: Spec
-spec =
-  moduleSpec [] $ do
-    require "Date exposing (Date)"
-    renderType (Proxy :: Proxy Login)
-    renderDecoder (Proxy :: Proxy Login)
-    renderEncoder (Proxy :: Proxy Login)
 
-    renderType (Proxy :: Proxy Tokens)
-    renderDecoder (Proxy :: Proxy Tokens)
-    renderEncoder (Proxy :: Proxy Tokens)
-    
-    renderType (Proxy :: Proxy JWTData)
-    renderDecoder (Proxy :: Proxy JWTData)
-    renderEncoder (Proxy :: Proxy JWTData)
-    
-    renderType (Proxy :: Proxy (ResponseResult Tokens))
-    renderDecoder (Proxy :: Proxy (ResponseResult Tokens))
-    renderEncoder (Proxy :: Proxy (ResponseResult Tokens))
-    
-    renderType (Proxy :: Proxy (ResponseResult Profile))
-    renderDecoder (Proxy :: Proxy (ResponseResult Profile))
-    renderEncoder (Proxy :: Proxy (ResponseResult Profile))
 

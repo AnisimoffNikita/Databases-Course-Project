@@ -35,7 +35,6 @@ instance FromJSON QuizQuestion
 
 data Role = Admin | NonAdmin deriving (Eq, Show, Read, Generic)
 
-instance ElmType Role
 instance ToJSON Role
 instance FromJSON Role
 
@@ -46,7 +45,6 @@ data ResponseResult a = ResponseError
   { response :: a
   } deriving (Eq, Show, Read, Generic)
 
-instance ElmType a => ElmType (ResponseResult a)
 instance ToJSON a => ToJSON (ResponseResult a) where
   toJSON = genericToJSON (optionsWithoutPrefix 8)
   toEncoding = genericToEncoding (optionsWithoutPrefix 8)

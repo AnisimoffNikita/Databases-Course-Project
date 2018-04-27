@@ -27,7 +27,6 @@ instance ToJSON Login where
   toEncoding = genericToEncoding (optionsWithoutPrefix 5)
 instance FromJSON Login where
   parseJSON = genericParseJSON (optionsWithoutPrefix 5)
-instance ElmType Login
 
 data Tokens = Tokens
   { tokensJwt :: Text
@@ -35,14 +34,12 @@ data Tokens = Tokens
 
 instance ToJSON Tokens
 instance FromJSON Tokens
-instance ElmType Tokens
 
 
 data JWTData = JWTData
   { jwtUsername :: Text
   } deriving (Eq, Show, Read, Generic)
 
-instance ElmType JWTData
 instance ToJSON JWTData
 instance FromJSON JWTData
 instance ToJWT JWTData
@@ -55,7 +52,6 @@ data UserRegister = UserRegister
   , registerPassword :: Text
   } deriving (Eq, Show, Read, Generic)
 
-instance ElmType UserRegister
 instance ToJSON UserRegister where
   toJSON = genericToJSON (optionsWithoutPrefix 8)
   toEncoding = genericToEncoding (optionsWithoutPrefix 8)
@@ -98,7 +94,6 @@ userToProfile User {..} = Profile userUsername
                                   userBirthday
                                   userGender
 
-instance ElmType Profile
 instance ToJSON Profile where
   toJSON = genericToJSON (optionsWithoutPrefix 7)
   toEncoding = genericToEncoding (optionsWithoutPrefix 7)
