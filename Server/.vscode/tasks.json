@@ -41,7 +41,8 @@
     {
       "type": "shell",
       "label": "stack run",
-      "command": "echo START_STACK_RUN && cd ${workspaceRoot} && stack exec Server-exe && echo END_STACK_RUN "
+      "command": "echo START_STACK_RUN && cd ${workspaceRoot} && stack exec Server-exe && echo END_STACK_RUN ",
+      "problemMatcher": []
     }
   ]
 }

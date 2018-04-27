@@ -53,6 +53,8 @@ library
     , servant-auth
     , servant-auth-server
     , servant-server
+    , servant-elm
+    , servant-foreign
     , string-conversions
     , template-haskell
     , transformers
@@ -69,8 +71,6 @@ library
     , API.User.API
     , API.User.Handler
     , API.User.Types
-    , Database.Queries.User
-    , Database.Queries
     , Database.Utils
     , Model.Types
     , Model.Model
@@ -79,6 +79,7 @@ library
     , Lib
     , Types
     , Utils
+    , ElmAPI
   other-modules:
       Paths_Server
   default-language: Haskell2010

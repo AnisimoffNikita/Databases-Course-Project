@@ -39,3 +39,8 @@ data ResponseResult a = ResponseError
 instance ToJSON a => ToJSON (ResponseResult a)
 instance FromJSON a => FromJSON (ResponseResult a)
 
+responseError :: Int -> Text -> ResponseResult a
+responseError = ResponseError
+
+responseOk :: a -> ResponseResult a
+responseOk = ResponseOk 

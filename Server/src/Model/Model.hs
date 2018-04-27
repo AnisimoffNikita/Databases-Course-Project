@@ -52,8 +52,8 @@ User
   avatar          Text
   firstName       Text Maybe
   secondName      Text Maybe
-  birthDay        UTCTime Maybe
-  sex             Gender Maybe
+  birthday        UTCTime Maybe
+  gender          Gender Maybe
   createdQuizzes  [QuizId]
   passedQuizzes   [QuizResult]
   UniqueUsername  username

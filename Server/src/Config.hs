@@ -6,6 +6,7 @@ import Configuration.Dotenv (loadFile)
 import Configuration.Dotenv.Types (defaultConfig, configPath)
 import System.Environment (lookupEnv)
 
+
 data Config = Config
   { dbHost :: String
   , dbPort :: Int

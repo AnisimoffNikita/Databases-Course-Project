@@ -1,5 +1,4 @@
 {
-    "languageServerHaskell.enableHIE": true,
     "files.exclude": {
         ".stack-work" : true
     }

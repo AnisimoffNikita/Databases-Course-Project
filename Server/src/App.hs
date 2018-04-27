@@ -15,6 +15,9 @@ import API.Handler
 import Database.Utils
 import Types
 
+import Data.List ( transpose )
+
+f = id
 
 nt :: HandlerContext -> AppM a -> Handler a
 nt s x = runReaderT x s
@@ -23,7 +26,6 @@ app :: Context AppContextType -> HandlerContext -> Application
 app context s =
   serveWithContext apiProxy context $
                    hoistServerWithContext apiProxy contextProxy (nt s) handler
-
 
 startApp :: IO ()
 startApp = do
@@ -46,5 +48,4 @@ corsWithContentType = cors (const $ Just policy)
     where
       policy = simpleCorsResourcePolicy
         { corsRequestHeaders = ["Content-Type"]
-        , corsOrigins = Just (["http://localhost:3000"], True)
         }

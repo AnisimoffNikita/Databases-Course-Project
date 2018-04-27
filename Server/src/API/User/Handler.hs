@@ -13,20 +13,25 @@ import           Servant.Auth.Server.SetCookieOrphan  ( )
 
 import           API.User.API
 import           API.User.Types
+import           API.Types 
 import           Model.Model
 import           Types
 import           Utils
 
 userAPI :: AuthResult JWTData -> ServerT UserAPI AppM
-userAPI authResult = login :<|> newUser :<|> getUsername authResult
+userAPI authResult = 
+       login authResult 
+  :<|> newUser authResult 
+  :<|> getUsername authResult 
+  :<|> getUserInfo authResult
 
-getUsername :: AuthResult JWTData -> AppM (Maybe Text)
-getUsername (Authenticated user) = return . Just . jwtUsername $ user
-getUsername _                    = return Nothing
+getUsername :: AuthResult JWTData -> AppM (ResponseResult Text)
+getUsername (Authenticated user) = return $ responseOk . jwtUsername $ user
+getUsername _                    = return $ responseError 401 "not athorized"
 
 
-login :: Login -> AppM Tokens
-login user = do
+login :: AuthResult JWTData -> Login -> AppM (ResponseResult Tokens)
+login _ user = do
   exists <- userExists user
   if exists
     then do
@@ -34,23 +39,13 @@ login user = do
       let jwt = JWTData . loginUsername $ user
       etoken <- liftIO $ makeJWT jwt jwtSettings Nothing
       case etoken of
-        Left  _ -> throwError err401
-        Right v -> return $ Tokens (decodeUtf8 . toStrict $ v)
-    else throwError err401
+        Left  _ -> return $ responseError 500 "something went worng"
+        Right v -> return $ responseOk $ Tokens (decodeUtf8 . toStrict $ v)
+    else return $ responseError 401 "no such user"
 
-userExists :: Login -> AppM Bool
-userExists user = do
-  let hashed        = hashMD5 . loginPassword $ user
-      getByUsername = getBy . UniqueUsername . loginUsername $ user
-  pool  <- asks connectionPool
-  mUser <- liftIO $ runMongoDBPoolDef getByUsername pool
-  case mUser of
-    Nothing               -> return False
-    Just (Entity _ check) -> return $ userPassword check == hashed
-
-
-newUser :: UserRegister -> AppM Tokens
-newUser reg = do
+newUser :: AuthResult JWTData -> UserRegister -> AppM (ResponseResult Tokens)
+newUser (Authenticated user) _ = throwError err401 
+newUser auth reg = do
   let user          = userRegisterToUser reg
       getByUsername = getBy . UniqueUsername . userUsername $ user
       getByEmail    = getBy . UniqueEmail . userEmail $ user
@@ -58,9 +53,20 @@ newUser reg = do
   mUsername <- liftIO $ runMongoDBPoolDef getByUsername pool
   mEmail    <- liftIO $ runMongoDBPoolDef getByEmail pool
   if isJust mUsername || isJust mEmail
-    then throwError err401
+    then return $ responseError 500 "something went worng"
     else do
       let action = insert user
           logged = userRegisterToLogin reg
       void $ liftIO $ runMongoDBPoolDef action pool
-      login logged
+      login auth logged
+
+
+getUserInfo :: AuthResult JWTData -> AppM (ResponseResult UserInfo)
+getUserInfo (Authenticated user) = do 
+  let 
+    getByUsername = getBy . UniqueUsername . userUsername $ user
+  pool  <- asks connectionPool
+  mUser <- liftIO $ runMongoDBPoolDef getByUsername pool
+  case mUser of 
+    Nothing -> return $ responseError 401 "no such user"
+    Just user -> return $ responseOk $ userToUserInfo user
