@@ -1,9 +1,8 @@
-{-# LANGUAGE TemplateHaskell #-}
 module API.User.Types
 where
 
+import           Elm                            ( ElmType )
 import           Data.Aeson
-import           Data.Aeson.TH (deriveJSON)
 import           Data.List                      ( stripPrefix )
 import           Data.Maybe
 import           Data.Text                      ( Text )
@@ -11,9 +10,8 @@ import           Data.Time                      ( UTCTime )
 import           Data.Char
 import           GHC.Generics
 import           Servant.Auth.Server
-import           Servant.Auth.Server.SetCookieOrphan
-                                                ( )
 
+import           API.Utils
 import           Model.Model
 import           Model.Types
 import           Utils
@@ -24,24 +22,29 @@ data Login = Login
   , loginPassword :: Text
   } deriving (Eq, Show, Read, Generic)
 
-$(deriveJSON defaultOptions{fieldLabelModifier = map toLower . drop 5} ''Login)
+instance ToJSON Login where
+  toJSON = genericToJSON (optionsWithoutPrefix 5)
+  toEncoding = genericToEncoding (optionsWithoutPrefix 5)
+instance FromJSON Login where
+  parseJSON = genericParseJSON (optionsWithoutPrefix 5)
+instance ElmType Login
 
 data Tokens = Tokens
   { tokensJwt :: Text
   } deriving (Eq, Show, Read, Generic)
 
--- instance ToJSON Tokens
--- instance FromJSON Tokens
-$(deriveJSON defaultOptions ''Tokens)
+instance ToJSON Tokens
+instance FromJSON Tokens
+instance ElmType Tokens
 
 
 data JWTData = JWTData
   { jwtUsername :: Text
   } deriving (Eq, Show, Read, Generic)
 
--- instance ToJSON JWTData
--- instance FromJSON JWTData
-$(deriveJSON defaultOptions ''JWTData)
+instance ElmType JWTData
+instance ToJSON JWTData
+instance FromJSON JWTData
 instance ToJWT JWTData
 instance FromJWT JWTData
 
@@ -52,8 +55,12 @@ data UserRegister = UserRegister
   , registerPassword :: Text
   } deriving (Eq, Show, Read, Generic)
 
-
-$(deriveJSON defaultOptions{fieldLabelModifier = map toLower . drop 8} ''UserRegister)
+instance ElmType UserRegister
+instance ToJSON UserRegister where
+  toJSON = genericToJSON (optionsWithoutPrefix 8)
+  toEncoding = genericToEncoding (optionsWithoutPrefix 8)
+instance FromJSON UserRegister where
+  parseJSON = genericParseJSON (optionsWithoutPrefix 8)
 
 userRegisterToUser :: UserRegister -> User
 userRegisterToUser UserRegister {..} = User registerUsername
@@ -91,10 +98,10 @@ userToProfile User {..} = Profile userUsername
                                   userBirthday
                                   userGender
 
-$(deriveJSON defaultOptions{fieldLabelModifier = map toLower . drop 7} ''Profile)
+instance ElmType Profile
+instance ToJSON Profile where
+  toJSON = genericToJSON (optionsWithoutPrefix 7)
+  toEncoding = genericToEncoding (optionsWithoutPrefix 7)
+instance FromJSON Profile where
+  parseJSON = genericParseJSON (optionsWithoutPrefix 7)
 
--- instance ToJSON Profile where
---   toJSON = genericToJSON (optionsWithoutPrefix removeProfile)
---   toEncoding = genericToEncoding (optionsWithoutPrefix removeProfile)
--- instance FromJSON Profile where
---   parseJSON = genericParseJSON (optionsWithoutPrefix removeProfile)

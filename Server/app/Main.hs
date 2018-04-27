@@ -1,6 +1,7 @@
 module Main where
 
 import App
+import ElmGen
 
 main :: IO ()
-main = startApp
+main = genElm

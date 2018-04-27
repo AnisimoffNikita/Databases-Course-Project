@@ -53,8 +53,8 @@ library
     , servant-auth
     , servant-auth-server
     , servant-server
-    , servant-elm
     , servant-foreign
+    , servant-elm
     , string-conversions
     , template-haskell
     , transformers
@@ -64,10 +64,12 @@ library
     , wai-cors
     , wai-logger
     , warp
+    , elm-export
   exposed-modules:
       API.API
     , API.Handler
     , API.Types
+    , API.Utils
     , API.User.API
     , API.User.Handler
     , API.User.Types
@@ -79,6 +81,7 @@ library
     , Lib
     , Types
     , Utils
+    , ElmGen
   other-modules:
       Paths_Server
   default-language: Haskell2010

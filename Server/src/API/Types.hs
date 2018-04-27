@@ -1,15 +1,17 @@
-{-# LANGUAGE TemplateHaskell #-}
 module API.Types
- where
+where
 
-import Data.Aeson
-import Data.Aeson.TH
-import Data.Char (toLower)
-import Data.Text (Text)
-import GHC.Generics
-import Servant.Auth.Server.SetCookieOrphan ()
+import           Elm                            ( ElmType )
+import           Data.Aeson
+import           Data.Aeson.TH
+import           Data.Char                      ( toLower )
+import           Data.Text                      ( Text )
+import           GHC.Generics
+import           Servant.Auth.Server.SetCookieOrphan
+                                                ( )
 
-import Model.Types
+import           API.Utils
+import           Model.Types
 
 
 data QuizPreview = QuizPreview
@@ -33,6 +35,7 @@ instance FromJSON QuizQuestion
 
 data Role = Admin | NonAdmin deriving (Eq, Show, Read, Generic)
 
+instance ElmType Role
 instance ToJSON Role
 instance FromJSON Role
 
@@ -43,16 +46,16 @@ data ResponseResult a = ResponseError
   { response :: a
   } deriving (Eq, Show, Read, Generic)
 
--- instance ToJSON a => ToJSON (ResponseResult a)
--- instance FromJSON a => FromJSON (ResponseResult a)
+instance ElmType a => ElmType (ResponseResult a)
+instance ToJSON a => ToJSON (ResponseResult a) where
+  toJSON = genericToJSON (optionsWithoutPrefix 8)
+  toEncoding = genericToEncoding (optionsWithoutPrefix 8)
+instance FromJSON a => FromJSON (ResponseResult a) where
+  parseJSON = genericParseJSON (optionsWithoutPrefix 8)
+
 
 responseError :: Int -> Text -> ResponseResult a
 responseError = ResponseError
 
 responseOk :: a -> ResponseResult a
 responseOk = ResponseOk
-
-
-
-$(deriveJSON defaultOptions
-        { constructorTagModifier = map toLower . drop 8 } ''ResponseResult)

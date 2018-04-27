@@ -1,8 +1,13 @@
 flags: {}
 packages:
 - '.'
+- location:
+    git: https://github.com/FPtje/elm-export
+    commit: c188d15
+  extra-dep: true
 extra-deps:
 - cookie-0.4.3
 - servant-auth-0.3.0.0
 - servant-auth-server-0.3.2.0
+
 resolver: lts-11.4
