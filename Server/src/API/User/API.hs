@@ -16,5 +16,7 @@ type UserAPI =
     :> Post '[JSON] (ResponseResult Tokens)
   :<|> "username"
     :> Post '[JSON] (ResponseResult Text)
-  :<|> "user"
-    :> Post '[JSON] (ResponseResult UserInfo)
+  :<|> "profile"
+    :> Post '[JSON] (ResponseResult Profile)
+  :<|> "list"
+    :> Post '[JSON] (ResponseResult [Profile])

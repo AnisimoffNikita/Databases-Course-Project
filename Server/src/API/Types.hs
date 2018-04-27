@@ -1,7 +1,10 @@
+{-# LANGUAGE TemplateHaskell #-}
 module API.Types
  where
 
 import Data.Aeson
+import Data.Aeson.TH
+import Data.Char (toLower)
 import Data.Text (Text)
 import GHC.Generics
 import Servant.Auth.Server.SetCookieOrphan ()
@@ -28,6 +31,10 @@ instance ToJSON QuizQuestion
 instance FromJSON QuizQuestion
 
 
+data Role = Admin | NonAdmin deriving (Eq, Show, Read, Generic)
+
+instance ToJSON Role
+instance FromJSON Role
 
 data ResponseResult a = ResponseError
   { code :: Int
@@ -36,11 +43,16 @@ data ResponseResult a = ResponseError
   { response :: a
   } deriving (Eq, Show, Read, Generic)
 
-instance ToJSON a => ToJSON (ResponseResult a)
-instance FromJSON a => FromJSON (ResponseResult a)
+-- instance ToJSON a => ToJSON (ResponseResult a)
+-- instance FromJSON a => FromJSON (ResponseResult a)
 
 responseError :: Int -> Text -> ResponseResult a
 responseError = ResponseError
 
 responseOk :: a -> ResponseResult a
-responseOk = ResponseOk 
+responseOk = ResponseOk
+
+
+
+$(deriveJSON defaultOptions
+        { constructorTagModifier = map toLower . drop 8 } ''ResponseResult)

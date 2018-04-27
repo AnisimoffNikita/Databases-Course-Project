@@ -28,7 +28,7 @@ source-repository head
 library
   hs-source-dirs:
       src
-  default-extensions: OverloadedStrings DataKinds DeriveGeneric TypeOperators RecordWildCards RankNTypes TypeFamilies TypeOperators StandaloneDeriving UndecidableInstances
+  default-extensions: ScopedTypeVariables OverloadedStrings DataKinds DeriveGeneric TypeOperators RecordWildCards RankNTypes TypeFamilies TypeOperators StandaloneDeriving UndecidableInstances
   build-depends:
       base >=4.7 && <5
     , aeson
@@ -79,12 +79,10 @@ library
     , Lib
     , Types
     , Utils
-    , ElmAPI
   other-modules:
       Paths_Server
   default-language: Haskell2010
-  ghc-options: 
-  -- -ddump-splices -ddump-to-file
+  ghc-options: -ddump-splices -ddump-to-file
 
 
 executable Server-exe
