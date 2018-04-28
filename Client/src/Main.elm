@@ -65,7 +65,7 @@ update msg model =
     case msg of
         Msgs.OnLocationChange location ->
             let
-                newRoute = Router.parseNavLocation location
+                newRoute = Router.parseLocation location
             in
                 ( { model | route = newRoute }, Cmd.none )
         Msgs.NavigateTo url ->

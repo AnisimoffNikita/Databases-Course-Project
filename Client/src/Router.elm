@@ -27,7 +27,7 @@ matchers =
 
 parseLocation : Location -> Route
 parseLocation location =
-    case (parseHash matchers location) of
+    case (parsePath matchers location) of
         Just route ->
             route
 
@@ -51,12 +51,8 @@ routeToString page =
                 NotFoundRoute ->
                     ["404"]
     in
-    String.join "/" pieces
+    "/" ++ String.join "/" pieces
 
 href : Route -> Attribute msg
 href route =
     Attr.href (routeToString route)
-
-parseNavLocation : Navigation.Location -> Route
-parseNavLocation location =
-    Maybe.withDefault NotFoundRoute <| UrlParser.parsePath matchers location
