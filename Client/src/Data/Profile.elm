@@ -1,23 +1,70 @@
-module Data.Profile exposing (Profile, decoder)
+module Data.Profile exposing (..)
 
-import Data.User as User exposing (Username)
-import Data.UserPhoto as UserPhoto exposing (UserPhoto)
-import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Pipeline exposing (decode, required)
+import Json.Decode as Decode
+import Json.Decode.Pipeline exposing (..)
+import Json.Encode as Encode
+import Json.Decode.Extra as Decode
+import Date exposing (Date)
+import Date.Extra exposing (toUtcIsoString)
 
+type Gender
+    = Male
+    | Female
+
+decodeGender : Decode.Decoder Gender
+decodeGender =
+    Decode.string
+        |> Decode.andThen
+            (\x ->
+                case x of
+                    "Male" ->
+                        decode Male
+
+                    "Female" ->
+                        decode Female
+
+                    _ ->
+                        Decode.fail "Constructor not matched"
+            )
+
+encodeGender : Gender -> Encode.Value
+encodeGender x =
+    case x of
+        Male ->
+            Encode.string "Male"
+
+        Female ->
+            Encode.string "Female"
 
 type alias Profile =
-    { username : Username
-    , bio : Maybe String
-    , image : UserPhoto
-    , following : Bool
+    { username : String
+    , email : String
+    , avatar : String
+    , firstName : Maybe (String)
+    , secondName : Maybe (String)
+    , birthday : Maybe (Date)
+    , gender : Maybe (Gender)
     }
 
-
-decoder : Decoder Profile
-decoder =
+decodeProfile : Decode.Decoder Profile
+decodeProfile =
     decode Profile
-        |> required "username" User.usernameDecoder
-        |> required "bio" (Decode.nullable Decode.string)
-        |> required "image" UserPhoto.decoder
-        |> required "following" Decode.bool
+        |> required "username" Decode.string
+        |> required "email" Decode.string
+        |> required "avatar" Decode.string
+        |> required "firstName" (Decode.nullable Decode.string)
+        |> required "secondName" (Decode.nullable Decode.string)
+        |> required "birthday" (Decode.nullable Decode.date)
+        |> required "gender" (Decode.nullable decodeGender)
+
+encodeProfile : Profile -> Encode.Value
+encodeProfile x =
+    Encode.object
+        [ ( "username", Encode.string x.username )
+        , ( "email", Encode.string x.email )
+        , ( "avatar", Encode.string x.avatar )
+        , ( "firstName", (Maybe.withDefault Encode.null << Maybe.map Encode.string) x.firstName )
+        , ( "secondName", (Maybe.withDefault Encode.null << Maybe.map Encode.string) x.secondName )
+        , ( "birthday", (Maybe.withDefault Encode.null << Maybe.map (Encode.string << toUtcIsoString)) x.birthday )
+        , ( "gender", (Maybe.withDefault Encode.null << Maybe.map encodeGender) x.gender )
+        ]

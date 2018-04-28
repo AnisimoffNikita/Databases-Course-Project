@@ -1,9 +1,10 @@
-port module Ports exposing (onSessionChange, storeSession)
+port module Ports exposing (..)
 
-import Json.Encode exposing (Value)
+import Data.Session exposing (Session)
+
+port setStorage : Session -> Cmd msg
 
 
-port storeSession : Maybe String -> Cmd msg
-
-
-port onSessionChange : (Value -> msg) -> Sub msg
+setStorageHelper : Session -> ( Session, Cmd msg )
+setStorageHelper model =
+    ( model, setStorage model )
