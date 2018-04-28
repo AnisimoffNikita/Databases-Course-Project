@@ -15,8 +15,3 @@ registerServiceWorker();
 app.ports.setStorage.subscribe(function(state) {
         localStorage.setItem('model', JSON.stringify(state));
     });
-
-
-app.ports.removeStorage.subscribe(function() {
-        localStorage.removeItem('model');
-    });

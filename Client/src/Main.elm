@@ -1,147 +1,74 @@
-port module Main exposing (..)
+module Main exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (..)
-import Html.Events exposing (..)
-import Http
-import Json.Decode as Decode
-import Json.Encode as Encode
+import Data.Session exposing (..)
+import Json.Decode as Decode exposing (Value)
+import Navigation exposing (Location)
+import Router exposing (Route)
+import Msgs exposing (..)
+import Page.Home as Home
+import Page.Dashboard as Dashboard
+import Page.ErrorRoute as ErrorRoute
+import Page.Index exposing (index)
+import Ports
 
-
-main =
-  Html.programWithFlags
-    { init =  init
-    , view = view
-    , update = update
-    , subscriptions = subscriptions
+type alias Model =
+    { session : Session
+    , route : Route
     }
 
 
--- MODEL
-
-type alias Model =
-  { name : String
-  , password : String
-  , token : String
-  }
-
-
-init : Maybe Model -> ( Model, Cmd Msg )
-init model =
-    case model of
-        Just model ->
-            ( model, Cmd.none )
-
-        Nothing ->
-            (Model "id121" "123456" "", Cmd.none)
-
-
--- SUBSCRIPTIONS
-
-
-subscriptions : Model -> Sub Msg
-subscriptions model =
-  Sub.none
-
-
--- UPDATE
-
-type Msg
-    = Name String
-    | Password String
-    | GetToken
-    | NewToken (Result Http.Error String)
-    | RemoveToken
-
-update : Msg -> Model -> (Model, Cmd Msg)
-update msg model =
-  case msg of
-    Name name ->
-      ({ model | name = name }, Cmd.none)
-
-    Password password ->
-      ({ model | password = password }, Cmd.none)
-
-    GetToken ->
-      (model, getToken model)
-
-    NewToken (Ok newToken) ->
-      setStorageHelper { model | token = newToken }
-
-    NewToken (Err _) ->
-      (model, Cmd.none)
-
-    RemoveToken ->
-      ( { model | token = "" }, removeStorage model )
-
-getToken : Model -> Cmd Msg
-getToken model =
-  let
-    url =
-      "http://localhost:8080/user/login"
-
-    request = authUser model url
-  in
-    Http.send NewToken request
-
-
-loginEncoder : Model -> Encode.Value
-loginEncoder model = 
-    Encode.object 
-        [ ("loginUsername", Encode.string model.name)
-        , ("loginPassword", Encode.string model.password) 
-        ]  
-
-authUser : Model -> String -> Http.Request String
-authUser model apiUrl =
+init : Value-> Location -> ( Model, Cmd Msg )
+init val location =
     let
-        body =
-            model
-                |> loginEncoder
-                |> Http.jsonBody
+        currentRoute =
+            Router.parseLocation location
+        model = 
+            case decodeSessionFromJson val of 
+                Nothing -> {session = {user = Nothing}, route = currentRoute}
+                Just session -> {session = session, route = currentRoute}
     in
-      Http.request
-        { body = body
-        , expect = Http.expectJson tokenDecoder
-        , headers = defaultRequestHeaders
-        , method = "POST"
-        , timeout = Nothing
-        , url = apiUrl
-        , withCredentials = False
-        }
+        ( model, Cmd.none )
 
-
-defaultRequestHeaders : List Http.Header
-defaultRequestHeaders =
-    [ Http.header  "Access-Control-Request-Method" "POST"
-    , Http.header  "Access-Control-Request-Headers" "X-Custom-Header"
-    ]
-
-
-tokenDecoder : Decode.Decoder String
-tokenDecoder =
-    Decode.field "tokensJwt" Decode.string    
-
-
-
-port setStorage : Model -> Cmd msg
-
-
-port removeStorage : Model -> Cmd msg
-
-
-setStorageHelper : Model -> ( Model, Cmd Msg )
-setStorageHelper model =
-    ( model, setStorage model )
-
--- VIEW
 
 view : Model -> Html Msg
 view model =
-  div []
-    [ input [ type_ "text", placeholder "Name", onInput Name, value model.name ] []
-    , input [ type_ "password", placeholder "Password", onInput Password, value model.password ] []
-    , button [ onClick GetToken ] [ text "get token" ]
-    , button [ onClick RemoveToken ] [ text "remove token" ]
-    , div [ ] [text model.token]
-    ]
+    model
+      |> page
+
+
+
+page : Model -> Html Msg
+page model =
+    case model.route of
+        Router.Home ->
+            Home.view model.session
+
+        Router.Dashboard ->
+            Dashboard.view model.session
+
+        Router.NotFoundRoute ->
+            ErrorRoute.view
+
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        Msgs.OnLocationChange location ->
+            let
+                newRoute =
+                    Router.parseLocation location
+            in
+                ( { model | route = newRoute }, Cmd.none )
+
+
+
+main : Program (Value) Model Msg
+main =
+    Navigation.programWithFlags OnLocationChange
+        { init = init
+        , view = view
+        , update = update
+        , subscriptions = \_ -> Sub.none
+        }
