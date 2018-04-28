@@ -20,10 +20,9 @@ import           Elm
 import           API.API
 import           API.User.Types
 import           API.Types
-import           Model.Types (Gender)
+import           Model.Types                    ( Gender )
 
 instance ElmType Role
-instance ElmType a => ElmType (ResponseResult a)
 instance ElmType Login
 instance ElmType Tokens
 instance ElmType JWTData
@@ -38,43 +37,31 @@ instance HasForeign lang ftype sublayout
     foreignFor lang ftype Proxy =
       foreignFor lang ftype (Proxy :: Proxy sublayout)
 
-genElm :: IO ()
-genElm = do
-  let code = "module Api exposing (..)" :
-            defElmImports :
-            "type NoContent = NoContent" :
-            toElmTypeSource (Proxy :: Proxy Login) :
-            toElmDecoderSource (Proxy :: Proxy Login) :
-            toElmEncoderSource (Proxy :: Proxy Login) :
-
-            toElmTypeSource (Proxy :: Proxy Tokens) :
-            toElmDecoderSource (Proxy :: Proxy Tokens) :
-            toElmEncoderSource (Proxy :: Proxy Tokens) :
-            
-            toElmTypeSource (Proxy :: Proxy JWTData) :
-            toElmDecoderSource (Proxy :: Proxy JWTData) :
-            toElmEncoderSource (Proxy :: Proxy JWTData) :
-
-            toElmTypeSource (Proxy :: Proxy Gender) :
-            toElmDecoderSource (Proxy :: Proxy Gender) :
-            toElmEncoderSource (Proxy :: Proxy Gender) :
-
-            toElmTypeSource (Proxy :: Proxy Profile) :
-            toElmDecoderSource (Proxy :: Proxy Profile) :
-            toElmEncoderSource (Proxy :: Proxy Profile) :
-            
-            toElmTypeSource (Proxy :: Proxy (ResponseResult Tokens)) :
-            toElmDecoderSource (Proxy :: Proxy (ResponseResult Tokens)) :
-            toElmEncoderSource (Proxy :: Proxy (ResponseResult Tokens)) :
-            
-            toElmTypeSource (Proxy :: Proxy (ResponseResult Profile)) :
-            toElmDecoderSource (Proxy :: Proxy (ResponseResult Profile)) :
-            toElmEncoderSource (Proxy :: Proxy (ResponseResult Profile)) :
-
-            toElmTypeSource (Proxy :: Proxy (ResponseResult [Profile])) :
-            toElmDecoderSource (Proxy :: Proxy (ResponseResult [Profile])) :
-            toElmEncoderSource (Proxy :: Proxy (ResponseResult [Profile])) :
-            generateElmForAPI apiProxy
+elmGen :: IO ()
+elmGen = do
+  let code =
+        "module Api exposing (..)"
+          : defElmImports
+          : "type NoContent = NoContent"
+          : toElmTypeSource (Proxy :: Proxy Login)
+          : toElmDecoderSource (Proxy :: Proxy Login)
+          : toElmEncoderSource (Proxy :: Proxy Login)
+          : toElmTypeSource (Proxy :: Proxy Tokens)
+          : toElmDecoderSource (Proxy :: Proxy Tokens)
+          : toElmEncoderSource (Proxy :: Proxy Tokens)
+          : toElmTypeSource (Proxy :: Proxy JWTData)
+          : toElmDecoderSource (Proxy :: Proxy JWTData)
+          : toElmEncoderSource (Proxy :: Proxy JWTData)
+          : toElmTypeSource (Proxy :: Proxy Gender)
+          : toElmDecoderSource (Proxy :: Proxy Gender)
+          : toElmEncoderSource (Proxy :: Proxy Gender)
+          : toElmTypeSource (Proxy :: Proxy Profile)
+          : toElmDecoderSource (Proxy :: Proxy Profile)
+          : toElmEncoderSource (Proxy :: Proxy Profile)
+          : toElmTypeSource (Proxy :: Proxy [Profile])
+          : toElmDecoderSource (Proxy :: Proxy [Profile])
+          : toElmEncoderSource (Proxy :: Proxy [Profile])
+          : generateElmForAPI apiProxy
   writeFile "../Client/src/Api.elm" $ intercalate "\n\n" $ map unpack code
 
 
