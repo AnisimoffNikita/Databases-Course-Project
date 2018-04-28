@@ -8,6 +8,8 @@ import Router exposing (Route)
 import Msgs exposing (..)
 import Page.Home as Home
 import Page.Dashboard as Dashboard
+import Page.Login as Login
+import Page.Registration as Registration
 import Page.ErrorRoute as ErrorRoute
 import Page.Index exposing (index)
 import Ports
@@ -35,7 +37,7 @@ view : Model -> Html Msg
 view model =
     model
       |> page
-
+      |> index model.session
 
 
 page : Model -> Html Msg
@@ -47,6 +49,12 @@ page model =
         Router.Dashboard ->
             Dashboard.view model.session
 
+        Router.Login ->
+            Login.view model.session
+
+        Router.Registration ->
+            Registration.view model.session
+
         Router.NotFoundRoute ->
             ErrorRoute.view
 
@@ -57,10 +65,11 @@ update msg model =
     case msg of
         Msgs.OnLocationChange location ->
             let
-                newRoute =
-                    Router.parseLocation location
+                newRoute = Router.parseNavLocation location
             in
                 ( { model | route = newRoute }, Cmd.none )
+        Msgs.NavigateTo url ->
+            ( model, Navigation.newUrl url )
 
 
 
