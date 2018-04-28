@@ -14,6 +14,7 @@ import           Servant.Auth.Server.SetCookieOrphan  ( )
 import           API.User.API
 import           API.User.Types
 import           API.Types
+import           API.Utils
 import           Model.Model
 import           Types
 import           Utils
@@ -27,13 +28,13 @@ userAPI authResult =
   :<|> getUserInfo authResult
   :<|> getUserList authResult
 
-getUsername :: AuthResult JWTData -> AppM (ResponseResult Text)
-getUsername (Authenticated user) = return $ responseOk . jwtUsername $ user
-getUsername _                    = return $ responseError 401 "not athorized"
+getUsername :: AuthResult JWTData -> AppM Text
+getUsername (Authenticated user) = return $ jwtUsername  user
+getUsername _                    = throwError $ badStatus err400 "" 1
 
 
-login :: AuthResult JWTData -> Login -> AppM (ResponseResult Tokens)
-login (Authenticated user) _ = return $ responseError 400 "already authorized"
+login :: AuthResult JWTData -> Login -> AppM Tokens
+login (Authenticated user) _ = throwError $ badStatus err400 "" 1
 login _ user = do
   exists <- userExists user
   if exists
@@ -42,9 +43,9 @@ login _ user = do
       let jwtData = JWTData . loginUsername $ user
       etoken <- liftIO $ makeJWT jwtData jwtSettings Nothing
       case etoken of
-        Left  _ -> return $ responseError 500 "something went worng"
-        Right v -> return $ responseOk $ Tokens (decodeUtf8 . toStrict $ v)
-    else return $ responseError 401 "no such user"
+        Left  _ -> throwError $ badStatus err500 "" 1
+        Right v -> return $ Tokens (decodeUtf8 . toStrict $ v)
+    else throwError $ badStatus err400 "" 1
 
 userExists :: Login -> AppM Bool
 userExists user = do
@@ -56,9 +57,9 @@ userExists user = do
     Nothing               -> return False
     Just (Entity _ check) -> return $ userPassword check == hashed
 
-newUser :: AuthResult JWTData -> UserRegister -> AppM (ResponseResult Tokens)
+newUser :: AuthResult JWTData -> UserRegister -> AppM Tokens
 newUser (Authenticated user) _ =
-  return $ responseError 400 "already authorized"
+  throwError $ badStatus err400 "" 1
 newUser auth reg = do
   let user          = userRegisterToUser reg
       getByUsername = getBy . UniqueUsername . userUsername $ user
@@ -67,7 +68,7 @@ newUser auth reg = do
   mUsername <- liftIO $ runMongoDBPoolDef getByUsername pool
   mEmail    <- liftIO $ runMongoDBPoolDef getByEmail pool
   if isJust mUsername || isJust mEmail
-    then return $ responseError 500 "something went worng"
+    then throwError $ badStatus err500 "" 1
     else do
       let action = insert user
           logged = userRegisterToLogin reg
@@ -75,20 +76,20 @@ newUser auth reg = do
       login auth logged
 
 
-getUserInfo :: AuthResult JWTData -> AppM (ResponseResult Profile)
+getUserInfo :: AuthResult JWTData -> AppM Profile
 getUserInfo (Authenticated user) = do
   let getByUsername = getBy . UniqueUsername . jwtUsername $ user
   pool  <- asks connectionPool
   mUser <- liftIO $ runMongoDBPoolDef getByUsername pool
   case mUser of
-    Nothing              -> return $ responseError 401 "no such user"
-    Just (Entity _ user) -> return $ responseOk $ userToProfile user
-getUserInfo _ = return $ responseError 400 "incorrect data"
+    Nothing              -> throwError $ err401 {errBody = "error"} 
+    Just (Entity _ user) -> return $ userToProfile user
+getUserInfo _ = throwError $ err400 {errBody = "error"} 
 
-getUserList :: AuthResult JWTData -> AppM (ResponseResult [Profile])
+getUserList :: AuthResult JWTData -> AppM [Profile]
 getUserList (Authenticated user) = do 
   let selectAll = selectList [] []
   pool  <- asks connectionPool
   users :: [Entity User] <- liftIO $ runMongoDBPoolDef selectAll pool
-  return $ responseOk $ map (\(Entity _ user) -> userToProfile user) users
-getUserList _ = return $ responseError 400 "incorrect data"
+  return $  map (\(Entity _ user) -> userToProfile user) users
+getUserList _ = throwError $ err400 {errBody = "error"} 

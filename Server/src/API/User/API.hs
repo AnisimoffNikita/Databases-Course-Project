@@ -5,18 +5,17 @@ import           Data.Text                      ( Text )
 import           Servant
 
 import           API.User.Types
-import           API.Types (ResponseResult)
 
 type UserAPI =
        "login"
     :> ReqBody '[JSON] Login
-    :> Post '[JSON] (ResponseResult Tokens)
+    :> Post '[JSON] Tokens
   :<|> "new"
     :> ReqBody '[JSON] UserRegister
-    :> Post '[JSON] (ResponseResult Tokens)
+    :> Post '[JSON] Tokens
   :<|> "username"
-    :> Post '[JSON] (ResponseResult Text)
+    :> Post '[JSON] Text
   :<|> "profile"
-    :> Post '[JSON] (ResponseResult Profile)
+    :> Post '[JSON] Profile
   :<|> "list"
-    :> Post '[JSON] (ResponseResult [Profile])
+    :> Post '[JSON] [Profile]

@@ -20,6 +20,7 @@ import           Elm
 import           API.API
 import           API.User.Types
 import           API.Types
+import           Model.Types (Gender)
 
 instance ElmType Role
 instance ElmType a => ElmType (ResponseResult a)
@@ -28,6 +29,7 @@ instance ElmType Tokens
 instance ElmType JWTData
 instance ElmType UserRegister
 instance ElmType Profile
+instance ElmType Gender
 
 instance HasForeign lang ftype sublayout
     => HasForeign lang ftype (Auth '[JWT] JWTData :> sublayout) where
@@ -52,6 +54,14 @@ genElm = do
             toElmTypeSource (Proxy :: Proxy JWTData) :
             toElmDecoderSource (Proxy :: Proxy JWTData) :
             toElmEncoderSource (Proxy :: Proxy JWTData) :
+
+            toElmTypeSource (Proxy :: Proxy Gender) :
+            toElmDecoderSource (Proxy :: Proxy Gender) :
+            toElmEncoderSource (Proxy :: Proxy Gender) :
+
+            toElmTypeSource (Proxy :: Proxy Profile) :
+            toElmDecoderSource (Proxy :: Proxy Profile) :
+            toElmEncoderSource (Proxy :: Proxy Profile) :
             
             toElmTypeSource (Proxy :: Proxy (ResponseResult Tokens)) :
             toElmDecoderSource (Proxy :: Proxy (ResponseResult Tokens)) :

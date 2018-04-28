@@ -38,22 +38,22 @@ data Role = Admin | NonAdmin deriving (Eq, Show, Read, Generic)
 instance ToJSON Role
 instance FromJSON Role
 
-data ResponseResult a = ResponseError
-  { code :: Int
-  , message :: Text
-  } | ResponseOk
-  { response :: a
-  } deriving (Eq, Show, Read, Generic)
+-- data ResponseResult a = ResponseError
+--   { code :: Int
+--   , message :: Text
+--   } | ResponseOk
+--   { response :: a
+--   } deriving (Eq, Show, Read, Generic)
 
-instance ToJSON a => ToJSON (ResponseResult a) where
-  toJSON = genericToJSON (optionsWithoutPrefix 8)
-  toEncoding = genericToEncoding (optionsWithoutPrefix 8)
-instance FromJSON a => FromJSON (ResponseResult a) where
-  parseJSON = genericParseJSON (optionsWithoutPrefix 8)
+-- instance ToJSON a => ToJSON (ResponseResult a) where
+--   toJSON = genericToJSON (optionsWithoutPrefix 8)
+--   toEncoding = genericToEncoding (optionsWithoutPrefix 8)
+-- instance FromJSON a => FromJSON (ResponseResult a) where
+--   parseJSON = genericParseJSON (optionsWithoutPrefix 8)
 
 
-responseError :: Int -> Text -> ResponseResult a
-responseError = ResponseError
+-- responseError :: Int -> Text -> ResponseResult a
+-- responseError = ResponseError
 
-responseOk :: a -> ResponseResult a
-responseOk = ResponseOk
+-- responseOk :: a -> ResponseResult a
+-- responseOk = ResponseOk

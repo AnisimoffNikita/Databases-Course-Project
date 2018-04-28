@@ -7,7 +7,6 @@ import Data.Text
 import Database.Persist.MongoDB
 import Database.Persist.TH
 import GHC.Generics
-import Elm (ElmType)
 
 instance Aeson.ToJSON ObjectId where
   toJSON = Aeson.toJSON . pack . show
@@ -28,8 +27,6 @@ data Gender =
   | Female
   deriving (Show, Read, Eq, Generic)
 derivePersistField "Gender"
-
-instance ElmType Gender
 
 instance Aeson.ToJSON Gender
 instance Aeson.FromJSON Gender
