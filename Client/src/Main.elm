@@ -5,18 +5,19 @@ import Data.Session exposing (..)
 import Json.Decode as Decode exposing (Value)
 import Navigation exposing (Location)
 import Router exposing (Route)
-import Msgs exposing (..)
 import Page.Home as Home
 import Page.Dashboard as Dashboard
 import Page.Login as Login
 import Page.Registration as Registration
 import Page.ErrorRoute as ErrorRoute
-import Page.Index exposing (index)
+import View.Header as Header
 import Ports
+import Bootstrap.Grid as Grid
 
 type alias Model =
     { session : Session
     , route : Route
+    , headerModel : Header.Model
     }
 
 
@@ -25,19 +26,30 @@ init val location =
     let
         currentRoute =
             Router.parseLocation location
-        model = 
+        session = 
             case decodeSessionFromJson val of 
-                Nothing -> {session = {user = Nothing}, route = currentRoute}
-                Just session -> {session = session, route = currentRoute}
+                Nothing -> {user = Nothing}
+                Just session -> session
+
+        (headerModel, headerCmd) = Header.init
+        model = { session = session
+                , route = currentRoute
+                , headerModel = headerModel
+                }
+
     in
-        ( model, Cmd.none )
+        ( model
+        , Cmd.batch 
+            [  Cmd.map NavbarMsg headerCmd 
+            ] 
+        )
 
 
 view : Model -> Html Msg
 view model =
-    model
-      |> page
-      |> index model.session
+    Grid.container []
+        [ Html.map NavbarMsg (Header.view model.headerModel ) 
+        ]
 
 
 page : Model -> Html Msg
@@ -59,18 +71,36 @@ page model =
             ErrorRoute.view
 
 
+type Msg
+    = OnLocationChange Location
+    | NavigateTo String
+    | NavbarMsg Header.Msg
+
+
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        Msgs.OnLocationChange location ->
+        OnLocationChange location ->
             let
                 newRoute = Router.parseLocation location
             in
                 ( { model | route = newRoute }, Cmd.none )
-        Msgs.NavigateTo url ->
+        NavigateTo url ->
             ( model, Navigation.newUrl url )
+        NavbarMsg subMsg ->
+            let
+                ( updatedWidgetModel, newCmd ) =
+                    Header.update subMsg model.headerModel
+            in
+            ( {model | headerModel = updatedWidgetModel}, Cmd.map NavbarMsg newCmd )
 
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.batch
+        [ Sub.map NavbarMsg (Header.subscriptions model.headerModel)
+        ]
 
 
 main : Program (Value) Model Msg
@@ -79,5 +109,5 @@ main =
         { init = init
         , view = view
         , update = update
-        , subscriptions = \_ -> Sub.none
+        , subscriptions = subscriptions
         }

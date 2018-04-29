@@ -53,6 +53,6 @@ routeToString page =
     in
     "/" ++ String.join "/" pieces
 
-href : Route -> Attribute msg
-href route =
+href_ : Route -> Attribute msg
+href_ route =
     Attr.href (routeToString route)
