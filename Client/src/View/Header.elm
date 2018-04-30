@@ -1,6 +1,6 @@
 module View.Header exposing (..)
 
-import Html exposing (Html, Attribute, div, text, a, p, img)
+import Html exposing (Html, Attribute, div, text, a, p, img, h1)
 import Html.Attributes exposing (href, src, class, style, placeholder)
 import Data.Session exposing (..)
 import Router exposing (..)
@@ -11,6 +11,8 @@ import Bootstrap.Form as Form
 import Bootstrap.Form.Input as Input
 import Bootstrap.Button as Button
 import Bootstrap.Utilities.Spacing as Spacing
+import Bootstrap.Utilities.Size as Size
+import Navigation
 
 import Bootstrap.Navbar as Navbar
 
@@ -35,6 +37,7 @@ init =
 
 type Msg
     = NavbarMsg Navbar.State
+    | NavigateTo String
 
 
 -- You need to handle navbar messages in your update function to step the navbar state forward
@@ -44,18 +47,9 @@ update msg model =
     case msg of
         NavbarMsg state ->
             ( { model | navbarState = state }, Cmd.none )
+        NavigateTo url ->
+            ( model, Navigation.newUrl url )
 
-
--- view : Model -> Html Msg
--- view model =
---     Navbar.config NavbarMsg
---         |> Navbar.withAnimation
---         |> Navbar.brand [ href "#"] [ text "Brand"]
---         |> Navbar.items
---             [ Navbar.itemLink [href "#"] [ text "Item 1"]
---             , Navbar.itemLink [href "#"] [ text "Item 2"]
---             ]
---         |> Navbar.view model.navbarState
 
 
 subscriptions : Model -> Sub Msg
@@ -65,51 +59,37 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model = 
-    Navbar.config NavbarMsg
+    div []
+    [ Navbar.config NavbarMsg
         |> Navbar.withAnimation
-        |> Navbar.fixTop                      -- Customize coloring
         |> Navbar.collapseSmall
+        |> Navbar.container
+        |> Navbar.attrs [class "bg-white"]
         |> Navbar.brand                     -- Add logo to your brand with a little styling to align nicely
-            [ href "#" ]
-            [ img
-                [ src "elm-bootstrap.svg"
-                , class "d-inline-block"
-                , style [ ( "width", "30px" ), ("margin", "0px") ]
-                ]
-                []
-            , text " Elm Bootstrap"
-            ]
-        |> Navbar.items
-            [ Navbar.itemLink
-                [ href "#" ] [ text "Item 1" ]
-            , Navbar.dropdown              -- Adding dropdowns is pretty simple
-                { id = "mydropdown"
-                , toggle = Navbar.dropdownToggle [] [ text "My dropdown" ]
-                , items =
-                    [ Navbar.dropdownHeader [ text "Heading" ]
-                    , Navbar.dropdownItem
-                        [ href "#" ]
-                        [ text "Drop item 1" ]
-                    , Navbar.dropdownItem
-                        [ href "#" ]
-                        [ text "Drop item 2" ]
-                    , Navbar.dropdownDivider
-                    , Navbar.dropdownItem
-                        [ href "#" ]
-                        [ text "Drop item 3" ]
-                    ]
-                }
-            ]
+            [ href "#" ] [text " Quizzy"]
         |> Navbar.customItems
             [ Navbar.formItem []
-                [ Input.text [ Input.attrs [placeholder "enter" ]]
-                , Button.button
-                    [ Button.success
-                    , Button.attrs [ Spacing.ml2Sm]
+                [ Button.button
+                    [ Button.primary
+                    , Button.attrs 
+                        [ Spacing.ml2Sm
+                        , href (routeToString Registration)
+                        , onClickPreventDefault (NavigateTo <| routeToString Registration)] 
                     ]
-                    [ text "Search"]
+                    [ text "Register"]
                 ]
-            , Navbar.textItem [ Spacing.ml2Lg, class "muted" ] [ text "Text"]
+            , Navbar.textItem [ Spacing.ml2Lg, class "muted" ] [ text "or"]
+            , Navbar.formItem []
+                [ Button.button
+                    [ Button.outlinePrimary
+                    , Button.attrs 
+                        [ Spacing.ml2Sm
+                        , href (routeToString Login)
+                        , onClickPreventDefault (NavigateTo <| routeToString Login)] 
+                    ]
+                    [ text "Login"]
+                ]
             ]
         |> Navbar.view model.navbarState
+    ]
     

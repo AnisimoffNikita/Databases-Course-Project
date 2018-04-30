@@ -1,6 +1,7 @@
 module Main exposing (..)
 
 import Html exposing (..)
+import Html.Attributes exposing (..)
 import Data.Session exposing (..)
 import Json.Decode as Decode exposing (Value)
 import Navigation exposing (Location)
@@ -13,11 +14,18 @@ import Page.ErrorRoute as ErrorRoute
 import View.Header as Header
 import Ports
 import Bootstrap.Grid as Grid
+import Page.Login as Login
+
+
+type Page  
+    = Home 
+    | Login Login.Model
 
 type alias Model =
     { session : Session
     , route : Route
     , headerModel : Header.Model
+    , page : Page
     }
 
 
@@ -35,6 +43,7 @@ init val location =
         model = { session = session
                 , route = currentRoute
                 , headerModel = headerModel
+                , page = Home
                 }
 
     in
@@ -47,34 +56,33 @@ init val location =
 
 view : Model -> Html Msg
 view model =
-    Grid.container []
+    let content = 
+        case model.page of 
+            Home -> 
+                div 
+                    [ class "jumbotron"
+                    , class "jumbotron-fluid"] 
+                    [ Grid.container [] 
+                        [ h1  [] [text "Quizes"]
+                        , p [] [text "Make it. Pass it. Share it."]]
+
+                    ]
+            Login loginModel -> 
+                 Html.map LoginMsg Login.view
+    in
+        div []
         [ Html.map NavbarMsg (Header.view model.headerModel ) 
+        , content
         ]
 
 
-page : Model -> Html Msg
-page model =
-    case model.route of
-        Router.Home ->
-            Home.view model.session
-
-        Router.Dashboard ->
-            Dashboard.view model.session
-
-        Router.Login ->
-            Login.view model.session
-
-        Router.Registration ->
-            Registration.view model.session
-
-        Router.NotFoundRoute ->
-            ErrorRoute.view
 
 
 type Msg
     = OnLocationChange Location
     | NavigateTo String
     | NavbarMsg Header.Msg
+    | LoginMsg Login.Msg
 
 
 
@@ -94,7 +102,16 @@ update msg model =
                     Header.update subMsg model.headerModel
             in
             ( {model | headerModel = updatedWidgetModel}, Cmd.map NavbarMsg newCmd )
+        LoginMsg subMsg ->
+            -- let
 
+            --     ( update, newCmd ) =
+            --         Login.update subMsg model.
+            -- in
+            ( model, Cmd.none)
+
+updatePage : Route -> Model -> Model
+updatePage
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
