@@ -10,7 +10,7 @@ type Route
     = Home
     | Dashboard
     | Login
-    | Registration
+    | Register
     | NotFoundRoute
 
 
@@ -20,14 +20,14 @@ matchers =
         [ map Home top
         , map Dashboard (s "dashboard")
         , map Login (s "login")
-        , map Registration (s "registration")
+        , map Register (s "register")
         , map NotFoundRoute (s (routeToString NotFoundRoute))
         ]
 
 
 parseLocation : Location -> Route
 parseLocation location =
-    case (parsePath matchers location) of
+    case (parseHash matchers location) of
         Just route ->
             route
 
@@ -46,13 +46,13 @@ routeToString page =
                     ["dashboard"]
                 Login ->
                     ["login"]
-                Registration ->
-                    ["registration"]
+                Register ->
+                    ["register"]
                 NotFoundRoute ->
                     ["404"]
     in
-    "/" ++ String.join "/" pieces
+    "/#/" ++ String.join "/" pieces
 
-href_ : Route -> Attribute msg
-href_ route =
-    Attr.href (routeToString route)
+-- href_ : Route -> Attribute msg
+-- href_ route =
+--     Attr.href (routeToString route)

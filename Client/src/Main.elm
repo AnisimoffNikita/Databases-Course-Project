@@ -9,7 +9,7 @@ import Router exposing (Route)
 import Page.Home as Home
 import Page.Dashboard as Dashboard
 import Page.Login as Login
-import Page.Registration as Registration
+import Page.Register as Register
 import Page.ErrorRoute as ErrorRoute
 import View.Header as Header
 import Ports
@@ -20,6 +20,7 @@ import Page.Login as Login
 type Page  
     = Home 
     | Login Login.Model
+    | Register Register.Model
 
 type alias Model =
     { session : Session
@@ -49,7 +50,7 @@ init val location =
     in
         ( model
         , Cmd.batch 
-            [  Cmd.map NavbarMsg headerCmd 
+            [ Cmd.map NavbarMsg headerCmd 
             ] 
         )
 
@@ -69,8 +70,10 @@ view model =
                     ]
             Login loginModel -> 
                  Html.map LoginMsg Login.view
+            Register regModel -> 
+                 Html.map RegisterMsg Register.view
     in
-        div []
+    div [] 
         [ Html.map NavbarMsg (Header.view model.headerModel ) 
         , content
         ]
@@ -83,35 +86,72 @@ type Msg
     | NavigateTo String
     | NavbarMsg Header.Msg
     | LoginMsg Login.Msg
-
+    | RegisterMsg Register.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    case msg of
-        OnLocationChange location ->
+    updatePage model.page msg model
+
+updatePage : Page -> Msg -> Model -> ( Model, Cmd Msg )
+updatePage page msg model =
+    case (msg, page) of 
+        (OnLocationChange location, _) ->
             let
                 newRoute = Router.parseLocation location
             in
-                ( { model | route = newRoute }, Cmd.none )
-        NavigateTo url ->
-            ( model, Navigation.newUrl url )
-        NavbarMsg subMsg ->
+            setRoute newRoute model
+
+        -- (NavigateTo url, _) ->
+        --     ( model, Navigation.newUrl url )
+        (NavbarMsg subMsg, _) ->
             let
-                ( updatedWidgetModel, newCmd ) =
+                ( updated, newCmd ) =
                     Header.update subMsg model.headerModel
             in
-            ( {model | headerModel = updatedWidgetModel}, Cmd.map NavbarMsg newCmd )
-        LoginMsg subMsg ->
-            -- let
+            ( {model | headerModel = updated}, Cmd.map NavbarMsg newCmd )
+        (LoginMsg subMsg, Login subModel) ->
+            let
+                ( updated, newCmd ) =
+                    Login.update subMsg subModel
+            in
+            ( {model | page = Login updated}, Cmd.map LoginMsg newCmd)
 
-            --     ( update, newCmd ) =
-            --         Login.update subMsg model.
-            -- in
-            ( model, Cmd.none)
+        (RegisterMsg subMsg, Register subModel) ->
+            let
+                ( updated, newCmd ) =
+                    Register.update subMsg subModel
+            in
+            ( {model | page = Register updated}, Cmd.map RegisterMsg newCmd)
 
-updatePage : Route -> Model -> Model
-updatePage
+        (_, _) -> 
+            ( model, Cmd.none ) 
+
+
+
+setRoute : Route -> Model -> (Model, Cmd Msg)
+setRoute route model = 
+    case route of 
+        Router.Home -> 
+            ({model | page = Home}, Cmd.none)
+        Router.Login -> 
+            let 
+                (subModel, msg) = Login.init 
+            in
+            ({model | page = Login subModel}, Cmd.map LoginMsg msg)
+        Router.Register -> 
+            let 
+                (subModel, msg) = Register.init 
+            in
+            ({model | page = Register subModel}, Cmd.map RegisterMsg msg)
+        Router.Dashboard -> 
+            (model, Cmd.none)
+        Router.NotFoundRoute -> 
+            (model, Cmd.none)
+
+
+
+
 
 subscriptions : Model -> Sub Msg
 subscriptions model =

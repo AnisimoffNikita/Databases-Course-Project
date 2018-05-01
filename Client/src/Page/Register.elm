@@ -1,4 +1,4 @@
-module Page.Login exposing (..)
+module Page.Register exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -15,33 +15,38 @@ import Bootstrap.Button as Button
 
 type alias Model = 
     { username : String 
+    , email : String
     , password : String
     }
 
 
 init : (Model, Cmd Msg)
 init =
-        (Model "" "", Cmd.none)
+        (Model "" "" "", Cmd.none)
 
 type Msg
-    = Login
-    | Register
+    = Register
+    | Login
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
     case msg of
-        Login ->
-            ( model, Cmd.none )
         Register ->
-            ( model, Navigation.newUrl <| routeToString Router.Register )
+            ( model, Cmd.none )
+        Login ->
+            ( model, Navigation.newUrl <| routeToString Router.Login )
 
 
 view : Html Msg
 view = 
     let 
         form = 
-        Form.form [onSubmit Login]
+        Form.form [onSubmit Register]
             [ Form.group []
+                [ Form.label [for "myemail"] [ text "Email address"]
+                , Input.email [ Input.id "myemail" ]
+                ]
+            , Form.group []
                 [ Form.label [for "myusername"] [ text "Username"]
                 , Input.email [ Input.id "myusername" ]
                 ]
@@ -50,7 +55,8 @@ view =
                 , Input.password [ Input.id "mypwd" ]
                 ]
             , Button.button 
-                [ Button.primary ]
+                [ Button.primary
+                ] 
                 [ text "Submit" ]
             ]
     in
@@ -65,11 +71,11 @@ view =
             [ Grid.col 
                 [ Col.md3
                 ]
-                [ h1 [] [text "Login"]
+                [ h1 [] [text "Register"]
                 , Button.linkButton 
                     [ Button.roleLink
-                    , Button.attrs [href <| routeToString Router.Register ]] 
-                    [text "No account?"]
+                    , Button.attrs [href <| routeToString Router.Login ]] 
+                    [text "Have account?"]
                 , form ] 
             ]
         ]

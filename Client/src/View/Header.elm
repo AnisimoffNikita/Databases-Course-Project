@@ -1,9 +1,10 @@
 module View.Header exposing (..)
 
-import Html exposing (Html, Attribute, div, text, a, p, img, h1)
+import Html exposing (Html, Attribute, div, text, a, p, img, h1, button, form)
 import Html.Attributes exposing (href, src, class, style, placeholder)
+import Html.Events exposing (onClick, onSubmit)
 import Data.Session exposing (..)
-import Router exposing (..)
+import Router exposing (Route, routeToString)
 import Html.Events.Extra exposing (onClickPreventDefault)
 import Bootstrap.CDN as CDN
 import Bootstrap.Grid as Grid
@@ -13,6 +14,7 @@ import Bootstrap.Button as Button
 import Bootstrap.Utilities.Spacing as Spacing
 import Bootstrap.Utilities.Size as Size
 import Navigation
+import Utils exposing (href_)
 
 import Bootstrap.Navbar as Navbar
 
@@ -66,26 +68,24 @@ view model =
         |> Navbar.container
         |> Navbar.attrs [class "bg-white"]
         |> Navbar.brand                     -- Add logo to your brand with a little styling to align nicely
-            [ href "#" ] [text " Quizzy"]
+            [ href "/#" ] [text " Quizzy"]
         |> Navbar.customItems
-            [ Navbar.formItem []
+            [ Navbar.formItem [onSubmit <| NavigateTo <| routeToString Router.Register]
                 [ Button.button
                     [ Button.primary
                     , Button.attrs 
                         [ Spacing.ml2Sm
-                        , href (routeToString Registration)
-                        , onClickPreventDefault (NavigateTo <| routeToString Registration)] 
+                        ] 
                     ]
                     [ text "Register"]
                 ]
             , Navbar.textItem [ Spacing.ml2Lg, class "muted" ] [ text "or"]
-            , Navbar.formItem []
-                [ Button.button
+            , Navbar.formItem [onSubmit <| NavigateTo <| routeToString Router.Login]
+                [ Button.button 
                     [ Button.outlinePrimary
                     , Button.attrs 
                         [ Spacing.ml2Sm
-                        , href (routeToString Login)
-                        , onClickPreventDefault (NavigateTo <| routeToString Login)] 
+                        ] 
                     ]
                     [ text "Login"]
                 ]
