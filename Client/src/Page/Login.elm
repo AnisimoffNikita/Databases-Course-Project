@@ -63,7 +63,7 @@ view =
             , Row.centerXs
             ]
             [ Grid.col 
-                [ Col.md3
+                [ Col.lg3
                 ]
                 [ h1 [] [text "Login"]
                 , Button.linkButton 

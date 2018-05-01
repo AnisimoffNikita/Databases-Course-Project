@@ -15,6 +15,7 @@ import View.Header as Header
 import Ports
 import Bootstrap.Grid as Grid
 import Page.Login as Login
+import Debug
 
 
 type Page  
@@ -41,16 +42,18 @@ init val location =
                 Just session -> session
 
         (headerModel, headerCmd) = Header.init
-        model = { session = session
-                , route = currentRoute
-                , headerModel = headerModel
-                , page = Home
-                }
+        (model, cmds) = setRoute currentRoute 
+                    { session = session
+                    , route = currentRoute
+                    , headerModel = headerModel
+                    , page = Home
+                    }
 
     in
         ( model
         , Cmd.batch 
             [ Cmd.map NavbarMsg headerCmd 
+            , cmds
             ] 
         )
 
