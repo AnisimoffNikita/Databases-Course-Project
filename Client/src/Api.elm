@@ -27,6 +27,27 @@ encodeLogin x =
         , ( "loginPassword", Json.Encode.string x.loginPassword )
         ]
 
+type alias UserRegister =
+    { registerUsername : String
+    , registerEmail : String
+    , registerPassword : String
+    }
+
+decodeUserRegister : Decoder UserRegister
+decodeUserRegister =
+    decode UserRegister
+        |> required "registerUsername" string
+        |> required "registerEmail" string
+        |> required "registerPassword" string
+
+encodeUserRegister : UserRegister -> Json.Encode.Value
+encodeUserRegister x =
+    Json.Encode.object
+        [ ( "registerUsername", Json.Encode.string x.registerUsername )
+        , ( "registerEmail", Json.Encode.string x.registerEmail )
+        , ( "registerPassword", Json.Encode.string x.registerPassword )
+        ]
+
 type alias Tokens =
     { tokensJwt : String
     }
@@ -119,6 +140,11 @@ encodeProfile x =
         , ( "profileGender", (Maybe.withDefault Json.Encode.null << Maybe.map encodeGender) x.profileGender )
         ]
 
+List (Profile)
+
+(list decodeProfile)
+
+(Json.Encode.list << List.map encodeProfile)
 
 postUserLogin : Login -> Http.Request (Tokens)
 postUserLogin body =

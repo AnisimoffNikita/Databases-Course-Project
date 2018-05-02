@@ -16,6 +16,9 @@ import Ports
 import Bootstrap.Grid as Grid
 import Page.Login as Login
 import Debug
+import RemoteData exposing (WebData)
+import Data.User as User exposing (User)
+import Data.Tokens as Tokens exposing (..)
 
 
 type Page  
@@ -104,9 +107,6 @@ updatePage page msg model =
                 newRoute = Router.parseLocation location
             in
             setRoute newRoute model
-
-        -- (NavigateTo url, _) ->
-        --     ( model, Navigation.newUrl url )
         (NavbarMsg subMsg, _) ->
             let
                 ( updated, newCmd ) =
@@ -119,6 +119,15 @@ updatePage page msg model =
                     Login.update subMsg subModel
             in
             ( {model | page = Login updated}, Cmd.map LoginMsg newCmd)
+
+        (RegisterMsg (Register.TokensRecieved user (RemoteData.Success tokens)), Register subModel) ->
+            let 
+                session = Session <| Just
+                    { username = user.username
+                    , avatar = "todo"
+                    , tokens = tokens}
+            in
+            ( {model | session = session }, Ports.setStorage session)
 
         (RegisterMsg subMsg, Register subModel) ->
             let
