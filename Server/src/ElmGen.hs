@@ -29,6 +29,7 @@ instance ElmType JWTData
 instance ElmType UserRegister
 instance ElmType Profile
 instance ElmType Gender
+instance ElmType UserInfo
 
 instance HasForeign lang ftype sublayout
     => HasForeign lang ftype (Auth '[JWT] JWTData :> sublayout) where
@@ -61,9 +62,9 @@ elmGen = do
           : toElmTypeSource (Proxy :: Proxy Profile)
           : toElmDecoderSource (Proxy :: Proxy Profile)
           : toElmEncoderSource (Proxy :: Proxy Profile)
-          : toElmTypeSource (Proxy :: Proxy [Profile])
-          : toElmDecoderSource (Proxy :: Proxy [Profile])
-          : toElmEncoderSource (Proxy :: Proxy [Profile])
+          : toElmTypeSource (Proxy :: Proxy UserInfo)
+          : toElmDecoderSource (Proxy :: Proxy UserInfo)
+          : toElmEncoderSource (Proxy :: Proxy UserInfo)
           : generateElmForAPI apiProxy
   writeFile "../Client/src/Api.elm" $ intercalate "\n\n" $ map unpack code
 

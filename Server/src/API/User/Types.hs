@@ -16,7 +16,6 @@ import           Model.Model
 import           Model.Types
 import           Utils
 
-
 data Login = Login
   { loginUsername :: Text
   , loginPassword :: Text
@@ -100,3 +99,22 @@ instance ToJSON Profile where
 instance FromJSON Profile where
   parseJSON = genericParseJSON (optionsWithoutPrefix 7)
 
+data UserInfo = UserInfo
+  { infoFirstName  :: Maybe Text
+  , infoSecondName :: Maybe Text
+  , infoBirthday   :: Maybe UTCTime
+  , infoGender     :: Maybe Gender
+  } deriving (Eq, Show, Read, Generic)
+
+
+userToInfo :: User -> UserInfo
+userToInfo User {..} = UserInfo userFirstName
+                                userSecondName
+                                userBirthday
+                                userGender
+
+instance ToJSON UserInfo where
+  toJSON = genericToJSON (optionsWithoutPrefix 4)
+  toEncoding = genericToEncoding (optionsWithoutPrefix 4)
+instance FromJSON UserInfo where
+  parseJSON = genericParseJSON (optionsWithoutPrefix 4)

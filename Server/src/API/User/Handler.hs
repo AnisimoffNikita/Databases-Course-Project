@@ -18,6 +18,7 @@ import           API.Utils
 import           Model.Model
 import           Types
 import           Utils
+import           Debug.Trace
 
 
 userAPI :: AuthResult JWTData -> ServerT UserAPI AppM
@@ -25,8 +26,13 @@ userAPI authResult =
        login authResult
   :<|> newUser authResult
   :<|> getUsername authResult
-  :<|> getUserInfo authResult
-  :<|> getUserList authResult
+  :<|> getProfile authResult
+  :<|> editUsername authResult
+  :<|> editPassword authResult
+  :<|> editEmail authResult
+  :<|> editAvatar authResult
+  :<|> editUserInfo authResult
+
 
 getUsername :: AuthResult JWTData -> AppM Text
 getUsername (Authenticated user) = return $ jwtUsername  user
@@ -53,7 +59,7 @@ userExists user = do
       getByUsername = getBy . UniqueUsername . loginUsername $ user
   pool  <- asks connectionPool
   mUser <- liftIO $ runMongoDBPoolDef getByUsername pool
-  case mUser of
+  trace (show user) $ case mUser of
     Nothing               -> return False
     Just (Entity _ check) -> return $ userPassword check == hashed
 
@@ -76,15 +82,15 @@ newUser auth reg = do
       login auth logged
 
 
-getUserInfo :: AuthResult JWTData -> AppM Profile
-getUserInfo (Authenticated user) = do
+getProfile :: AuthResult JWTData -> AppM Profile
+getProfile (Authenticated user) = do
   let getByUsername = getBy . UniqueUsername . jwtUsername $ user
   pool  <- asks connectionPool
   mUser <- liftIO $ runMongoDBPoolDef getByUsername pool
   case mUser of
     Nothing              -> throwError $ err401 {errBody = "error"} 
     Just (Entity _ user) -> return $ userToProfile user
-getUserInfo _ = throwError $ err400 {errBody = "error"} 
+getProfile _ = throwError $ err400 {errBody = "error"} 
 
 getUserList :: AuthResult JWTData -> AppM [Profile]
 getUserList (Authenticated user) = do 
@@ -93,3 +99,97 @@ getUserList (Authenticated user) = do
   users :: [Entity User] <- liftIO $ runMongoDBPoolDef selectAll pool
   return $  map (\(Entity _ user) -> userToProfile user) users
 getUserList _ = throwError $ err400 {errBody = "error"} 
+
+
+usernameExists :: Text -> AppM Bool
+usernameExists username = do
+  let getByUsername = getBy . UniqueUsername $ username
+  pool  <- asks connectionPool
+  mUser <- liftIO $ runMongoDBPoolDef getByUsername pool
+  case mUser of
+    Nothing -> return False
+    Just _  -> return True
+
+emailExists :: Text -> AppM Bool
+emailExists email = do
+  let getByUsername = getBy . UniqueEmail $ email
+  pool  <- asks connectionPool
+  mUser <- liftIO $ runMongoDBPoolDef getByUsername pool
+  case mUser of
+    Nothing -> return False
+    Just _  -> return True
+
+editUsername :: AuthResult JWTData -> Text -> AppM NoContent
+editUsername (Authenticated user) username = do
+  exists <- usernameExists username
+  if exists then throwError $ err400 {errBody = "Such username already exist"} 
+  else do
+    let getByUsername = getBy . UniqueUsername . jwtUsername $ user
+    pool  <- asks connectionPool
+    mUser <- liftIO $ runMongoDBPoolDef getByUsername pool
+    case mUser of
+      Nothing              -> throwError $ err401 {errBody = "error"} 
+      Just (Entity id user) -> do
+        let edit = update id [UserUsername =. username]
+        liftIO $ runMongoDBPoolDef edit pool
+        return NoContent
+editUsername _ _ = throwError $ err400 {errBody = "error"} 
+
+editPassword :: AuthResult JWTData -> Text -> AppM NoContent
+editPassword (Authenticated user) password = do
+  let getByUsername = getBy . UniqueUsername . jwtUsername $ user
+      hashed        = hashMD5 password
+  pool  <- asks connectionPool
+  mUser <- liftIO $ runMongoDBPoolDef getByUsername pool
+  case mUser of
+    Nothing              -> throwError $ err401 {errBody = "error"} 
+    Just (Entity id user) -> do
+      let edit = update id [UserPassword =. hashed]
+      liftIO $ runMongoDBPoolDef edit pool
+      return NoContent
+editPassword _ _ = throwError $ err400 {errBody = "error"} 
+
+
+editEmail :: AuthResult JWTData -> Text -> AppM NoContent
+editEmail (Authenticated user) email = do
+  exists <- emailExists email
+  if exists then throwError $ err400 {errBody = "Such email already used"} 
+  else do
+    let getByUsername = getBy . UniqueUsername . jwtUsername $ user
+    pool  <- asks connectionPool
+    mUser <- liftIO $ runMongoDBPoolDef getByUsername pool
+    case mUser of
+      Nothing              -> throwError $ err401 {errBody = "error"} 
+      Just (Entity id user) -> do
+        let edit = update id [UserEmail =. email]
+        liftIO $ runMongoDBPoolDef edit pool
+        return NoContent
+editEmail _ _ = throwError $ err400 {errBody = "error"} 
+
+editAvatar :: AuthResult JWTData -> AppM Text
+editAvatar (Authenticated user) = do
+  let getByUsername = getBy . UniqueUsername . jwtUsername $ user
+  pool  <- asks connectionPool
+  mUser <- liftIO $ runMongoDBPoolDef getByUsername pool
+  case mUser of
+    Nothing              -> throwError $ err401 {errBody = "error"} 
+    Just (Entity id user) -> error "no editAvatar implementation"
+editAvatar _ = throwError $ err400 {errBody = "error"} 
+
+
+
+editUserInfo :: AuthResult JWTData -> UserInfo -> AppM NoContent
+editUserInfo (Authenticated user) UserInfo{..} = do
+  let getByUsername = getBy . UniqueUsername . jwtUsername $ user
+  pool  <- asks connectionPool
+  mUser <- liftIO $ runMongoDBPoolDef getByUsername pool
+  case mUser of
+    Nothing              -> throwError $ err401 {errBody = "error"} 
+    Just (Entity id user) -> do
+      let edit = update id [ UserBirthday =. infoBirthday
+                           , UserFirstName =. infoFirstName
+                           , UserSecondName =. infoSecondName
+                           , UserGender =. infoGender]
+      liftIO $ runMongoDBPoolDef edit pool
+      return NoContent
+editUserInfo _ _ = throwError $ err400 {errBody = "error"} 
