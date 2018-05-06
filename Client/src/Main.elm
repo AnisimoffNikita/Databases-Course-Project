@@ -25,6 +25,7 @@ type Page
     = Home 
     | Login Login.Model
     | Register Register.Model
+    | Dashboard Dashboard.Model
 
 type alias Model =
     { session : Session
@@ -55,7 +56,7 @@ init val location =
     in
         ( model
         , Cmd.batch 
-            [ Cmd.map NavbarMsg headerCmd 
+            [ Cmd.map HeaderMsg headerCmd 
             , cmds
             ] 
         )
@@ -70,7 +71,7 @@ view model =
                     [ class "jumbotron"
                     , class "jumbotron-fluid"] 
                     [ Grid.container [] 
-                        [ h1  [] [text "Quizes"]
+                        [ h1  [] [text "Quizzes"]
                         , p [] [text "Make it. Pass it. Share it."]]
 
                     ]
@@ -78,9 +79,11 @@ view model =
                  Html.map LoginMsg Login.view
             Register regModel -> 
                  Html.map RegisterMsg Register.view
+            Dashboard subModel -> 
+                 Html.map DashboardMsg <| Dashboard.view subModel
     in
     div [] 
-        [ Html.map NavbarMsg (Header.view model.headerModel ) 
+        [ Html.map HeaderMsg (Header.view model.session model.headerModel ) 
         , content
         ]
 
@@ -90,9 +93,10 @@ view model =
 type Msg
     = OnLocationChange Location
     | NavigateTo String
-    | NavbarMsg Header.Msg
+    | HeaderMsg Header.Msg
     | LoginMsg Login.Msg
     | RegisterMsg Register.Msg
+    | DashboardMsg Dashboard.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -107,12 +111,36 @@ updatePage page msg model =
                 newRoute = Router.parseLocation location
             in
             setRoute newRoute model
-        (NavbarMsg subMsg, _) ->
+        (HeaderMsg Header.Logout, _) ->
+            let
+                session = {user = Nothing}
+            in
+            ( {model | session = session}
+            , Cmd.batch 
+                [ Navigation.modifyUrl <| Router.routeToString Router.Home
+                , Ports.setStorage session
+                ]
+            )
+        (HeaderMsg subMsg, _) ->
             let
                 ( updated, newCmd ) =
                     Header.update subMsg model.headerModel
             in
-            ( {model | headerModel = updated}, Cmd.map NavbarMsg newCmd )
+            ( {model | headerModel = updated}, Cmd.map HeaderMsg newCmd )
+
+        (LoginMsg (Login.TokensRecieved user (RemoteData.Success tokens)), Login subModel) ->
+            let 
+                session = Session <| Just
+                    { username = user.username
+                    , tokens = tokens}
+            in
+            ( {model | session = session }
+            , Cmd.batch 
+                [ Navigation.modifyUrl <| Router.routeToString Router.Home
+                , Ports.setStorage session
+                ]
+            )
+
         (LoginMsg subMsg, Login subModel) ->
             let
                 ( updated, newCmd ) =
@@ -124,10 +152,14 @@ updatePage page msg model =
             let 
                 session = Session <| Just
                     { username = user.username
-                    , avatar = "todo"
                     , tokens = tokens}
             in
-            ( {model | session = session }, Ports.setStorage session)
+            ( {model | session = session }
+            , Cmd.batch 
+                [ Navigation.modifyUrl <| Router.routeToString Router.Home
+                , Ports.setStorage session
+                ]
+            )
 
         (RegisterMsg subMsg, Register subModel) ->
             let
@@ -136,6 +168,13 @@ updatePage page msg model =
             in
             ( {model | page = Register updated}, Cmd.map RegisterMsg newCmd)
 
+        (DashboardMsg subMsg, Dashboard subModel) ->
+            let
+                ( updated, newCmd ) =
+                    Dashboard.update subMsg subModel
+            in
+            ( {model | page = Dashboard updated}, Cmd.map DashboardMsg newCmd)
+
         (_, _) -> 
             ( model, Cmd.none ) 
 
@@ -143,32 +182,53 @@ updatePage page msg model =
 
 setRoute : Route -> Model -> (Model, Cmd Msg)
 setRoute route model = 
+    case model.session.user of 
+        Just user -> sessionOk route model user
+        Nothing -> sessionBad route model
+
+
+sessionOk : Route -> Model -> User -> (Model, Cmd Msg)
+sessionOk route model user =
     case route of 
         Router.Home -> 
             ({model | page = Home}, Cmd.none)
         Router.Login -> 
+            (model, Navigation.modifyUrl <| Router.routeToString Router.Dashboard)
+        Router.Register -> 
+            (model, Navigation.modifyUrl <| Router.routeToString Router.Dashboard)
+        Router.Dashboard -> 
+            let 
+                (subModel, msg) = Dashboard.init user.tokens
+            in
+            ({model | page = Dashboard subModel}, Cmd.map DashboardMsg msg)
+        Router.NotFoundRoute -> 
+            (model, Cmd.none)
+
+sessionBad : Route -> Model -> (Model, Cmd Msg)
+sessionBad route model =
+    case route of 
+        Router.Home -> 
+            ({model | page = Home}, Cmd.none)
+        Router.Login ->  
             let 
                 (subModel, msg) = Login.init 
             in
             ({model | page = Login subModel}, Cmd.map LoginMsg msg)
-        Router.Register -> 
+        Router.Register ->  
             let 
                 (subModel, msg) = Register.init 
             in
             ({model | page = Register subModel}, Cmd.map RegisterMsg msg)
         Router.Dashboard -> 
-            (model, Cmd.none)
+            (model, Navigation.modifyUrl <| Router.routeToString Router.Login)
         Router.NotFoundRoute -> 
             (model, Cmd.none)
-
-
-
 
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.batch
-        [ Sub.map NavbarMsg (Header.subscriptions model.headerModel)
+        [ Sub.map HeaderMsg (Header.subscriptions model.headerModel)
         ]
 
 

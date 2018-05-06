@@ -140,11 +140,29 @@ encodeProfile x =
         , ( "profileGender", (Maybe.withDefault Json.Encode.null << Maybe.map encodeGender) x.profileGender )
         ]
 
-List (Profile)
+type alias UserInfo =
+    { infoFirstName : Maybe (String)
+    , infoSecondName : Maybe (String)
+    , infoBirthday : Maybe (Date)
+    , infoGender : Maybe (Gender)
+    }
 
-(list decodeProfile)
+decodeUserInfo : Decoder UserInfo
+decodeUserInfo =
+    decode UserInfo
+        |> required "infoFirstName" (nullable string)
+        |> required "infoSecondName" (nullable string)
+        |> required "infoBirthday" (nullable decodeDate)
+        |> required "infoGender" (nullable decodeGender)
 
-(Json.Encode.list << List.map encodeProfile)
+encodeUserInfo : UserInfo -> Json.Encode.Value
+encodeUserInfo x =
+    Json.Encode.object
+        [ ( "infoFirstName", (Maybe.withDefault Json.Encode.null << Maybe.map Json.Encode.string) x.infoFirstName )
+        , ( "infoSecondName", (Maybe.withDefault Json.Encode.null << Maybe.map Json.Encode.string) x.infoSecondName )
+        , ( "infoBirthday", (Maybe.withDefault Json.Encode.null << Maybe.map (Json.Encode.string << toUtcIsoString)) x.infoBirthday )
+        , ( "infoGender", (Maybe.withDefault Json.Encode.null << Maybe.map encodeGender) x.infoGender )
+        ]
 
 postUserLogin : Login -> Http.Request (Tokens)
 postUserLogin body =
@@ -169,8 +187,8 @@ postUserLogin body =
             False
         }
 
-postUserNew : UserRegister -> Http.Request (Tokens)
-postUserNew body =
+postUserRegister : UserRegister -> Http.Request (Tokens)
+postUserRegister body =
     Http.request
         { method =
             "POST"
@@ -180,7 +198,7 @@ postUserNew body =
             String.join "/"
                 [ ""
                 , "user"
-                , "new"
+                , "register"
                 ]
         , body =
             Http.jsonBody (encodeUserRegister body)
@@ -238,8 +256,8 @@ postUserProfile =
             False
         }
 
-postUserList : Http.Request (List (Profile))
-postUserList =
+postUserEditUsername : String -> Http.Request (NoContent)
+postUserEditUsername body =
     Http.request
         { method =
             "POST"
@@ -249,12 +267,133 @@ postUserList =
             String.join "/"
                 [ ""
                 , "user"
-                , "list"
+                , "edit"
+                , "username"
+                ]
+        , body =
+            Http.jsonBody (Json.Encode.string body)
+        , expect =
+            Http.expectStringResponse
+                (\{ body } ->
+                    if String.isEmpty body then
+                        Ok NoContent
+                    else
+                        Err "Expected the response body to be empty"
+                )
+        , timeout =
+            Nothing
+        , withCredentials =
+            False
+        }
+
+postUserEditPassword : String -> Http.Request (NoContent)
+postUserEditPassword body =
+    Http.request
+        { method =
+            "POST"
+        , headers =
+            []
+        , url =
+            String.join "/"
+                [ ""
+                , "user"
+                , "edit"
+                , "password"
+                ]
+        , body =
+            Http.jsonBody (Json.Encode.string body)
+        , expect =
+            Http.expectStringResponse
+                (\{ body } ->
+                    if String.isEmpty body then
+                        Ok NoContent
+                    else
+                        Err "Expected the response body to be empty"
+                )
+        , timeout =
+            Nothing
+        , withCredentials =
+            False
+        }
+
+postUserEditEmail : String -> Http.Request (NoContent)
+postUserEditEmail body =
+    Http.request
+        { method =
+            "POST"
+        , headers =
+            []
+        , url =
+            String.join "/"
+                [ ""
+                , "user"
+                , "edit"
+                , "email"
+                ]
+        , body =
+            Http.jsonBody (Json.Encode.string body)
+        , expect =
+            Http.expectStringResponse
+                (\{ body } ->
+                    if String.isEmpty body then
+                        Ok NoContent
+                    else
+                        Err "Expected the response body to be empty"
+                )
+        , timeout =
+            Nothing
+        , withCredentials =
+            False
+        }
+
+postUserEditAvatar : Http.Request (String)
+postUserEditAvatar =
+    Http.request
+        { method =
+            "POST"
+        , headers =
+            []
+        , url =
+            String.join "/"
+                [ ""
+                , "user"
+                , "edit"
+                , "avatar"
                 ]
         , body =
             Http.emptyBody
         , expect =
-            Http.expectJson (list decodeProfile)
+            Http.expectJson string
+        , timeout =
+            Nothing
+        , withCredentials =
+            False
+        }
+
+postUserEditProfile : UserInfo -> Http.Request (NoContent)
+postUserEditProfile body =
+    Http.request
+        { method =
+            "POST"
+        , headers =
+            []
+        , url =
+            String.join "/"
+                [ ""
+                , "user"
+                , "edit"
+                , "profile"
+                ]
+        , body =
+            Http.jsonBody (encodeUserInfo body)
+        , expect =
+            Http.expectStringResponse
+                (\{ body } ->
+                    if String.isEmpty body then
+                        Ok NoContent
+                    else
+                        Err "Expected the response body to be empty"
+                )
         , timeout =
             Nothing
         , withCredentials =

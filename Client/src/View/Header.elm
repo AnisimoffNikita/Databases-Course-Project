@@ -9,6 +9,7 @@ import Html.Events.Extra exposing (onClickPreventDefault)
 import Bootstrap.CDN as CDN
 import Bootstrap.Grid as Grid
 import Bootstrap.Form as Form
+import Bootstrap.Form.InputGroup as InputGroup
 import Bootstrap.Form.Input as Input
 import Bootstrap.Button as Button
 import Bootstrap.Utilities.Spacing as Spacing
@@ -40,6 +41,8 @@ init =
 type Msg
     = NavbarMsg Navbar.State
     | NavigateTo String
+    | Logout
+    | Search
 
 
 -- You need to handle navbar messages in your update function to step the navbar state forward
@@ -51,6 +54,10 @@ update msg model =
             ( { model | navbarState = state }, Cmd.none )
         NavigateTo url ->
             ( model, Navigation.newUrl url )
+        Logout ->
+            ( model, Cmd.none)
+        Search ->
+            ( model, Cmd.none)
 
 
 
@@ -59,8 +66,62 @@ subscriptions model =
     Navbar.subscriptions model.navbarState NavbarMsg
 
 
-view : Model -> Html Msg
-view model = 
+view : Session -> Model -> Html Msg
+view session model = 
+    let 
+        controls = 
+            case session.user of 
+                Nothing -> 
+                    Navbar.customItems
+                        [ Navbar.formItem [onSubmit <| NavigateTo <| routeToString Router.Register]
+                            [ Button.button
+                                [ Button.primary
+                                , Button.attrs 
+                                    [ Spacing.ml2Sm
+                                    ] 
+                                ]
+                                [ text "Register"]
+                            ]
+                        , Navbar.formItem [onSubmit <| NavigateTo <| routeToString Router.Login]
+                            [ Button.button 
+                                [ Button.outlinePrimary
+                                , Button.attrs 
+                                    [ Spacing.ml2Sm
+                                    ] 
+                                ]
+                                [ text "Login"]
+                            ]
+                        ]
+                Just user -> 
+                    Navbar.customItems
+                        [ Navbar.formItem [onSubmit Search]
+                            [ InputGroup.config
+                                ( InputGroup.text [ Input.placeholder "Search for" ] )
+                                |> InputGroup.successors
+                                    [ InputGroup.button [ Button.primary ] [ text "Search"] ]
+                                |> InputGroup.view
+                            ] 
+                        , Navbar.formItem [onSubmit <| NavigateTo <| routeToString Router.Dashboard]
+                            [ Button.button
+                                [ Button.primary
+                                , Button.attrs 
+                                    [ Spacing.ml2Sm
+                                    ] 
+                                ]
+                                [ text "Dashboard"]
+                            ]
+                        , Navbar.formItem [onSubmit Logout]
+                            [ Button.button 
+                                [ Button.outlinePrimary
+                                , Button.attrs 
+                                    [ Spacing.ml2Sm
+                                    ] 
+                                ]
+                                [ text "Log out"]
+                            ]
+                        ]
+
+    in
     div []
     [ Navbar.config NavbarMsg
         |> Navbar.withAnimation
@@ -69,27 +130,7 @@ view model =
         |> Navbar.attrs [class "bg-white"]
         |> Navbar.brand                     -- Add logo to your brand with a little styling to align nicely
             [ href "/#" ] [text " Quizzy"]
-        |> Navbar.customItems
-            [ Navbar.formItem [onSubmit <| NavigateTo <| routeToString Router.Register]
-                [ Button.button
-                    [ Button.primary
-                    , Button.attrs 
-                        [ Spacing.ml2Sm
-                        ] 
-                    ]
-                    [ text "Register"]
-                ]
-            , Navbar.textItem [ Spacing.ml2Lg, class "muted" ] [ text "or"]
-            , Navbar.formItem [onSubmit <| NavigateTo <| routeToString Router.Login]
-                [ Button.button 
-                    [ Button.outlinePrimary
-                    , Button.attrs 
-                        [ Spacing.ml2Sm
-                        ] 
-                    ]
-                    [ text "Login"]
-                ]
-            ]
+        |> controls
         |> Navbar.view model.navbarState
     ]
     

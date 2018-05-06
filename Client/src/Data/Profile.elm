@@ -52,8 +52,8 @@ decodeProfile =
         |> required "username" Decode.string
         |> required "email" Decode.string
         |> required "avatar" Decode.string
-        |> required "firstName" (Decode.nullable Decode.string)
-        |> required "secondName" (Decode.nullable Decode.string)
+        |> required "firstname" (Decode.nullable Decode.string)
+        |> required "secondname" (Decode.nullable Decode.string)
         |> required "birthday" (Decode.nullable Decode.date)
         |> required "gender" (Decode.nullable decodeGender)
 
