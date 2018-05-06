@@ -4,4 +4,4 @@ import App
 import ElmGen
 
 main :: IO ()
-main = elmGen
+main = startApp

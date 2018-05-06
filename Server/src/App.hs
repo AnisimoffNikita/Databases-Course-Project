@@ -24,8 +24,9 @@ nt s x = runReaderT x s
 
 app :: Context AppContextType -> HandlerContext -> Application
 app context s =
-  serveWithContext apiProxy context $
-                   hoistServerWithContext apiProxy contextProxy (nt s) handler
+  serveWithContext wholeAPI context $
+                   hoistServerWithContext apiProxy contextProxy (nt s) handler :<|> staticHandler
+
 
 startApp :: IO ()
 startApp = do
@@ -47,5 +48,5 @@ corsWithContentType :: Middleware
 corsWithContentType = cors (const $ Just policy)
     where
       policy = simpleCorsResourcePolicy
-        { corsRequestHeaders = ["Content-Type"]
+        { corsRequestHeaders = ["Content-Type", "Authorization"]
         }

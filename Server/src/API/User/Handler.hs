@@ -153,7 +153,7 @@ editPassword _ _ = throwError $ err400 {errBody = "error"}
 editEmail :: AuthResult JWTData -> Text -> AppM NoContent
 editEmail (Authenticated user) email = do
   exists <- emailExists email
-  if exists then throwError $ err400 {errBody = "Such email already used"} 
+  if exists then throwError $ err400 {errBody = "Such email is already in use"} 
   else do
     let getByUsername = getBy . UniqueUsername . jwtUsername $ user
     pool  <- asks connectionPool
