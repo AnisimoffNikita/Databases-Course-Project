@@ -1,15 +1,17 @@
 module Data.Profile exposing (..)
 
-import Json.Decode as Decode
-import Json.Decode.Pipeline exposing (..)
-import Json.Encode as Encode
-import Json.Decode.Extra as Decode
 import Date exposing (Date)
 import Date.Extra exposing (toUtcIsoString)
+import Json.Decode as Decode
+import Json.Decode.Extra as Decode
+import Json.Decode.Pipeline exposing (..)
+import Json.Encode as Encode
+
 
 type Gender
     = Male
     | Female
+
 
 decodeGender : Decode.Decoder Gender
 decodeGender =
@@ -27,6 +29,7 @@ decodeGender =
                         Decode.fail "Constructor not matched"
             )
 
+
 encodeGender : Gender -> Encode.Value
 encodeGender x =
     case x of
@@ -36,15 +39,17 @@ encodeGender x =
         Female ->
             Encode.string "Female"
 
+
 type alias Profile =
     { username : String
     , email : String
     , avatar : String
-    , firstName : Maybe (String)
-    , secondName : Maybe (String)
-    , birthday : Maybe (Date)
-    , gender : Maybe (Gender)
+    , firstName : Maybe String
+    , secondName : Maybe String
+    , birthday : Maybe Date
+    , gender : Maybe Gender
     }
+
 
 decodeProfile : Decode.Decoder Profile
 decodeProfile =
@@ -56,6 +61,7 @@ decodeProfile =
         |> required "secondname" (Decode.nullable Decode.string)
         |> required "birthday" (Decode.nullable Decode.date)
         |> required "gender" (Decode.nullable decodeGender)
+
 
 encodeProfile : Profile -> Encode.Value
 encodeProfile x =

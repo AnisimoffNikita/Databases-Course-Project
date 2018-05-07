@@ -1,24 +1,28 @@
 module Api exposing (..)
 
+import Http
 import Json.Decode exposing (..)
 import Json.Decode.Pipeline exposing (..)
 import Json.Encode
-import Http
 import String
 
 
-type NoContent = NoContent
+type NoContent
+    = NoContent
+
 
 type alias Login =
     { loginUsername : String
     , loginPassword : String
     }
 
+
 decodeLogin : Decoder Login
 decodeLogin =
     decode Login
         |> required "loginUsername" string
         |> required "loginPassword" string
+
 
 encodeLogin : Login -> Json.Encode.Value
 encodeLogin x =
@@ -27,11 +31,13 @@ encodeLogin x =
         , ( "loginPassword", Json.Encode.string x.loginPassword )
         ]
 
+
 type alias UserRegister =
     { registerUsername : String
     , registerEmail : String
     , registerPassword : String
     }
+
 
 decodeUserRegister : Decoder UserRegister
 decodeUserRegister =
@@ -39,6 +45,7 @@ decodeUserRegister =
         |> required "registerUsername" string
         |> required "registerEmail" string
         |> required "registerPassword" string
+
 
 encodeUserRegister : UserRegister -> Json.Encode.Value
 encodeUserRegister x =
@@ -48,14 +55,17 @@ encodeUserRegister x =
         , ( "registerPassword", Json.Encode.string x.registerPassword )
         ]
 
+
 type alias Tokens =
     { tokensJwt : String
     }
+
 
 decodeTokens : Decoder Tokens
 decodeTokens =
     decode Tokens
         |> required "tokensJwt" string
+
 
 encodeTokens : Tokens -> Json.Encode.Value
 encodeTokens x =
@@ -63,14 +73,17 @@ encodeTokens x =
         [ ( "tokensJwt", Json.Encode.string x.tokensJwt )
         ]
 
+
 type alias JWTData =
     { jwtUsername : String
     }
+
 
 decodeJWTData : Decoder JWTData
 decodeJWTData =
     decode JWTData
         |> required "jwtUsername" string
+
 
 encodeJWTData : JWTData -> Json.Encode.Value
 encodeJWTData x =
@@ -78,9 +91,11 @@ encodeJWTData x =
         [ ( "jwtUsername", Json.Encode.string x.jwtUsername )
         ]
 
+
 type Gender
     = Male
     | Female
+
 
 decodeGender : Decoder Gender
 decodeGender =
@@ -98,6 +113,7 @@ decodeGender =
                         fail "Constructor not matched"
             )
 
+
 encodeGender : Gender -> Json.Encode.Value
 encodeGender x =
     case x of
@@ -107,15 +123,17 @@ encodeGender x =
         Female ->
             Json.Encode.string "Female"
 
+
 type alias Profile =
     { profileUsername : String
     , profileEmail : String
     , profileAvatar : String
-    , profileFirstName : Maybe (String)
-    , profileSecondName : Maybe (String)
-    , profileBirthday : Maybe (Date)
-    , profileGender : Maybe (Gender)
+    , profileFirstName : Maybe String
+    , profileSecondName : Maybe String
+    , profileBirthday : Maybe Date
+    , profileGender : Maybe Gender
     }
+
 
 decodeProfile : Decoder Profile
 decodeProfile =
@@ -127,6 +145,7 @@ decodeProfile =
         |> required "profileSecondName" (nullable string)
         |> required "profileBirthday" (nullable decodeDate)
         |> required "profileGender" (nullable decodeGender)
+
 
 encodeProfile : Profile -> Json.Encode.Value
 encodeProfile x =
@@ -140,12 +159,14 @@ encodeProfile x =
         , ( "profileGender", (Maybe.withDefault Json.Encode.null << Maybe.map encodeGender) x.profileGender )
         ]
 
+
 type alias UserInfo =
-    { infoFirstName : Maybe (String)
-    , infoSecondName : Maybe (String)
-    , infoBirthday : Maybe (Date)
-    , infoGender : Maybe (Gender)
+    { infoFirstName : Maybe String
+    , infoSecondName : Maybe String
+    , infoBirthday : Maybe Date
+    , infoGender : Maybe Gender
     }
+
 
 decodeUserInfo : Decoder UserInfo
 decodeUserInfo =
@@ -154,6 +175,7 @@ decodeUserInfo =
         |> required "infoSecondName" (nullable string)
         |> required "infoBirthday" (nullable decodeDate)
         |> required "infoGender" (nullable decodeGender)
+
 
 encodeUserInfo : UserInfo -> Json.Encode.Value
 encodeUserInfo x =
@@ -164,7 +186,8 @@ encodeUserInfo x =
         , ( "infoGender", (Maybe.withDefault Json.Encode.null << Maybe.map encodeGender) x.infoGender )
         ]
 
-postUserLogin : Login -> Http.Request (Tokens)
+
+postUserLogin : Login -> Http.Request Tokens
 postUserLogin body =
     Http.request
         { method =
@@ -187,7 +210,8 @@ postUserLogin body =
             False
         }
 
-postUserRegister : UserRegister -> Http.Request (Tokens)
+
+postUserRegister : UserRegister -> Http.Request Tokens
 postUserRegister body =
     Http.request
         { method =
@@ -210,7 +234,8 @@ postUserRegister body =
             False
         }
 
-postUserUsername : Http.Request (String)
+
+postUserUsername : Http.Request String
 postUserUsername =
     Http.request
         { method =
@@ -233,7 +258,8 @@ postUserUsername =
             False
         }
 
-postUserProfile : Http.Request (Profile)
+
+postUserProfile : Http.Request Profile
 postUserProfile =
     Http.request
         { method =
@@ -256,7 +282,8 @@ postUserProfile =
             False
         }
 
-postUserEditUsername : String -> Http.Request (NoContent)
+
+postUserEditUsername : String -> Http.Request NoContent
 postUserEditUsername body =
     Http.request
         { method =
@@ -286,7 +313,8 @@ postUserEditUsername body =
             False
         }
 
-postUserEditPassword : String -> Http.Request (NoContent)
+
+postUserEditPassword : String -> Http.Request NoContent
 postUserEditPassword body =
     Http.request
         { method =
@@ -316,7 +344,8 @@ postUserEditPassword body =
             False
         }
 
-postUserEditEmail : String -> Http.Request (NoContent)
+
+postUserEditEmail : String -> Http.Request NoContent
 postUserEditEmail body =
     Http.request
         { method =
@@ -346,7 +375,8 @@ postUserEditEmail body =
             False
         }
 
-postUserEditAvatar : Http.Request (String)
+
+postUserEditAvatar : Http.Request String
 postUserEditAvatar =
     Http.request
         { method =
@@ -370,7 +400,8 @@ postUserEditAvatar =
             False
         }
 
-postUserEditProfile : UserInfo -> Http.Request (NoContent)
+
+postUserEditProfile : UserInfo -> Http.Request NoContent
 postUserEditProfile body =
     Http.request
         { method =

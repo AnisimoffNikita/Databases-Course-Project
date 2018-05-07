@@ -1,23 +1,22 @@
 module Page.Register exposing (..)
 
-import Html exposing (Html, text, h1)
-import Html.Attributes exposing (for, class, href)
-import Html.Events exposing (onClick, onSubmit, onInput)
-import Http exposing (..)
-import Router exposing (routeToString)
-import Navigation
-
-import Bootstrap.Grid as Grid
-import Bootstrap.Grid.Row as Row
-import Bootstrap.Grid.Col as Col
+import Bootstrap.Button as Button
 import Bootstrap.Form as Form
 import Bootstrap.Form.Input as Input
-import Bootstrap.Button as Button
-import RemoteData exposing (WebData)
-import Json.Decode exposing (Decoder,string)
+import Bootstrap.Grid as Grid
+import Bootstrap.Grid.Col as Col
+import Bootstrap.Grid.Row as Row
+import Data.Tokens as Tokens exposing (..)
+import Html exposing (Html, h1, text)
+import Html.Attributes exposing (class, for, href)
+import Html.Events exposing (onClick, onInput, onSubmit)
+import Http exposing (..)
+import Json.Decode exposing (Decoder, string)
 import Json.Decode.Pipeline exposing (decode, required)
 import Json.Encode as Encode exposing (Value, object)
-import Data.Tokens as Tokens exposing (..)
+import Navigation
+import RemoteData exposing (WebData)
+import Router exposing (routeToString)
 
 
 type alias UserRegister =
@@ -25,6 +24,7 @@ type alias UserRegister =
     , email : String
     , password : String
     }
+
 
 encodeUserRegister : UserRegister -> Value
 encodeUserRegister x =
@@ -34,17 +34,19 @@ encodeUserRegister x =
         , ( "password", Encode.string x.password )
         ]
 
-type alias Model = 
-    { username : String 
+
+type alias Model =
+    { username : String
     , email : String
     , password : String
     , tokens : WebData Tokens
     }
 
 
-init : (Model, Cmd Msg)
+init : ( Model, Cmd Msg )
 init =
-        (Model "" "" "" RemoteData.NotAsked, Cmd.none)
+    ( Model "" "" "" RemoteData.NotAsked, Cmd.none )
+
 
 type Msg
     = Register
@@ -52,29 +54,35 @@ type Msg
     | TokensRecieved UserRegister (WebData Tokens)
     | Username String
     | Email String
-    | Password String 
+    | Password String
 
-update : Msg -> Model -> (Model, Cmd Msg)
+
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Register ->
             ( model, createPostCommand model )
+
         Login ->
             ( model, Navigation.newUrl <| routeToString Router.Login )
+
         TokensRecieved user response ->
-            ( {model | tokens = response}, Cmd.none)
+            ( { model | tokens = response }, Cmd.none )
+
         Username username ->
-            ( {model | username = username}, Cmd.none)
+            ( { model | username = username }, Cmd.none )
+
         Email email ->
-            ( {model | email = email}, Cmd.none)
+            ( { model | email = email }, Cmd.none )
+
         Password password ->
-            ( {model | password = password}, Cmd.none)
+            ( { model | password = password }, Cmd.none )
 
 
 createPostCommand : Model -> Cmd Msg
 createPostCommand model =
-    let 
-        body = 
+    let
+        body =
             { username = model.username
             , email = model.email
             , password = model.password
@@ -83,7 +91,6 @@ createPostCommand model =
     postUserNew body
         |> RemoteData.sendRequest
         |> Cmd.map (TokensRecieved body)
-
 
 
 postUserNew : UserRegister -> Http.Request Tokens
@@ -104,45 +111,48 @@ postUserNew body =
             False
         }
 
+
 view : Html Msg
-view = 
-    let 
-        form = 
-        Form.form [onSubmit Register]
-            [ Form.group []
-                [ Form.label [for "myemail"] [ text "Email address"]
-                , Input.email [ Input.id "myemail", Input.attrs [onInput Email] ]
+view =
+    let
+        form =
+            Form.form [ onSubmit Register ]
+                [ Form.group []
+                    [ Form.label [ for "myemail" ] [ text "Email address" ]
+                    , Input.email [ Input.id "myemail", Input.attrs [ onInput Email ] ]
+                    ]
+                , Form.group []
+                    [ Form.label [ for "myusername" ] [ text "Username" ]
+                    , Input.text [ Input.id "myusername", Input.attrs [ onInput Username ] ]
+                    ]
+                , Form.group []
+                    [ Form.label [ for "mypwd" ] [ text "Password" ]
+                    , Input.password [ Input.id "mypwd", Input.attrs [ onInput Password ] ]
+                    ]
+                , Button.button
+                    [ Button.primary
+                    ]
+                    [ text "Submit" ]
                 ]
-            , Form.group []
-                [ Form.label [for "myusername"] [ text "Username"]
-                , Input.text [ Input.id "myusername", Input.attrs [onInput Username] ]
-                ]
-            , Form.group []
-                [ Form.label [for "mypwd"] [ text "Password"]
-                , Input.password [ Input.id "mypwd", Input.attrs [onInput Password] ]
-                ]
-            , Button.button 
-                [ Button.primary
-                ] 
-                [ text "Submit" ]
-            ]
     in
-    Grid.container 
+    Grid.container
         [ class "Absolute-Center"
         , class "is-Responsive"
         ]
-        [ Grid.row 
+        [ Grid.row
             [ Row.middleXs
             , Row.centerXs
             ]
-            [ Grid.col 
+            [ Grid.col
                 [ Col.md3
                 ]
-                [ h1 [] [text "Register"]
-                , Button.linkButton 
+                [ h1 [] [ text "Register" ]
+                , Button.linkButton
                     [ Button.roleLink
-                    , Button.attrs [href <| routeToString Router.Login ]] 
-                    [text "Have account?"]
-                , form ] 
+                    , Button.attrs [ href <| routeToString Router.Login ]
+                    ]
+                    [ text "Have account?" ]
+                , form
+                ]
             ]
         ]

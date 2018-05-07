@@ -1,10 +1,10 @@
 module Router exposing (..)
 
-import Navigation exposing (Location)
-import UrlParser exposing (..)
 import Html exposing (Attribute)
 import Html.Attributes as Attr
-import UrlParser exposing ((</>))
+import Navigation exposing (Location)
+import UrlParser exposing (..)
+
 
 type Route
     = Home
@@ -27,7 +27,7 @@ matchers =
 
 parseLocation : Location -> Route
 parseLocation location =
-    case (parseHash matchers location) of
+    case parseHash matchers location of
         Just route ->
             route
 
@@ -42,16 +42,22 @@ routeToString page =
             case page of
                 Home ->
                     []
+
                 Dashboard ->
-                    ["dashboard"]
+                    [ "dashboard" ]
+
                 Login ->
-                    ["login"]
+                    [ "login" ]
+
                 Register ->
-                    ["register"]
+                    [ "register" ]
+
                 NotFoundRoute ->
-                    ["404"]
+                    [ "404" ]
     in
     "/#/" ++ String.join "/" pieces
+
+
 
 -- href_ : Route -> Attribute msg
 -- href_ route =
