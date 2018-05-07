@@ -128,7 +128,7 @@ viewSuccess : Model -> Profile.Profile -> Html Msg
 viewSuccess model profile = 
     Grid.container []
         [ Grid.row [ Row.attrs [Spacing.mt2, class "justify-content-center"] ]
-            [ Grid.col [Col.md7] 
+            [ Grid.col [Col.md10] 
                 (viewProfile model profile)
             ]
         ]
@@ -138,129 +138,50 @@ viewProfile : Model -> Profile.Profile -> List (Html Msg)
 viewProfile model profile = 
     let 
 
-        usernameView =
-            Grid.container []
+        fieldView label value msg = 
+            ( Grid.container []
                 [ Grid.row [ Row.attrs [class "justify-content-center"] ]
                     [ Grid.col [ Col.md6, Col.offsetMd3, Col.attrs [Spacing.my1] ] 
-                        [ span [ class "text-secondary" ] [text "Username"] ]
+                        [ span [ class "text-secondary" ] [text label] ]
                     , Grid.col [Col.md2, Col.offsetMd1 ] 
                         [ Button.button
                             [ Button.roleLink
                             , Button.small
-                            , Button.attrs [ onClick <| EditUser Username ]
+                            , Button.attrs [ onClick <| EditUser msg ]
                             ]
                             [ img [src "/icons/pencil-3x.png", style [("height", "1em")]] []]
                         ]
                     ]
                 , Grid.row [] 
                     [ Grid.col [] 
-                        [ span [] [text profile.username] ]
+                        [ span [] [text value] ]
                     ]
                 ]
-
-        usernameEditView =
-            Grid.container []
+            , Grid.container []
                 [ Grid.row [ ]
                     [ Grid.col [ Col.attrs [ Spacing.my1 ] ] 
-                        [ span [ class "text-secondary" ] [text "Username"] ]
+                        [ span [ class "text-secondary" ] [text label] ]
                     ]
-                , Grid.row [ ]
-                    [ Grid.col [] 
-                        [ Input.text [ Input.value profile.username]
-                        ]
-                    ]
-                , Grid.row [ ]
-                    [ Grid.col [] 
-                        [ Button.button
-                            [ Button.primary
-                            , Button.attrs [Spacing.mt2]
-                            ]
-                            [ text "Ok" ]
-                        ]
+                , Grid.row []
+                    [ Grid.col []
+                        [ InputGroup.config
+                            ( InputGroup.text [ Input.value value ] )
+                            |> InputGroup.successors
+                                [ InputGroup.button [ Button.primary ] [ text "Ok"] ]
+                            |> InputGroup.view
+                        ] 
                     ]
                 ]
+            )
 
-        emailView =
-            Grid.container []
-                [ Grid.row [ ]
-                    [ Grid.col [ Col.md6, Col.offsetMd3, Col.attrs [Spacing.my1] ] 
-                        [ span [ class "text-secondary" ] [text "Email"] ]
-                    , Grid.col [Col.md2, Col.offsetMd1 ] 
-                        [ Button.button
-                            [ Button.roleLink
-                            , Button.small
-                            , Button.attrs [ onClick <| EditUser Email ]
-                            ]
-                            [ img [src "/icons/pencil-3x.png", style [("height", "1em")]] []]
-                        ]
-                    ]
-                , Grid.row [] 
-                    [ Grid.col [] 
-                        [ span [] [text profile.email] ]
-                    ]
-                ]
+        (usernameView, usernameEditView) =
+            fieldView "Username" profile.username Username
 
-        emailEditView =
-            Grid.container []
-                [ Grid.row [ ]
-                    [ Grid.col [ Col.attrs [ Spacing.my1 ] ] 
-                        [ span [ class "text-secondary" ] [text "Email"] ]
-                    ]
-                , Grid.row [ ]
-                    [ Grid.col [] 
-                        [ Input.text [ Input.value profile.email]
-                        ]
-                    ]
-                , Grid.row [ ]
-                    [ Grid.col [] 
-                        [ Button.button
-                            [ Button.primary
-                            , Button.attrs [Spacing.mt2]
-                            ]
-                            [ text "Ok" ]
-                        ]
-                    ]
-                ]
+        (emailView, emailEditView) = 
+            fieldView "Email" profile.email Email
 
-
-        passwordView =
-            Grid.container []
-                [ Grid.row [ ]
-                    [ Grid.col [ Col.md6, Col.offsetMd3, Col.attrs [Spacing.my1] ] 
-                        [ span [ class "text-secondary" ] [text "Password"] ]
-                    , Grid.col [Col.md2, Col.offsetMd1 ] 
-                        [ Button.button
-                            [ Button.roleLink
-                            , Button.small
-                            , Button.attrs [ onClick <| EditUser Password ]
-                            ]
-                            [ img [src "/icons/pencil-3x.png", style [("height", "1em")]] []]
-                        ]
-                    ]
-                ]
-
-        passwordEditView =
-            Grid.container []
-                [ Grid.row [ ]
-                    [ Grid.col [ Col.attrs [ Spacing.my1 ] ] 
-                        [ span [ class "text-secondary" ] [text "Password"] ]
-                    ]
-                , Grid.row [ Row.attrs [class "justify-content-center"] ]
-                    [ Grid.col [] 
-                        [ Input.password [ ]
-                        ]
-                    ]
-                , Grid.row [  ]
-                    [ Grid.col [] 
-                        [ Button.button
-                            [ Button.primary
-                            , Button.attrs [Spacing.mt2]
-                            ]
-                            [ text "Ok" ]
-                        ]
-                    ]
-                ]
-
+        (passwordView, passwordEditView) =
+            fieldView "Password" "" Password
 
         infoView =
             Grid.container []
@@ -278,7 +199,7 @@ viewProfile model profile =
                     ]
                 , Grid.row [] 
                     [ Grid.col [] 
-                        [ span [] [text <| withDefault "" profile.firstName] ]
+                        [ span [] [text <| withDefault "No :(" profile.firstName] ]
                     ]
                 , Grid.row [ ]
                     [ Grid.col [ Col.attrs [Spacing.my1] ] 
@@ -286,7 +207,23 @@ viewProfile model profile =
                     ]
                 , Grid.row [] 
                     [ Grid.col [] 
-                        [ span [] [text <| withDefault "" profile.secondName] ]
+                        [ span [] [text <| withDefault "No :(" profile.secondName] ]
+                    ]
+                , Grid.row [ ]
+                    [ Grid.col [ Col.attrs [Spacing.my1] ] 
+                        [ span [ class "text-secondary" ] [text "Birthday"] ]
+                    ]
+                , Grid.row [] 
+                    [ Grid.col [] 
+                        [ span [] [text <| formatBirthday profile.birthday ] ]
+                    ]
+                , Grid.row [ ]
+                    [ Grid.col [ Col.attrs [Spacing.my1] ] 
+                        [ span [ class "text-secondary" ] [text "Gender"] ]
+                    ]
+                , Grid.row [] 
+                    [ Grid.col [] 
+                        [ span [] [text <| formatGender profile.gender ] ]
                     ]
                 ]
 
@@ -338,6 +275,7 @@ viewProfile model profile =
                     [ Grid.col [] 
                         [ Button.button
                             [ Button.primary
+                            , Button.block
                             , Button.attrs [Spacing.mt2]
                             ]
                             [ text "Ok" ]
@@ -345,63 +283,53 @@ viewProfile model profile =
                     ]
                 ]
         
-        body =
+        (v1, v2, v3, v4) = 
             case model.currentEdit of 
                 Username -> 
-                    div [ class "text-center"
-                        , class "justify-content-center"]
-                        [ usernameEditView
-                        , hr [] []
-                        , emailView
-                        , hr [] []
-                        , passwordView
-                        , hr [] []
-                        , infoView
-                        ]
+                    ( usernameEditView
+                    , emailView
+                    , passwordView
+                    , infoView
+                    )
                 Email -> 
-                    div [ class "text-center"
-                        , class "justify-content-center"]
-                        [ usernameView
-                        , hr [] []
-                        , emailEditView
-                        , hr [] []
-                        , passwordView
-                        , hr [] []
-                        , infoView
-                        ]
+                    ( usernameView
+                    , emailEditView
+                    , passwordView
+                    , infoView
+                    )
                 Password -> 
-                    div [ class "text-center"
-                        , class "justify-content-center"]
-                        [ usernameView
-                        , hr [] []
-                        , emailView
-                        , hr [] []
-                        , passwordEditView
-                        , hr [] []
-                        , infoView
-                        ]
+                    ( usernameView
+                    , emailView
+                    , passwordEditView
+                    , infoView
+                    )
                 Info -> 
-                    div [ class "text-center"
-                        , class "justify-content-center"]
-                        [ usernameView
-                        , hr [] []
-                        , emailView
-                        , hr [] []
-                        , passwordView
-                        , hr [] []
-                        , infoEditView
-                        ]
+                    ( usernameView
+                    , emailView
+                    , passwordView
+                    , infoEditView
+                    )
                 NoEdit -> 
-                    div [ class "text-center"
-                        , class "justify-content-center"]
-                        [ usernameView
-                        , hr [] []
-                        , emailView
-                        , hr [] []
-                        , passwordView
-                        , hr [] []
-                        , infoView
-                        ]
+                    ( usernameView
+                    , emailView
+                    , passwordView
+                    , infoView
+                    )
+
+        body1 =
+            div [ class "text-center"
+                 , class "justify-content-center"]
+                [ v1
+                , hr [] []
+                , v2
+                , hr [] []
+                , v3
+                ]
+        body2 =
+            div [ class "text-center"
+                 , class "justify-content-center"]
+                [ v4
+                ]
             
     in
     [ Grid.container []
@@ -415,6 +343,7 @@ viewProfile model profile =
                             ] [] 
                         , Button.button
                             [ Button.primary
+                            , Button.block
                             , Button.attrs [Spacing.mt2]
                             ]
                             [ text "New avatar" ]
@@ -424,11 +353,20 @@ viewProfile model profile =
             , Grid.col []
                 [ Card.config [ Card.attrs [ style [ ( "width", "100%" ) ]] ]
                     |> Card.block []
-                        [ Block.custom body
+                        [ Block.custom body1
+                        ]
+                    |> Card.view 
+                ] 
+
+            , Grid.col []
+                [ Card.config [ Card.attrs [ style [ ( "width", "100%" ) ]] ]
+                    |> Card.block []
+                        [ Block.custom body2
                         ]
                     |> Card.view 
                 ] 
             ]
+            
         ]
     ]
 
@@ -436,26 +374,29 @@ viewProfile model profile =
 
 viewLoading : Html Msg 
 viewLoading = 
-    Grid.container 
-        [ class "Absolute-Center"
-        , class "is-Responsive"
-        ]
-        [ Progress.progress 
-            [ Progress.info
-            , Progress.value 100
-            , Progress.animated
-            ]
-        ]
+    div [ class "loading"] []
 
 viewFail : Html Msg
 viewFail = 
     div
         [ class "Absolute-Center"
-        , class "is-Responsive"
         ]
-        [ img [ src "http://localhost:8080/Fail.png", style [("width", "50%")] ]  []]
+        [ img [ src "/Fail.png", style [("width", "50%")] ]  []]
 
 
 formatDate : Date -> String
 formatDate d =
     toString (month d) ++ " " ++ toString (day d) ++ ", " ++ toString (year d)
+
+formatBirthday : Maybe Date -> String 
+formatBirthday bd = 
+    case bd of 
+        Nothing -> "No :("
+        Just date -> formatDate date
+
+formatGender : Maybe Profile.Gender -> String
+formatGender g =
+    case g of 
+        Nothing -> "No :("
+        Just Profile.Male -> "Male"
+        Just Profile.Female -> "Female"
