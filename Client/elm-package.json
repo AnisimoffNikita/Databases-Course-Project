@@ -22,6 +22,7 @@
         "evancz/url-parser": "2.0.1 <= v < 3.0.0",
         "justinmimbs/elm-date-extra": "3.0.0 <= v < 4.0.0",
         "krisajenkins/remotedata": "4.4.0 <= v < 5.0.0",
+        "lukewestby/http-extra": "2.0.0 <= v < 3.0.0",
         "rgrempel/elm-http-decorators": "2.0.0 <= v < 3.0.0",
         "rundis/elm-bootstrap": "4.0.0 <= v < 5.0.0"
     },

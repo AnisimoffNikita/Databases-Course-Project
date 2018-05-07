@@ -131,8 +131,7 @@ updatePage page msg model =
         (LoginMsg (Login.TokensRecieved user (RemoteData.Success tokens)), Login subModel) ->
             let 
                 session = Session <| Just
-                    { username = user.username
-                    , tokens = tokens}
+                    { tokens = tokens}
             in
             ( {model | session = session }
             , Cmd.batch 
@@ -151,8 +150,7 @@ updatePage page msg model =
         (RegisterMsg (Register.TokensRecieved user (RemoteData.Success tokens)), Register subModel) ->
             let 
                 session = Session <| Just
-                    { username = user.username
-                    , tokens = tokens}
+                    { tokens = tokens}
             in
             ( {model | session = session }
             , Cmd.batch 
@@ -167,6 +165,20 @@ updatePage page msg model =
                     Register.update subMsg subModel
             in
             ( {model | page = Register updated}, Cmd.map RegisterMsg newCmd)
+
+        (DashboardMsg (Dashboard.SetUsername (RemoteData.Success tokens)), Dashboard subModel) ->
+            let 
+                session = Session <| Just
+                    { tokens = tokens}
+                ( updated, newCmd ) =
+                    Dashboard.update (Dashboard.SetUsername (RemoteData.Success tokens)) subModel
+            in
+            ( {model | session = session, page = Dashboard updated }
+            , Cmd.batch 
+                [ Ports.setStorage session
+                , Cmd.map DashboardMsg newCmd
+                ]
+            )
 
         (DashboardMsg subMsg, Dashboard subModel) ->
             let

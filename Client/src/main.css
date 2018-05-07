@@ -18,14 +18,37 @@ body {
   padding: 40px;
 }
 
+.row.make-columns {
+  -moz-column-width: 19em;
+  -webkit-column-width: 19em;
+  -moz-column-gap: 1em;
+  -webkit-column-gap:1em; 
+}
+.row.make-columns > div {
+  display: inline-block;
+  padding:  .5rem;
+  width:  100%; 
+}
+
 .loading {
   position: fixed;
   top: 0%;
   left: 0%;
   width: 100%;
   height: 100%;
-  z-index: 9999;
+  z-index: -9999;
   background: url('/loading.svg') center center no-repeat;
+  background-size: 25%;
+}
+
+.error {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: -9999;
+  background: url('/Fail.png') center center no-repeat;
   background-size: 25%;
 }
 
