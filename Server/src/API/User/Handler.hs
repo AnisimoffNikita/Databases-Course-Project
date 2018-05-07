@@ -119,7 +119,7 @@ emailExists email = do
     Nothing -> return False
     Just _  -> return True
 
-editUsername :: AuthResult JWTData -> Text -> AppM NoContent
+editUsername :: AuthResult JWTData -> Text -> AppM Tokens
 editUsername (Authenticated user) username = do
   exists <- usernameExists username
   if exists then throwError $ err400 {errBody = "Such username already exist"} 
@@ -132,8 +132,13 @@ editUsername (Authenticated user) username = do
       Just (Entity id user) -> do
         let edit = update id [UserUsername =. username]
         liftIO $ runMongoDBPoolDef edit pool
-        return NoContent
-editUsername _ _ = throwError $ err400 {errBody = "error"} 
+        jwtSettings <- asks jwt
+        let jwtData = JWTData username
+        etoken <- liftIO $ makeJWT jwtData jwtSettings Nothing
+        case etoken of
+          Left  _ -> throwError $ badStatus err500 "" 1
+          Right v -> return $ Tokens (decodeUtf8 . toStrict $ v)
+editUsername res user = trace (show res) $ throwError $ err400 {errBody = "error"} 
 
 editPassword :: AuthResult JWTData -> Text -> AppM NoContent
 editPassword (Authenticated user) password = do
@@ -153,7 +158,7 @@ editPassword _ _ = throwError $ err400 {errBody = "error"}
 editEmail :: AuthResult JWTData -> Text -> AppM NoContent
 editEmail (Authenticated user) email = do
   exists <- emailExists email
-  if exists then throwError $ err400 {errBody = "Such email is already in use"} 
+  if exists then throwError $ err402 {errBody = "Such email is already in use"} 
   else do
     let getByUsername = getBy . UniqueUsername . jwtUsername $ user
     pool  <- asks connectionPool

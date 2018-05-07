@@ -20,7 +20,7 @@ type UserAPI =
   :<|> "edit" 
     :> ( "username" 
       :> ReqBody '[JSON] Text 
-      :> Post '[JSON] NoContent
+      :> Post '[JSON] Tokens
     :<|> "password" 
       :> ReqBody '[JSON] Text 
       :> Post '[JSON] NoContent 
