@@ -66,11 +66,12 @@ subscriptions model =
     Navbar.subscriptions model.navbarState NavbarMsg
 
 
+
 view : Session -> Model -> Html Msg
 view session model = 
     let 
         controls = 
-            case session.user of 
+            case session.tokens of 
                 Nothing -> 
                     Navbar.customItems
                         [ Navbar.formItem [onSubmit <| NavigateTo <| routeToString Router.Register]

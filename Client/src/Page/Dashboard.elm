@@ -139,7 +139,7 @@ update msg model =
             in
             ({ model | profile = RemoteData.succeed newProfile }, Cmd.none )
         (SubmitEmail, RemoteData.Success profile) ->
-            ( model, setUsernameCommand model profile.email )
+            ( model, setEmailCommand model profile.email )
         (SetEmail (Ok Extra.NoContent), _) ->
             ( {model | currentEdit = NoEdit}, Cmd.none )
         (SetEmail (Err _), _) ->
@@ -187,7 +187,7 @@ createSetEmailRequest model email =
     Http.request
         { method = "POST"
         , headers = headers
-        , url = "http://localhost:8080/user/edit/username"
+        , url = "http://localhost:8080/user/edit/email"
         , body =  Http.jsonBody (Encode.string email)
         , expect = Extra.expectNoContent
         , timeout = Nothing
@@ -274,7 +274,7 @@ viewProfile model profile =
             fieldView "Username" profile.username Username InputUsername SubmitUsername
 
         (emailView, emailEditView) = 
-            fieldView "Email" profile.email Email InputUsername SubmitUsername
+            fieldView "Email" profile.email Email InputEmail SubmitEmail
 
         (passwordView, passwordEditView) =
             fieldView "Password" "" Password InputUsername SubmitUsername

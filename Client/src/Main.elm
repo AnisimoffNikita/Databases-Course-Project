@@ -42,7 +42,7 @@ init val location =
             Router.parseLocation location
         session = 
             case decodeSessionFromJson val of 
-                Nothing -> {user = Nothing}
+                Nothing -> {tokens = Nothing}
                 Just session -> session
 
         (headerModel, headerCmd) = Header.init
@@ -113,7 +113,7 @@ updatePage page msg model =
             setRoute newRoute model
         (HeaderMsg Header.Logout, _) ->
             let
-                session = {user = Nothing}
+                session = {tokens = Nothing}
             in
             ( {model | session = session}
             , Cmd.batch 
@@ -130,8 +130,7 @@ updatePage page msg model =
 
         (LoginMsg (Login.TokensRecieved user (RemoteData.Success tokens)), Login subModel) ->
             let 
-                session = Session <| Just
-                    { tokens = tokens}
+                session = Session <| Just tokens
             in
             ( {model | session = session }
             , Cmd.batch 
@@ -149,8 +148,7 @@ updatePage page msg model =
 
         (RegisterMsg (Register.TokensRecieved user (RemoteData.Success tokens)), Register subModel) ->
             let 
-                session = Session <| Just
-                    { tokens = tokens}
+                session = Session <| Just tokens
             in
             ( {model | session = session }
             , Cmd.batch 
@@ -168,8 +166,7 @@ updatePage page msg model =
 
         (DashboardMsg (Dashboard.SetUsername (RemoteData.Success tokens)), Dashboard subModel) ->
             let 
-                session = Session <| Just
-                    { tokens = tokens}
+                session = Session <| Just tokens
                 ( updated, newCmd ) =
                     Dashboard.update (Dashboard.SetUsername (RemoteData.Success tokens)) subModel
             in
@@ -191,16 +188,15 @@ updatePage page msg model =
             ( model, Cmd.none ) 
 
 
-
 setRoute : Route -> Model -> (Model, Cmd Msg)
 setRoute route model = 
-    case model.session.user of 
-        Just user -> sessionOk route model user
+    case model.session.tokens of 
+        Just tokens -> sessionOk route model tokens
         Nothing -> sessionBad route model
 
 
-sessionOk : Route -> Model -> User -> (Model, Cmd Msg)
-sessionOk route model user =
+sessionOk : Route -> Model -> Tokens -> (Model, Cmd Msg)
+sessionOk route model tokens =
     case route of 
         Router.Home -> 
             ({model | page = Home}, Cmd.none)
@@ -210,7 +206,7 @@ sessionOk route model user =
             (model, Navigation.modifyUrl <| Router.routeToString Router.Dashboard)
         Router.Dashboard -> 
             let 
-                (subModel, msg) = Dashboard.init user.tokens
+                (subModel, msg) = Dashboard.init tokens
             in
             ({model | page = Dashboard subModel}, Cmd.map DashboardMsg msg)
         Router.NotFoundRoute -> 
