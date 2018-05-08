@@ -1,6 +1,7 @@
 module Page.Dashboard exposing (..)
 
 import Bootstrap.Button as Button
+import Bootstrap.Form as Form
 import Bootstrap.Form.Input as Input
 import Bootstrap.Form.InputGroup as InputGroup
 import Bootstrap.Form.Select as Select
@@ -15,16 +16,20 @@ import Data.Tokens exposing (..)
 import Date exposing (Date, Day(..), day, dayOfWeek, month, year)
 import DatePicker exposing (defaultSettings)
 import Debug
-import Html exposing (Html, a, div, h3, h4, h5, hr, img, p, span, text)
-import Html.Attributes exposing (class, href, src, style)
-import Html.Events exposing (onClick)
+import Html exposing (Html, a, div, h1, h3, h4, h5, hr, img, p, span, text, small, input, label)
+import Html.Attributes exposing (class, href, src, style, type_, id, for, attribute, multiple)
+import Html.Events exposing (onClick, on)
 import Http exposing (..)
 import Http.Extra as Extra
 import Json.Encode as Encode
+import Json.Decode as Decode
 import Maybe exposing (withDefault)
 import RemoteData exposing (WebData)
 import Date.Extra exposing (toUtcIsoString)
-
+import Ports exposing (ImagePortData, fileSelected, fileContentRead)
+import FileReader exposing (NativeFile)
+import FileReader.FileDrop as DZ
+import Task
 
 type Edit
     = Username
@@ -32,6 +37,11 @@ type Edit
     | Password
     | Info
     | NoEdit
+
+type alias Image =
+    { contents : String
+    , filename : String
+    }
 
 
 type alias Model =
@@ -42,6 +52,7 @@ type alias Model =
     , modalVisibility : Modal.Visibility
     , errorMessage : String
     , tokens : Tokens
+    , file : Maybe NativeFile
     }
 
 
@@ -61,7 +72,7 @@ init tokens =
         ( datePicker, datePickerFx ) =
             DatePicker.init
     in
-    ( Model RemoteData.NotAsked "" NoEdit datePicker Modal.hidden "" tokens
+    ( Model RemoteData.NotAsked "" NoEdit datePicker Modal.hidden "" tokens Nothing 
     , Cmd.batch
         [ getProfile tokens
         , Cmd.map InputBirthday datePickerFx
@@ -118,6 +129,12 @@ type Msg
 
     | CloseModal
     | ShowModal
+
+
+    | AvatarSelected (List NativeFile)
+    | SubmitAvatar
+    | SetAvatar (Result Http.Error Extra.NoContent)
+    | NoOp
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -232,6 +249,25 @@ update msg model =
             , Cmd.none
             )
 
+        ( AvatarSelected file, _ ) ->
+            case file of
+                -- Only handling case of a single file
+                [ f ] ->
+                    ( { model | file = Just f}, setAvatarCommand model f)
+
+                _ ->
+                    ( model, Cmd.none )
+
+        ( SubmitAvatar, RemoteData.Success profile ) ->
+            ( model, Cmd.none)
+
+        ( SetAvatar (Ok Extra.NoContent), _ ) ->
+            ( { model | file = Nothing }, Cmd.none )
+
+        ( SetAvatar (Err error), _ ) ->
+            ( { model | file = Nothing, modalVisibility = Modal.shown, errorMessage = toString error }, Cmd.none )
+
+
         ( _, _ ) ->
             ( model, Cmd.none )
 
@@ -324,11 +360,39 @@ createSetInfoRequest model profile =
         headers =
             [ header "Authorization" ("Bearer " ++ model.tokens.tokensJwt) ]
     in
-    Debug.log (toString   (encodeUserInfo userInfo))<|Http.request
+    Http.request
         { method = "POST"
         , headers = headers
         , url = "http://localhost:8080/user/edit/profile"
         , body = Http.jsonBody (encodeUserInfo userInfo)
+        , expect = Extra.expectNoContent
+        , timeout = Nothing
+        , withCredentials = False
+        }
+
+setAvatarCommand : Model -> NativeFile -> Cmd Msg
+setAvatarCommand model avatar =
+    createSetAvatarRequest model avatar
+        |> Http.send SetInfo
+
+
+createSetAvatarRequest : Model -> NativeFile -> Http.Request Extra.NoContent
+createSetAvatarRequest model avatar =
+    let
+        headers =
+            [ header "Authorization" ("Bearer " ++ model.tokens.tokensJwt) ]
+        body =
+            Http.multipartBody
+                [ Http.stringPart "part1" avatar.name
+                , FileReader.filePart "upload" avatar
+                ]
+
+    in
+    Http.request
+        { method = "POST"
+        , headers = headers
+        , url = "http://localhost:8080/user/edit/avatar"
+        , body = body
         , expect = Extra.expectNoContent
         , timeout = Nothing
         , withCredentials = False
@@ -449,7 +513,7 @@ viewProfile model profile =
                     ]
                 , Grid.row []
                     [ Grid.col []
-                        [ span [] [ text <| withDefault "No :(" profile.firstName ] ]
+                        [ span [] [ text <| withDefault "" profile.firstName ] ]
                     ]
                 , Grid.row []
                     [ Grid.col [ Col.attrs [ Spacing.my1 ] ]
@@ -457,15 +521,27 @@ viewProfile model profile =
                     ]
                 , Grid.row []
                     [ Grid.col []
-                        [ span [] [ text <| withDefault "No :(" profile.secondName ] ]
+                        [ span [] [ text <| withDefault "" profile.secondName ] ]
                     ]
                 , Grid.row []
                     [ Grid.col [ Col.attrs [ Spacing.my1 ] ]
                         [ span [ class "text-secondary" ] [ text "Birthday" ] ]
                     ]
                 , Grid.row []
-                    [ Grid.col []
-                        [ span [] [ text <| formatBirthday profile.birthday ] ]
+                    [ Grid.col [ Col.attrs [ Spacing.my1 ] ]
+                        [ small [ class "text-secondary" ] [ text "Day" ] ]
+                    , Grid.col [ Col.attrs [ Spacing.my1 ] ]
+                        [ small [ class "text-secondary" ] [ text "Month" ] ]
+                    , Grid.col [ Col.attrs [ Spacing.my1 ] ]
+                        [ small [ class "text-secondary" ] [ text "Year" ] ]
+                    ]
+                , Grid.row []
+                    [ Grid.col [ Col.attrs [ Spacing.my1 ] ]
+                        [ span [ ] [ text <| withDefault "" <| Maybe.map (day >> toString) profile.birthday ] ]
+                    , Grid.col [ Col.attrs [ Spacing.my1 ] ]
+                        [ span [ ] [ text <| withDefault "" <| Maybe.map (month >> toString) profile.birthday ] ]
+                    , Grid.col [ Col.attrs [ Spacing.my1 ] ]
+                        [ span [ ] [ text <| withDefault "" <| Maybe.map (year >> toString) profile.birthday ] ]
                     ]
                 , Grid.row []
                     [ Grid.col [ Col.attrs [ Spacing.my1 ] ]
@@ -598,12 +674,20 @@ viewProfile model profile =
                     , style [ ( "width", "100%" ) ]
                     ]
                     []
-                , Button.button
-                    [ Button.primary
-                    , Button.block
-                    , Button.attrs [ Spacing.mt2 ]
+                , div 
+                    [ class "custom-file" ]
+                    [ 
+                     label [ class "btn btn-block btn-primary mt-2" ]
+                        [ text "Browse "
+                        , input 
+                            [ class "custom-file-input"
+                            , attribute "hidden" ""
+                            , type_ "file"
+                            , FileReader.onFileChange AvatarSelected
+                            ]
+                            []
+                        ]
                     ]
-                    [ text "New avatar" ]
                 ]
             , Grid.col [ Col.attrs [ Spacing.p2, Spacing.m1, Border.left, Border.right ] ]
                 [ body1
@@ -635,7 +719,7 @@ formatBirthday : Maybe Date -> String
 formatBirthday bd =
     case bd of
         Nothing ->
-            "No :("
+            ""
 
         Just date ->
             formatDate date
@@ -645,7 +729,7 @@ formatGender : Maybe Profile.Gender -> String
 formatGender g =
     case g of
         Nothing ->
-            "No :("
+            ""
 
         Just Profile.Male ->
             "Male"
@@ -660,3 +744,4 @@ toGender g =
         "Male" -> Just Profile.Male
         "Female" -> Just Profile.Female
         _ -> Nothing
+
