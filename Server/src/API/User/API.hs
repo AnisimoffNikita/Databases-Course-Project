@@ -3,6 +3,7 @@ where
 
 import           Data.Text                      ( Text )
 import           Servant
+import Servant.Multipart
 
 import           API.User.Types
 
@@ -28,6 +29,7 @@ type UserAPI =
       :> ReqBody '[JSON] Text 
       :> Post '[JSON] NoContent
     :<|> "avatar" 
+      :> MultipartForm Mem (MultipartData Mem) 
       :> Post '[JSON] Text 
     :<|> "profile" 
       :> ReqBody '[JSON] UserInfo 
