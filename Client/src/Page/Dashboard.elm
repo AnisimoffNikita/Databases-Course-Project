@@ -29,7 +29,7 @@ import Date.Extra exposing (toUtcIsoString)
 import Ports exposing (ImagePortData, fileSelected, fileContentRead)
 import FileReader exposing (NativeFile)
 import FileReader.FileDrop as DZ
-import Task
+import MimeType
 
 type Edit
     = Username
@@ -133,7 +133,7 @@ type Msg
 
     | AvatarSelected (List NativeFile)
     | SubmitAvatar
-    | SetAvatar (Result Http.Error Extra.NoContent)
+    | SetAvatar (Result Http.Error String)
     | NoOp
 
 
@@ -251,18 +251,23 @@ update msg model =
 
         ( AvatarSelected file, _ ) ->
             case file of
-                -- Only handling case of a single file
                 [ f ] ->
-                    ( { model | file = Just f}, setAvatarCommand model f)
-
+                    case f.mimeType of 
+                        Just (MimeType.Image _) ->
+                            ( { model | file = Just f}, setAvatarCommand model f)
+                        _ -> ( model, Cmd.none )
                 _ ->
                     ( model, Cmd.none )
-
+                    
         ( SubmitAvatar, RemoteData.Success profile ) ->
             ( model, Cmd.none)
 
-        ( SetAvatar (Ok Extra.NoContent), _ ) ->
-            ( { model | file = Nothing }, Cmd.none )
+        ( SetAvatar (Ok path),  RemoteData.Success profile ) ->
+            let
+                newProfile =
+                    { profile | avatar = path }
+            in
+            ( { model | profile = RemoteData.succeed newProfile}, Cmd.none )
 
         ( SetAvatar (Err error), _ ) ->
             ( { model | file = Nothing, modalVisibility = Modal.shown, errorMessage = toString error }, Cmd.none )
@@ -373,10 +378,10 @@ createSetInfoRequest model profile =
 setAvatarCommand : Model -> NativeFile -> Cmd Msg
 setAvatarCommand model avatar =
     createSetAvatarRequest model avatar
-        |> Http.send SetInfo
+        |> Http.send SetAvatar
 
 
-createSetAvatarRequest : Model -> NativeFile -> Http.Request Extra.NoContent
+createSetAvatarRequest : Model -> NativeFile -> Http.Request String
 createSetAvatarRequest model avatar =
     let
         headers =
@@ -393,7 +398,7 @@ createSetAvatarRequest model avatar =
         , headers = headers
         , url = "http://localhost:8080/user/edit/avatar"
         , body = body
-        , expect = Extra.expectNoContent
+        , expect = Http.expectJson (Decode.string)
         , timeout = Nothing
         , withCredentials = False
         }
