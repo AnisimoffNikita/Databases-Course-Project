@@ -23,6 +23,7 @@ import Http.Extra as Extra
 import Json.Encode as Encode
 import Maybe exposing (withDefault)
 import RemoteData exposing (WebData)
+import Date.Extra exposing (toUtcIsoString)
 
 
 type Edit
@@ -63,7 +64,7 @@ init tokens =
     ( Model RemoteData.NotAsked "" NoEdit datePicker Modal.hidden "" tokens
     , Cmd.batch
         [ getProfile tokens
-        , Cmd.map DatePickerMsg datePickerFx
+        , Cmd.map InputBirthday datePickerFx
         ]
     )
 
@@ -95,13 +96,26 @@ postProfile tokens =
 type Msg
     = ProfileRecieved (WebData Profile.Profile)
     | EditUser Edit
-    | DatePickerMsg DatePicker.Msg
+
     | InputUsername String
     | SubmitUsername
     | SetUsername (WebData Tokens)
+
     | InputEmail String
     | SubmitEmail
     | SetEmail (Result Http.Error Extra.NoContent)
+
+    | InputPassword String
+    | SubmitPassword
+    | SetPassword (Result Http.Error Extra.NoContent)
+
+    | InputFirstName String
+    | InputSecondName String
+    | InputBirthday DatePicker.Msg
+    | InputGender String
+    | SubmitInfo
+    | SetInfo (Result Http.Error Extra.NoContent)
+
     | CloseModal
     | ShowModal
 
@@ -115,24 +129,6 @@ update msg model =
         ( EditUser edit, _ ) ->
             ( { model | currentEdit = edit }, Cmd.none )
 
-        ( DatePickerMsg msg, RemoteData.Success profile ) ->
-            let
-                ( newDatePicker, datePickerFx, mDate ) =
-                    DatePicker.update settings msg model.datePicker
-
-                date =
-                    Debug.log "!!" <|
-                        case mDate of
-                            DatePicker.Changed date ->
-                                date
-
-                            _ ->
-                                profile.birthday
-
-                newProfile =
-                    { profile | birthday = date }
-            in
-            ( { model | datePicker = newDatePicker, profile = RemoteData.succeed newProfile }, Cmd.none )
 
         ( InputUsername username, RemoteData.Success profile ) ->
             let
@@ -150,6 +146,7 @@ update msg model =
         ( SetUsername _, _ ) ->
             ( { model | modalVisibility = Modal.shown, errorMessage = "error" }, Cmd.none )
 
+
         ( InputEmail email, RemoteData.Success profile ) ->
             let
                 newProfile =
@@ -164,6 +161,70 @@ update msg model =
             ( { model | currentEdit = NoEdit }, Cmd.none )
 
         ( SetEmail (Err _), _ ) ->
+            ( { model | modalVisibility = Modal.shown, errorMessage = "error" }, Cmd.none )
+
+
+        ( InputPassword password, RemoteData.Success _ ) ->
+            ( { model | password = password }, Cmd.none )
+
+        ( SubmitPassword, RemoteData.Success _ ) ->
+            ( model, setPasswordCommand model model.password )
+
+        ( SetPassword (Ok Extra.NoContent), _ ) ->
+            ( { model | currentEdit = NoEdit, password = "" }, Cmd.none )
+
+        ( SetPassword (Err _), _ ) ->
+            ( { model | modalVisibility = Modal.shown, errorMessage = "error" }, Cmd.none )
+
+
+        ( InputFirstName firstName, RemoteData.Success profile ) ->
+            let
+                mFirstName = if firstName == "" then Nothing else Just firstName
+                newProfile =
+                    { profile | firstName = mFirstName }
+            in
+            ( { model | profile = RemoteData.succeed newProfile }, Cmd.none )
+
+        ( InputSecondName secondName, RemoteData.Success profile ) ->
+            let
+                mSecondName = if secondName == "" then Nothing else Just secondName
+                newProfile =
+                    { profile | secondName = mSecondName }
+            in
+            ( { model | profile = RemoteData.succeed newProfile }, Cmd.none )
+
+        ( InputBirthday msg, RemoteData.Success profile ) ->
+            let
+                ( newDatePicker, datePickerFx, mDate ) =
+                    DatePicker.update settings msg model.datePicker
+
+                date =
+                    case mDate of
+                        DatePicker.Changed date ->
+                            date
+
+                        _ ->
+                            profile.birthday
+
+                newProfile =
+                    { profile | birthday = date }
+            in
+            ( { model | datePicker = newDatePicker, profile = RemoteData.succeed newProfile }, Cmd.none )
+
+        ( InputGender gender, RemoteData.Success profile ) ->
+            let
+                newProfile =
+                    { profile | gender = toGender gender }
+            in
+            ( { model | profile = RemoteData.succeed newProfile }, Cmd.none )
+
+        ( SubmitInfo, RemoteData.Success profile ) ->
+            ( model, setInfoCommand model profile )
+
+        ( SetInfo (Ok Extra.NoContent), _ ) ->
+            ( { model | currentEdit = NoEdit }, Cmd.none )
+
+        ( SetInfo (Err _), _ ) ->
             ( { model | modalVisibility = Modal.shown, errorMessage = "error" }, Cmd.none )
 
         ( CloseModal, _ ) ->
@@ -221,6 +282,66 @@ createSetEmailRequest model email =
         , withCredentials = False
         }
 
+setPasswordCommand : Model -> String -> Cmd Msg
+setPasswordCommand model password =
+    createSetPasswordRequest model password
+        |> Http.send SetPassword
+
+
+createSetPasswordRequest : Model -> String -> Http.Request Extra.NoContent
+createSetPasswordRequest model password =
+    let
+        headers =
+            [ header "Authorization" ("Bearer " ++ model.tokens.tokensJwt) ]
+    in
+    Http.request
+        { method = "POST"
+        , headers = headers
+        , url = "http://localhost:8080/user/edit/password"
+        , body = Http.jsonBody (Encode.string password)
+        , expect = Extra.expectNoContent
+        , timeout = Nothing
+        , withCredentials = False
+        }
+
+type alias UserInfo =
+    { firstName : Maybe String
+    , secondName : Maybe String
+    , birthday : Maybe Date
+    , gender : Maybe Profile.Gender
+    }
+
+setInfoCommand : Model -> Profile.Profile -> Cmd Msg
+setInfoCommand model profile =
+    createSetInfoRequest model profile
+        |> Http.send SetInfo
+
+
+createSetInfoRequest : Model -> Profile.Profile -> Http.Request Extra.NoContent
+createSetInfoRequest model profile =
+    let
+        userInfo = UserInfo profile.firstName profile.secondName profile.birthday profile.gender
+        headers =
+            [ header "Authorization" ("Bearer " ++ model.tokens.tokensJwt) ]
+    in
+    Debug.log (toString   (encodeUserInfo userInfo))<|Http.request
+        { method = "POST"
+        , headers = headers
+        , url = "http://localhost:8080/user/edit/profile"
+        , body = Http.jsonBody (encodeUserInfo userInfo)
+        , expect = Extra.expectNoContent
+        , timeout = Nothing
+        , withCredentials = False
+        }
+
+encodeUserInfo : UserInfo -> Encode.Value
+encodeUserInfo x =
+    Encode.object
+        [ ( "firstname", (Maybe.withDefault Encode.null << Maybe.map Encode.string) x.firstName )
+        , ( "secondname", (Maybe.withDefault Encode.null << Maybe.map Encode.string) x.secondName )
+        , ( "birthday", (Maybe.withDefault Encode.null << Maybe.map (Encode.string << toUtcIsoString)) x.birthday )
+        , ( "gender", (Maybe.withDefault Encode.null << Maybe.map Profile.encodeGender) x.gender )
+        ]
 
 view : Model -> Html Msg
 view model =
@@ -267,7 +388,7 @@ viewSuccess model profile =
 viewProfile : Model -> Profile.Profile -> List (Html Msg)
 viewProfile model profile =
     let
-        fieldView label value msg msgInput msgSubmit =
+        fieldView label value msg msgInput msgSubmit input showValue =
             ( Grid.container []
                 [ Grid.row [ Row.attrs [ class "justify-content-center" ] ]
                     [ Grid.col [ Col.md6, Col.offsetMd3, Col.attrs [ Spacing.my1 ] ]
@@ -283,7 +404,7 @@ viewProfile model profile =
                     ]
                 , Grid.row []
                     [ Grid.col []
-                        [ span [] [ text value ] ]
+                        [ span [] [text <| if showValue then  value else "" ] ]
                     ]
                 ]
             , Grid.container []
@@ -294,7 +415,7 @@ viewProfile model profile =
                 , Grid.row []
                     [ Grid.col []
                         [ InputGroup.config
-                            (InputGroup.text [ Input.value value, Input.onInput msgInput ])
+                            (input [ Input.value value, Input.onInput msgInput ])
                             |> InputGroup.successors
                                 [ InputGroup.button [ Button.primary, Button.onClick msgSubmit ] [ text "Ok" ] ]
                             |> InputGroup.view
@@ -304,13 +425,13 @@ viewProfile model profile =
             )
 
         ( usernameView, usernameEditView ) =
-            fieldView "Username" profile.username Username InputUsername SubmitUsername
+            fieldView "Username" profile.username Username InputUsername SubmitUsername InputGroup.text True
 
         ( emailView, emailEditView ) =
-            fieldView "Email" profile.email Email InputEmail SubmitEmail
+            fieldView "Email" profile.email Email InputEmail SubmitEmail InputGroup.email True
 
         ( passwordView, passwordEditView ) =
-            fieldView "Password" "" Password InputUsername SubmitUsername
+            fieldView "Password" model.password Password InputPassword SubmitPassword InputGroup.password False
 
         infoView =
             Grid.container []
@@ -364,7 +485,7 @@ viewProfile model profile =
                     ]
                 , Grid.row []
                     [ Grid.col []
-                        [ Input.email [ Input.value <| withDefault "" profile.firstName ]
+                        [ Input.email [ Input.onInput InputFirstName,  Input.value <| withDefault "" profile.firstName ]
                         ]
                     ]
                 , Grid.row []
@@ -373,7 +494,7 @@ viewProfile model profile =
                     ]
                 , Grid.row []
                     [ Grid.col []
-                        [ Input.email [ Input.value <| withDefault "" profile.secondName ]
+                        [ Input.email [ Input.onInput InputSecondName, Input.value <| withDefault "" profile.secondName ]
                         ]
                     ]
                 , Grid.row []
@@ -383,7 +504,7 @@ viewProfile model profile =
                 , Grid.row []
                     [ Grid.col []
                         [ DatePicker.view profile.birthday settings model.datePicker
-                            |> Html.map DatePickerMsg
+                            |> Html.map InputBirthday
                         ]
                     ]
                 , Grid.row []
@@ -392,7 +513,7 @@ viewProfile model profile =
                     ]
                 , Grid.row []
                     [ Grid.col []
-                        [ Select.custom []
+                        [ Select.custom [Select.onChange InputGender]
                             [ Select.item [] [ text "" ]
                             , Select.item [] [ text "Male" ]
                             , Select.item [] [ text "Female" ]
@@ -404,6 +525,7 @@ viewProfile model profile =
                         [ Button.button
                             [ Button.primary
                             , Button.block
+                            , Button.onClick SubmitInfo
                             , Button.attrs [ Spacing.mt2 ]
                             ]
                             [ text "Ok" ]
@@ -530,3 +652,11 @@ formatGender g =
 
         Just Profile.Female ->
             "Female"
+
+toGender : String -> Maybe Profile.Gender
+toGender g = 
+    case g of 
+        "" -> Nothing 
+        "Male" -> Just Profile.Male
+        "Female" -> Just Profile.Female
+        _ -> Nothing
