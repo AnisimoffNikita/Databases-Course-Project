@@ -6,6 +6,7 @@ import           Servant
 import Servant.Multipart
 
 import           API.User.Types
+import           API.Types
 
 type UserAPI =
        "login"

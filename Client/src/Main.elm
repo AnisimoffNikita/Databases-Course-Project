@@ -14,17 +14,24 @@ import Page.ErrorRoute as ErrorRoute
 import Page.Home as Home
 import Page.Login as Login
 import Page.Register as Register
+import Page.Quizies as Quizies
+import Page.NewQuiz as NewQuiz
+import Page.Quiz as Quiz
 import Ports
 import RemoteData exposing (WebData)
 import Router exposing (Route)
 import View.Header as Header
-
+import Date
+import Task
 
 type Page
     = Home
     | Login Login.Model
     | Register Register.Model
     | Dashboard Dashboard.Model
+    | Quizies Quizies.Model
+    | Quiz Quiz.Model
+    | NewQuiz NewQuiz.Model
 
 
 type alias Model =
@@ -32,6 +39,7 @@ type alias Model =
     , route : Route
     , headerModel : Header.Model
     , page : Page
+    , date : Maybe Date.Date
     }
 
 
@@ -58,12 +66,14 @@ init val location =
                 , route = currentRoute
                 , headerModel = headerModel
                 , page = Home
+                , date = Nothing
                 }
     in
     ( model
     , Cmd.batch
         [ Cmd.map HeaderMsg headerCmd
         , cmds
+        , now
         ]
     )
 
@@ -92,6 +102,16 @@ view model =
 
                 Dashboard subModel ->
                     Html.map DashboardMsg <| Dashboard.view subModel
+
+                Quizies subModel ->
+                    Html.map QuiziesMsg <| Quizies.view subModel
+
+                Quiz subModel ->
+                    Html.map QuizMsg <| Quiz.view subModel
+
+                NewQuiz subModel ->
+                    Html.map NewQuizMsg <| NewQuiz.view subModel
+
     in
     div []
         [ Html.map HeaderMsg (Header.view model.session model.headerModel)
@@ -102,10 +122,14 @@ view model =
 type Msg
     = OnLocationChange Location
     | NavigateTo String
+    | GetDate (Maybe Date.Date)
     | HeaderMsg Header.Msg
     | LoginMsg Login.Msg
     | RegisterMsg Register.Msg
     | DashboardMsg Dashboard.Msg
+    | QuiziesMsg Quizies.Msg
+    | NewQuizMsg NewQuiz.Msg
+    | QuizMsg Quiz.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -122,6 +146,8 @@ updatePage page msg model =
                     Router.parseLocation location
             in
             setRoute newRoute model
+        (GetDate date, _ )->
+            ( {model|date = date}, Cmd.none )
 
         ( HeaderMsg Header.Logout, _ ) ->
             let
@@ -202,6 +228,27 @@ updatePage page msg model =
             in
             ( { model | page = Dashboard updated }, Cmd.map DashboardMsg newCmd )
 
+        ( QuiziesMsg subMsg, Quizies subModel ) ->
+            let
+                ( updated, newCmd ) =
+                    Quizies.update subMsg subModel
+            in
+            ( { model | page = Quizies updated }, Cmd.map QuiziesMsg newCmd )
+
+        ( NewQuizMsg subMsg, NewQuiz subModel ) ->
+            let
+                ( updated, newCmd ) =
+                    NewQuiz.update subMsg subModel
+            in
+            ( { model | page = NewQuiz updated }, Cmd.map NewQuizMsg newCmd )
+
+        ( QuizMsg subMsg, Quiz subModel ) ->
+            let
+                ( updated, newCmd ) =
+                    Quiz.update subMsg subModel
+            in
+            ( { model | page = Quiz updated }, Cmd.map QuizMsg newCmd )
+
         ( _, _ ) ->
             ( model, Cmd.none )
 
@@ -227,6 +274,30 @@ sessionOk route model tokens =
 
         Router.Register ->
             ( model, Navigation.modifyUrl <| Router.routeToString Router.Dashboard )
+
+        Router.Quizies ->
+            let
+                ( subModel, msg ) =
+                    Quizies.init tokens
+            in
+            (  { model | page = Quizies subModel }, Cmd.map QuiziesMsg msg )
+        
+        Router.NewQuiz ->
+            case model.date of 
+                Just date ->
+                    let
+                        ( subModel, msg ) =
+                            NewQuiz.init tokens date
+                    in
+                    (  { model | page = NewQuiz subModel }, Cmd.map NewQuizMsg msg )
+                _ -> ( model, Navigation.modifyUrl <| Router.routeToString Router.Dashboard )
+
+        Router.Quiz id ->
+            let
+                ( subModel, msg ) =
+                    Quiz.init tokens id
+            in
+            (  { model | page = Quiz subModel }, Cmd.map QuizMsg msg )
 
         Router.Dashboard ->
             let
@@ -259,12 +330,24 @@ sessionBad route model =
             in
             ( { model | page = Register subModel }, Cmd.map RegisterMsg msg )
 
+        Router.Quizies ->
+            ( model, Navigation.modifyUrl <| Router.routeToString Router.Login )
+
+        Router.NewQuiz ->
+            ( model, Navigation.modifyUrl <| Router.routeToString Router.Login )
+
+        Router.Quiz id ->
+            ( model, Navigation.modifyUrl <| Router.routeToString Router.Login )
+
         Router.Dashboard ->
             ( model, Navigation.modifyUrl <| Router.routeToString Router.Login )
 
         Router.NotFoundRoute ->
             ( model, Cmd.none )
 
+now : Cmd Msg
+now = 
+  Task.perform (Just >> GetDate) Date.now
 
 subscriptions : Model -> Sub Msg
 subscriptions model =

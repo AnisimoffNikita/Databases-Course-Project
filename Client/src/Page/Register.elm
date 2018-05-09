@@ -100,7 +100,7 @@ postUserNew body =
             "POST"
         , headers =
             []
-        , url = "http://localhost:8080/user/new"
+        , url = "http://localhost:8080/user/register"
         , body =
             Http.jsonBody (encodeUserRegister body)
         , expect =

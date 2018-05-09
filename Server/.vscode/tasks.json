@@ -40,8 +40,14 @@
     },
     {
       "type": "shell",
-      "label": "stack run",
-      "command": "echo START_STACK_RUN && stack build && cd ${workspaceRoot} && stack exec Server-exe && echo END_STACK_RUN ",
+      "label": "stack run elmGen",
+      "command": "echo START_STACK_RUN && stack build && cd ${workspaceRoot} && stack exec Server-exe -- elm && echo END_STACK_RUN ",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "stack run app",
+      "command": "echo START_STACK_RUN && stack build && cd ${workspaceRoot} && stack exec Server-exe -- app && echo END_STACK_RUN ",
       "problemMatcher": []
     }
   ]

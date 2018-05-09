@@ -15,7 +15,7 @@ body {
 .Absolute-Center.is-Responsive {
   width: 50%; 
   height: 50%;
-  padding: 40px;
+  padding: 0px;
 }
 
 .row.make-columns {

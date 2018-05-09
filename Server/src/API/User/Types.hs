@@ -27,23 +27,6 @@ instance ToJSON Login where
 instance FromJSON Login where
   parseJSON = genericParseJSON (optionsWithoutPrefix 5)
 
-data Tokens = Tokens
-  { tokensJwt :: Text
-  } deriving (Eq, Show, Read, Generic)
-
-instance ToJSON Tokens
-instance FromJSON Tokens
-
-
-data JWTData = JWTData
-  { jwtUsername :: Text
-  } deriving (Eq, Show, Read, Generic)
-
-instance ToJSON JWTData
-instance FromJSON JWTData
-instance ToJWT JWTData
-instance FromJWT JWTData
-
 
 data UserRegister = UserRegister
   { registerUsername :: Text

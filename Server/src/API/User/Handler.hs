@@ -90,8 +90,8 @@ newUser auth reg = do
 getProfile :: AuthResult JWTData -> AppM Profile
 getProfile (Authenticated user) = do
   let getByUsername = getBy . UniqueUsername . jwtUsername $ user
-  pool  <- asks connectionPool
-  mUser <- liftIO $ runMongoDBPoolDef getByUsername pool
+  pool  <- trace "!" $ asks connectionPool
+  mUser <- trace "!!" $ liftIO $ runMongoDBPoolDef getByUsername pool
   case mUser of
     Nothing              -> throwError $ err401 {errBody = "error"}
     Just (Entity _ user) -> return $ userToProfile user
@@ -175,6 +175,7 @@ editEmail (Authenticated user) email = do
         liftIO $ runMongoDBPoolDef edit pool
         return NoContent
 editEmail _ _ = throwError $ err400 {errBody = "error"}
+
 
 editAvatar :: AuthResult JWTData -> MultipartData Mem ->  AppM Text
 editAvatar (Authenticated user) multipartData = do

@@ -7,13 +7,16 @@ import Servant.Utils.StaticFiles
 
 import API.User.API
 import API.User.Types
+import API.Quiz.API
+import API.Types
 
 
 type API auths =
        Auth auths JWTData
-    :> ( "user"
-      :> UserAPI)
-
+    :> ( "user" :> UserAPI
+    :<|> "quiz" :> QuizAPI)
+       
+    
       
 type WholeAPI auths = API auths :<|> Raw
 

@@ -15,7 +15,6 @@ import Data.Profile as Profile
 import Data.Tokens exposing (..)
 import Date exposing (Date, Day(..), day, dayOfWeek, month, year)
 import DatePicker exposing (defaultSettings)
-import Debug
 import Html exposing (Html, a, div, h1, h3, h4, h5, hr, img, p, span, text, small, input, label)
 import Html.Attributes exposing (class, href, src, style, type_, id, for, attribute, multiple)
 import Html.Events exposing (onClick, on)
@@ -30,6 +29,7 @@ import Ports exposing (ImagePortData, fileSelected, fileContentRead)
 import FileReader exposing (NativeFile)
 import FileReader.FileDrop as DZ
 import MimeType
+import Router 
 
 type Edit
     = Username
@@ -177,8 +177,8 @@ update msg model =
         ( SetEmail (Ok Extra.NoContent), _ ) ->
             ( { model | currentEdit = NoEdit }, Cmd.none )
 
-        ( SetEmail (Err _), _ ) ->
-            ( { model | modalVisibility = Modal.shown, errorMessage = "error" }, Cmd.none )
+        ( SetEmail (Err error), _ ) ->
+            ( { model | modalVisibility = Modal.shown, errorMessage = toString error }, Cmd.none )
 
 
         ( InputPassword password, RemoteData.Success _ ) ->
@@ -190,8 +190,8 @@ update msg model =
         ( SetPassword (Ok Extra.NoContent), _ ) ->
             ( { model | currentEdit = NoEdit, password = "" }, Cmd.none )
 
-        ( SetPassword (Err _), _ ) ->
-            ( { model | modalVisibility = Modal.shown, errorMessage = "error" }, Cmd.none )
+        ( SetPassword (Err error), _ ) ->
+            ( { model | modalVisibility = Modal.shown, errorMessage = toString error }, Cmd.none )
 
 
         ( InputFirstName firstName, RemoteData.Success profile ) ->
@@ -241,8 +241,8 @@ update msg model =
         ( SetInfo (Ok Extra.NoContent), _ ) ->
             ( { model | currentEdit = NoEdit }, Cmd.none )
 
-        ( SetInfo (Err _), _ ) ->
-            ( { model | modalVisibility = Modal.shown, errorMessage = "error" }, Cmd.none )
+        ( SetInfo (Err error), _ ) ->
+            ( { model | modalVisibility = Modal.shown, errorMessage = toString error}, Cmd.none )
 
         ( CloseModal, _ ) ->
             ( { model | modalVisibility = Modal.hidden, errorMessage = "" }
@@ -651,7 +651,7 @@ viewProfile model profile =
                     , infoView
                     )
 
-        body1 =
+        body =
             div
                 [ class "text-center"
                 , class "justify-content-center"
@@ -661,15 +661,10 @@ viewProfile model profile =
                 , v2
                 , hr [] []
                 , v3
+                , hr [] []
+                , v4
                 ]
 
-        body2 =
-            div
-                [ class "text-center"
-                , class "justify-content-center"
-                ]
-                [ v4
-                ]
     in
     [ Grid.container [ Border.all, Border.rounded ]
         [ Grid.row []
@@ -682,8 +677,8 @@ viewProfile model profile =
                 , div 
                     [ class "custom-file" ]
                     [ 
-                     label [ class "btn btn-block btn-primary mt-2" ]
-                        [ text "Browse "
+                     label [ class "btn btn-block btn-outline-dark mt-2" ]
+                        [ text "Change avatar"
                         , input 
                             [ class "custom-file-input"
                             , attribute "hidden" ""
@@ -695,10 +690,19 @@ viewProfile model profile =
                     ]
                 ]
             , Grid.col [ Col.attrs [ Spacing.p2, Spacing.m1, Border.left, Border.right ] ]
-                [ body1
+                [ body
                 ]
             , Grid.col [ Col.attrs [ Spacing.p2, Spacing.m1 ] ]
-                [ body2
+                [ Button.linkButton 
+                    [ Button.outlineDark 
+                    , Button.block
+                    , Button.attrs [ href <| Router.routeToString Router.Quizies]]
+                    [ text "My quizies" ]
+                , Button.linkButton 
+                    [ Button.outlineDark 
+                    , Button.block
+                    , Button.attrs [ href "#"]]
+                    [ text "Passed quizies" ]
                 ]
             ]
         ]

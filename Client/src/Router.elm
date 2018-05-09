@@ -11,6 +11,9 @@ type Route
     | Dashboard
     | Login
     | Register
+    | Quizies
+    | NewQuiz
+    | Quiz String
     | NotFoundRoute
 
 
@@ -21,6 +24,9 @@ matchers =
         , map Dashboard (s "dashboard")
         , map Login (s "login")
         , map Register (s "register")
+        , map Quizies (s "quizies" </> s "my")
+        , map NewQuiz (s "quizies" </> s "new")
+        , map Quiz (s "quiz" </> string)
         , map NotFoundRoute (s (routeToString NotFoundRoute))
         ]
 
@@ -51,6 +57,15 @@ routeToString page =
 
                 Register ->
                     [ "register" ]
+
+                Quizies ->
+                    [ "quizies", "my" ]
+
+                NewQuiz ->
+                    [ "quizies", "new" ]
+
+                Quiz id ->
+                    [ "quiz", id ]
 
                 NotFoundRoute ->
                     [ "404" ]

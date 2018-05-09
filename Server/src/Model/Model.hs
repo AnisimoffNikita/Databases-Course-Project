@@ -26,9 +26,9 @@ import Model.Types
 
 share[mkPersist (mkPersistSettings (ConT ''MongoContext))] [persistLowerCase|
 Question json
-  text    Text
-  option  QuestionOptions
-  answer  QuestionAnswer
+  text     Text
+  answer   Text
+  variants [Text]
   deriving Eq Read Show Generic
 
 Quiz json
@@ -40,9 +40,9 @@ Quiz json
   deriving        Eq Read Show Generic
 
 QuizResult json
-  testKey         Text
+  quizid          QuizId
   result          Text
-  passingDate     UTCTime
+  passingQwe         UTCTime
   deriving        Eq Read Show Generic
 
 User
