@@ -14,10 +14,9 @@ import API.Handler
 
 import Database.Utils
 import Types
-
+import Model.Model
 import Data.List ( transpose )
 
-f = id
 
 nt :: HandlerContext -> AppM a -> Handler a
 nt s x = runReaderT x s
@@ -33,6 +32,7 @@ startApp = do
   myKey <- generateKey
   dbConfig <- load Development
   pool <- makePool dbConfig
+  createIndexes pool
   let
     jwtCfg = defaultJWTSettings myKey
     cookieCfg = defaultCookieSettings

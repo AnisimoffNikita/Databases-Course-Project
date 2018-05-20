@@ -11,11 +11,13 @@
 module Model.Model
    where
 
+import Prelude hiding (concat)
+
 import Control.Monad.IO.Class (MonadIO)
 import Data.ByteString (ByteString)
-import Data.Text (Text)
+import Data.Text (Text, pack, concat)
 import Data.Time (UTCTime)
-import Database.MongoDB (index, iUnique, ensureIndex)
+import qualified Database.MongoDB as Driver 
 import Database.Persist.MongoDB
 import Database.Persist.TH
 import GHC.Generics (Generic)
@@ -42,7 +44,7 @@ Quiz json
 QuizResult json
   quizid          QuizId
   result          Text
-  passingQwe         UTCTime
+  passing         UTCTime
   deriving        Eq Read Show Generic
 
 User
@@ -61,11 +63,27 @@ User
   deriving        Eq Read Show Generic
 |]
 
+createIndexes :: ConnectionPool -> IO ()
+createIndexes pool = do 
+  runMongoDBPoolDef createUserIndexes pool
+  runMongoDBPoolDef createQuizIndexes pool
+
 createUserIndexes :: MonadIO m =>  Action m ()
 createUserIndexes = do
-  ensureIndex $ (index "user" ["username" =: (1 :: Int)]) {iUnique = True}
-  ensureIndex $ (index "user" ["email" =: (1 :: Int)]) {iUnique = True}
+  Driver.ensureIndex $ (Driver.index "user" ["username" =: (1 :: Int)]) {Driver.iUnique = True}
+  Driver.ensureIndex $ (Driver.index "user" ["email" =: (1 :: Int)]) {Driver.iUnique = True}
 
 
 createQuizIndexes :: MonadIO m =>  Action m ()
-createQuizIndexes = return ()
+createQuizIndexes = createTextIndex "quiz" "nameText" ["name","description"]
+
+
+createTextIndex :: MonadIO m =>  Driver.Collection -> Text -> [Driver.Label] -> Action m ()
+createTextIndex col name keys = do
+    db <- Driver.thisDatabase
+    let doc = [ "ns"   =: concat [db, ".", col]
+              , "key"  =: [key =: ("text" :: String) | key <- keys]
+              , "name" =: name
+              , "default_language" =: ("russian" :: Text)
+              ]
+    Driver.insert_ "system.indexes" doc

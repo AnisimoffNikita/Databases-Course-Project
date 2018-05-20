@@ -14,16 +14,19 @@ type QuizAPI =
        "new"
     :> ReqBody '[JSON] Quiz
     :> Post '[JSON] NoContent
-  :<|> "get"
+  :<|> "get" :> "user"
     :> Post '[JSON] [QuizPreview]
   :<|> "get" :> "all"
     :> Post '[JSON] [QuizPreview]
+  :<|> "get"
+    :> Capture "id" Text
+    :> Get '[JSON] QuizWithoutAnswers
+  :<|> "search"
+    :> Capture "query" Text
+    :> Get '[JSON] [QuizPreview]
   :<|> "remove"
     :> ReqBody '[JSON] Text
     :> Post '[JSON] NoContent
-  :<|> "get"
-    :> Capture "id" Text
-    :> Post '[JSON] QuizWithoutAnswers
   :<|> "result"
     :> Capture "id" Text
     :> ReqBody '[JSON] [Text]
