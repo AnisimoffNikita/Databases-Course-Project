@@ -15,9 +15,9 @@ type QuizAPI =
     :> ReqBody '[JSON] Quiz
     :> Post '[JSON] NoContent
   :<|> "get" :> "user"
-    :> Post '[JSON] [QuizPreview]
+    :> Get '[JSON] [QuizPreview]
   :<|> "get" :> "all"
-    :> Post '[JSON] [QuizPreview]
+    :> Get '[JSON] [QuizPreview]
   :<|> "get"
     :> Capture "id" Text
     :> Get '[JSON] QuizWithoutAnswers

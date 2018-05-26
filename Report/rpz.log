@@ -1,0 +1,1969 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.4.26)  27 MAY 2018 01:02
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**rpz.tex
+(./rpz.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+(./G7-32.cls
+Document Class: G7-32 2003/07/01 v1.0 Non Standard LaTeX document class
+(./G2-105.sty
+Package: G2-105 2003/07/07 v1.00 General reqs. GOST 2.105-95
+ (./GostBase.clo
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+))
+\c@totalpage=\count79
+\c@totaltable=\count80
+\c@totalfigure=\count81
+\c@totalbib=\count82
+\GostAfterTitleSkip=\skip41
+\GostBetweenTitleSkip=\skip42
+\GostBeforTitleSkip=\skip43
+\GostBeforNoTitleSkip=\skip44
+\GostHTitleSpace=\skip45
+\GostTitleIndent=\skip46
+\Gost@ChapterIndent=\skip47
+\Gost@MainChapterIndent=\skip48
+\Gost@TitleDropSkip=\skip49
+\c@chapter=\count83
+\c@section=\count84
+\c@subsection=\count85
+\c@subsubsection=\count86
+\NirTitleDropSkip=\skip50
+ (./iftex.sty
+Package: iftex 2013/04/04 v0.2 Provides if(tex) conditional for PDFTeX, XeTeX, 
+and LuaTeX
+)
+(/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty
+Package: cmap 2008/03/06 v1.0h CMap support: searchable PDF
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
+
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def
+File: t2aenc.def 2005/09/27 v1.0i Cyrillic encoding definition file
+)
+LaTeX Font Info:    Try loading font information for T2A+cmr on input line 105.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd
+File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+)<<t2a.cmap>>)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+))
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-global.def
+File: uni-global.def 2013/05/13 UCS: Unicode global data
+)
+\uc@secondtry=\count87
+\uc@combtoks=\toks16
+\uc@combtoksb=\toks17
+\uc@temptokena=\toks18
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2018/02/14 3.18 The Babel package
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2018/02/14 3.18 Babel switching mechanism
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2018/02/14 3.18 Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen102
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@dirlevel=\count89
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-russian/russianb.ldf
+Language: russian 2017/08/12 1.3j Russian support for the Babel system
+Package babel Info: Making " an active character on input line 120.
+Package babel Info: Default for \cyrdash is provided on input line 157.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/t2/mathtext.sty
+Package: mathtext 1999/01/28 v1.0 transparent text-and-math defs
+LaTeX Info: Redefining \halign on input line 111.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/flafter.sty
+Package: flafter 2017/04/11 v1.4a Standard LaTeX floats after reference (FMi)
+Applying: [2015/01/01] float order in 2-column on input line 49.
+Already applied: [0000/00/00] float order in 2-column on input line 151.
+)
+\GostItemGap=\skip51
+\GostItemIndent=\skip52
+\GostItemNestedIndent=\skip53
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks19
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip54
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks20
+\ex@=\dimen103
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count90
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count91
+\leftroot@=\count92
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count93
+\DOTSCASE@=\count94
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+\symOMLletters=\mathgroup6
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\symOMSletters=\mathgroup7
+\macc@depth=\count95
+\c@MaxMatrixCols=\count96
+\dotsspace@=\muskip10
+\c@parentequation=\count97
+\dspbrk@lvl=\count98
+\tag@help=\toks21
+\row@=\count99
+\column@=\count100
+\maxfields@=\count101
+\andhelp@=\toks22
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks23
+\multlinegap=\skip55
+\multlinetaggap=\skip56
+\mathdisplay@stack=\toks24
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/was/icomma.sty
+Package: icomma 2002/03/10 v2.0 (WaS)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/leqno.clo
+File: leqno.clo 2016/12/29 v1.2a Standard LaTeX option (left equation numbers)
+)
+\Gost@EqRemLen=\skip57
+\Gost@@EqRemLen=\skip58
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks25
+)
+\captionmargin=\dimen112
+\captionmargin@=\dimen113
+\captionwidth=\dimen114
+\caption@tempdima=\dimen115
+\caption@indent=\dimen116
+\caption@parindent=\dimen117
+\caption@hangindent=\dimen118
+\abovecaptionskip=\skip59
+\belowcaptionskip=\skip60
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = undefined.
+\c@ContinuedFloat=\count102
+)
+\c@figure=\count103
+\c@table=\count104
+ (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip61
+\LTright=\skip62
+\LTpre=\skip63
+\LTpost=\skip64
+\LTchunksize=\count105
+\LTcapwidth=\dimen119
+\LT@head=\box28
+\LT@firsthead=\box29
+\LT@foot=\box30
+\LT@lastfoot=\box31
+\LT@cols=\count106
+\LT@rows=\count107
+\c@LT@tables=\count108
+\c@LT@chunks=\count109
+\LT@p@ftn=\toks26
+)
+(/usr/share/texlive/texmf-dist/tex/latex/footmisc/footmisc.sty
+Package: footmisc 2011/06/06 v5.5b a miscellany of footnote facilities
+\FN@temptoken=\toks27
+\footnotemargin=\dimen120
+\c@pp@next@reset=\count110
+\c@@fnserial=\count111
+Package footmisc Info: Declaring symbol style bringhurst on input line 855.
+Package footmisc Info: Declaring symbol style chicago on input line 863.
+Package footmisc Info: Declaring symbol style wiley on input line 872.
+Package footmisc Info: Declaring symbol style lamport-robust on input line 883.
+
+Package footmisc Info: Declaring symbol style lamport* on input line 903.
+Package footmisc Info: Declaring symbol style lamport*-robust on input line 924
+.
+)
+\bibindent=\dimen121
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count112
+\Gm@cntv=\count113
+\c@Gm@tempcnt=\count114
+\Gm@bindingoffset=\dimen122
+\Gm@wd@mp=\dimen123
+\Gm@odd@mp=\dimen124
+\Gm@even@mp=\dimen125
+\Gm@layoutwidth=\dimen126
+\Gm@layoutheight=\dimen127
+\Gm@layouthoffset=\dimen128
+\Gm@layoutvoffset=\dimen129
+\Gm@dimlist=\toks28
+) (./G7-32.sty
+Package: G7-32 2003/07/07 v1.00 Titles for GOST 7.32-2001
+))
+\@input{preamble.inc.aux}
+\openout2 = `preamble.inc.aux'.
+
+(./preamble.inc.tex (./slashbox.sty
+slashbox style by K.Yasuoka, May 1993.
+\@slashboxa=\box32
+\@slashboxb=\box33
+\@slashboxc=\box34
+\@slashboxwd=\count115
+\@slashboxht=\count116
+\@slashsepl=\dimen130
+\@slashsepr=\dimen131
+) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen132
+\Hy@linkcounter=\count117
+\Hy@pagecounter=\count118
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
+\symPD1letters=\mathgroup8
+)
+\Hy@SavedSpaceFactor=\count119
+Package hyperref Info: Option `unicode' set `true' on input line 3456.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2018/02/06 v6.86b Hyperref: PDF Unicode definition (HO)
+\symPUletters=\mathgroup9
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `bookmarks' set `true' on input line 4383.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4383.
+Package hyperref Info: Option `unicode' set `true' on input line 4383.
+Package hyperref Info: Hyper figures OFF on input line 4509.
+Package hyperref Info: Link nesting OFF on input line 4514.
+Package hyperref Info: Hyper index ON on input line 4517.
+Package hyperref Info: Plain pages OFF on input line 4524.
+Package hyperref Info: Backreferencing OFF on input line 4529.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4762.
+\c@Hy@tempcnt=\count120
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5115.
+\XeTeXLinkMargin=\dimen133
+\Fld@menulength=\count121
+\Field@Width=\dimen134
+\Fld@charsize=\dimen135
+Package hyperref Info: Hyper figures OFF on input line 6369.
+Package hyperref Info: Link nesting OFF on input line 6374.
+Package hyperref Info: Hyper index ON on input line 6377.
+Package hyperref Info: backreferencing OFF on input line 6384.
+Package hyperref Info: Link coloring ON on input line 6387.
+Package hyperref Info: Link coloring with OCG OFF on input line 6394.
+Package hyperref Info: PDF/A mode OFF on input line 6399.
+LaTeX Info: Redefining \ref on input line 6439.
+LaTeX Info: Redefining \pageref on input line 6443.
+\Hy@abspage=\count122
+\c@Item=\count123
+\c@Hfootnote=\count124
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
+\Fld@listcount=\count125
+\c@bookmark@seq@number=\count126
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip65
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen136
+\Gin@req@width=\dimen137
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks29
+\pgfutil@tempdima=\dimen138
+\pgfutil@tempdimb=\dimen139
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box35
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
+))
+Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks30
+\pgfkeys@temptoks=\toks31
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex
+\pgfkeys@tmptoks=\toks32
+))
+\pgf@x=\dimen140
+\pgf@y=\dimen141
+\pgf@xa=\dimen142
+\pgf@ya=\dimen143
+\pgf@xb=\dimen144
+\pgf@yb=\dimen145
+\pgf@xc=\dimen146
+\pgf@yc=\dimen147
+\w@pgf@writea=\write3
+\r@pgf@reada=\read1
+\c@pgf@counta=\count127
+\c@pgf@countb=\count128
+\c@pgf@countc=\count129
+\c@pgf@countd=\count130
+\t@pgf@toka=\toks33
+\t@pgf@tokb=\toks34
+\t@pgf@tokc=\toks35
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f
+File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex
+File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
+\pgfsyssoftpath@smallbuffer@items=\count131
+\pgfsyssoftpath@bigbuffer@items=\count132
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen148
+\pgfmath@count=\count133
+\pgfmath@box=\box36
+\pgfmath@toks=\toks36
+\pgfmath@stack@operand=\toks37
+\pgfmath@stack@operation=\toks38
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count134
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x
+File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
+\pgf@picminx=\dimen149
+\pgf@picmaxx=\dimen150
+\pgf@picminy=\dimen151
+\pgf@picmaxy=\dimen152
+\pgf@pathminx=\dimen153
+\pgf@pathmaxx=\dimen154
+\pgf@pathminy=\dimen155
+\pgf@pathmaxy=\dimen156
+\pgf@xx=\dimen157
+\pgf@xy=\dimen158
+\pgf@yx=\dimen159
+\pgf@yy=\dimen160
+\pgf@zx=\dimen161
+\pgf@zy=\dimen162
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex
+File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
+\pgf@path@lastx=\dimen163
+\pgf@path@lasty=\dimen164
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex
+File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
+\pgf@shorten@end@additional=\dimen165
+\pgf@shorten@start@additional=\dimen166
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x
+File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
+\pgfpic=\box37
+\pgf@hbox=\box38
+\pgf@layerbox@main=\box39
+\pgf@picture@serial@count=\count135
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex
+File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
+\pgflinewidth=\dimen167
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex
+File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
+\pgf@pt@x=\dimen168
+\pgf@pt@y=\dimen169
+\pgf@pt@temp=\dimen170
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex
+File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x
+File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
+\pgfarrowsep=\dimen171
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
+\pgf@max=\dimen172
+\pgf@sys@shading@range@num=\count136
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex
+File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
+\pgfexternal@startupbox=\box40
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x
+File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex
+File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex
+File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
+\pgfnodeparttextbox=\box41
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen173
+\pgf@nodesepend=\dimen174
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen175
+\pgffor@skip=\dimen176
+\pgffor@stack=\toks39
+\pgffor@toks=\toks40
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
+\pgf@plot@mark@count=\count137
+\pgfplotmarksize=\dimen177
+)
+\tikz@lastx=\dimen178
+\tikz@lasty=\dimen179
+\tikz@lastxsaved=\dimen180
+\tikz@lastysaved=\dimen181
+\tikzleveldistance=\dimen182
+\tikzsiblingdistance=\dimen183
+\tikz@figbox=\box42
+\tikz@figbox@bg=\box43
+\tikz@tempbox=\box44
+\tikz@tempbox@bg=\box45
+\tikztreelevel=\count138
+\tikznumberofchildren=\count139
+\tikznumberofcurrentchild=\count140
+\tikz@fig@count=\count141
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
+\pgfmatrixcurrentrow=\count142
+\pgfmatrixcurrentcolumn=\count143
+\pgf@matrix@numberofcolumns=\count144
+)
+\tikz@expandcount=\count145
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.
+tex
+File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
+\arrowsize=\dimen184
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshadows.code.tex
+File: tikzlibraryshadows.code.tex 2008/01/13 v3.0.1a (rcs-revision 1.3)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryfadings.code.tex
+File: tikzlibraryfadings.code.tex 2009/11/15 v3.0.1a (rcs-revision 1.2)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
+.tex
+File: pgflibraryfadings.code.tex 2008/02/07 v3.0.1a (rcs-revision 1.3)
+))) (/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplots 2017/06/05 v1.15 Data Visualization (1.15)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
+\t@pgfplots@toka=\toks41
+\t@pgfplots@tokb=\toks42
+\t@pgfplots@tokc=\toks43
+\pgfplots@tmpa=\dimen185
+\c@pgfplots@coordindex=\count146
+\c@pgfplots@scanlineindex=\count147
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code
+.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_loader.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex
+)
+Package pgfplots: loading complementary arithmetics for your pgf version...
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgflibraryfpu.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count148
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotslists
+tructure.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotslists
+tructureext.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray
+.code.tex
+\c@pgfplotsarray@tmp=\count149
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatri
+x.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshare
+d.code.tex
+\c@pgfplotstable@counta=\count150
+\t@pgfplotstable@a=\toks44
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.te
+x
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.co
+de.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.sur
+fshading.code.tex
+\c@pgfplotslibrarysurf@no=\count151
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surf
+shading.pgfsys-pdftex.def)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.
+tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.t
+ex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.cod
+e.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.cod
+e.tex
+\pgfdecoratedcompleteddistance=\dimen186
+\pgfdecoratedremainingdistance=\dimen187
+\pgfdecoratedinputsegmentcompleteddistance=\dimen188
+\pgfdecoratedinputsegmentremainingdistance=\dimen189
+\pgf@decorate@distancetomove=\dimen190
+\pgf@decorate@repeatstate=\count152
+\pgfdecorationsegmentamplitude=\dimen191
+\pgfdecorationsegmentlength=\dimen192
+)
+\tikz@lib@dec@box=\box46
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.pathmorphing.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
+decorations.pathmorphing.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.pathreplacing.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
+decorations.pathreplacing.code.tex))
+\pgfplots@numplots=\count153
+\pgfplots@xmin@reg=\dimen193
+\pgfplots@xmax@reg=\dimen194
+\pgfplots@ymin@reg=\dimen195
+\pgfplots@ymax@reg=\dimen196
+\pgfplots@zmin@reg=\dimen197
+\pgfplots@zmax@reg=\dimen198
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.co
+de.tex
+File: pgflibraryplotmarks.code.tex 2015/08/03 v3.0.1a (rcs-revision 1.14)
+))) (/usr/share/texlive/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks45
+)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip66
+\multirow@cntb=\count154
+\multirow@dima=\skip67
+\bigstrutjot=\dimen199
+)
+(/usr/share/texlive/texmf-dist/tex/latex/paralist/paralist.sty
+Package: paralist 2017/01/22 v2.7 Extended list environments
+\pltopsep=\skip68
+\plpartopsep=\skip69
+\plitemsep=\skip70
+\plparsep=\skip71
+\pl@lab=\toks46
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen256
+\extrarowheight=\dimen257
+\NC@list=\toks47
+\extratabsurround=\skip72
+\backup@length=\skip73
+)
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2012/05/21 v1.0 Adjusting TeX boxes (trim, clip, ...)
+
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks48
+\XKV@tempa@toks=\toks49
+)
+\XKV@depth=\count155
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2012/05/16 v1.0 Trim and clip general TeX material
+
+(/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box47
+)
+\tc@llx=\dimen258
+\tc@lly=\dimen259
+\tc@urx=\dimen260
+\tc@ury=\dimen261
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2012/05/13 v1.0 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen262
+\adjbox@Height=\dimen263
+\adjbox@Depth=\dimen264
+\adjbox@Totalheight=\dimen265
+
+(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count156
+)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box48
+\sift@deathcycles=\count157
+\@vwid@loff=\dimen266
+\@vwid@roff=\dimen267
+))
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count158
+\float@exts=\toks50
+\float@box=\box49
+\@float@everytoks=\toks51
+\@floatcapt=\box50
+)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+\c@subfigure=\count159
+\c@subtable=\count160
+)
+(/usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write4
+
+Excluding comment 'comment')
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2016/02/03 v2.11 `tabularx' package (DPC)
+\TX@col@width=\dimen268
+\TX@old@table=\dimen269
+\TX@old@col=\dimen270
+\TX@target=\dimen271
+\TX@delta=\dimen272
+\TX@cols=\count161
+\TX@ftn=\toks52
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count162
+\lst@gtempboxa=\box51
+\lst@token=\toks53
+\lst@length=\count163
+\lst@currlwidth=\dimen273
+\lst@column=\count164
+\lst@pos=\count165
+\lst@lostspace=\dimen274
+\lst@width=\dimen275
+\lst@newlines=\count166
+\lst@lineno=\count167
+\lst@maxwidth=\dimen276
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count168
+\lst@skipnumbers=\count169
+\lst@framebox=\box52
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/rotating.sty
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+\c@r@tfl@t=\count170
+\rotFPtop=\skip74
+\rotFPbot=\skip75
+\rot@float@box=\box53
+\rot@mess@toks=\toks54
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/afterpage.sty
+Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
+\AP@output=\toks55
+\AP@partial=\box54
+\AP@footins=\box55
+))
+\@input{listings.inc.aux}
+\openout2 = `listings.inc.aux'.
+
+(./listings.inc.tex
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen277
+\WF@size=\dimen278
+\c@WF@wrappedlines=\count171
+\WF@box=\box56
+\WF@everypar=\toks56
+Package: wrapfig 2003/01/31  v 3.6
+))
+\@input{macros.inc.aux}
+\openout2 = `macros.inc.aux'.
+
+(./macros.inc.tex) (./rpz.aux (./0-title.aux) (./1-intro.aux) (./2-analysis.aux
+) (./3-construct.aux) (./4-technology.aux
+
+LaTeX Warning: Label `lst2:label' multiply defined.
+
+) (./5-outro.aux))
+\openout1 = `rpz.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+ (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
+File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
+)
+Package caption Info: rotating package is loaded.
+Package caption Info: wrapfig package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(85.35826pt, 455.24411pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=731.23584pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-27.36449pt
+* \headheight=12.0pt
+* \headsep=0.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+\AtBeginShipoutBox=\box57
+Package hyperref Info: Link coloring ON on input line 19.
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count172
+)
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \nameref on input line 19.
+
+(./rpz.out) (./rpz.out)
+\@outlinefile=\write5
+\openout5 = `rpz.out'.
+
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count173
+\scratchdimen=\dimen279
+\scratchbox=\box58
+\nofMPsegments=\count174
+\nofMParguments=\count175
+\everyMPshowfont=\toks57
+\MPscratchCnt=\count176
+\MPscratchDim=\dimen280
+\MPnumerator=\count177
+\makeMPintoPDFobject=\count178
+\everyMPtoPDFconversion=\toks58
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+ABD: EveryShipout initializing macros
+
+Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
+ick labels; missing features). Consider writing \pgfplotsset{compat=1.15} into 
+your preamble.
+ on input line 19.
+
+\c@lstlisting=\count179
+\openout2 = `0-title.aux'.
+
+(./0-title.tex (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-4.def
+File: uni-4.def 2013/05/13 UCS: Unicode data U+0400..U+04FF
+)
+<img/bmstu-logo.png, id=136, 178.54941pt x 207.56616pt>
+File: img/bmstu-logo.png Graphic file (type png)
+<use img/bmstu-logo.png>
+Package pdftex.def Info: img/bmstu-logo.png  used on input line 33.
+(pdftex.def)             Requested size: 89.27448pt x 103.78282pt.
+
+Overfull \hbox (1.22632pt too wide) in paragraph at lines 33--33
+[][]  
+ []
+
+<<ot1.cmap>><<oml.cmap>><<oms.cmap>><<omx.cmap>>
+LaTeX Font Info:    Try loading font information for U+msa on input line 33.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 33.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 33.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 33.
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 33.
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <6> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 33.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 33.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 33.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 33.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <6> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 33.
+LaTeX Font Info:    Try loading font information for PD1+cmr on input line 33.
+LaTeX Font Info:    No file PD1cmr.fd. on input line 33.
+
+
+LaTeX Font Warning: Font shape `PD1/cmr/m/n' undefined
+(Font)              using `PD1/pdf/m/n' instead on input line 33.
+
+LaTeX Font Info:    Try loading font information for PU+cmr on input line 33.
+LaTeX Font Info:    No file PUcmr.fd. on input line 33.
+
+LaTeX Font Warning: Font shape `PU/cmr/m/n' undefined
+(Font)              using `PU/pdf/m/n' instead on input line 33.
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
+File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
+)
+Overfull \hbox (8.70427pt too wide) in paragraph at lines 41--41
+[]\T2A/cmr/m/n/12 ‘ј ”Ћ№“≈“  
+ []
+
+)
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 30.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 30.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 30.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 30.
+ [1
+
+
+
+
+
+
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./img/bmstu-logo.png>] (./
+rpz.toc
+LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 23.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
+File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+))
+\tf@toc=\write6
+\openout6 = `rpz.toc'.
+
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 34.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 34.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 34.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 34.
+
+[2
+
+
+]
+\openout2 = `1-intro.aux'.
+
+ (./1-intro.tex
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 1.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 1.
+)
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 34.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 34.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 34.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 34.
+ [3
+
+
+]
+\openout2 = `2-analysis.aux'.
+
+ (./2-analysis.tex
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 1.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 1.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 3.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 3.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 5.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 5.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 19.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 19.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 19.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 19.
+ [4
+
+
+
+]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 42.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 42.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 45.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 45.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 45.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 45.
+ [5]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 66.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 66.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 66.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 66.
+ [6]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 71.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 71.
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
+File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
+)
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 87.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 87.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 87.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 87.
+ [7]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 90.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 90.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `bph') on input line 91.
+
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 111.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 111.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 114.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 114.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 114.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 114.
+[8]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 134.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 134.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 153.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 153.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 153.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 153.
+ [9])
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 38.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 38.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 38.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 38.
+ [10]
+\openout2 = `3-construct.aux'.
+
+ (./3-construct.tex
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 1.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 1.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 3.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 3.
+<img/usecase.png, id=230, 1003.75pt x 353.32pt>
+File: img/usecase.png Graphic file (type png)
+<use img/usecase.png>
+Package pdftex.def Info: img/usecase.png  used on input line 19.
+(pdftex.def)             Requested size: 364.19667pt x 128.19786pt.
+<img/reg_idef/01_A-0.png, id=231, 801.99625pt x 531.9875pt>
+File: img/reg_idef/01_A-0.png Graphic file (type png)
+<use img/reg_idef/01_A-0.png>
+Package pdftex.def Info: img/reg_idef/01_A-0.png  used on input line 26.
+(pdftex.def)             Requested size: 584.99089pt x 388.06354pt.
+<img/reg_idef/02_A0.png, id=232, 801.99625pt x 531.9875pt>
+File: img/reg_idef/02_A0.png Graphic file (type png)
+<use img/reg_idef/02_A0.png>
+Package pdftex.def Info: img/reg_idef/02_A0.png  used on input line 32.
+(pdftex.def)             Requested size: 584.99089pt x 388.06354pt.
+<img/authorzation_idef/01_A-0.png, id=233, 801.99625pt x 531.9875pt>
+File: img/authorzation_idef/01_A-0.png Graphic file (type png)
+<use img/authorzation_idef/01_A-0.png>
+Package pdftex.def Info: img/authorzation_idef/01_A-0.png  used on input line 3
+9.
+(pdftex.def)             Requested size: 584.99089pt x 388.06354pt.
+<img/authorzation_idef/02_A0.png, id=234, 801.99625pt x 531.9875pt>
+File: img/authorzation_idef/02_A0.png Graphic file (type png)
+<use img/authorzation_idef/02_A0.png>
+Package pdftex.def Info: img/authorzation_idef/02_A0.png  used on input line 45
+.
+(pdftex.def)             Requested size: 584.99089pt x 388.06354pt.
+<img/new_idef/01_A-0.png, id=235, 1604.99625pt x 1067.99pt>
+File: img/new_idef/01_A-0.png Graphic file (type png)
+<use img/new_idef/01_A-0.png>
+Package pdftex.def Info: img/new_idef/01_A-0.png  used on input line 52.
+(pdftex.def)             Requested size: 584.99089pt x 389.2672pt.
+<img/new_idef/02_A0.png, id=236, 1604.99625pt x 1067.99pt>
+File: img/new_idef/02_A0.png Graphic file (type png)
+<use img/new_idef/02_A0.png>
+Package pdftex.def Info: img/new_idef/02_A0.png  used on input line 58.
+(pdftex.def)             Requested size: 584.99089pt x 389.2672pt.
+<img/pass_idef/01_A-0.png, id=237, 1604.99625pt x 1067.99pt>
+File: img/pass_idef/01_A-0.png Graphic file (type png)
+<use img/pass_idef/01_A-0.png>
+Package pdftex.def Info: img/pass_idef/01_A-0.png  used on input line 66.
+(pdftex.def)             Requested size: 584.99089pt x 389.2672pt.
+<img/pass_idef/02_A0.png, id=238, 1604.99625pt x 1067.99pt>
+File: img/pass_idef/02_A0.png Graphic file (type png)
+<use img/pass_idef/02_A0.png>
+Package pdftex.def Info: img/pass_idef/02_A0.png  used on input line 72.
+(pdftex.def)             Requested size: 584.99089pt x 389.2672pt.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+ [11
+
+
+
+ <./img/usecase.png (PNG copy)>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+ [12 <./img/reg_idef/01_A-0.png (PNG copy)>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+ [13 <./img/reg_idef/02_A0.png (PNG copy)>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+
+[14 <./img/authorzation_idef/01_A-0.png (PNG copy)>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+ [15 <./img/authorzation_idef/02_A0.png (PNG copy)>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+ [16 <./img/new_idef/01_A-0.png (PNG copy)>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+ [17 <./img/new_idef/02_A0.png (PNG copy)>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+ [18 <./img/pass_idef/01_A-0.png (PNG copy)>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+
+[19 <./img/pass_idef/02_A0.png (PNG copy)>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 79.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 79.
+<img/er.png, id=287, 1003.75pt x 1585.925pt>
+File: img/er.png Graphic file (type png)
+<use img/er.png>
+Package pdftex.def Info: img/er.png  used on input line 85.
+(pdftex.def)             Requested size: 318.66948pt x 503.4893pt.
+
+Overfull \hbox (13.47147pt too wide) in paragraph at lines 98--112
+ [][] 
+ []
+
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 155.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 155.
+<img/sequence1.png, id=292, 158.2713pt x 100.2144pt>
+File: img/sequence1.png Graphic file (type png)
+<use img/sequence1.png>
+Package pdftex.def Info: img/sequence1.png  used on input line 161.
+(pdftex.def)             Requested size: 455.24411pt x 288.28998pt.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 164.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 164.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 164.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 164.
+[20
+
+ <./img/er.png (PNG copy)>]
+
+LaTeX Warning: Text page 21 contains only floats.
+
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 164.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 164.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 164.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 164.
+[21]
+<img/sequence2.png, id=307, 152.4897pt x 136.3494pt>
+File: img/sequence2.png Graphic file (type png)
+<use img/sequence2.png>
+Package pdftex.def Info: img/sequence2.png  used on input line 167.
+(pdftex.def)             Requested size: 455.24411pt x 407.11224pt.
+<img/sequence3.png, id=308, 149.5989pt x 56.8524pt>
+File: img/sequence3.png Graphic file (type png)
+<use img/sequence3.png>
+Package pdftex.def Info: img/sequence3.png  used on input line 173.
+(pdftex.def)             Requested size: 455.24411pt x 173.01262pt.
+<img/sequence4.png, id=309, 152.4897pt x 112.2594pt>
+File: img/sequence4.png Graphic file (type png)
+<use img/sequence4.png>
+Package pdftex.def Info: img/sequence4.png  used on input line 179.
+(pdftex.def)             Requested size: 455.24411pt x 335.1843pt.
+<img/sequence5.png, id=310, 145.2627pt x 112.2594pt>
+File: img/sequence5.png Graphic file (type png)
+<use img/sequence5.png>
+Package pdftex.def Info: img/sequence5.png  used on input line 185.
+(pdftex.def)             Requested size: 455.24411pt x 351.8426pt.
+<img/sequence6.png, id=311, 146.2263pt x 90.5784pt>
+File: img/sequence6.png Graphic file (type png)
+<use img/sequence6.png>
+Package pdftex.def Info: img/sequence6.png  used on input line 191.
+(pdftex.def)             Requested size: 455.24411pt x 282.00914pt.
+<img/sequence7.png, id=312, 152.4897pt x 85.7604pt>
+File: img/sequence7.png Graphic file (type png)
+<use img/sequence7.png>
+Package pdftex.def Info: img/sequence7.png  used on input line 198.
+(pdftex.def)             Requested size: 455.24411pt x 256.06354pt.
+<img/sequence8.png, id=313, 146.2263pt x 56.8524pt>
+File: img/sequence8.png Graphic file (type png)
+<use img/sequence8.png>
+Package pdftex.def Info: img/sequence8.png  used on input line 204.
+(pdftex.def)             Requested size: 455.24411pt x 177.0057pt.
+<img/sequence9.png, id=314, 148.6353pt x 56.8524pt>
+File: img/sequence9.png Graphic file (type png)
+<use img/sequence9.png>
+Package pdftex.def Info: img/sequence9.png  used on input line 210.
+(pdftex.def)             Requested size: 455.24411pt x 174.14037pt.
+<img/sequence10.png, id=315, 143.0946pt x 56.8524pt>
+File: img/sequence10.png Graphic file (type png)
+<use img/sequence10.png>
+Package pdftex.def Info: img/sequence10.png  used on input line 216.
+(pdftex.def)             Requested size: 455.24411pt x 180.87128pt.
+)
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 39.
+ [22 <./img/sequence1.png>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 39.
+ [23 <./img/sequence2.png> <./img/sequence3.png>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 39.
+ [24 <./img/sequence4.png>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 39.
+ [25 <./img/sequence5.png> <./img/sequence6.png>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 39.
+
+[26 <./img/sequence7.png> <./img/sequence8.png>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 39.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 39.
+ [27 <./img/sequence9.png> <./img/sequence10.png>]
+\openout2 = `4-technology.aux'.
+
+ (./4-technology.tex
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 1.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 1.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 5.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 5.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 7.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 7.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 30.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 30.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 37.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 37.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 37.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 37.
+ [28
+
+
+
+]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 52.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 52.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 55.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 55.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 55.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 55.
+ [29]
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2015/06/04 1.6 listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 58.
+
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2014/10/28 v1.0d Input encoding file
+)
+(../Server/src/API/User/API.hs)
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 60.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 60.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 62.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 62.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 62.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 62.
+ [30]
+Underfull \hbox (badness 6412) in paragraph at lines 66--67
+[]\T2A/cmr/m/n/12 Ќезависимость от ба^^?зы дан^^?ных. »ме^^?ет^^?с€ пер^^?во^^?
+класс^^?на€ под^^?держ^^?ка
+ []
+
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 73.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 73.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 79.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 79.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 79.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 79.
+[31]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `bph') on input line 82.
+
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2014/10/28 v1.0d Input encoding file
+)
+(../Server/src/Model/Model.hs
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 48.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 48.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 48.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 48.
+ [32])
+LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 106.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 106.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 106.
+
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2014/10/28 v1.0d Input encoding file
+)
+(../Server/src/Model/Model.hs)
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 112.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 112.
+
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2014/10/28 v1.0d Input encoding file
+)
+(../Server/src/Model/Model.hs
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 77.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 77.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 77.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 77.
+ [33]
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 81.
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <7> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 81.
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <5> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 81.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 81.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 81.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <5> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 81.
+)
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 119.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 119.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 137.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 137.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 137.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 137.
+ [34]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 165.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 165.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 165.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 165.
+ [35]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 190.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 190.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 190.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 190.
+ [36]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 214.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 214.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 214.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 214.
+ [37]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 222.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 222.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 240.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 240.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 240.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 240.
+ [38]
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2014/10/28 v1.0d Input encoding file
+))
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 40.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 40.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 40.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 40.
+ [39]
+\openout2 = `5-outro.aux'.
+
+
+(./5-outro.tex
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 1.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 1.
+)
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 45.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 45.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 45.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 45.
+ [40
+
+
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 57.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 57.
+ (./rpz.aux (./0-title.aux) (./1-intro.aux)
+(./2-analysis.aux) (./3-construct.aux) (./4-technology.aux) (./5-outro.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 57.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 57.
+
+
+Package rerunfilecheck Warning: File `rpz.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `rpz.out':
+(rerunfilecheck)             Before: C2AFE856F100D84406934B5868456AC6;5502
+(rerunfilecheck)             After:  A1E99B9BCFFD2480AA8E406F75484B07;5159.
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 57.
+ ) 
+Here is how much of TeX's memory you used:
+ 38126 strings out of 492982
+ 806736 string characters out of 6134896
+ 1020004 words of memory out of 5000000
+ 40691 multiletter control sequences out of 15000+600000
+ 20019 words of font info for 56 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 66i,14n,98p,2060b,2398s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{subsection.1.4.1} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.1.4} has been referenced but does not exist
+, replaced by a fixed one
+
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/t
+ype1/public/cm-super/sfbi1200.pfb></usr/share/texmf/fonts/type1/public/cm-super
+/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/
+share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/ty
+pe1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/
+sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/s
+hare/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/typ
+e1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/s
+ftt1200.pfb>
+Output written on rpz.pdf (40 pages, 899669 bytes).
+PDF statistics:
+ 630 PDF objects out of 1000 (max. 8388607)
+ 519 compressed objects within 6 object streams
+ 202 named destinations out of 1000 (max. 500000)
+ 442 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,50 @@
+\begin{thebibliography}{1}
+\def\selectlanguageifdefined#1{
+\expandafter\ifx\csname date#1\endcsname\relax
+\else\language\csname l@#1\endcsname\fi}
+\ifx\undefined\url\def\url#1{{\small #1}}\else\fi
+\ifx\undefined\BibUrl\def\BibUrl#1{\url{#1}}\else\fi
+\ifx\undefined\BibAnnote\long\def\BibAnnote#1{}\else\fi
+\ifx\undefined\BibEmph\def\BibEmph#1{\emph{#1}}\else\fi
+
+\bibitem{bib1}
+\selectlanguageifdefined{english}
+\BibEmph{Thomas~Porter,~Tom~Duff}. Compositing Digital Images. In SIGGRAPH 1984
+  Proceedings~/ Tom~Duff~Thomas~Porter. ---
+\newblock SIGGRAPH, 1984.
+
+\bibitem{bib3}
+\selectlanguageifdefined{english}
+\BibEmph{Krste~Asanovic,~et~al}. The Landscape of Parallel Computing Research:
+  A View from Berkeley~/ et~al~Krste~Asanovic. ---
+\newblock University of California, Berkeley, 2006.
+
+\bibitem{bib4}
+\selectlanguageifdefined{english}
+\BibEmph{David A.~Patterson,~John L.~Hennessy}. Computer Organization and
+  Design (Second Edition)~/ John L.~Hennessy~David A.~Patterson. ---
+\newblock Morgan Kaufmann Publishers, 1998.
+
+\bibitem{bib5}
+\selectlanguageifdefined{english}
+CUDA Programming Guide. ---
+\newblock 2017.
+
+\bibitem{bib2}
+\selectlanguageifdefined{english}
+Intel 64 and IA-32 Architectures Software Developer’s Manual. ---
+\newblock Intel Corporation, 2017.
+
+\bibitem{bib6}
+\selectlanguageifdefined{english}
+\BibEmph{Buxton,~Mark}. Haswell New Instruction Descriptions Now Available~/
+  Mark~Buxton. ---
+\newblock Software.intel.com, 2012.
+
+\bibitem{bib7}
+\selectlanguageifdefined{english}
+\BibEmph{P,~Barrett}. Implementing the Rivest Shamir and Adleman Public Key
+  Encryption Algorithm on a Standard Digital Signal Processor~/ Barrett~P. ---
+\newblock Advances in Cryptology, 2006.
+
+\end{thebibliography}

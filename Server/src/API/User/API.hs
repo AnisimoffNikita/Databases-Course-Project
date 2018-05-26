@@ -16,9 +16,9 @@ type UserAPI =
     :> ReqBody '[JSON] UserRegister
     :> Post '[JSON] Tokens
   :<|> "username"
-    :> Post '[JSON] Text
+    :> Get '[JSON] Text
   :<|> "profile"
-    :> Post '[JSON] Profile
+    :> Get '[JSON] Profile
   :<|> "edit" 
     :> ( "username" 
       :> ReqBody '[JSON] Text 

@@ -100,7 +100,7 @@ postQuizRequest tokens quizId =
             [ header "Authorization" ("Bearer " ++ tokens.tokensJwt) ]
     in
     Http.request
-        { method = "POST"
+        { method = "GET"
         , headers = headers
         , url = "http://localhost:8080/quiz/get/" ++ quizId
         , body = emptyBody

@@ -99,7 +99,7 @@ getQuiziesRequest tokens =
         { method =
             "POST"
         , headers = headers
-        , url = "http://localhost:8080/quiz/get"
+        , url = "http://localhost:8080/quiz/get/user"
         , body = emptyBody
         , expect =
             Http.expectJson (Decode.list decodeQuizPreview)

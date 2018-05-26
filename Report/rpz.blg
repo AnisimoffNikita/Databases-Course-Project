@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: rpz.aux
+A level-1 auxiliary file: 00-abstract.aux
+A level-1 auxiliary file: 1-intro.aux
+A level-1 auxiliary file: 2-analysis.aux
+A level-1 auxiliary file: 3-design.aux
+A level-1 auxiliary file: 4-impl.aux
+A level-1 auxiliary file: 5-research.aux
+A level-1 auxiliary file: 60-conclusion.aux
+A level-1 auxiliary file: 61-biblio.aux
+The style file: gost780u.bst
+Database file #1: rpz.bib
+You've used 7 entries,
+            2674 wiz_defined-function locations,
+            675 strings with 5780 characters,
+and the built_in function-call counts, 1494 in all, are:
+= -- 179
+> -- 22
+< -- 5
++ -- 12
+- -- 5
+* -- 35
+:= -- 166
+add.period$ -- 19
+call.type$ -- 7
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 7
+duplicate$ -- 92
+empty$ -- 222
+format.name$ -- 10
+if$ -- 418
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 0
+newline$ -- 45
+num.names$ -- 10
+pop$ -- 57
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 25
+stack$ -- 0
+substring$ -- 0
+swap$ -- 35
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 5
+width$ -- 8
+write$ -- 102
