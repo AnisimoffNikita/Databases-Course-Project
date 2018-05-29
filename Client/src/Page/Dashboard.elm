@@ -94,7 +94,7 @@ postProfile tokens =
             [ header "Authorization" ("Bearer " ++ tokens.tokensJwt) ]
     in
     Http.request
-        { method = "POST"
+        { method = "GET"
         , headers = headers
         , url = "http://localhost:8080/user/profile"
         , body = emptyBody
@@ -429,7 +429,7 @@ viewModal : Model -> Html Msg
 viewModal model =
     Modal.config CloseModal
         |> Modal.small
-        |> Modal.h5 [] [ text "Something went wrong" ]
+        |> Modal.h5 [] [ text "Что-то пошло не так" ]
         |> Modal.body []
             [ text model.errorMessage
             ]
@@ -438,7 +438,7 @@ viewModal model =
                 [ Button.outlinePrimary
                 , Button.attrs [ onClick CloseModal ]
                 ]
-                [ text "Close" ]
+                [ text "Закрыть" ]
             ]
         |> Modal.view model.modalVisibility
 
@@ -494,19 +494,19 @@ viewProfile model profile =
             )
 
         ( usernameView, usernameEditView ) =
-            fieldView "Username" profile.username Username InputUsername SubmitUsername InputGroup.text True
+            fieldView "Логин" profile.username Username InputUsername SubmitUsername InputGroup.text True
 
         ( emailView, emailEditView ) =
             fieldView "Email" profile.email Email InputEmail SubmitEmail InputGroup.email True
 
         ( passwordView, passwordEditView ) =
-            fieldView "Password" model.password Password InputPassword SubmitPassword InputGroup.password False
+            fieldView "Пароль" model.password Password InputPassword SubmitPassword InputGroup.password False
 
         infoView =
             Grid.container []
                 [ Grid.row []
                     [ Grid.col [ Col.md6, Col.offsetMd3, Col.attrs [ Spacing.my1 ] ]
-                        [ span [ class "text-secondary" ] [ text "First name" ] ]
+                        [ span [ class "text-secondary" ] [ text "Имя" ] ]
                     , Grid.col [ Col.md2, Col.offsetMd1 ]
                         [ Button.button
                             [ Button.roleLink
@@ -522,7 +522,7 @@ viewProfile model profile =
                     ]
                 , Grid.row []
                     [ Grid.col [ Col.attrs [ Spacing.my1 ] ]
-                        [ span [ class "text-secondary" ] [ text "Second name" ] ]
+                        [ span [ class "text-secondary" ] [ text "Фамилия" ] ]
                     ]
                 , Grid.row []
                     [ Grid.col []
@@ -530,15 +530,15 @@ viewProfile model profile =
                     ]
                 , Grid.row []
                     [ Grid.col [ Col.attrs [ Spacing.my1 ] ]
-                        [ span [ class "text-secondary" ] [ text "Birthday" ] ]
+                        [ span [ class "text-secondary" ] [ text "Дата рождения" ] ]
                     ]
                 , Grid.row []
                     [ Grid.col [ Col.attrs [ Spacing.my1 ] ]
-                        [ small [ class "text-secondary" ] [ text "Day" ] ]
+                        [ small [ class "text-secondary" ] [ text "День" ] ]
                     , Grid.col [ Col.attrs [ Spacing.my1 ] ]
-                        [ small [ class "text-secondary" ] [ text "Month" ] ]
+                        [ small [ class "text-secondary" ] [ text "Месяц" ] ]
                     , Grid.col [ Col.attrs [ Spacing.my1 ] ]
-                        [ small [ class "text-secondary" ] [ text "Year" ] ]
+                        [ small [ class "text-secondary" ] [ text "Год" ] ]
                     ]
                 , Grid.row []
                     [ Grid.col [ Col.attrs [ Spacing.my1 ] ]
@@ -550,7 +550,7 @@ viewProfile model profile =
                     ]
                 , Grid.row []
                     [ Grid.col [ Col.attrs [ Spacing.my1 ] ]
-                        [ span [ class "text-secondary" ] [ text "Gender" ] ]
+                        [ span [ class "text-secondary" ] [ text "Пол" ] ]
                     ]
                 , Grid.row []
                     [ Grid.col []
@@ -562,7 +562,7 @@ viewProfile model profile =
             Grid.container []
                 [ Grid.row []
                     [ Grid.col [ Col.attrs [ Spacing.my1 ] ]
-                        [ span [ class "text-secondary" ] [ text "First name" ] ]
+                        [ span [ class "text-secondary" ] [ text "Имя" ] ]
                     ]
                 , Grid.row []
                     [ Grid.col []
@@ -571,7 +571,7 @@ viewProfile model profile =
                     ]
                 , Grid.row []
                     [ Grid.col [ Col.attrs [ Spacing.my1 ] ]
-                        [ span [ class "text-secondary" ] [ text "Second name" ] ]
+                        [ span [ class "text-secondary" ] [ text "Фамилия" ] ]
                     ]
                 , Grid.row []
                     [ Grid.col []
@@ -580,7 +580,7 @@ viewProfile model profile =
                     ]
                 , Grid.row []
                     [ Grid.col [ Col.attrs [ Spacing.my1 ] ]
-                        [ span [ class "text-secondary" ] [ text "Date" ] ]
+                        [ span [ class "text-secondary" ] [ text "Дата рождения" ] ]
                     ]
                 , Grid.row []
                     [ Grid.col []
@@ -590,14 +590,14 @@ viewProfile model profile =
                     ]
                 , Grid.row []
                     [ Grid.col [ Col.attrs [ Spacing.my1 ] ]
-                        [ span [ class "text-secondary" ] [ text "Gender" ] ]
+                        [ span [ class "text-secondary" ] [ text "Пол" ] ]
                     ]
                 , Grid.row []
                     [ Grid.col []
                         [ Select.custom [Select.onChange InputGender]
                             [ Select.item [] [ text "" ]
-                            , Select.item [] [ text "Male" ]
-                            , Select.item [] [ text "Female" ]
+                            , Select.item [] [ text "Мужской" ]
+                            , Select.item [] [ text "Женский" ]
                             ]
                         ]
                     ]
@@ -609,7 +609,7 @@ viewProfile model profile =
                             , Button.onClick SubmitInfo
                             , Button.attrs [ Spacing.mt2 ]
                             ]
-                            [ text "Ok" ]
+                            [ text "Применить" ]
                         ]
                     ]
                 ]
@@ -678,7 +678,7 @@ viewProfile model profile =
                     [ class "custom-file" ]
                     [ 
                      label [ class "btn btn-block btn-outline-dark mt-2" ]
-                        [ text "Change avatar"
+                        [ text "Изменить"
                         , input 
                             [ class "custom-file-input"
                             , attribute "hidden" ""
@@ -697,12 +697,12 @@ viewProfile model profile =
                     [ Button.outlineDark 
                     , Button.block
                     , Button.attrs [ href <| Router.routeToString Router.Quizies]]
-                    [ text "My quizies" ]
+                    [ text "Мои тесты" ]
                 , Button.linkButton 
                     [ Button.outlineDark 
                     , Button.block
                     , Button.attrs [ href "#"]]
-                    [ text "Passed quizies" ]
+                    [ text "Пройденные тесты" ]
                 ]
             ]
         ]
@@ -741,16 +741,16 @@ formatGender g =
             ""
 
         Just Profile.Male ->
-            "Male"
+            "Мужской"
 
         Just Profile.Female ->
-            "Female"
+            "Женский"
 
 toGender : String -> Maybe Profile.Gender
 toGender g = 
     case g of 
         "" -> Nothing 
-        "Male" -> Just Profile.Male
-        "Female" -> Just Profile.Female
+        "Мужской" -> Just Profile.Male
+        "Женский" -> Just Profile.Female
         _ -> Nothing
 

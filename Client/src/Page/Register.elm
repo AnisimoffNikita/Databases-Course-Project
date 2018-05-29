@@ -118,21 +118,21 @@ view =
         form =
             Form.form [ onSubmit Register ]
                 [ Form.group []
-                    [ Form.label [ for "myemail" ] [ text "Email address" ]
-                    , Input.email [ Input.id "myemail", Input.attrs [ onInput Email ] ]
+                    [ Form.label [ for "myemail" ] [ text "Email" ]
+                    , Input.email [ Input.id "myemail", Input.attrs [ onInput Email ], Input.value ""  ]
                     ]
                 , Form.group []
-                    [ Form.label [ for "myusername" ] [ text "Username" ]
-                    , Input.text [ Input.id "myusername", Input.attrs [ onInput Username ] ]
+                    [ Form.label [ for "myusername" ] [ text "Логин" ]
+                    , Input.text [ Input.id "myusername",  Input.onInput Username, Input.value "" ]
                     ]
                 , Form.group []
-                    [ Form.label [ for "mypwd" ] [ text "Password" ]
-                    , Input.password [ Input.id "mypwd", Input.attrs [ onInput Password ] ]
+                    [ Form.label [ for "mypwd" ] [ text "Пароль" ]
+                    , Input.password [ Input.id "mypwd", Input.attrs [ onInput Password ], Input.value ""  ]
                     ]
                 , Button.button
                     [ Button.primary
                     ]
-                    [ text "Submit" ]
+                    [ text "Создать аккаунт" ]
                 ]
     in
     Grid.container
@@ -146,12 +146,12 @@ view =
             [ Grid.col
                 [ Col.md3
                 ]
-                [ h1 [] [ text "Register" ]
+                [ h1 [] [ text "Регистрация" ]
                 , Button.linkButton
                     [ Button.roleLink
                     , Button.attrs [ href <| routeToString Router.Login ]
                     ]
-                    [ text "Have account?" ]
+                    [ text "Уже есть аккаунт?" ]
                 , form
                 ]
             ]

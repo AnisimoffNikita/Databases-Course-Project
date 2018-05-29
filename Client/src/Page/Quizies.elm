@@ -97,7 +97,7 @@ getQuiziesRequest tokens =
     in
     Http.request
         { method =
-            "POST"
+            "GET"
         , headers = headers
         , url = "http://localhost:8080/quiz/get/user"
         , body = emptyBody
@@ -144,7 +144,7 @@ view model =
                             [ Button.primary
                             , Button.block 
                             , Button.attrs [href  <| routeToString Router.NewQuiz ]
-                            ] [ text "New Quiz" ]
+                            ] [ text "Создать новый тест" ]
                     ]
                 |> Card.view
     in
@@ -152,7 +152,7 @@ view model =
         RemoteData.Success quizies ->
             Grid.container [class "card-columns"]
                 (List.indexedMap previewQuiz quizies ++ [new])
-        _ -> div [] [text "error"]
+        _ -> div [] [text "ошибка"]
 
 previewQuiz : Int -> QuizPreview -> Html Msg
 previewQuiz i quiz = 
@@ -167,14 +167,14 @@ previewQuiz i quiz =
                                 [ Button.outlinePrimary
                                 , Button.block
                                 , Button.attrs [href <| "/#/quiz/" ++ quiz.id ]
-                                ] [ text "Go" ]
+                                ] [ text "Пройти!" ]
                         ]
                     , Form.col [ Col.md4 ]
                         [ Button.button
                             [ Button.outlineDanger
                             , Button.onClick (Remove quiz.id)
                             ]
-                            [ text "Remove" ] 
+                            [ text "Удалить" ] 
                         ]
                     ]
 

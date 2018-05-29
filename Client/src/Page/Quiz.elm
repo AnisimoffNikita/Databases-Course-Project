@@ -192,7 +192,7 @@ viewSuccess model quiz =
             [ Button.dark 
             , Button.onClick Submit
             , Button.attrs [class "float-right"] ]
-            [ text "Submit" ]
+            [ text "Отправить" ]
         , viewModal model 
         ]
 
@@ -218,7 +218,7 @@ viewModal model  =
         RemoteData.Success r -> 
             Modal.config CloseModal
                 |> Modal.small
-                |> Modal.h5 [] [ text "Result" ]
+                |> Modal.h5 [] [ text "Результат" ]
                 |> Modal.body []
                     [ text r
                     ]
@@ -227,7 +227,7 @@ viewModal model  =
                         [ Button.outlinePrimary
                         , Button.attrs [ onClick CloseModal ]
                         ]
-                        [ text "Close" ]
+                        [ text "Закрыть" ]
                     ]
                 |> Modal.view model.modalVisibility
         _ -> div [] []
@@ -235,9 +235,9 @@ viewModal model  =
 
 viewLoading : Html Msg
 viewLoading =
-    div [ class "loading" ] []
+    div [ class "загрузка" ] []
 
 
 viewFail : Html Msg
 viewFail =
-    div [ class "error" ] []
+    div [ class "ошибка" ] []

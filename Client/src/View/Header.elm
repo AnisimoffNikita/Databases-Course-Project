@@ -89,7 +89,7 @@ view session model =
                                     [ Spacing.ml2Sm
                                     ]
                                 ]
-                                [ text "Register" ]
+                                [ text "Регистрация" ]
                             ]
                         , Navbar.formItem [ onSubmit <| NavigateTo <| routeToString Router.Login ]
                             [ Button.button
@@ -98,7 +98,7 @@ view session model =
                                     [ Spacing.ml2Sm
                                     ]
                                 ]
-                                [ text "Login" ]
+                                [ text "Авторизация" ]
                             ]
                         ]
 
@@ -106,9 +106,9 @@ view session model =
                     Navbar.customItems
                         [ Navbar.formItem [ onSubmit Search ]
                             [ InputGroup.config
-                                (InputGroup.text [ Input.placeholder "Search for" ])
+                                (InputGroup.text [ ])
                                 |> InputGroup.successors
-                                    [ InputGroup.button [ Button.primary ] [ text "Search" ] ]
+                                    [ InputGroup.button [ Button.primary ] [ text "Поиск" ] ]
                                 |> InputGroup.view
                             ]
                         , Navbar.formItem [ onSubmit <| NavigateTo <| routeToString Router.Dashboard ]
@@ -118,7 +118,7 @@ view session model =
                                     [ Spacing.ml2Sm
                                     ]
                                 ]
-                                [ text "Dashboard" ]
+                                [ text "Панель управления" ]
                             ]
                         , Navbar.formItem [ onSubmit Logout ]
                             [ Button.button
@@ -127,7 +127,7 @@ view session model =
                                     [ Spacing.ml2Sm
                                     ]
                                 ]
-                                [ text "Log out" ]
+                                [ text "Выход" ]
                             ]
                         ]
     in

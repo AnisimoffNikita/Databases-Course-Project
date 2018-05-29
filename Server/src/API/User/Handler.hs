@@ -125,6 +125,7 @@ emailExists email = do
     Just _  -> return True
 
 editUsername :: AuthResult JWTData -> Text -> AppM Tokens
+editUsername _ "" = throwError $ err400 {errBody = "empty username"}
 editUsername (Authenticated user) username = do
   exists <- usernameExists username
   if exists then throwError $ err400 {errBody = "Such username already exist"}
@@ -146,6 +147,7 @@ editUsername (Authenticated user) username = do
 editUsername res user = trace (show res) $ throwError $ err400 {errBody = "error"}
 
 editPassword :: AuthResult JWTData -> Text -> AppM NoContent
+editPassword _ "" = throwError $ err400 {errBody = "empty password"}
 editPassword (Authenticated user) password = do
   let getByUsername = getBy . UniqueUsername . jwtUsername $ user
       hashed        = hashMD5 password
@@ -161,6 +163,7 @@ editPassword _ _ = throwError $ err400 {errBody = "error"}
 
 
 editEmail :: AuthResult JWTData -> Text -> AppM NoContent
+editEmail _ "" = throwError $ err400 {errBody = "empty email"}
 editEmail (Authenticated user) email = do
   exists <- emailExists email
   if exists then throwError $ err402 {errBody = "Such email is already in use"}

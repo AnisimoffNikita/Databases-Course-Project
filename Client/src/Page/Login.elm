@@ -117,16 +117,16 @@ view =
         form =
             Form.form [ onSubmit Login ]
                 [ Form.group []
-                    [ Form.label [ for "myusername" ] [ text "Username" ]
-                    , Input.text [ Input.id "myusername", Input.attrs [ onInput Username ] ]
+                    [ Form.label [ for "myusername_auth" ] [ text "Логин" ]
+                    , Input.text [ Input.id "myusername_auth", Input.attrs [ onInput Username ], Input.value ""  ]
                     ]
                 , Form.group []
-                    [ Form.label [ for "mypwd" ] [ text "Password" ]
-                    , Input.password [ Input.id "mypwd", Input.attrs [ onInput Password ] ]
+                    [ Form.label [ for "mypwd_auth" ] [ text "Пароль" ]
+                    , Input.password [ Input.id "mypwd_auth", Input.attrs [ onInput Password ], Input.value ""  ]
                     ]
                 , Button.button
                     [ Button.primary ]
-                    [ text "Submit" ]
+                    [ text "Войти" ]
                 ]
     in
     Grid.container
@@ -140,12 +140,12 @@ view =
             [ Grid.col
                 [ Col.lg3
                 ]
-                [ h1 [] [ text "Login" ]
+                [ h1 [] [ text "Вход в систему" ]
                 , Button.linkButton
                     [ Button.roleLink
                     , Button.attrs [ href <| routeToString Router.Register ]
                     ]
-                    [ text "No account?" ]
+                    [ text "Нет аккаунта?" ]
                 , form
                 ]
             ]

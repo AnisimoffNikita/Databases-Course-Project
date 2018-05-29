@@ -155,13 +155,13 @@ view model =
     in
     Grid.container
         []
-        [ h3 [] [text "New quiz"]
+        [ h3 [] [text "Новый тест"]
         , Form.group []
-            [ Form.label [] [ text "Name"]
+            [ Form.label [] [ text "Название"]
             , Input.text [ Input.onInput InputName ]
             ]
         , Form.group []
-            [ Form.label [] [ text "Description"]
+            [ Form.label [] [ text "Описание"]
             , Textarea.textarea
                 [ Textarea.rows 3
                 , Textarea.onInput InputDescription 
@@ -171,12 +171,12 @@ view model =
         , Button.button 
             [ Button.outlineDark
             , Button.onClick NewQuestion ]
-            [ text "Add new quesion" ]
+            [ text "Добавить новый вопрос" ]
         , Button.button 
             [ Button.dark 
             , Button.onClick Submit
             , Button.attrs [class "float-right"] ]
-            [ text "Submit" ]
+            [ text "Сохранить" ]
         ]
 
 questionView : Int -> Quiz.Question -> Html Msg
@@ -184,15 +184,15 @@ questionView i question =
     Grid.container
         [] 
         [ Form.group []
-            [ Form.label [] [ text "Question"]
+            [ Form.label [] [ text "Вопрос"]
             , Button.button 
                 [ Button.outlineDark
                 , Button.small 
                 , Button.attrs [class "float-right"]
                 , Button.onClick (RemoveQuestion i) ]
-                [ text "remove" ]
+                [ text "удалить" ]
             , Input.text [ Input.value question.text, Input.onInput (InputQuestionName i) ]
-            , Form.label [] [ text "Variants (first correct)"]
+            , Form.label [] [ text "Варианты ответа (первый должен быть правильным)"]
             , Textarea.textarea
                 [ Textarea.rows 3
                 , Textarea.value <| String.join "\n" question.variants

@@ -27,6 +27,7 @@ import           Model.Model
 import           Types
 import           Utils
 import           Debug.Trace
+import           System.Random.Shuffle
 
 quizAPI :: AuthResult JWTData -> ServerT QuizAPI AppM
 quizAPI authResult =
@@ -105,7 +106,16 @@ getById (Authenticated user) id = do
       pool  <- asks connectionPool
       mQuiz <- liftIO $ runMongoDBPoolDef action pool
       case mQuiz of
-        Just (Entity _ quiz) -> return $ quizWithoutAnswers quiz
+        Just (Entity _ quiz) -> do --
+          let uquiz = quizWithoutAnswers quiz
+          let questions = dataQuestions uquiz
+          let 
+            f q@QuestionWithoutAnswer{..} = do
+              newVariants <- shuffleM variants
+              return $ q {variants = newVariants}
+          newQuestions <- liftIO $ mapM f questions
+          return $ uquiz {dataQuestions = newQuestions}
+
         Nothing              -> throwError $ err404 { errBody = "error" }
     _ -> throwError $ err401 { errBody = "error" }
 getById _ _ = throwError $ err400 { errBody = "error" }

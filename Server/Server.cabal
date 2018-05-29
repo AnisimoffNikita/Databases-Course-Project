@@ -66,6 +66,7 @@ library
     , wai-logger
     , warp
     , elm-export
+    , random-shuffle
   exposed-modules:
       API.API
     , API.Handler
