@@ -27,6 +27,22 @@ instance FromJSON QuizPreview
 quizToPreview :: Text -> Quiz -> QuizPreview
 quizToPreview id Quiz{..} = QuizPreview quizName quizDescription quizPassingNumber id
 
+data QuizPreviewResult = QuizPreviewResult
+  { qpwrName :: Text
+  , qpwrDescription :: Text
+  , qpwrResult :: Text
+  , qpwrId :: Text
+  } deriving (Eq, Show, Read, Generic)
+
+instance ToJSON QuizPreviewResult where
+  toJSON = genericToJSON (optionsWithoutPrefix 4)
+  toEncoding = genericToEncoding (optionsWithoutPrefix 4)
+instance FromJSON QuizPreviewResult where
+  parseJSON = genericParseJSON (optionsWithoutPrefix 4)
+
+quizToPreviewResult :: Text -> Text -> Quiz -> QuizPreviewResult
+quizToPreviewResult result id Quiz{..} = QuizPreviewResult quizName quizDescription result id
+
 data QuestionWithoutAnswer = QuestionWithoutAnswer
   { text :: Text
   , variants :: [Text]

@@ -14,10 +14,11 @@ import Page.ErrorRoute as ErrorRoute
 import Page.Home as Home
 import Page.Login as Login
 import Page.Register as Register
-import Page.Quizies as Quizies
+import Page.Created as Created
 import Page.NewQuiz as NewQuiz
 import Page.Quiz as Quiz
 import Page.Search as Search
+import Page.Passed as Passed
 import Ports
 import RemoteData exposing (WebData)
 import Router exposing (Route)
@@ -30,10 +31,11 @@ type Page
     | Login Login.Model
     | Register Register.Model
     | Dashboard Dashboard.Model
-    | Quizies Quizies.Model
+    | Created Created.Model
     | Quiz Quiz.Model
     | NewQuiz NewQuiz.Model
     | Search Search.Model
+    | Passed Passed.Model
 
 
 type alias Model =
@@ -105,8 +107,8 @@ view model =
                 Dashboard subModel ->
                     Html.map DashboardMsg <| Dashboard.view subModel
 
-                Quizies subModel ->
-                    Html.map QuiziesMsg <| Quizies.view subModel
+                Created subModel ->
+                    Html.map CreatedMsg <| Created.view subModel
 
                 Quiz subModel ->
                     Html.map QuizMsg <| Quiz.view subModel
@@ -116,6 +118,9 @@ view model =
 
                 Search subModel ->
                     Html.map SearchMsg <| Search.view subModel
+
+                Passed subModel ->
+                    Html.map PassedMsg <| Passed.view subModel
 
     in
     div []
@@ -132,10 +137,11 @@ type Msg
     | LoginMsg Login.Msg
     | RegisterMsg Register.Msg
     | DashboardMsg Dashboard.Msg
-    | QuiziesMsg Quizies.Msg
+    | CreatedMsg Created.Msg
     | NewQuizMsg NewQuiz.Msg
     | QuizMsg Quiz.Msg
     | SearchMsg Search.Msg
+    | PassedMsg Passed.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -234,12 +240,12 @@ updatePage page msg model =
             in
             ( { model | page = Dashboard updated }, Cmd.map DashboardMsg newCmd )
 
-        ( QuiziesMsg subMsg, Quizies subModel ) ->
+        ( CreatedMsg subMsg, Created subModel ) ->
             let
                 ( updated, newCmd ) =
-                    Quizies.update subMsg subModel
+                    Created.update subMsg subModel
             in
-            ( { model | page = Quizies updated }, Cmd.map QuiziesMsg newCmd )
+            ( { model | page = Created updated }, Cmd.map CreatedMsg newCmd )
 
         ( NewQuizMsg subMsg, NewQuiz subModel ) ->
             let
@@ -247,6 +253,14 @@ updatePage page msg model =
                     NewQuiz.update subMsg subModel
             in
             ( { model | page = NewQuiz updated }, Cmd.map NewQuizMsg newCmd )
+
+        ( QuizMsg subMsg, Quiz subModel ) ->
+            let
+                ( updated, newCmd ) =
+                    Quiz.update subMsg subModel
+            in
+            ( { model | page = Quiz updated }, Cmd.map QuizMsg newCmd )
+
 
 
         ( SearchMsg subMsg, Search subModel ) ->
@@ -256,6 +270,14 @@ updatePage page msg model =
             in
             ( { model | page = Search updated }, Cmd.map SearchMsg newCmd )
 
+
+        ( PassedMsg subMsg, Passed subModel ) ->
+            let
+                ( updated, newCmd ) =
+                    Passed.update subMsg subModel
+            in
+            ( { model | page = Passed updated }, Cmd.map PassedMsg newCmd )
+            
         ( _, _ ) ->
             ( model, Cmd.none )
 
@@ -285,9 +307,9 @@ sessionOk route model tokens =
         Router.Quizies ->
             let
                 ( subModel, msg ) =
-                    Quizies.init tokens
+                    Created.init tokens
             in
-            (  { model | page = Quizies subModel }, Cmd.map QuiziesMsg msg )
+            (  { model | page = Created subModel }, Cmd.map CreatedMsg msg )
         
         Router.NewQuiz ->
             case model.date of 
@@ -320,6 +342,13 @@ sessionOk route model tokens =
                     Search.init tokens query
             in
             ( { model | page = Search subModel }, Cmd.map SearchMsg msg )
+
+        Router.Passed ->
+            let
+                ( subModel, msg ) =
+                    Passed.init tokens
+            in
+            ( { model | page = Passed subModel }, Cmd.map PassedMsg msg )
 
         Router.NotFoundRoute ->
             ( model, Cmd.none )
@@ -358,6 +387,9 @@ sessionBad route model =
             ( model, Navigation.modifyUrl <| Router.routeToString Router.Login )
 
         Router.Search query ->
+            ( model, Navigation.modifyUrl <| Router.routeToString Router.Login )
+
+        Router.Passed ->
             ( model, Navigation.modifyUrl <| Router.routeToString Router.Login )
 
         Router.NotFoundRoute ->

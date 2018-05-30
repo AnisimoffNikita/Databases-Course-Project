@@ -1,4 +1,4 @@
-module Page.Search exposing (..)
+module Page.Created exposing (..)
 
 import Bootstrap.Button as Button
 import Bootstrap.Form as Form
@@ -51,18 +51,19 @@ encodeQuizPreview x =
 
 type alias Model =
     { tokens : Tokens
-    , query : String
     , quizies : WebData (List QuizPreview)
     }
 
 
-init : Tokens -> String -> ( Model, Cmd Msg )
-init tokens query =
-    ( Model tokens query RemoteData.NotAsked, createGetTestsCommand tokens query )
+init : Tokens -> ( Model, Cmd Msg )
+init tokens =
+    ( Model tokens RemoteData.NotAsked, createGetTestsCommand tokens )
 
 
 type Msg
     = QuiziesRecieved (WebData (List QuizPreview))
+    | Remove String
+    | Removed (Result Http.Error Extra.NoContent)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -70,18 +71,26 @@ update msg model =
     case msg of
         QuiziesRecieved quizies -> 
             ({model|quizies = quizies}, Cmd.none)
+        Remove id ->
+            ( model, setRemoveCommand model id )
+
+        Removed (Ok Extra.NoContent) ->
+            ( model, createGetTestsCommand model.tokens )
+
+        Removed (Err error) ->
+            ( model, Cmd.none )
 
 
 
-createGetTestsCommand : Tokens -> String -> Cmd Msg
-createGetTestsCommand tokens query =
-    getQuiziesRequest tokens query
+createGetTestsCommand : Tokens -> Cmd Msg
+createGetTestsCommand tokens =
+    getQuiziesRequest tokens
         |> RemoteData.sendRequest 
         |> Cmd.map QuiziesRecieved
 
 
-getQuiziesRequest : Tokens -> String -> Http.Request (List QuizPreview)
-getQuiziesRequest tokens query =
+getQuiziesRequest : Tokens -> Http.Request (List QuizPreview)
+getQuiziesRequest tokens =
     let
         headers =
             [ Http.header "Authorization" ("Bearer " ++ tokens.tokensJwt) ]
@@ -90,7 +99,7 @@ getQuiziesRequest tokens query =
         { method =
             "GET"
         , headers = headers
-        , url = "http://localhost:8080/quiz/search/"++query
+        , url = "http://localhost:8080/quiz/get/user"
         , body = emptyBody
         , expect =
             Http.expectJson (Decode.list decodeQuizPreview)
@@ -102,14 +111,47 @@ getQuiziesRequest tokens query =
 
 
 
+setRemoveCommand : Model -> String -> Cmd Msg
+setRemoveCommand model id =
+    createRemoveRequest model id
+        |> Http.send Removed
 
+
+createRemoveRequest : Model -> String -> Http.Request Extra.NoContent
+createRemoveRequest model id =
+    let
+        headers =
+            [ header "Authorization" ("Bearer " ++ model.tokens.tokensJwt) ]
+    in
+    Http.request
+        { method = "POST"
+        , headers = headers
+        , url = "http://localhost:8080/quiz/remove"
+        , body = Http.jsonBody (Encode.string id)
+        , expect = Extra.expectNoContent
+        , timeout = Nothing
+        , withCredentials = False
+        }
 
 view : Model -> Html Msg
 view model =
+    let 
+        new =
+            Card.config [ Card.outlinePrimary ]
+                |> Card.block []
+                    [ Block.custom <|
+                        Button.linkButton 
+                            [ Button.primary
+                            , Button.block 
+                            , Button.attrs [href  <| routeToString Router.NewQuiz ]
+                            ] [ text "Создать новый тест" ]
+                    ]
+                |> Card.view
+    in
     case model.quizies of 
         RemoteData.Success quizies ->
             Grid.container [class "card-columns"]
-                (List.indexedMap previewQuiz quizies)
+                (List.indexedMap previewQuiz quizies ++ [new])
         _ -> div [] [text "ошибка"]
 
 previewQuiz : Int -> QuizPreview -> Html Msg
@@ -120,12 +162,19 @@ previewQuiz i quiz =
             [ Block.text [] [ text quiz.description ]
             , Block.custom <|
                 Form.row []
-                    [ Form.col [ Col.md12 ] 
+                    [ Form.col [ Col.md8 ] 
                         [ Button.linkButton 
                                 [ Button.outlinePrimary
                                 , Button.block
                                 , Button.attrs [href <| "/#/quiz/" ++ quiz.id ]
                                 ] [ text "Пройти!" ]
+                        ]
+                    , Form.col [ Col.md4 ]
+                        [ Button.button
+                            [ Button.outlineDanger
+                            , Button.onClick (Remove quiz.id)
+                            ]
+                            [ text "Удалить" ] 
                         ]
                     ]
 

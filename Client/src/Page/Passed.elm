@@ -1,4 +1,4 @@
-module Page.Quizies exposing (..)
+module Page.Passed exposing (..)
 
 import Bootstrap.Button as Button
 import Bootstrap.Form as Form
@@ -25,33 +25,33 @@ import Data.Tokens exposing (Tokens)
 import Http.Extra as Extra
 
 
-type alias QuizPreview =
+type alias QuizPreviewResult =
     { name : String
     , description : String
-    , passingNumber : Int
+    , result : String
     , id : String
     }
 
-decodeQuizPreview : Decode.Decoder QuizPreview
+decodeQuizPreview : Decode.Decoder QuizPreviewResult
 decodeQuizPreview =
-    decode QuizPreview
+    decode QuizPreviewResult
         |> required "name" Decode.string
         |> required "description" Decode.string
-        |> required "passingNumber" Decode.int
+        |> required "result" Decode.string
         |> required "id" Decode.string
 
-encodeQuizPreview : QuizPreview -> Encode.Value
+encodeQuizPreview : QuizPreviewResult -> Encode.Value
 encodeQuizPreview x =
     Encode.object
         [ ( "name", Encode.string x.name )
         , ( "description", Encode.string x.description )
-        , ( "passingNumber", Encode.int x.passingNumber )
+        , ( "result", Encode.string x.result )
         , ( "id", Encode.string x.id )
         ]
 
 type alias Model =
     { tokens : Tokens
-    , quizies : WebData (List QuizPreview)
+    , quizies : WebData (List QuizPreviewResult)
     }
 
 
@@ -61,9 +61,7 @@ init tokens =
 
 
 type Msg
-    = QuiziesRecieved (WebData (List QuizPreview))
-    | Remove String
-    | Removed (Result Http.Error Extra.NoContent)
+    = QuiziesRecieved (WebData (List QuizPreviewResult))
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -71,14 +69,6 @@ update msg model =
     case msg of
         QuiziesRecieved quizies -> 
             ({model|quizies = quizies}, Cmd.none)
-        Remove id ->
-            ( model, setRemoveCommand model id )
-
-        Removed (Ok Extra.NoContent) ->
-            ( model, createGetTestsCommand model.tokens )
-
-        Removed (Err error) ->
-            ( model, Cmd.none )
 
 
 
@@ -89,7 +79,7 @@ createGetTestsCommand tokens =
         |> Cmd.map QuiziesRecieved
 
 
-getQuiziesRequest : Tokens -> Http.Request (List QuizPreview)
+getQuiziesRequest : Tokens -> Http.Request (List QuizPreviewResult)
 getQuiziesRequest tokens =
     let
         headers =
@@ -99,7 +89,7 @@ getQuiziesRequest tokens =
         { method =
             "GET"
         , headers = headers
-        , url = "http://localhost:8080/quiz/get/user"
+        , url = "http://localhost:8080/quiz/get/passed/"
         , body = emptyBody
         , expect =
             Http.expectJson (Decode.list decodeQuizPreview)
@@ -111,70 +101,31 @@ getQuiziesRequest tokens =
 
 
 
-setRemoveCommand : Model -> String -> Cmd Msg
-setRemoveCommand model id =
-    createRemoveRequest model id
-        |> Http.send Removed
 
-
-createRemoveRequest : Model -> String -> Http.Request Extra.NoContent
-createRemoveRequest model id =
-    let
-        headers =
-            [ header "Authorization" ("Bearer " ++ model.tokens.tokensJwt) ]
-    in
-    Http.request
-        { method = "POST"
-        , headers = headers
-        , url = "http://localhost:8080/quiz/remove"
-        , body = Http.jsonBody (Encode.string id)
-        , expect = Extra.expectNoContent
-        , timeout = Nothing
-        , withCredentials = False
-        }
 
 view : Model -> Html Msg
 view model =
-    let 
-        new =
-            Card.config [ Card.outlinePrimary ]
-                |> Card.block []
-                    [ Block.custom <|
-                        Button.linkButton 
-                            [ Button.primary
-                            , Button.block 
-                            , Button.attrs [href  <| routeToString Router.NewQuiz ]
-                            ] [ text "Создать новый тест" ]
-                    ]
-                |> Card.view
-    in
     case model.quizies of 
         RemoteData.Success quizies ->
             Grid.container [class "card-columns"]
-                (List.indexedMap previewQuiz quizies ++ [new])
+                (List.indexedMap previewQuiz quizies)
         _ -> div [] [text "ошибка"]
 
-previewQuiz : Int -> QuizPreview -> Html Msg
+previewQuiz : Int -> QuizPreviewResult -> Html Msg
 previewQuiz i quiz = 
     Card.config [ Card.outlineSecondary ]
         |> Card.headerH4 [] [ text quiz.name ]
         |> Card.block []
             [ Block.text [] [ text quiz.description ]
+            , Block.text [] [ text quiz.result ]
             , Block.custom <|
                 Form.row []
-                    [ Form.col [ Col.md8 ] 
+                    [ Form.col [ Col.md12 ] 
                         [ Button.linkButton 
                                 [ Button.outlinePrimary
                                 , Button.block
                                 , Button.attrs [href <| "/#/quiz/" ++ quiz.id ]
                                 ] [ text "Пройти!" ]
-                        ]
-                    , Form.col [ Col.md4 ]
-                        [ Button.button
-                            [ Button.outlineDanger
-                            , Button.onClick (Remove quiz.id)
-                            ]
-                            [ text "Удалить" ] 
                         ]
                     ]
 

@@ -701,7 +701,7 @@ viewProfile model profile =
                 , Button.linkButton 
                     [ Button.outlineDark 
                     , Button.block
-                    , Button.attrs [ href "#"]]
+                    , Button.attrs [ href <| Router.routeToString Router.Passed]]
                     [ text "Пройденные тесты" ]
                 ]
             ]

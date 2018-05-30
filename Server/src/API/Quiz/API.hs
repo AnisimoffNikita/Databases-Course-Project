@@ -18,6 +18,8 @@ type QuizAPI =
     :> Get '[JSON] [QuizPreview]
   :<|> "get" :> "all"
     :> Get '[JSON] [QuizPreview]
+  :<|> "get" :> "passed"
+    :> Get '[JSON] [QuizPreviewResult]
   :<|> "get"
     :> Capture "id" Text
     :> Get '[JSON] QuizWithoutAnswers

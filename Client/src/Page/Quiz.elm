@@ -30,6 +30,7 @@ import Date exposing (Date)
 import List
 import List.Extra as List
 import String
+import Debug
 
 
 type alias QuestionWithoutAnswer =
@@ -88,9 +89,9 @@ init tokens quizId =
 
 postQuiz : Tokens -> String -> Cmd Msg
 postQuiz tokens quizId =
-    postQuizRequest tokens quizId
+    Debug.log "0" (postQuizRequest tokens quizId
         |> RemoteData.sendRequest
-        |> Cmd.map QuizRecieved
+        |> Cmd.map QuizRecieved)
 
 
 postQuizRequest : Tokens -> String -> Http.Request QuizWithoutAnswers
@@ -121,9 +122,9 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case (msg, model.quiz)  of
         ( QuizRecieved (RemoteData.Success quiz), _ ) ->
-            ( { model | quiz = (RemoteData.Success quiz), answers = List.repeat (List.length quiz.questions) "" }, Cmd.none )
+            Debug.log "!" <| ( { model | quiz = (RemoteData.Success quiz), answers = List.repeat (List.length quiz.questions) "" }, Cmd.none )
         ( QuizRecieved _, _ ) ->
-            ( model, Cmd.none )
+            Debug.log "!" <| ( model, Cmd.none )
         ( Choose i answer, (RemoteData.Success quiz) ) ->
             let
                 answers = model.answers

@@ -29,11 +29,13 @@ import           Utils
 import           Debug.Trace
 import           System.Random.Shuffle
 
+
 quizAPI :: AuthResult JWTData -> ServerT QuizAPI AppM
 quizAPI authResult =
   newQuiz authResult
     :<|> getQuizies authResult
     :<|> getAllQuizies authResult
+    :<|> getPassed authResult
     :<|> getById authResult
     :<|> search authResult
     :<|> removeById authResult
@@ -93,6 +95,27 @@ getAllQuizies (Authenticated user) = do
         )
         quizies
 getAllQuizies _ = throwError $ err400 { errBody = "error" }
+
+
+getPassed :: AuthResult JWTData -> AppM [QuizPreviewResult]
+getPassed (Authenticated user) = do
+  let getByUsername = getBy . UniqueUsername . jwtUsername $ user
+  pool  <- asks connectionPool
+  mUser <- liftIO $ runMongoDBPoolDef getByUsername pool
+  case mUser of
+    Nothing               -> throwError $ err401 { errBody = "error" }
+    Just (Entity id user) -> do
+      let ids = map quizResultQuizid (userPassedQuizzes user)
+      let results = map quizResultResult (userPassedQuizzes user)
+      let selectAll = selectList [QuizId <-. ids] []
+      pool <- asks connectionPool
+      quizies :: [Entity Quiz] <- liftIO $ runMongoDBPoolDef selectAll pool
+      return $ map
+        (\((Entity (QuizKey (MongoKey id)) quiz), result) ->
+          quizToPreviewResult result (pack . show $ id) quiz
+        )
+        (zip quizies results)
+getPassed _ = throwError $ err400 { errBody = "error" }
 
 getById :: AuthResult JWTData -> Text -> AppM QuizWithoutAnswers
 getById (Authenticated user) id = do

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.4.26)  30 MAY 2018 00:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.4.26)  30 MAY 2018 19:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1743,31 +1743,32 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 28.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 35.
+(babel)             in language  on input line 33.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 35.
+(babel)             in language  on input line 33.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 35.
+(babel)             in language  on input line 33.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 35.
+(babel)             in language  on input line 33.
  [30
 
 
 
 ]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 48.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 48.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 53.
+(babel)             in language  on input line 48.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 53.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 53.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 53.
+(babel)             in language  on input line 48.
  [31]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 50.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 50.
+
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
@@ -1804,13 +1805,13 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 71.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 77.
+(babel)             in language  on input line 74.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 77.
+(babel)             in language  on input line 74.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 77.
+(babel)             in language  on input line 74.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 77.
+(babel)             in language  on input line 74.
 [33]
 
 LaTeX Warning: No positions in optional float specifier.
@@ -1821,13 +1822,13 @@ File: koi8-r.def 2014/10/28 v1.0d Input encoding file
 )
 (../Server/src/Model/Model.hs
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 39.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 39.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 39.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 39.
  [34])
 LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <12> not available
 (Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 104.
@@ -1844,20 +1845,19 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 110.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 110.
-
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 113.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 113.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 113.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 113.
+ [35]
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
 File: koi8-r.def 2014/10/28 v1.0d Input encoding file
 )
 (../Server/src/Model/Model.hs
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 77.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 77.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 77.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 77.
- [35]
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 81.
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <7> not available
@@ -1876,53 +1876,53 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 117.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 135.
+(babel)             in language  on input line 129.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 135.
+(babel)             in language  on input line 129.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 135.
+(babel)             in language  on input line 129.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 135.
+(babel)             in language  on input line 129.
  [36]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 163.
+(babel)             in language  on input line 157.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 163.
+(babel)             in language  on input line 157.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 163.
+(babel)             in language  on input line 157.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 163.
+(babel)             in language  on input line 157.
  [37]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 188.
+(babel)             in language  on input line 182.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 188.
+(babel)             in language  on input line 182.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 188.
+(babel)             in language  on input line 182.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 188.
+(babel)             in language  on input line 182.
  [38]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 212.
+(babel)             in language  on input line 206.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 212.
+(babel)             in language  on input line 206.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 212.
+(babel)             in language  on input line 206.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 212.
+(babel)             in language  on input line 206.
  [39]
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 220.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 220.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 238.
+(babel)             in language  on input line 228.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 238.
+(babel)             in language  on input line 228.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 238.
+(babel)             in language  on input line 228.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 238.
+(babel)             in language  on input line 228.
  [40]
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
 File: koi8-r.def 2014/10/28 v1.0d Input encoding file
@@ -2153,7 +2153,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 57.
 Here is how much of TeX's memory you used:
  38193 strings out of 492982
  807540 string characters out of 6134896
- 1021167 words of memory out of 5000000
+ 1028720 words of memory out of 5000000
  40725 multiletter control sequences out of 15000+600000
  20019 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2168,7 +2168,7 @@ r/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr
 /share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/t
 ype1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-super
 /sftt1200.pfb>
-Output written on rpz.pdf (46 pages, 1128308 bytes).
+Output written on rpz.pdf (46 pages, 1134186 bytes).
 PDF statistics:
  696 PDF objects out of 1000 (max. 8388607)
  571 compressed objects within 6 object streams
