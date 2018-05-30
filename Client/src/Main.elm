@@ -17,6 +17,7 @@ import Page.Register as Register
 import Page.Quizies as Quizies
 import Page.NewQuiz as NewQuiz
 import Page.Quiz as Quiz
+import Page.Search as Search
 import Ports
 import RemoteData exposing (WebData)
 import Router exposing (Route)
@@ -32,6 +33,7 @@ type Page
     | Quizies Quizies.Model
     | Quiz Quiz.Model
     | NewQuiz NewQuiz.Model
+    | Search Search.Model
 
 
 type alias Model =
@@ -112,6 +114,9 @@ view model =
                 NewQuiz subModel ->
                     Html.map NewQuizMsg <| NewQuiz.view subModel
 
+                Search subModel ->
+                    Html.map SearchMsg <| Search.view subModel
+
     in
     div []
         [ Html.map HeaderMsg (Header.view model.session model.headerModel)
@@ -130,6 +135,7 @@ type Msg
     | QuiziesMsg Quizies.Msg
     | NewQuizMsg NewQuiz.Msg
     | QuizMsg Quiz.Msg
+    | SearchMsg Search.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -242,12 +248,13 @@ updatePage page msg model =
             in
             ( { model | page = NewQuiz updated }, Cmd.map NewQuizMsg newCmd )
 
-        ( QuizMsg subMsg, Quiz subModel ) ->
+
+        ( SearchMsg subMsg, Search subModel ) ->
             let
                 ( updated, newCmd ) =
-                    Quiz.update subMsg subModel
+                    Search.update subMsg subModel
             in
-            ( { model | page = Quiz updated }, Cmd.map QuizMsg newCmd )
+            ( { model | page = Search updated }, Cmd.map SearchMsg newCmd )
 
         ( _, _ ) ->
             ( model, Cmd.none )
@@ -306,6 +313,14 @@ sessionOk route model tokens =
             in
             ( { model | page = Dashboard subModel }, Cmd.map DashboardMsg msg )
 
+        
+        Router.Search query ->
+            let
+                ( subModel, msg ) =
+                    Search.init tokens query
+            in
+            ( { model | page = Search subModel }, Cmd.map SearchMsg msg )
+
         Router.NotFoundRoute ->
             ( model, Cmd.none )
 
@@ -342,6 +357,9 @@ sessionBad route model =
         Router.Dashboard ->
             ( model, Navigation.modifyUrl <| Router.routeToString Router.Login )
 
+        Router.Search query ->
+            ( model, Navigation.modifyUrl <| Router.routeToString Router.Login )
+
         Router.NotFoundRoute ->
             ( model, Cmd.none )
 
@@ -364,3 +382,4 @@ main =
         , update = update
         , subscriptions = subscriptions
         }
+

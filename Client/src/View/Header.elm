@@ -12,7 +12,7 @@ import Bootstrap.Utilities.Spacing as Spacing
 import Data.Session exposing (..)
 import Html exposing (Attribute, Html, a, button, div, form, h1, img, p, text)
 import Html.Attributes exposing (class, href, placeholder, src, style)
-import Html.Events exposing (onClick, onSubmit)
+import Html.Events exposing (onClick, onSubmit, onInput)
 import Html.Events.Extra exposing (onClickPreventDefault)
 import Navigation
 import Router exposing (Route, routeToString)
@@ -23,7 +23,8 @@ import Utils exposing (href_)
 
 
 type alias Model =
-    { navbarState : Navbar.State }
+    { navbarState : Navbar.State
+    , query : String }
 
 
 
@@ -36,7 +37,7 @@ init =
         ( navbarState, navbarCmd ) =
             Navbar.initialState NavbarMsg
     in
-    ( { navbarState = navbarState }, navbarCmd )
+    ( { navbarState = navbarState, query = "" }, navbarCmd )
 
 
 
@@ -47,7 +48,7 @@ type Msg
     = NavbarMsg Navbar.State
     | NavigateTo String
     | Logout
-    | Search
+    | Input String
 
 
 
@@ -66,8 +67,8 @@ update msg model =
         Logout ->
             ( model, Cmd.none )
 
-        Search ->
-            ( model, Cmd.none )
+        Input query ->
+            ( {model | query = query}, Cmd.none )
 
 
 subscriptions : Model -> Sub Msg
@@ -104,9 +105,9 @@ view session model =
 
                 Just user ->
                     Navbar.customItems
-                        [ Navbar.formItem [ onSubmit Search ]
+                        [ Navbar.formItem [  onSubmit <| NavigateTo <| routeToString (Router.Search model.query)  ]
                             [ InputGroup.config
-                                (InputGroup.text [ ])
+                                (InputGroup.text [Input.onInput Input])
                                 |> InputGroup.successors
                                     [ InputGroup.button [ Button.primary ] [ text "Поиск" ] ]
                                 |> InputGroup.view

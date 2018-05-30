@@ -14,6 +14,7 @@ type Route
     | Quizies
     | NewQuiz
     | Quiz String
+    | Search String
     | NotFoundRoute
 
 
@@ -27,6 +28,7 @@ matchers =
         , map Quizies (s "quizies" </> s "my")
         , map NewQuiz (s "quizies" </> s "new")
         , map Quiz (s "quiz" </> string)
+        , map Search (s "search" </> string)
         , map NotFoundRoute (s (routeToString NotFoundRoute))
         ]
 
@@ -66,6 +68,9 @@ routeToString page =
 
                 Quiz id ->
                     [ "quiz", id ]
+
+                Search query ->
+                    [ "search", query ]
 
                 NotFoundRoute ->
                     [ "404" ]
