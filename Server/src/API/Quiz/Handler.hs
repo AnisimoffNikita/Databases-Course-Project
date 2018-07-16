@@ -108,13 +108,15 @@ getPassed (Authenticated user) = do
       let ids = map quizResultQuizid (userPassedQuizzes user)
       let results = map quizResultResult (userPassedQuizzes user)
       let selectAll = selectList [QuizId <-. ids] []
-      pool <- asks connectionPool
+      pool <- traceShow (length ids) $ traceShow (length results) $  asks connectionPool
       quizies :: [Entity Quiz] <- liftIO $ runMongoDBPoolDef selectAll pool
+      let allQuizies' = map (\id -> filter (\(Entity (QuizKey (MongoKey qid)) quiz) -> id == oidToKey qid) quizies) ids
+      let allQuizies = map head (filter (/=[]) allQuizies')
       return $ map
         (\((Entity (QuizKey (MongoKey id)) quiz), result) ->
           quizToPreviewResult result (pack . show $ id) quiz
         )
-        (zip quizies results)
+        (zip allQuizies results)
 getPassed _ = throwError $ err400 { errBody = "error" }
 
 getById :: AuthResult JWTData -> Text -> AppM QuizWithoutAnswers

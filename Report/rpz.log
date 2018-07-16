@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.4.26)  30 MAY 2018 19:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.4.26)  31 MAY 2018 08:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1018,20 +1018,7 @@ Package: wrapfig 2003/01/31  v 3.6
 
 LaTeX Warning: Label `lst2:label' multiply defined.
 
-) (./5-outro.aux) (./6-biblio.aux
-
-LaTeX Warning: Label `l11' multiply defined.
-
-
-LaTeX Warning: Label `l11' multiply defined.
-
-
-LaTeX Warning: Label `l11' multiply defined.
-
-
-LaTeX Warning: Label `l11' multiply defined.
-
-))
+) (./5-outro.aux) (./6-biblio.aux))
 \openout1 = `rpz.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
@@ -1052,7 +1039,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
- (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 Package caption Info: Begin \AtBeginDocument code.
@@ -1383,23 +1371,14 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 133.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 133.
+(babel)             in language  on input line 135.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 133.
-[9]
+(babel)             in language  on input line 135.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 133.
+(babel)             in language  on input line 135.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 133.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 163.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 163.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 163.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 163.
- [10])
+(babel)             in language  on input line 135.
+[9])
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 38.
 Package babel Info: Redefining russian shorthand "~
@@ -1408,7 +1387,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 38.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 38.
- [11]
+ [10]
 \openout2 = `3-construct.aux'.
 
  (./3-construct.tex
@@ -1420,49 +1399,49 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 3.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 3.
-<img/usecase.png, id=243, 1003.75pt x 353.32pt>
+<img/usecase.png, id=259, 1003.75pt x 353.32pt>
 File: img/usecase.png Graphic file (type png)
 <use img/usecase.png>
 Package pdftex.def Info: img/usecase.png  used on input line 19.
 (pdftex.def)             Requested size: 364.19667pt x 128.19786pt.
-<img/reg_idef/01_A-0.png, id=244, 801.99625pt x 531.9875pt>
+<img/reg_idef/01_A-0.png, id=260, 801.99625pt x 531.9875pt>
 File: img/reg_idef/01_A-0.png Graphic file (type png)
 <use img/reg_idef/01_A-0.png>
 Package pdftex.def Info: img/reg_idef/01_A-0.png  used on input line 26.
 (pdftex.def)             Requested size: 584.99089pt x 388.06354pt.
-<img/reg_idef/02_A0.png, id=245, 801.99625pt x 531.9875pt>
+<img/reg_idef/02_A0.png, id=261, 801.99625pt x 531.9875pt>
 File: img/reg_idef/02_A0.png Graphic file (type png)
 <use img/reg_idef/02_A0.png>
 Package pdftex.def Info: img/reg_idef/02_A0.png  used on input line 32.
 (pdftex.def)             Requested size: 584.99089pt x 388.06354pt.
-<img/authorzation_idef/01_A-0.png, id=246, 801.99625pt x 531.9875pt>
+<img/authorzation_idef/01_A-0.png, id=262, 801.99625pt x 531.9875pt>
 File: img/authorzation_idef/01_A-0.png Graphic file (type png)
 <use img/authorzation_idef/01_A-0.png>
 Package pdftex.def Info: img/authorzation_idef/01_A-0.png  used on input line 3
 9.
 (pdftex.def)             Requested size: 584.99089pt x 388.06354pt.
-<img/authorzation_idef/02_A0.png, id=247, 801.99625pt x 531.9875pt>
+<img/authorzation_idef/02_A0.png, id=263, 801.99625pt x 531.9875pt>
 File: img/authorzation_idef/02_A0.png Graphic file (type png)
 <use img/authorzation_idef/02_A0.png>
 Package pdftex.def Info: img/authorzation_idef/02_A0.png  used on input line 45
 .
 (pdftex.def)             Requested size: 584.99089pt x 388.06354pt.
-<img/new_idef/01_A-0.png, id=248, 1604.99625pt x 1067.99pt>
+<img/new_idef/01_A-0.png, id=264, 1604.99625pt x 1067.99pt>
 File: img/new_idef/01_A-0.png Graphic file (type png)
 <use img/new_idef/01_A-0.png>
 Package pdftex.def Info: img/new_idef/01_A-0.png  used on input line 52.
 (pdftex.def)             Requested size: 584.99089pt x 389.2672pt.
-<img/new_idef/02_A0.png, id=249, 1604.99625pt x 1067.99pt>
+<img/new_idef/02_A0.png, id=265, 1604.99625pt x 1067.99pt>
 File: img/new_idef/02_A0.png Graphic file (type png)
 <use img/new_idef/02_A0.png>
 Package pdftex.def Info: img/new_idef/02_A0.png  used on input line 58.
 (pdftex.def)             Requested size: 584.99089pt x 389.2672pt.
-<img/pass_idef/01_A-0.png, id=250, 1604.99625pt x 1067.99pt>
+<img/pass_idef/01_A-0.png, id=266, 1604.99625pt x 1067.99pt>
 File: img/pass_idef/01_A-0.png Graphic file (type png)
 <use img/pass_idef/01_A-0.png>
 Package pdftex.def Info: img/pass_idef/01_A-0.png  used on input line 66.
 (pdftex.def)             Requested size: 584.99089pt x 389.2672pt.
-<img/pass_idef/02_A0.png, id=251, 1604.99625pt x 1067.99pt>
+<img/pass_idef/02_A0.png, id=267, 1604.99625pt x 1067.99pt>
 File: img/pass_idef/02_A0.png Graphic file (type png)
 <use img/pass_idef/02_A0.png>
 Package pdftex.def Info: img/pass_idef/02_A0.png  used on input line 72.
@@ -1475,7 +1454,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 78.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 78.
- [12
+ [11
 
 
 
@@ -1488,7 +1467,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 78.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 78.
- [13 <./img/reg_idef/01_A-0.png (PNG copy)>]
+ [12 <./img/reg_idef/01_A-0.png (PNG copy)>]
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 78.
 Package babel Info: Redefining russian shorthand "~
@@ -1497,53 +1476,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 78.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 78.
- [14 <./img/reg_idef/02_A0.png (PNG copy)>]
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 78.
-
-[15 <./img/authorzation_idef/01_A-0.png (PNG copy)>]
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 78.
- [16 <./img/authorzation_idef/02_A0.png (PNG copy)>]
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 78.
- [17 <./img/new_idef/01_A-0.png (PNG copy)>]
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 78.
- [18 <./img/new_idef/02_A0.png (PNG copy)>]
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 78.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 78.
- [19 <./img/pass_idef/01_A-0.png (PNG copy)>]
+ [13 <./img/reg_idef/02_A0.png (PNG copy)>]
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 78.
 Package babel Info: Redefining russian shorthand "~
@@ -1553,12 +1486,58 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 78.
 
-[20 <./img/pass_idef/02_A0.png (PNG copy)>]
+[14 <./img/authorzation_idef/01_A-0.png (PNG copy)>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+ [15 <./img/authorzation_idef/02_A0.png (PNG copy)>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+ [16 <./img/new_idef/01_A-0.png (PNG copy)>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+ [17 <./img/new_idef/02_A0.png (PNG copy)>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+ [18 <./img/pass_idef/01_A-0.png (PNG copy)>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 78.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 78.
+
+[19 <./img/pass_idef/02_A0.png (PNG copy)>]
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 79.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 79.
-<img/er.png, id=300, 1003.75pt x 1585.925pt>
+<img/er.png, id=316, 1003.75pt x 1585.925pt>
 File: img/er.png Graphic file (type png)
 <use img/er.png>
 Package pdftex.def Info: img/er.png  used on input line 85.
@@ -1572,7 +1551,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 155.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 155.
-<img/sequence1.png, id=305, 158.2713pt x 100.2144pt>
+<img/sequence1.png, id=321, 158.2713pt x 100.2144pt>
 File: img/sequence1.png Graphic file (type png)
 <use img/sequence1.png>
 Package pdftex.def Info: img/sequence1.png  used on input line 161.
@@ -1585,11 +1564,11 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 164.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 164.
-[21
+[20
 
  <./img/er.png (PNG copy)>]
 
-LaTeX Warning: Text page 22 contains only floats.
+LaTeX Warning: Text page 21 contains only floats.
 
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 164.
@@ -1599,48 +1578,48 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 164.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 164.
-[22]
-<img/sequence2.png, id=320, 152.4897pt x 136.3494pt>
+[21]
+<img/sequence2.png, id=337, 152.4897pt x 136.3494pt>
 File: img/sequence2.png Graphic file (type png)
 <use img/sequence2.png>
 Package pdftex.def Info: img/sequence2.png  used on input line 167.
 (pdftex.def)             Requested size: 455.24411pt x 407.11224pt.
-<img/sequence3.png, id=321, 149.5989pt x 56.8524pt>
+<img/sequence3.png, id=338, 149.5989pt x 56.8524pt>
 File: img/sequence3.png Graphic file (type png)
 <use img/sequence3.png>
 Package pdftex.def Info: img/sequence3.png  used on input line 173.
 (pdftex.def)             Requested size: 455.24411pt x 173.01262pt.
-<img/sequence4.png, id=322, 152.4897pt x 112.2594pt>
+<img/sequence4.png, id=339, 152.4897pt x 112.2594pt>
 File: img/sequence4.png Graphic file (type png)
 <use img/sequence4.png>
 Package pdftex.def Info: img/sequence4.png  used on input line 179.
 (pdftex.def)             Requested size: 455.24411pt x 335.1843pt.
-<img/sequence5.png, id=323, 145.2627pt x 112.2594pt>
+<img/sequence5.png, id=340, 145.2627pt x 112.2594pt>
 File: img/sequence5.png Graphic file (type png)
 <use img/sequence5.png>
 Package pdftex.def Info: img/sequence5.png  used on input line 185.
 (pdftex.def)             Requested size: 455.24411pt x 351.8426pt.
-<img/sequence6.png, id=324, 146.2263pt x 90.5784pt>
+<img/sequence6.png, id=341, 146.2263pt x 90.5784pt>
 File: img/sequence6.png Graphic file (type png)
 <use img/sequence6.png>
 Package pdftex.def Info: img/sequence6.png  used on input line 191.
 (pdftex.def)             Requested size: 455.24411pt x 282.00914pt.
-<img/sequence7.png, id=325, 152.4897pt x 85.7604pt>
+<img/sequence7.png, id=342, 152.4897pt x 85.7604pt>
 File: img/sequence7.png Graphic file (type png)
 <use img/sequence7.png>
 Package pdftex.def Info: img/sequence7.png  used on input line 198.
 (pdftex.def)             Requested size: 455.24411pt x 256.06354pt.
-<img/sequence8.png, id=326, 146.2263pt x 56.8524pt>
+<img/sequence8.png, id=343, 146.2263pt x 56.8524pt>
 File: img/sequence8.png Graphic file (type png)
 <use img/sequence8.png>
 Package pdftex.def Info: img/sequence8.png  used on input line 204.
 (pdftex.def)             Requested size: 455.24411pt x 177.0057pt.
-<img/sequence9.png, id=327, 148.6353pt x 56.8524pt>
+<img/sequence9.png, id=344, 148.6353pt x 56.8524pt>
 File: img/sequence9.png Graphic file (type png)
 <use img/sequence9.png>
 Package pdftex.def Info: img/sequence9.png  used on input line 210.
 (pdftex.def)             Requested size: 455.24411pt x 174.14037pt.
-<img/sequence10.png, id=328, 143.0946pt x 56.8524pt>
+<img/sequence10.png, id=345, 143.0946pt x 56.8524pt>
 File: img/sequence10.png Graphic file (type png)
 <use img/sequence10.png>
 Package pdftex.def Info: img/sequence10.png  used on input line 216.
@@ -1653,7 +1632,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 221.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 221.
- [23 <./img/sequence1.png>]
+ [22 <./img/sequence1.png>]
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 221.
 Package babel Info: Redefining russian shorthand "~
@@ -1662,7 +1641,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 221.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 221.
- [24 <./img/sequence2.png> <./img/sequence3.png>]
+ [23 <./img/sequence2.png> <./img/sequence3.png>]
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 221.
 Package babel Info: Redefining russian shorthand "~
@@ -1671,7 +1650,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 221.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 221.
- [25 <./img/sequence4.png>]
+ [24 <./img/sequence4.png>]
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 221.
 Package babel Info: Redefining russian shorthand "~
@@ -1680,7 +1659,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 221.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 221.
- [26 <./img/sequence5.png> <./img/sequence6.png>]
+ [25 <./img/sequence5.png> <./img/sequence6.png>]
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 221.
 Package babel Info: Redefining russian shorthand "~
@@ -1690,7 +1669,7 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 221.
 
-[27 <./img/sequence7.png> <./img/sequence8.png>]
+[26 <./img/sequence7.png> <./img/sequence8.png>]
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 221.
 Package babel Info: Redefining russian shorthand "~
@@ -1699,7 +1678,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 221.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 221.
- [28 <./img/sequence9.png> <./img/sequence10.png>]
+ [27 <./img/sequence9.png> <./img/sequence10.png>]
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 222.
 Package babel Info: Redefining russian shorthand "~
@@ -1720,7 +1699,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 39.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 39.
- [29
+ [28
 
 ]
 \openout2 = `4-technology.aux'.
@@ -1750,25 +1729,24 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 33.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 33.
- [30
+ [29
 
 
 
 ]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 47.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 48.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 48.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 48.
- [31]
+(babel)             in language  on input line 47.
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 50.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 50.
-
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 50.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 50.
+ [30]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
@@ -1776,88 +1754,84 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 File: lstlang2.sty 2015/06/04 1.6 listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 56.
+nput line 53.
 
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
 File: koi8-r.def 2014/10/28 v1.0d Input encoding file
 )
 (../Server/src/API/User/API.hs)
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 58.
+(babel)             in language  on input line 55.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 58.
+(babel)             in language  on input line 55.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 60.
+(babel)             in language  on input line 57.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 60.
+(babel)             in language  on input line 57.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 60.
+(babel)             in language  on input line 57.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 60.
+(babel)             in language  on input line 57.
+ [31]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 68.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 68.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 74.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 74.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 74.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 74.
  [32]
-Underfull \hbox (badness 6412) in paragraph at lines 64--65
-[]\T2A/cmr/m/n/12 Ќезависимость от ба^^?зы дан^^?ных. »ме^^?ет^^?с€ пер^^?во^^?
-класс^^?на€ под^^?держ^^?ка
- []
-
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 71.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 71.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 74.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 74.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 74.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 74.
-[33]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `bph') on input line 80.
+               Default added (so using `bph') on input line 77.
 
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
 File: koi8-r.def 2014/10/28 v1.0d Input encoding file
 )
 (../Server/src/Model/Model.hs
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 39.
+(babel)             in language  on input line 52.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 39.
+(babel)             in language  on input line 52.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 39.
+(babel)             in language  on input line 52.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 39.
- [34])
+(babel)             in language  on input line 52.
+ [33])
 LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 104.
+(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 101.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 104.
+(babel)             in language  on input line 101.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 104.
+(babel)             in language  on input line 101.
 
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
 File: koi8-r.def 2014/10/28 v1.0d Input encoding file
 )
 (../Server/src/Model/Model.hs)
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 110.
+(babel)             in language  on input line 107.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 110.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 113.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 113.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 113.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 113.
- [35]
+(babel)             in language  on input line 107.
+
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
 File: koi8-r.def 2014/10/28 v1.0d Input encoding file
 )
 (../Server/src/Model/Model.hs
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 81.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 81.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 81.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 81.
+ [34]
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 81.
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <7> not available
@@ -1872,116 +1846,116 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <5> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 81.
 )
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 117.
+(babel)             in language  on input line 114.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 117.
+(babel)             in language  on input line 114.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 129.
+(babel)             in language  on input line 132.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 129.
+(babel)             in language  on input line 132.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 129.
+(babel)             in language  on input line 132.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 129.
+(babel)             in language  on input line 132.
+ [35]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 160.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 160.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 160.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 160.
  [36]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 157.
+(babel)             in language  on input line 185.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 157.
+(babel)             in language  on input line 185.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 157.
+(babel)             in language  on input line 185.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 157.
+(babel)             in language  on input line 185.
  [37]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 182.
+(babel)             in language  on input line 209.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 182.
+(babel)             in language  on input line 209.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 182.
+(babel)             in language  on input line 209.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 182.
+(babel)             in language  on input line 209.
  [38]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 206.
+(babel)             in language  on input line 217.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 206.
+(babel)             in language  on input line 217.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 206.
+(babel)             in language  on input line 235.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 206.
+(babel)             in language  on input line 235.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 235.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 235.
  [39]
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 220.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 220.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 228.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 228.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 228.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 228.
- [40]
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
 File: koi8-r.def 2014/10/28 v1.0d Input encoding file
 )
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 267.
+(babel)             in language  on input line 264.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 267.
-<img/screens/auth.png, id=535, 1839.87375pt x 1019.81pt>
+(babel)             in language  on input line 264.
+<img/screens/auth.png, id=561, 1839.87375pt x 1019.81pt>
 File: img/screens/auth.png Graphic file (type png)
 <use img/screens/auth.png>
-Package pdftex.def Info: img/screens/auth.png  used on input line 272.
+Package pdftex.def Info: img/screens/auth.png  used on input line 269.
 (pdftex.def)             Requested size: 455.24411pt x 252.32205pt.
-<img/screens/db.png, id=536, 1839.87375pt x 1019.81pt>
+<img/screens/db.png, id=562, 1839.87375pt x 1019.81pt>
 File: img/screens/db.png Graphic file (type png)
 <use img/screens/db.png>
-Package pdftex.def Info: img/screens/db.png  used on input line 278.
+Package pdftex.def Info: img/screens/db.png  used on input line 275.
 (pdftex.def)             Requested size: 455.24411pt x 252.32205pt.
-<img/screens/list.png, id=537, 1839.87375pt x 1019.81pt>
+<img/screens/list.png, id=563, 1839.87375pt x 1019.81pt>
 File: img/screens/list.png Graphic file (type png)
 <use img/screens/list.png>
-Package pdftex.def Info: img/screens/list.png  used on input line 284.
+Package pdftex.def Info: img/screens/list.png  used on input line 281.
 (pdftex.def)             Requested size: 455.24411pt x 252.32205pt.
-<img/screens/pass.png, id=538, 1839.87375pt x 1019.81pt>
+<img/screens/pass.png, id=564, 1839.87375pt x 1019.81pt>
 File: img/screens/pass.png Graphic file (type png)
 <use img/screens/pass.png>
-Package pdftex.def Info: img/screens/pass.png  used on input line 290.
+Package pdftex.def Info: img/screens/pass.png  used on input line 287.
 (pdftex.def)             Requested size: 455.24411pt x 252.32205pt.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 295.
+(babel)             in language  on input line 292.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 295.
+(babel)             in language  on input line 292.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 295.
+(babel)             in language  on input line 292.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 295.
- [41]
+(babel)             in language  on input line 292.
+ [40]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 295.
+(babel)             in language  on input line 292.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 295.
+(babel)             in language  on input line 292.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 295.
+(babel)             in language  on input line 292.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 295.
- [42 <./img/screens/auth.png> <./img/screens/db.png>]
+(babel)             in language  on input line 292.
+ [41 <./img/screens/auth.png> <./img/screens/db.png>]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 295.
+(babel)             in language  on input line 292.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 295.
+(babel)             in language  on input line 292.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 295.
+(babel)             in language  on input line 292.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 295.
- [43 <./img/screens/list.png> <./img/screens/pass.png>]
+(babel)             in language  on input line 292.
+ [42 <./img/screens/list.png> <./img/screens/pass.png>]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 296.
+(babel)             in language  on input line 293.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 296.
+(babel)             in language  on input line 293.
 )
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 40.
@@ -1991,7 +1965,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 40.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 40.
- [44
+ [43
 
 ]
 \openout2 = `5-outro.aux'.
@@ -2017,7 +1991,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 45.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 45.
- [45
+ [44
 
 
 
@@ -2030,68 +2004,21 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 2.
 
-Underfull \hbox (badness 4024) in paragraph at lines 5--6
+Underfull \hbox (badness 4024) in paragraph at lines 19--20
 []\T2A/cmr/m/n/12 ќ сер^^?ви^^?се ян^^?декс. онтест. [Ёлек^^?трон^^?ный ре^^?су
 рс] –е^^?жим до^^?сту^^?па:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 7--8
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
 []\T2A/cmr/m/n/12 ќ сер^^?ви^^?се Stepik URL. [Ёлек^^?трон^^?ный ре^^?сурс] –е^
 ^?жим до^^?сту^^?па:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 11--12
-[]\T2A/cmr/m/n/12 ”чебник по Haskell [Ёлек^^?трон^^?ный ре^^?сурс]. –е^^?жим до
-^^?сту^^?па:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--15
-[]\T2A/cmr/m/n/12 servant-server: A family of combinators for defining webservi
-ces
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--15
-\T2A/cmr/m/n/12 APIs and serving them [Ёлек^^?трон^^?ный ре^^?сурс]. –е^^?жим д
-о^^?сту^^?па:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 17--18
-[]\T2A/cmr/m/n/12 persistent-mongoDB: Backend for the persistent library
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 17--18
-\T2A/cmr/m/n/12 using mongoDB. [Ёлек^^?трон^^?ный ре^^?сурс]. –е^^?жим до^^?сту
-^^?па:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 18--19
-[]\T2A/cmr/m/n/12 persistent-template: Type-^^?safe, non-^^?relational, multi-^
-^?
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 18--19
-\T2A/cmr/m/n/12 backend persistence. [Ёлек^^?трон^^?ный ре^^?сурс]. –е^^?жим до
-^^?сту^^?па:
- []
-
-
-Underfull \hbox (badness 4819) in paragraph at lines 21--22
+Underfull \hbox (badness 4819) in paragraph at lines 33--34
 []\T2A/cmr/m/n/12 An Introduction to Elm. [Ёлек^^?трон^^?ный ре^^?сурс]. –е^^?ж
 им до^^?сту^^?па:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 22--23
-[]\T2A/cmr/m/n/12 Elm Tutorial. [Ёлек^^?трон^^?ный ре^^?сурс]. –е^^?жим до^^?ст
-у^^?па:
  []
 
 )
@@ -2103,40 +2030,15 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 50.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 50.
- [46
+ [45
 
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{cite.l11}) ha
-s been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.50 \include{6-biblio}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{cite.l11}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.50 \include{6-biblio}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{cite.l11}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.50 \include{6-biblio}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{cite.l11}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.50 \include{6-biblio}
-                       ]
+]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 57.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 57.
- (./rpz.aux (./0-title.aux) (./1-intro.aux)
-(./2-analysis.aux) (./3-construct.aux) (./4-technology.aux) (./5-outro.aux)
-(./6-biblio.aux))
+ (./rpz.aux (./0-title.aux) (./1-intro.aux) (./2-analysis.aux)
+(./3-construct.aux) (./4-technology.aux) (./5-outro.aux) (./6-biblio.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 57.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 57.
 Package rerunfilecheck Info: File `rpz.out' has not changed.
@@ -2151,13 +2053,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 57.
  ) 
 Here is how much of TeX's memory you used:
- 38193 strings out of 492982
- 807540 string characters out of 6134896
- 1028720 words of memory out of 5000000
- 40725 multiletter control sequences out of 15000+600000
+ 38198 strings out of 492982
+ 807630 string characters out of 6134896
+ 1023174 words of memory out of 5000000
+ 40728 multiletter control sequences out of 15000+600000
  20019 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,14n,98p,2089b,2398s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 66i,14n,98p,1801b,2402s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts
 /type1/public/cm-super/sfbi1200.pfb></usr/share/texmf/fonts/type1/public/cm-sup
@@ -2168,10 +2070,10 @@ r/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr
 /share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/t
 ype1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-super
 /sftt1200.pfb>
-Output written on rpz.pdf (46 pages, 1134186 bytes).
+Output written on rpz.pdf (45 pages, 1133383 bytes).
 PDF statistics:
- 696 PDF objects out of 1000 (max. 8388607)
- 571 compressed objects within 6 object streams
- 224 named destinations out of 1000 (max. 500000)
+ 711 PDF objects out of 1000 (max. 8388607)
+ 587 compressed objects within 6 object streams
+ 226 named destinations out of 1000 (max. 500000)
  478 words of extra memory for PDF output out of 10000 (max. 10000000)
 

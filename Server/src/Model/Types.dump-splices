@@ -1,0 +1,66 @@
+/home/nikita/Projects/labs/Databases/Course-Project/Server/src/Model/Types.hs:29:1-27: Splicing declarations
+    derivePersistField "Gender"
+  ======>
+    instance PersistField Gender where
+      toPersistValue = (PersistText . (pack . show))
+      fromPersistValue
+        = (\ dt_apu2 v_apu3
+             -> case fromPersistValue v_apu3 of
+                  Left e_apu4 -> Left e_apu4
+                  Right s'_apu5
+                    -> case (reads $ (unpack s'_apu5)) of
+                         ((x_apu6, _) ghc-prim-0.5.1.1:GHC.Types.: _) -> Right x_apu6
+                         ghc-prim-0.5.1.1:GHC.Types.[]
+                           -> (Left
+                                 $ ((pack "Invalid ")
+                                      Database.Persist.TH.++
+                                        ((pack dt_apu2)
+                                           Database.Persist.TH.++
+                                             ((pack ": ") Database.Persist.TH.++ s'_apu5)))))
+            "Gender"
+    instance persistent-2.8.1:Database.Persist.Sql.Class.PersistFieldSql Gender where
+      persistent-2.8.1:Database.Persist.Sql.Class.sqlType _ = SqlString
+/home/nikita/Projects/labs/Databases/Course-Project/Server/src/Model/Types.hs:39:1-36: Splicing declarations
+    derivePersistField "QuestionOptions"
+  ======>
+    instance PersistField QuestionOptions where
+      toPersistValue = (PersistText . (pack . show))
+      fromPersistValue
+        = (\ dt_aros v_arot
+             -> case fromPersistValue v_arot of
+                  Left e_arou -> Left e_arou
+                  Right s'_arov
+                    -> case (reads $ (unpack s'_arov)) of
+                         ((x_arow, _) ghc-prim-0.5.1.1:GHC.Types.: _) -> Right x_arow
+                         ghc-prim-0.5.1.1:GHC.Types.[]
+                           -> (Left
+                                 $ ((pack "Invalid ")
+                                      Database.Persist.TH.++
+                                        ((pack dt_aros)
+                                           Database.Persist.TH.++
+                                             ((pack ": ") Database.Persist.TH.++ s'_arov)))))
+            "QuestionOptions"
+    instance persistent-2.8.1:Database.Persist.Sql.Class.PersistFieldSql QuestionOptions where
+      persistent-2.8.1:Database.Persist.Sql.Class.sqlType _ = SqlString
+/home/nikita/Projects/labs/Databases/Course-Project/Server/src/Model/Types.hs:49:1-35: Splicing declarations
+    derivePersistField "QuestionAnswer"
+  ======>
+    instance PersistField QuestionAnswer where
+      toPersistValue = (PersistText . (pack . show))
+      fromPersistValue
+        = (\ dt_arx1 v_arx2
+             -> case fromPersistValue v_arx2 of
+                  Left e_arx3 -> Left e_arx3
+                  Right s'_arx4
+                    -> case (reads $ (unpack s'_arx4)) of
+                         ((x_arx5, _) ghc-prim-0.5.1.1:GHC.Types.: _) -> Right x_arx5
+                         ghc-prim-0.5.1.1:GHC.Types.[]
+                           -> (Left
+                                 $ ((pack "Invalid ")
+                                      Database.Persist.TH.++
+                                        ((pack dt_arx1)
+                                           Database.Persist.TH.++
+                                             ((pack ": ") Database.Persist.TH.++ s'_arx4)))))
+            "QuestionAnswer"
+    instance persistent-2.8.1:Database.Persist.Sql.Class.PersistFieldSql QuestionAnswer where
+      persistent-2.8.1:Database.Persist.Sql.Class.sqlType _ = SqlString

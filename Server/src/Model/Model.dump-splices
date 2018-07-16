@@ -1,0 +1,2056 @@
+/home/nikita/Projects/labs/Databases/Course-Project/Server/src/Model/Model.hs:(28,78)-(64,2): Splicing expression
+    Language.Haskell.TH.Quote.quoteExp
+      persistLowerCase
+      "\n\
+      \\n\
+      \Question json\n\
+      \  text     Text\n\
+      \  answer   Text\n\
+      \  variants [Text]\n\
+      \  deriving Eq Read Show Generic\n\
+      \\n\
+      \Quiz json\n\
+      \  name            Text\n\
+      \  description     Text\n\
+      \  creationDate    UTCTime\n\
+      \  passingNumber   Int\n\
+      \  questions       [Question]\n\
+      \  deriving        Eq Read Show Generic\n\
+      \\n\
+      \QuizResult json\n\
+      \  quizid          QuizId\n\
+      \  result          Text\n\
+      \  passing         UTCTime\n\
+      \  deriving        Eq Read Show Generic\n\
+      \\n\
+      \User\n\
+      \  username        Text\n\
+      \  password        ByteString\n\
+      \  email           Text\n\
+      \  avatar          Text\n\
+      \  firstName       Text Maybe\n\
+      \  secondName      Text Maybe\n\
+      \  birthday        UTCTime Maybe\n\
+      \  gender          Gender Maybe\n\
+      \  createdQuizzes  [QuizId]\n\
+      \  passedQuizzes   [QuizResult]\n\
+      \  UniqueUsername  username\n\
+      \  UniqueEmail     email\n\
+      \  deriving        Eq Read Show Generic\n"
+  ======>
+    [(((((((((EntityDef (HaskellName (packPTH "Question")))
+               (DBName (packPTH "question")))
+              (((((((FieldDef (HaskellName (packPTH "Id")))
+                      (DBName (packPTH "id")))
+                     ((FTTypeCon Nothing) (packPTH "QuestionId")))
+                    SqlInt64)
+                   [])
+                  True)
+                 ((ForeignRef (HaskellName (packPTH "Question")))
+                    ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))))
+             [packPTH "json"])
+            [((((((FieldDef (HaskellName (packPTH "text")))
+                    (DBName (packPTH "text")))
+                   ((FTTypeCon Nothing) (packPTH "Text")))
+                  (SqlOther (packPTH "SqlType unset for text")))
+                 [])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "answer")))
+                    (DBName (packPTH "answer")))
+                   ((FTTypeCon Nothing) (packPTH "Text")))
+                  (SqlOther (packPTH "SqlType unset for answer")))
+                 [])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "variants")))
+                    (DBName (packPTH "variants")))
+                   (FTList ((FTTypeCon Nothing) (packPTH "Text"))))
+                  (SqlOther (packPTH "SqlType unset for variants")))
+                 [])
+                True)
+               NoReference])
+           [])
+          [])
+         [packPTH "Eq", packPTH "Read", packPTH "Show", packPTH "Generic"])
+        (Data.Map.Internal.fromList []))
+       False
+       {entityFields = [((((((FieldDef (HaskellName (packPTH "text")))
+                               (DBName (packPTH "text")))
+                              ((FTTypeCon Nothing) (packPTH "Text")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                            [])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "answer")))
+                               (DBName (packPTH "answer")))
+                              ((FTTypeCon Nothing) (packPTH "Text")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                            [])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "variants")))
+                               (DBName (packPTH "variants")))
+                              (FTList ((FTTypeCon Nothing) (packPTH "Text"))))
+                             SqlString)
+                            [])
+                           True)
+                          NoReference],
+        entityId = ((((((FieldDef (HaskellName (packPTH "Id")))
+                          (DBName (packPTH "id")))
+                         ((FTTypeCon Nothing) (packPTH "QuestionId")))
+                        (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                           (Data.Proxy.Proxy :: Data.Proxy.Proxy GHC.Int.Int64)))
+                       [])
+                      True)
+                     ((ForeignRef (HaskellName (packPTH "Question")))
+                        ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))},
+     (((((((((EntityDef (HaskellName (packPTH "Quiz")))
+               (DBName (packPTH "quiz")))
+              (((((((FieldDef (HaskellName (packPTH "Id")))
+                      (DBName (packPTH "id")))
+                     ((FTTypeCon Nothing) (packPTH "QuizId")))
+                    SqlInt64)
+                   [])
+                  True)
+                 ((ForeignRef (HaskellName (packPTH "Quiz")))
+                    ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))))
+             [packPTH "json"])
+            [((((((FieldDef (HaskellName (packPTH "name")))
+                    (DBName (packPTH "name")))
+                   ((FTTypeCon Nothing) (packPTH "Text")))
+                  (SqlOther (packPTH "SqlType unset for name")))
+                 [])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "description")))
+                    (DBName (packPTH "description")))
+                   ((FTTypeCon Nothing) (packPTH "Text")))
+                  (SqlOther (packPTH "SqlType unset for description")))
+                 [])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "creationDate")))
+                    (DBName (packPTH "creation_date")))
+                   ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                  (SqlOther (packPTH "SqlType unset for creationDate")))
+                 [])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "passingNumber")))
+                    (DBName (packPTH "passing_number")))
+                   ((FTTypeCon Nothing) (packPTH "Int")))
+                  (SqlOther (packPTH "SqlType unset for passingNumber")))
+                 [])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "questions")))
+                    (DBName (packPTH "questions")))
+                   (FTList ((FTTypeCon Nothing) (packPTH "Question"))))
+                  (SqlOther (packPTH "SqlType unset for questions")))
+                 [])
+                True)
+               (EmbedRef
+                  ((EmbedEntityDef (HaskellName (packPTH "Question")))
+                     [((EmbedFieldDef (DBName (packPTH "text"))) Nothing) Nothing,
+                      ((EmbedFieldDef (DBName (packPTH "answer"))) Nothing) Nothing,
+                      ((EmbedFieldDef (DBName (packPTH "variants"))) Nothing)
+                        Nothing]))])
+           [])
+          [])
+         [packPTH "Eq", packPTH "Read", packPTH "Show", packPTH "Generic"])
+        (Data.Map.Internal.fromList []))
+       False
+       {entityFields = [((((((FieldDef (HaskellName (packPTH "name")))
+                               (DBName (packPTH "name")))
+                              ((FTTypeCon Nothing) (packPTH "Text")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                            [])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "description")))
+                               (DBName (packPTH "description")))
+                              ((FTTypeCon Nothing) (packPTH "Text")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                            [])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "creationDate")))
+                               (DBName (packPTH "creation_date")))
+                              ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy UTCTime)))
+                            [])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "passingNumber")))
+                               (DBName (packPTH "passing_number")))
+                              ((FTTypeCon Nothing) (packPTH "Int")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy Int)))
+                            [])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "questions")))
+                               (DBName (packPTH "questions")))
+                              (FTList ((FTTypeCon Nothing) (packPTH "Question"))))
+                             SqlString)
+                            [])
+                           True)
+                          (EmbedRef
+                             ((EmbedEntityDef (HaskellName (packPTH "Question")))
+                                [((EmbedFieldDef (DBName (packPTH "text"))) Nothing) Nothing,
+                                 ((EmbedFieldDef (DBName (packPTH "answer"))) Nothing) Nothing,
+                                 ((EmbedFieldDef (DBName (packPTH "variants"))) Nothing)
+                                   Nothing]))],
+        entityId = ((((((FieldDef (HaskellName (packPTH "Id")))
+                          (DBName (packPTH "id")))
+                         ((FTTypeCon Nothing) (packPTH "QuizId")))
+                        (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                           (Data.Proxy.Proxy :: Data.Proxy.Proxy GHC.Int.Int64)))
+                       [])
+                      True)
+                     ((ForeignRef (HaskellName (packPTH "Quiz")))
+                        ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))},
+     (((((((((EntityDef (HaskellName (packPTH "QuizResult")))
+               (DBName (packPTH "quiz_result")))
+              (((((((FieldDef (HaskellName (packPTH "Id")))
+                      (DBName (packPTH "id")))
+                     ((FTTypeCon Nothing) (packPTH "QuizResultId")))
+                    SqlInt64)
+                   [])
+                  True)
+                 ((ForeignRef (HaskellName (packPTH "QuizResult")))
+                    ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))))
+             [packPTH "json"])
+            [((((((FieldDef (HaskellName (packPTH "quizid")))
+                    (DBName (packPTH "quizid")))
+                   ((FTTypeCon Nothing) (packPTH "QuizId")))
+                  (SqlOther (packPTH "SqlType unset for quizid")))
+                 [])
+                True)
+               ((ForeignRef (HaskellName (packPTH "Quiz")))
+                  ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64"))),
+             ((((((FieldDef (HaskellName (packPTH "result")))
+                    (DBName (packPTH "result")))
+                   ((FTTypeCon Nothing) (packPTH "Text")))
+                  (SqlOther (packPTH "SqlType unset for result")))
+                 [])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "passing")))
+                    (DBName (packPTH "passing")))
+                   ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                  (SqlOther (packPTH "SqlType unset for passing")))
+                 [])
+                True)
+               NoReference])
+           [])
+          [])
+         [packPTH "Eq", packPTH "Read", packPTH "Show", packPTH "Generic"])
+        (Data.Map.Internal.fromList []))
+       False
+       {entityFields = [((((((FieldDef (HaskellName (packPTH "quizid")))
+                               (DBName (packPTH "quizid")))
+                              ((FTTypeCon Nothing) (packPTH "QuizId")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy GHC.Int.Int64)))
+                            [])
+                           True)
+                          ((ForeignRef (HaskellName (packPTH "Quiz")))
+                             ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64"))),
+                        ((((((FieldDef (HaskellName (packPTH "result")))
+                               (DBName (packPTH "result")))
+                              ((FTTypeCon Nothing) (packPTH "Text")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                            [])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "passing")))
+                               (DBName (packPTH "passing")))
+                              ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy UTCTime)))
+                            [])
+                           True)
+                          NoReference],
+        entityId = ((((((FieldDef (HaskellName (packPTH "Id")))
+                          (DBName (packPTH "id")))
+                         ((FTTypeCon Nothing) (packPTH "QuizResultId")))
+                        (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                           (Data.Proxy.Proxy :: Data.Proxy.Proxy GHC.Int.Int64)))
+                       [])
+                      True)
+                     ((ForeignRef (HaskellName (packPTH "QuizResult")))
+                        ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))},
+     (((((((((EntityDef (HaskellName (packPTH "User")))
+               (DBName (packPTH "user")))
+              (((((((FieldDef (HaskellName (packPTH "Id")))
+                      (DBName (packPTH "id")))
+                     ((FTTypeCon Nothing) (packPTH "UserId")))
+                    SqlInt64)
+                   [])
+                  True)
+                 ((ForeignRef (HaskellName (packPTH "User")))
+                    ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))))
+             [])
+            [((((((FieldDef (HaskellName (packPTH "username")))
+                    (DBName (packPTH "username")))
+                   ((FTTypeCon Nothing) (packPTH "Text")))
+                  (SqlOther (packPTH "SqlType unset for username")))
+                 [])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "password")))
+                    (DBName (packPTH "password")))
+                   ((FTTypeCon Nothing) (packPTH "ByteString")))
+                  (SqlOther (packPTH "SqlType unset for password")))
+                 [])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "email")))
+                    (DBName (packPTH "email")))
+                   ((FTTypeCon Nothing) (packPTH "Text")))
+                  (SqlOther (packPTH "SqlType unset for email")))
+                 [])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "avatar")))
+                    (DBName (packPTH "avatar")))
+                   ((FTTypeCon Nothing) (packPTH "Text")))
+                  (SqlOther (packPTH "SqlType unset for avatar")))
+                 [])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "firstName")))
+                    (DBName (packPTH "first_name")))
+                   ((FTTypeCon Nothing) (packPTH "Text")))
+                  (SqlOther (packPTH "SqlType unset for firstName")))
+                 [packPTH "Maybe"])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "secondName")))
+                    (DBName (packPTH "second_name")))
+                   ((FTTypeCon Nothing) (packPTH "Text")))
+                  (SqlOther (packPTH "SqlType unset for secondName")))
+                 [packPTH "Maybe"])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "birthday")))
+                    (DBName (packPTH "birthday")))
+                   ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                  (SqlOther (packPTH "SqlType unset for birthday")))
+                 [packPTH "Maybe"])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "gender")))
+                    (DBName (packPTH "gender")))
+                   ((FTTypeCon Nothing) (packPTH "Gender")))
+                  (SqlOther (packPTH "SqlType unset for gender")))
+                 [packPTH "Maybe"])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "createdQuizzes")))
+                    (DBName (packPTH "created_quizzes")))
+                   (FTList ((FTTypeCon Nothing) (packPTH "QuizId"))))
+                  (SqlOther (packPTH "SqlType unset for createdQuizzes")))
+                 [])
+                True)
+               NoReference,
+             ((((((FieldDef (HaskellName (packPTH "passedQuizzes")))
+                    (DBName (packPTH "passed_quizzes")))
+                   (FTList ((FTTypeCon Nothing) (packPTH "QuizResult"))))
+                  (SqlOther (packPTH "SqlType unset for passedQuizzes")))
+                 [])
+                True)
+               (EmbedRef
+                  ((EmbedEntityDef (HaskellName (packPTH "QuizResult")))
+                     [((EmbedFieldDef (DBName (packPTH "quizid"))) Nothing) Nothing,
+                      ((EmbedFieldDef (DBName (packPTH "result"))) Nothing) Nothing,
+                      ((EmbedFieldDef (DBName (packPTH "passing"))) Nothing) Nothing]))])
+           [(((UniqueDef (HaskellName (packPTH "UniqueUsername")))
+                (DBName (packPTH "unique_username")))
+               [(HaskellName (packPTH "username"), DBName (packPTH "username"))])
+              [],
+            (((UniqueDef (HaskellName (packPTH "UniqueEmail")))
+                (DBName (packPTH "unique_email")))
+               [(HaskellName (packPTH "email"), DBName (packPTH "email"))])
+              []])
+          [])
+         [packPTH "Eq", packPTH "Read", packPTH "Show", packPTH "Generic"])
+        (Data.Map.Internal.fromList []))
+       False
+       {entityFields = [((((((FieldDef (HaskellName (packPTH "username")))
+                               (DBName (packPTH "username")))
+                              ((FTTypeCon Nothing) (packPTH "Text")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                            [])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "password")))
+                               (DBName (packPTH "password")))
+                              ((FTTypeCon Nothing) (packPTH "ByteString")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy ByteString)))
+                            [])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "email")))
+                               (DBName (packPTH "email")))
+                              ((FTTypeCon Nothing) (packPTH "Text")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                            [])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "avatar")))
+                               (DBName (packPTH "avatar")))
+                              ((FTTypeCon Nothing) (packPTH "Text")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                            [])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "firstName")))
+                               (DBName (packPTH "first_name")))
+                              ((FTTypeCon Nothing) (packPTH "Text")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                            [packPTH "Maybe"])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "secondName")))
+                               (DBName (packPTH "second_name")))
+                              ((FTTypeCon Nothing) (packPTH "Text")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                            [packPTH "Maybe"])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "birthday")))
+                               (DBName (packPTH "birthday")))
+                              ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy UTCTime)))
+                            [packPTH "Maybe"])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "gender")))
+                               (DBName (packPTH "gender")))
+                              ((FTTypeCon Nothing) (packPTH "Gender")))
+                             (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                (Data.Proxy.Proxy :: Data.Proxy.Proxy Gender)))
+                            [packPTH "Maybe"])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "createdQuizzes")))
+                               (DBName (packPTH "created_quizzes")))
+                              (FTList ((FTTypeCon Nothing) (packPTH "QuizId"))))
+                             SqlString)
+                            [])
+                           True)
+                          NoReference,
+                        ((((((FieldDef (HaskellName (packPTH "passedQuizzes")))
+                               (DBName (packPTH "passed_quizzes")))
+                              (FTList ((FTTypeCon Nothing) (packPTH "QuizResult"))))
+                             SqlString)
+                            [])
+                           True)
+                          (EmbedRef
+                             ((EmbedEntityDef (HaskellName (packPTH "QuizResult")))
+                                [((EmbedFieldDef (DBName (packPTH "quizid"))) Nothing) Nothing,
+                                 ((EmbedFieldDef (DBName (packPTH "result"))) Nothing) Nothing,
+                                 ((EmbedFieldDef (DBName (packPTH "passing"))) Nothing) Nothing]))],
+        entityId = ((((((FieldDef (HaskellName (packPTH "Id")))
+                          (DBName (packPTH "id")))
+                         ((FTTypeCon Nothing) (packPTH "UserId")))
+                        (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                           (Data.Proxy.Proxy :: Data.Proxy.Proxy GHC.Int.Int64)))
+                       [])
+                      True)
+                     ((ForeignRef (HaskellName (packPTH "User")))
+                        ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))}]
+/home/nikita/Projects/labs/Databases/Course-Project/Server/src/Model/Model.hs:(28,1)-(64,2): Splicing declarations
+    share
+      [mkPersist (mkPersistSettings (ConT ''MongoContext))]
+      ([(((((((((EntityDef (HaskellName (packPTH "Question")))
+                  (DBName (packPTH "question")))
+                 (((((((FieldDef (HaskellName (packPTH "Id")))
+                         (DBName (packPTH "id")))
+                        ((FTTypeCon Nothing) (packPTH "QuestionId")))
+                       SqlInt64)
+                      [])
+                     True)
+                    ((ForeignRef (HaskellName (packPTH "Question")))
+                       ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))))
+                [packPTH "json"])
+               [((((((FieldDef (HaskellName (packPTH "text")))
+                       (DBName (packPTH "text")))
+                      ((FTTypeCon Nothing) (packPTH "Text")))
+                     (SqlOther (packPTH "SqlType unset for text")))
+                    [])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "answer")))
+                       (DBName (packPTH "answer")))
+                      ((FTTypeCon Nothing) (packPTH "Text")))
+                     (SqlOther (packPTH "SqlType unset for answer")))
+                    [])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "variants")))
+                       (DBName (packPTH "variants")))
+                      (FTList ((FTTypeCon Nothing) (packPTH "Text"))))
+                     (SqlOther (packPTH "SqlType unset for variants")))
+                    [])
+                   True)
+                  NoReference])
+              [])
+             [])
+            [packPTH "Eq", packPTH "Read", packPTH "Show", packPTH "Generic"])
+           (Data.Map.Internal.fromList []))
+          False
+          {entityFields = [((((((FieldDef (HaskellName (packPTH "text")))
+                                  (DBName (packPTH "text")))
+                                 ((FTTypeCon Nothing) (packPTH "Text")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                               [])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "answer")))
+                                  (DBName (packPTH "answer")))
+                                 ((FTTypeCon Nothing) (packPTH "Text")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                               [])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "variants")))
+                                  (DBName (packPTH "variants")))
+                                 (FTList ((FTTypeCon Nothing) (packPTH "Text"))))
+                                SqlString)
+                               [])
+                              True)
+                             NoReference],
+           entityId = ((((((FieldDef (HaskellName (packPTH "Id")))
+                             (DBName (packPTH "id")))
+                            ((FTTypeCon Nothing) (packPTH "QuestionId")))
+                           (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                              (Data.Proxy.Proxy :: Data.Proxy.Proxy GHC.Int.Int64)))
+                          [])
+                         True)
+                        ((ForeignRef (HaskellName (packPTH "Question")))
+                           ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))},
+        (((((((((EntityDef (HaskellName (packPTH "Quiz")))
+                  (DBName (packPTH "quiz")))
+                 (((((((FieldDef (HaskellName (packPTH "Id")))
+                         (DBName (packPTH "id")))
+                        ((FTTypeCon Nothing) (packPTH "QuizId")))
+                       SqlInt64)
+                      [])
+                     True)
+                    ((ForeignRef (HaskellName (packPTH "Quiz")))
+                       ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))))
+                [packPTH "json"])
+               [((((((FieldDef (HaskellName (packPTH "name")))
+                       (DBName (packPTH "name")))
+                      ((FTTypeCon Nothing) (packPTH "Text")))
+                     (SqlOther (packPTH "SqlType unset for name")))
+                    [])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "description")))
+                       (DBName (packPTH "description")))
+                      ((FTTypeCon Nothing) (packPTH "Text")))
+                     (SqlOther (packPTH "SqlType unset for description")))
+                    [])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "creationDate")))
+                       (DBName (packPTH "creation_date")))
+                      ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                     (SqlOther (packPTH "SqlType unset for creationDate")))
+                    [])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "passingNumber")))
+                       (DBName (packPTH "passing_number")))
+                      ((FTTypeCon Nothing) (packPTH "Int")))
+                     (SqlOther (packPTH "SqlType unset for passingNumber")))
+                    [])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "questions")))
+                       (DBName (packPTH "questions")))
+                      (FTList ((FTTypeCon Nothing) (packPTH "Question"))))
+                     (SqlOther (packPTH "SqlType unset for questions")))
+                    [])
+                   True)
+                  (EmbedRef
+                     ((EmbedEntityDef (HaskellName (packPTH "Question")))
+                        [((EmbedFieldDef (DBName (packPTH "text"))) Nothing) Nothing,
+                         ((EmbedFieldDef (DBName (packPTH "answer"))) Nothing) Nothing,
+                         ((EmbedFieldDef (DBName (packPTH "variants"))) Nothing)
+                           Nothing]))])
+              [])
+             [])
+            [packPTH "Eq", packPTH "Read", packPTH "Show", packPTH "Generic"])
+           (Data.Map.Internal.fromList []))
+          False
+          {entityFields = [((((((FieldDef (HaskellName (packPTH "name")))
+                                  (DBName (packPTH "name")))
+                                 ((FTTypeCon Nothing) (packPTH "Text")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                               [])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "description")))
+                                  (DBName (packPTH "description")))
+                                 ((FTTypeCon Nothing) (packPTH "Text")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                               [])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "creationDate")))
+                                  (DBName (packPTH "creation_date")))
+                                 ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy UTCTime)))
+                               [])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "passingNumber")))
+                                  (DBName (packPTH "passing_number")))
+                                 ((FTTypeCon Nothing) (packPTH "Int")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy Int)))
+                               [])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "questions")))
+                                  (DBName (packPTH "questions")))
+                                 (FTList ((FTTypeCon Nothing) (packPTH "Question"))))
+                                SqlString)
+                               [])
+                              True)
+                             (EmbedRef
+                                ((EmbedEntityDef (HaskellName (packPTH "Question")))
+                                   [((EmbedFieldDef (DBName (packPTH "text"))) Nothing) Nothing,
+                                    ((EmbedFieldDef (DBName (packPTH "answer"))) Nothing) Nothing,
+                                    ((EmbedFieldDef (DBName (packPTH "variants"))) Nothing)
+                                      Nothing]))],
+           entityId = ((((((FieldDef (HaskellName (packPTH "Id")))
+                             (DBName (packPTH "id")))
+                            ((FTTypeCon Nothing) (packPTH "QuizId")))
+                           (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                              (Data.Proxy.Proxy :: Data.Proxy.Proxy GHC.Int.Int64)))
+                          [])
+                         True)
+                        ((ForeignRef (HaskellName (packPTH "Quiz")))
+                           ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))},
+        (((((((((EntityDef (HaskellName (packPTH "QuizResult")))
+                  (DBName (packPTH "quiz_result")))
+                 (((((((FieldDef (HaskellName (packPTH "Id")))
+                         (DBName (packPTH "id")))
+                        ((FTTypeCon Nothing) (packPTH "QuizResultId")))
+                       SqlInt64)
+                      [])
+                     True)
+                    ((ForeignRef (HaskellName (packPTH "QuizResult")))
+                       ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))))
+                [packPTH "json"])
+               [((((((FieldDef (HaskellName (packPTH "quizid")))
+                       (DBName (packPTH "quizid")))
+                      ((FTTypeCon Nothing) (packPTH "QuizId")))
+                     (SqlOther (packPTH "SqlType unset for quizid")))
+                    [])
+                   True)
+                  ((ForeignRef (HaskellName (packPTH "Quiz")))
+                     ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64"))),
+                ((((((FieldDef (HaskellName (packPTH "result")))
+                       (DBName (packPTH "result")))
+                      ((FTTypeCon Nothing) (packPTH "Text")))
+                     (SqlOther (packPTH "SqlType unset for result")))
+                    [])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "passing")))
+                       (DBName (packPTH "passing")))
+                      ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                     (SqlOther (packPTH "SqlType unset for passing")))
+                    [])
+                   True)
+                  NoReference])
+              [])
+             [])
+            [packPTH "Eq", packPTH "Read", packPTH "Show", packPTH "Generic"])
+           (Data.Map.Internal.fromList []))
+          False
+          {entityFields = [((((((FieldDef (HaskellName (packPTH "quizid")))
+                                  (DBName (packPTH "quizid")))
+                                 ((FTTypeCon Nothing) (packPTH "QuizId")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy GHC.Int.Int64)))
+                               [])
+                              True)
+                             ((ForeignRef (HaskellName (packPTH "Quiz")))
+                                ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64"))),
+                           ((((((FieldDef (HaskellName (packPTH "result")))
+                                  (DBName (packPTH "result")))
+                                 ((FTTypeCon Nothing) (packPTH "Text")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                               [])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "passing")))
+                                  (DBName (packPTH "passing")))
+                                 ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy UTCTime)))
+                               [])
+                              True)
+                             NoReference],
+           entityId = ((((((FieldDef (HaskellName (packPTH "Id")))
+                             (DBName (packPTH "id")))
+                            ((FTTypeCon Nothing) (packPTH "QuizResultId")))
+                           (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                              (Data.Proxy.Proxy :: Data.Proxy.Proxy GHC.Int.Int64)))
+                          [])
+                         True)
+                        ((ForeignRef (HaskellName (packPTH "QuizResult")))
+                           ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))},
+        (((((((((EntityDef (HaskellName (packPTH "User")))
+                  (DBName (packPTH "user")))
+                 (((((((FieldDef (HaskellName (packPTH "Id")))
+                         (DBName (packPTH "id")))
+                        ((FTTypeCon Nothing) (packPTH "UserId")))
+                       SqlInt64)
+                      [])
+                     True)
+                    ((ForeignRef (HaskellName (packPTH "User")))
+                       ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))))
+                [])
+               [((((((FieldDef (HaskellName (packPTH "username")))
+                       (DBName (packPTH "username")))
+                      ((FTTypeCon Nothing) (packPTH "Text")))
+                     (SqlOther (packPTH "SqlType unset for username")))
+                    [])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "password")))
+                       (DBName (packPTH "password")))
+                      ((FTTypeCon Nothing) (packPTH "ByteString")))
+                     (SqlOther (packPTH "SqlType unset for password")))
+                    [])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "email")))
+                       (DBName (packPTH "email")))
+                      ((FTTypeCon Nothing) (packPTH "Text")))
+                     (SqlOther (packPTH "SqlType unset for email")))
+                    [])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "avatar")))
+                       (DBName (packPTH "avatar")))
+                      ((FTTypeCon Nothing) (packPTH "Text")))
+                     (SqlOther (packPTH "SqlType unset for avatar")))
+                    [])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "firstName")))
+                       (DBName (packPTH "first_name")))
+                      ((FTTypeCon Nothing) (packPTH "Text")))
+                     (SqlOther (packPTH "SqlType unset for firstName")))
+                    [packPTH "Maybe"])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "secondName")))
+                       (DBName (packPTH "second_name")))
+                      ((FTTypeCon Nothing) (packPTH "Text")))
+                     (SqlOther (packPTH "SqlType unset for secondName")))
+                    [packPTH "Maybe"])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "birthday")))
+                       (DBName (packPTH "birthday")))
+                      ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                     (SqlOther (packPTH "SqlType unset for birthday")))
+                    [packPTH "Maybe"])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "gender")))
+                       (DBName (packPTH "gender")))
+                      ((FTTypeCon Nothing) (packPTH "Gender")))
+                     (SqlOther (packPTH "SqlType unset for gender")))
+                    [packPTH "Maybe"])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "createdQuizzes")))
+                       (DBName (packPTH "created_quizzes")))
+                      (FTList ((FTTypeCon Nothing) (packPTH "QuizId"))))
+                     (SqlOther (packPTH "SqlType unset for createdQuizzes")))
+                    [])
+                   True)
+                  NoReference,
+                ((((((FieldDef (HaskellName (packPTH "passedQuizzes")))
+                       (DBName (packPTH "passed_quizzes")))
+                      (FTList ((FTTypeCon Nothing) (packPTH "QuizResult"))))
+                     (SqlOther (packPTH "SqlType unset for passedQuizzes")))
+                    [])
+                   True)
+                  (EmbedRef
+                     ((EmbedEntityDef (HaskellName (packPTH "QuizResult")))
+                        [((EmbedFieldDef (DBName (packPTH "quizid"))) Nothing) Nothing,
+                         ((EmbedFieldDef (DBName (packPTH "result"))) Nothing) Nothing,
+                         ((EmbedFieldDef (DBName (packPTH "passing"))) Nothing) Nothing]))])
+              [(((UniqueDef (HaskellName (packPTH "UniqueUsername")))
+                   (DBName (packPTH "unique_username")))
+                  [(HaskellName (packPTH "username"), DBName (packPTH "username"))])
+                 [],
+               (((UniqueDef (HaskellName (packPTH "UniqueEmail")))
+                   (DBName (packPTH "unique_email")))
+                  [(HaskellName (packPTH "email"), DBName (packPTH "email"))])
+                 []])
+             [])
+            [packPTH "Eq", packPTH "Read", packPTH "Show", packPTH "Generic"])
+           (Data.Map.Internal.fromList []))
+          False
+          {entityFields = [((((((FieldDef (HaskellName (packPTH "username")))
+                                  (DBName (packPTH "username")))
+                                 ((FTTypeCon Nothing) (packPTH "Text")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                               [])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "password")))
+                                  (DBName (packPTH "password")))
+                                 ((FTTypeCon Nothing) (packPTH "ByteString")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy ByteString)))
+                               [])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "email")))
+                                  (DBName (packPTH "email")))
+                                 ((FTTypeCon Nothing) (packPTH "Text")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                               [])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "avatar")))
+                                  (DBName (packPTH "avatar")))
+                                 ((FTTypeCon Nothing) (packPTH "Text")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                               [])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "firstName")))
+                                  (DBName (packPTH "first_name")))
+                                 ((FTTypeCon Nothing) (packPTH "Text")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                               [packPTH "Maybe"])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "secondName")))
+                                  (DBName (packPTH "second_name")))
+                                 ((FTTypeCon Nothing) (packPTH "Text")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy Text)))
+                               [packPTH "Maybe"])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "birthday")))
+                                  (DBName (packPTH "birthday")))
+                                 ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy UTCTime)))
+                               [packPTH "Maybe"])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "gender")))
+                                  (DBName (packPTH "gender")))
+                                 ((FTTypeCon Nothing) (packPTH "Gender")))
+                                (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                                   (Data.Proxy.Proxy :: Data.Proxy.Proxy Gender)))
+                               [packPTH "Maybe"])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "createdQuizzes")))
+                                  (DBName (packPTH "created_quizzes")))
+                                 (FTList ((FTTypeCon Nothing) (packPTH "QuizId"))))
+                                SqlString)
+                               [])
+                              True)
+                             NoReference,
+                           ((((((FieldDef (HaskellName (packPTH "passedQuizzes")))
+                                  (DBName (packPTH "passed_quizzes")))
+                                 (FTList ((FTTypeCon Nothing) (packPTH "QuizResult"))))
+                                SqlString)
+                               [])
+                              True)
+                             (EmbedRef
+                                ((EmbedEntityDef (HaskellName (packPTH "QuizResult")))
+                                   [((EmbedFieldDef (DBName (packPTH "quizid"))) Nothing) Nothing,
+                                    ((EmbedFieldDef (DBName (packPTH "result"))) Nothing) Nothing,
+                                    ((EmbedFieldDef (DBName (packPTH "passing"))) Nothing)
+                                      Nothing]))],
+           entityId = ((((((FieldDef (HaskellName (packPTH "Id")))
+                             (DBName (packPTH "id")))
+                            ((FTTypeCon Nothing) (packPTH "UserId")))
+                           (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                              (Data.Proxy.Proxy :: Data.Proxy.Proxy GHC.Int.Int64)))
+                          [])
+                         True)
+                        ((ForeignRef (HaskellName (packPTH "User")))
+                           ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))}])
+  ======>
+    instance PersistField Question where
+      toPersistValue
+        = \ ent_atJm
+            -> (PersistMap
+                  $ ((zip ((map pack) ["text", "answer", "variants"]))
+                       ((map toPersistValue) $ (toPersistFields ent_atJm))))
+      fromPersistValue
+        = ((\ x_atJn
+              -> let
+                   columns_atJo
+                     = unordered-containers-0.2.9.0:Data.HashMap.Strict.fromList x_atJn
+                 in
+                   (fromPersistValues
+                      $ ((map
+                            (\ name_atJp
+                               -> case
+                                      (unordered-containers-0.2.9.0:Data.HashMap.Base.lookup
+                                         (pack name_atJp))
+                                        columns_atJo
+                                  of
+                                    Just v_atJq -> v_atJq
+                                    Nothing -> PersistNull))
+                           $ ["text", "answer", "variants"])))
+             Control.Monad.<=< getPersistMap)
+    instance persistent-2.8.1:Database.Persist.Sql.Class.PersistFieldSql Question where
+      persistent-2.8.1:Database.Persist.Sql.Class.sqlType _ = SqlString
+    instance PersistField Quiz where
+      toPersistValue
+        = \ ent_atJr
+            -> (PersistMap
+                  $ ((zip
+                        ((map pack)
+                           ["name", "description", "creationDate", "passingNumber",
+                            "questions"]))
+                       ((map toPersistValue) $ (toPersistFields ent_atJr))))
+      fromPersistValue
+        = ((\ x_atJs
+              -> let
+                   columns_atJt
+                     = unordered-containers-0.2.9.0:Data.HashMap.Strict.fromList x_atJs
+                 in
+                   (fromPersistValues
+                      $ ((map
+                            (\ name_atJu
+                               -> case
+                                      (unordered-containers-0.2.9.0:Data.HashMap.Base.lookup
+                                         (pack name_atJu))
+                                        columns_atJt
+                                  of
+                                    Just v_atJv -> v_atJv
+                                    Nothing -> PersistNull))
+                           $ ["name", "description", "creationDate", "passingNumber",
+                              "questions"])))
+             Control.Monad.<=< getPersistMap)
+    instance persistent-2.8.1:Database.Persist.Sql.Class.PersistFieldSql Quiz where
+      persistent-2.8.1:Database.Persist.Sql.Class.sqlType _ = SqlString
+    instance PersistField QuizResult where
+      toPersistValue
+        = \ ent_atJw
+            -> (PersistMap
+                  $ ((zip ((map pack) ["quizid", "result", "passing"]))
+                       ((map toPersistValue) $ (toPersistFields ent_atJw))))
+      fromPersistValue
+        = ((\ x_atJx
+              -> let
+                   columns_atJy
+                     = unordered-containers-0.2.9.0:Data.HashMap.Strict.fromList x_atJx
+                 in
+                   (fromPersistValues
+                      $ ((map
+                            (\ name_atJz
+                               -> case
+                                      (unordered-containers-0.2.9.0:Data.HashMap.Base.lookup
+                                         (pack name_atJz))
+                                        columns_atJy
+                                  of
+                                    Just v_atJA -> v_atJA
+                                    Nothing -> PersistNull))
+                           $ ["quizid", "result", "passing"])))
+             Control.Monad.<=< getPersistMap)
+    instance persistent-2.8.1:Database.Persist.Sql.Class.PersistFieldSql QuizResult where
+      persistent-2.8.1:Database.Persist.Sql.Class.sqlType _ = SqlString
+    instance PersistField User where
+      toPersistValue
+        = \ ent_atJB
+            -> (PersistMap
+                  $ ((zip
+                        ((map pack)
+                           ["username", "password", "email", "avatar", "firstName",
+                            "secondName", "birthday", "gender", "createdQuizzes",
+                            "passedQuizzes"]))
+                       ((map toPersistValue) $ (toPersistFields ent_atJB))))
+      fromPersistValue
+        = ((\ x_atJC
+              -> let
+                   columns_atJD
+                     = unordered-containers-0.2.9.0:Data.HashMap.Strict.fromList x_atJC
+                 in
+                   (fromPersistValues
+                      $ ((map
+                            (\ name_atJE
+                               -> case
+                                      (unordered-containers-0.2.9.0:Data.HashMap.Base.lookup
+                                         (pack name_atJE))
+                                        columns_atJD
+                                  of
+                                    Just v_atJF -> v_atJF
+                                    Nothing -> PersistNull))
+                           $ ["username", "password", "email", "avatar", "firstName",
+                              "secondName", "birthday", "gender", "createdQuizzes",
+                              "passedQuizzes"])))
+             Control.Monad.<=< getPersistMap)
+    instance persistent-2.8.1:Database.Persist.Sql.Class.PersistFieldSql User where
+      persistent-2.8.1:Database.Persist.Sql.Class.sqlType _ = SqlString
+    data Question
+      = Question {questionText :: !Text,
+                  questionAnswer :: !Text,
+                  questionVariants :: ![Text]}
+      deriving (Eq, Read, Show, Generic)
+    type QuestionId = Key Question
+    instance PersistEntity Question where
+      type PersistEntityBackend Question = MongoContext
+      data Unique Question
+      newtype Key Question
+        = QuestionKey {unQuestionKey :: (BackendKey MongoContext)}
+        deriving (Show,
+                  Read,
+                  Eq,
+                  Ord,
+                  path-pieces-0.2.1:Web.PathPieces.PathPiece,
+                  Web.Internal.HttpApiData.ToHttpApiData,
+                  Web.Internal.HttpApiData.FromHttpApiData,
+                  PersistField,
+                  persistent-2.8.1:Database.Persist.Sql.Class.PersistFieldSql,
+                  aeson-1.2.4.0:Data.Aeson.Types.ToJSON.ToJSON,
+                  aeson-1.2.4.0:Data.Aeson.Types.FromJSON.FromJSON)
+      data EntityField Question typ
+        = typ ~ Key Question => QuestionId |
+          typ ~ Text => QuestionText |
+          typ ~ Text => QuestionAnswer |
+          typ ~ [Text] => QuestionVariants
+      keyToValues
+        = ((ghc-prim-0.5.1.1:GHC.Types.: [])
+             . (toPersistValue . unQuestionKey))
+      keyFromValues
+        = ((fmap QuestionKey)
+             . (fromPersistValue . Database.Persist.TH.headNote))
+      entityDef _
+        = (((((((((EntityDef (HaskellName (packPTH "Question")))
+                    (DBName (packPTH "question")))
+                   (((((((FieldDef (HaskellName (packPTH "Id")))
+                           (DBName (packPTH "id")))
+                          ((FTTypeCon Nothing) (packPTH "QuestionId")))
+                         SqlInt64)
+                        [])
+                       True)
+                      ((ForeignRef (HaskellName (packPTH "Question")))
+                         ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))))
+                  [packPTH "json"])
+                 [((((((FieldDef (HaskellName (packPTH "text")))
+                         (DBName (packPTH "text")))
+                        ((FTTypeCon Nothing) (packPTH "Text")))
+                       SqlString)
+                      [])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "answer")))
+                         (DBName (packPTH "answer")))
+                        ((FTTypeCon Nothing) (packPTH "Text")))
+                       SqlString)
+                      [])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "variants")))
+                         (DBName (packPTH "variants")))
+                        (FTList ((FTTypeCon Nothing) (packPTH "Text"))))
+                       SqlString)
+                      [])
+                     True)
+                    NoReference])
+                [])
+               [])
+              [packPTH "Eq", packPTH "Read", packPTH "Show", packPTH "Generic"])
+             (Data.Map.Internal.fromList []))
+            False
+      toPersistFields (Question x_atJG x_atJH x_atJI)
+        = [SomePersistField x_atJG, SomePersistField x_atJH,
+           SomePersistField x_atJI]
+      fromPersistValues [x1_atJK, x2_atJL, x3_atJM]
+        = Question
+            <$>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "text")))
+                 . fromPersistValue)
+                x1_atJK
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "answer")))
+                 . fromPersistValue)
+                x2_atJL
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "variants")))
+                 . fromPersistValue)
+                x3_atJM
+      fromPersistValues x_atJJ
+        = (Left
+             $ ((mappend (packPTH "Question: fromPersistValues failed on: "))
+                  (pack $ (show x_atJJ))))
+      persistUniqueToFieldNames _
+        = error "Degenerate case, should never happen"
+      persistUniqueToValues _
+        = error "Degenerate case, should never happen"
+      persistUniqueKeys (Question _text_atJN _answer_atJO _variants_atJP)
+        = []
+      persistFieldDef QuestionId
+        = ((((((FieldDef (HaskellName (packPTH "Id")))
+                 (DBName (packPTH "id")))
+                ((FTTypeCon Nothing) (packPTH "QuestionId")))
+               SqlInt64)
+              [])
+             True)
+            ((ForeignRef (HaskellName (packPTH "Question")))
+               ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))
+      persistFieldDef QuestionText
+        = ((((((FieldDef (HaskellName (packPTH "text")))
+                 (DBName (packPTH "text")))
+                ((FTTypeCon Nothing) (packPTH "Text")))
+               SqlString)
+              [])
+             True)
+            NoReference
+      persistFieldDef QuestionAnswer
+        = ((((((FieldDef (HaskellName (packPTH "answer")))
+                 (DBName (packPTH "answer")))
+                ((FTTypeCon Nothing) (packPTH "Text")))
+               SqlString)
+              [])
+             True)
+            NoReference
+      persistFieldDef QuestionVariants
+        = ((((((FieldDef (HaskellName (packPTH "variants")))
+                 (DBName (packPTH "variants")))
+                (FTList ((FTTypeCon Nothing) (packPTH "Text"))))
+               SqlString)
+              [])
+             True)
+            NoReference
+      persistIdField = QuestionId
+      fieldLens QuestionId
+        = (lensPTH entityKey)
+            (\ Entity _ value_atJQ key_atJR -> (Entity key_atJR) value_atJQ)
+      fieldLens QuestionText
+        = (lensPTH (questionText . entityVal))
+            (\ Entity key_atJS value_atJT x_atJU
+               -> (Entity key_atJS) value_atJT {questionText = x_atJU})
+      fieldLens QuestionAnswer
+        = (lensPTH (questionAnswer . entityVal))
+            (\ Entity key_atJS value_atJT x_atJU
+               -> (Entity key_atJS) value_atJT {questionAnswer = x_atJU})
+      fieldLens QuestionVariants
+        = (lensPTH (questionVariants . entityVal))
+            (\ Entity key_atJS value_atJT x_atJU
+               -> (Entity key_atJS) value_atJT {questionVariants = x_atJU})
+    instance ToBackendKey MongoContext Question where
+      toBackendKey = unQuestionKey
+      fromBackendKey = QuestionKey
+    data Quiz
+      = Quiz {quizName :: !Text,
+              quizDescription :: !Text,
+              quizCreationDate :: !UTCTime,
+              quizPassingNumber :: !Int,
+              quizQuestions :: ![Question]}
+      deriving (Eq, Read, Show, Generic)
+    type QuizId = Key Quiz
+    instance PersistEntity Quiz where
+      type PersistEntityBackend Quiz = MongoContext
+      data Unique Quiz
+      newtype Key Quiz
+        = QuizKey {unQuizKey :: (BackendKey MongoContext)}
+        deriving (Show,
+                  Read,
+                  Eq,
+                  Ord,
+                  path-pieces-0.2.1:Web.PathPieces.PathPiece,
+                  Web.Internal.HttpApiData.ToHttpApiData,
+                  Web.Internal.HttpApiData.FromHttpApiData,
+                  PersistField,
+                  persistent-2.8.1:Database.Persist.Sql.Class.PersistFieldSql,
+                  aeson-1.2.4.0:Data.Aeson.Types.ToJSON.ToJSON,
+                  aeson-1.2.4.0:Data.Aeson.Types.FromJSON.FromJSON)
+      data EntityField Quiz typ
+        = typ ~ Key Quiz => QuizId |
+          typ ~ Text => QuizName |
+          typ ~ Text => QuizDescription |
+          typ ~ UTCTime => QuizCreationDate |
+          typ ~ Int => QuizPassingNumber |
+          typ ~ [Question] => QuizQuestions
+      keyToValues
+        = ((ghc-prim-0.5.1.1:GHC.Types.: [])
+             . (toPersistValue . unQuizKey))
+      keyFromValues
+        = ((fmap QuizKey)
+             . (fromPersistValue . Database.Persist.TH.headNote))
+      entityDef _
+        = (((((((((EntityDef (HaskellName (packPTH "Quiz")))
+                    (DBName (packPTH "quiz")))
+                   (((((((FieldDef (HaskellName (packPTH "Id")))
+                           (DBName (packPTH "id")))
+                          ((FTTypeCon Nothing) (packPTH "QuizId")))
+                         SqlInt64)
+                        [])
+                       True)
+                      ((ForeignRef (HaskellName (packPTH "Quiz")))
+                         ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))))
+                  [packPTH "json"])
+                 [((((((FieldDef (HaskellName (packPTH "name")))
+                         (DBName (packPTH "name")))
+                        ((FTTypeCon Nothing) (packPTH "Text")))
+                       SqlString)
+                      [])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "description")))
+                         (DBName (packPTH "description")))
+                        ((FTTypeCon Nothing) (packPTH "Text")))
+                       SqlString)
+                      [])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "creationDate")))
+                         (DBName (packPTH "creation_date")))
+                        ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                       SqlDayTime)
+                      [])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "passingNumber")))
+                         (DBName (packPTH "passing_number")))
+                        ((FTTypeCon Nothing) (packPTH "Int")))
+                       SqlInt64)
+                      [])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "questions")))
+                         (DBName (packPTH "questions")))
+                        (FTList ((FTTypeCon Nothing) (packPTH "Question"))))
+                       SqlString)
+                      [])
+                     True)
+                    (EmbedRef
+                       ((EmbedEntityDef (HaskellName (packPTH "Question")))
+                          [((EmbedFieldDef (DBName (packPTH "text"))) Nothing) Nothing,
+                           ((EmbedFieldDef (DBName (packPTH "answer"))) Nothing) Nothing,
+                           ((EmbedFieldDef (DBName (packPTH "variants"))) Nothing)
+                             Nothing]))])
+                [])
+               [])
+              [packPTH "Eq", packPTH "Read", packPTH "Show", packPTH "Generic"])
+             (Data.Map.Internal.fromList []))
+            False
+      toPersistFields (Quiz x_atJV x_atJW x_atJX x_atJY x_atJZ)
+        = [SomePersistField x_atJV, SomePersistField x_atJW,
+           SomePersistField x_atJX, SomePersistField x_atJY,
+           SomePersistField x_atJZ]
+      fromPersistValues [x1_atK1, x2_atK2, x3_atK3, x4_atK4, x5_atK5]
+        = Quiz
+            <$>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "name")))
+                 . fromPersistValue)
+                x1_atK1
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "description")))
+                 . fromPersistValue)
+                x2_atK2
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "creationDate")))
+                 . fromPersistValue)
+                x3_atK3
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "passingNumber")))
+                 . fromPersistValue)
+                x4_atK4
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "questions")))
+                 . fromPersistValue)
+                x5_atK5
+      fromPersistValues x_atK0
+        = (Left
+             $ ((mappend (packPTH "Quiz: fromPersistValues failed on: "))
+                  (pack $ (show x_atK0))))
+      persistUniqueToFieldNames _
+        = error "Degenerate case, should never happen"
+      persistUniqueToValues _
+        = error "Degenerate case, should never happen"
+      persistUniqueKeys
+        (Quiz _name_atK6
+              _description_atK7
+              _creationDate_atK8
+              _passingNumber_atK9
+              _questions_atKa)
+        = []
+      persistFieldDef QuizId
+        = ((((((FieldDef (HaskellName (packPTH "Id")))
+                 (DBName (packPTH "id")))
+                ((FTTypeCon Nothing) (packPTH "QuizId")))
+               SqlInt64)
+              [])
+             True)
+            ((ForeignRef (HaskellName (packPTH "Quiz")))
+               ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))
+      persistFieldDef QuizName
+        = ((((((FieldDef (HaskellName (packPTH "name")))
+                 (DBName (packPTH "name")))
+                ((FTTypeCon Nothing) (packPTH "Text")))
+               SqlString)
+              [])
+             True)
+            NoReference
+      persistFieldDef QuizDescription
+        = ((((((FieldDef (HaskellName (packPTH "description")))
+                 (DBName (packPTH "description")))
+                ((FTTypeCon Nothing) (packPTH "Text")))
+               SqlString)
+              [])
+             True)
+            NoReference
+      persistFieldDef QuizCreationDate
+        = ((((((FieldDef (HaskellName (packPTH "creationDate")))
+                 (DBName (packPTH "creation_date")))
+                ((FTTypeCon Nothing) (packPTH "UTCTime")))
+               SqlDayTime)
+              [])
+             True)
+            NoReference
+      persistFieldDef QuizPassingNumber
+        = ((((((FieldDef (HaskellName (packPTH "passingNumber")))
+                 (DBName (packPTH "passing_number")))
+                ((FTTypeCon Nothing) (packPTH "Int")))
+               SqlInt64)
+              [])
+             True)
+            NoReference
+      persistFieldDef QuizQuestions
+        = ((((((FieldDef (HaskellName (packPTH "questions")))
+                 (DBName (packPTH "questions")))
+                (FTList ((FTTypeCon Nothing) (packPTH "Question"))))
+               SqlString)
+              [])
+             True)
+            (EmbedRef
+               ((EmbedEntityDef (HaskellName (packPTH "Question")))
+                  [((EmbedFieldDef (DBName (packPTH "text"))) Nothing) Nothing,
+                   ((EmbedFieldDef (DBName (packPTH "answer"))) Nothing) Nothing,
+                   ((EmbedFieldDef (DBName (packPTH "variants"))) Nothing) Nothing]))
+      persistIdField = QuizId
+      fieldLens QuizId
+        = (lensPTH entityKey)
+            (\ Entity _ value_atKb key_atKc -> (Entity key_atKc) value_atKb)
+      fieldLens QuizName
+        = (lensPTH (quizName . entityVal))
+            (\ Entity key_atKd value_atKe x_atKf
+               -> (Entity key_atKd) value_atKe {quizName = x_atKf})
+      fieldLens QuizDescription
+        = (lensPTH (quizDescription . entityVal))
+            (\ Entity key_atKd value_atKe x_atKf
+               -> (Entity key_atKd) value_atKe {quizDescription = x_atKf})
+      fieldLens QuizCreationDate
+        = (lensPTH (quizCreationDate . entityVal))
+            (\ Entity key_atKd value_atKe x_atKf
+               -> (Entity key_atKd) value_atKe {quizCreationDate = x_atKf})
+      fieldLens QuizPassingNumber
+        = (lensPTH (quizPassingNumber . entityVal))
+            (\ Entity key_atKd value_atKe x_atKf
+               -> (Entity key_atKd) value_atKe {quizPassingNumber = x_atKf})
+      fieldLens QuizQuestions
+        = (lensPTH (quizQuestions . entityVal))
+            (\ Entity key_atKd value_atKe x_atKf
+               -> (Entity key_atKd) value_atKe {quizQuestions = x_atKf})
+    instance ToBackendKey MongoContext Quiz where
+      toBackendKey = unQuizKey
+      fromBackendKey = QuizKey
+    data QuizResult
+      = QuizResult {quizResultQuizid :: !(Key Quiz),
+                    quizResultResult :: !Text,
+                    quizResultPassing :: !UTCTime}
+      deriving (Eq, Read, Show, Generic)
+    type QuizResultId = Key QuizResult
+    instance PersistEntity QuizResult where
+      type PersistEntityBackend QuizResult = MongoContext
+      data Unique QuizResult
+      newtype Key QuizResult
+        = QuizResultKey {unQuizResultKey :: (BackendKey MongoContext)}
+        deriving (Show,
+                  Read,
+                  Eq,
+                  Ord,
+                  path-pieces-0.2.1:Web.PathPieces.PathPiece,
+                  Web.Internal.HttpApiData.ToHttpApiData,
+                  Web.Internal.HttpApiData.FromHttpApiData,
+                  PersistField,
+                  persistent-2.8.1:Database.Persist.Sql.Class.PersistFieldSql,
+                  aeson-1.2.4.0:Data.Aeson.Types.ToJSON.ToJSON,
+                  aeson-1.2.4.0:Data.Aeson.Types.FromJSON.FromJSON)
+      data EntityField QuizResult typ
+        = typ ~ Key QuizResult => QuizResultId |
+          typ ~ Key Quiz => QuizResultQuizid |
+          typ ~ Text => QuizResultResult |
+          typ ~ UTCTime => QuizResultPassing
+      keyToValues
+        = ((ghc-prim-0.5.1.1:GHC.Types.: [])
+             . (toPersistValue . unQuizResultKey))
+      keyFromValues
+        = ((fmap QuizResultKey)
+             . (fromPersistValue . Database.Persist.TH.headNote))
+      entityDef _
+        = (((((((((EntityDef (HaskellName (packPTH "QuizResult")))
+                    (DBName (packPTH "quiz_result")))
+                   (((((((FieldDef (HaskellName (packPTH "Id")))
+                           (DBName (packPTH "id")))
+                          ((FTTypeCon Nothing) (packPTH "QuizResultId")))
+                         SqlInt64)
+                        [])
+                       True)
+                      ((ForeignRef (HaskellName (packPTH "QuizResult")))
+                         ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))))
+                  [packPTH "json"])
+                 [((((((FieldDef (HaskellName (packPTH "quizid")))
+                         (DBName (packPTH "quizid")))
+                        ((FTTypeCon Nothing) (packPTH "QuizId")))
+                       (persistent-2.8.1:Database.Persist.Sql.Class.sqlType
+                          (Data.Proxy.Proxy :: Data.Proxy.Proxy GHC.Int.Int64)))
+                      [])
+                     True)
+                    ((ForeignRef (HaskellName (packPTH "Quiz")))
+                       ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64"))),
+                  ((((((FieldDef (HaskellName (packPTH "result")))
+                         (DBName (packPTH "result")))
+                        ((FTTypeCon Nothing) (packPTH "Text")))
+                       SqlString)
+                      [])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "passing")))
+                         (DBName (packPTH "passing")))
+                        ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                       SqlDayTime)
+                      [])
+                     True)
+                    NoReference])
+                [])
+               [])
+              [packPTH "Eq", packPTH "Read", packPTH "Show", packPTH "Generic"])
+             (Data.Map.Internal.fromList []))
+            False
+      toPersistFields (QuizResult x_atKg x_atKh x_atKi)
+        = [SomePersistField x_atKg, SomePersistField x_atKh,
+           SomePersistField x_atKi]
+      fromPersistValues [x1_atKk, x2_atKl, x3_atKm]
+        = QuizResult
+            <$>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "quizid")))
+                 . fromPersistValue)
+                x1_atKk
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "result")))
+                 . fromPersistValue)
+                x2_atKl
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "passing")))
+                 . fromPersistValue)
+                x3_atKm
+      fromPersistValues x_atKj
+        = (Left
+             $ ((mappend (packPTH "QuizResult: fromPersistValues failed on: "))
+                  (pack $ (show x_atKj))))
+      persistUniqueToFieldNames _
+        = error "Degenerate case, should never happen"
+      persistUniqueToValues _
+        = error "Degenerate case, should never happen"
+      persistUniqueKeys
+        (QuizResult _quizid_atKn _result_atKo _passing_atKp)
+        = []
+      persistFieldDef QuizResultId
+        = ((((((FieldDef (HaskellName (packPTH "Id")))
+                 (DBName (packPTH "id")))
+                ((FTTypeCon Nothing) (packPTH "QuizResultId")))
+               SqlInt64)
+              [])
+             True)
+            ((ForeignRef (HaskellName (packPTH "QuizResult")))
+               ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))
+      persistFieldDef QuizResultQuizid
+        = ((((((FieldDef (HaskellName (packPTH "quizid")))
+                 (DBName (packPTH "quizid")))
+                ((FTTypeCon Nothing) (packPTH "QuizId")))
+               SqlInt64)
+              [])
+             True)
+            ((ForeignRef (HaskellName (packPTH "Quiz")))
+               ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))
+      persistFieldDef QuizResultResult
+        = ((((((FieldDef (HaskellName (packPTH "result")))
+                 (DBName (packPTH "result")))
+                ((FTTypeCon Nothing) (packPTH "Text")))
+               SqlString)
+              [])
+             True)
+            NoReference
+      persistFieldDef QuizResultPassing
+        = ((((((FieldDef (HaskellName (packPTH "passing")))
+                 (DBName (packPTH "passing")))
+                ((FTTypeCon Nothing) (packPTH "UTCTime")))
+               SqlDayTime)
+              [])
+             True)
+            NoReference
+      persistIdField = QuizResultId
+      fieldLens QuizResultId
+        = (lensPTH entityKey)
+            (\ Entity _ value_atKq key_atKr -> (Entity key_atKr) value_atKq)
+      fieldLens QuizResultQuizid
+        = (lensPTH (quizResultQuizid . entityVal))
+            (\ Entity key_atKs value_atKt x_atKu
+               -> (Entity key_atKs) value_atKt {quizResultQuizid = x_atKu})
+      fieldLens QuizResultResult
+        = (lensPTH (quizResultResult . entityVal))
+            (\ Entity key_atKs value_atKt x_atKu
+               -> (Entity key_atKs) value_atKt {quizResultResult = x_atKu})
+      fieldLens QuizResultPassing
+        = (lensPTH (quizResultPassing . entityVal))
+            (\ Entity key_atKs value_atKt x_atKu
+               -> (Entity key_atKs) value_atKt {quizResultPassing = x_atKu})
+    instance ToBackendKey MongoContext QuizResult where
+      toBackendKey = unQuizResultKey
+      fromBackendKey = QuizResultKey
+    data User
+      = User {userUsername :: !Text,
+              userPassword :: !ByteString,
+              userEmail :: !Text,
+              userAvatar :: !Text,
+              userFirstName :: !(Maybe Text),
+              userSecondName :: !(Maybe Text),
+              userBirthday :: !(Maybe UTCTime),
+              userGender :: !(Maybe Gender),
+              userCreatedQuizzes :: ![QuizId],
+              userPassedQuizzes :: ![QuizResult]}
+      deriving (Eq, Read, Show, Generic)
+    type UserId = Key User
+    instance PersistEntity User where
+      type PersistEntityBackend User = MongoContext
+      data Unique User = UniqueUsername Text | UniqueEmail Text
+      newtype Key User
+        = UserKey {unUserKey :: (BackendKey MongoContext)}
+        deriving (Show,
+                  Read,
+                  Eq,
+                  Ord,
+                  path-pieces-0.2.1:Web.PathPieces.PathPiece,
+                  Web.Internal.HttpApiData.ToHttpApiData,
+                  Web.Internal.HttpApiData.FromHttpApiData,
+                  PersistField,
+                  persistent-2.8.1:Database.Persist.Sql.Class.PersistFieldSql,
+                  aeson-1.2.4.0:Data.Aeson.Types.ToJSON.ToJSON,
+                  aeson-1.2.4.0:Data.Aeson.Types.FromJSON.FromJSON)
+      data EntityField User typ
+        = typ ~ Key User => UserId |
+          typ ~ Text => UserUsername |
+          typ ~ ByteString => UserPassword |
+          typ ~ Text => UserEmail |
+          typ ~ Text => UserAvatar |
+          typ ~ Maybe Text => UserFirstName |
+          typ ~ Maybe Text => UserSecondName |
+          typ ~ Maybe UTCTime => UserBirthday |
+          typ ~ Maybe Gender => UserGender |
+          typ ~ [QuizId] => UserCreatedQuizzes |
+          typ ~ [QuizResult] => UserPassedQuizzes
+      keyToValues
+        = ((ghc-prim-0.5.1.1:GHC.Types.: [])
+             . (toPersistValue . unUserKey))
+      keyFromValues
+        = ((fmap UserKey)
+             . (fromPersistValue . Database.Persist.TH.headNote))
+      entityDef _
+        = (((((((((EntityDef (HaskellName (packPTH "User")))
+                    (DBName (packPTH "user")))
+                   (((((((FieldDef (HaskellName (packPTH "Id")))
+                           (DBName (packPTH "id")))
+                          ((FTTypeCon Nothing) (packPTH "UserId")))
+                         SqlInt64)
+                        [])
+                       True)
+                      ((ForeignRef (HaskellName (packPTH "User")))
+                         ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))))
+                  [])
+                 [((((((FieldDef (HaskellName (packPTH "username")))
+                         (DBName (packPTH "username")))
+                        ((FTTypeCon Nothing) (packPTH "Text")))
+                       SqlString)
+                      [])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "password")))
+                         (DBName (packPTH "password")))
+                        ((FTTypeCon Nothing) (packPTH "ByteString")))
+                       SqlBlob)
+                      [])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "email")))
+                         (DBName (packPTH "email")))
+                        ((FTTypeCon Nothing) (packPTH "Text")))
+                       SqlString)
+                      [])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "avatar")))
+                         (DBName (packPTH "avatar")))
+                        ((FTTypeCon Nothing) (packPTH "Text")))
+                       SqlString)
+                      [])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "firstName")))
+                         (DBName (packPTH "first_name")))
+                        ((FTTypeCon Nothing) (packPTH "Text")))
+                       SqlString)
+                      [packPTH "Maybe"])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "secondName")))
+                         (DBName (packPTH "second_name")))
+                        ((FTTypeCon Nothing) (packPTH "Text")))
+                       SqlString)
+                      [packPTH "Maybe"])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "birthday")))
+                         (DBName (packPTH "birthday")))
+                        ((FTTypeCon Nothing) (packPTH "UTCTime")))
+                       SqlDayTime)
+                      [packPTH "Maybe"])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "gender")))
+                         (DBName (packPTH "gender")))
+                        ((FTTypeCon Nothing) (packPTH "Gender")))
+                       SqlString)
+                      [packPTH "Maybe"])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "createdQuizzes")))
+                         (DBName (packPTH "created_quizzes")))
+                        (FTList ((FTTypeCon Nothing) (packPTH "QuizId"))))
+                       SqlString)
+                      [])
+                     True)
+                    NoReference,
+                  ((((((FieldDef (HaskellName (packPTH "passedQuizzes")))
+                         (DBName (packPTH "passed_quizzes")))
+                        (FTList ((FTTypeCon Nothing) (packPTH "QuizResult"))))
+                       SqlString)
+                      [])
+                     True)
+                    (EmbedRef
+                       ((EmbedEntityDef (HaskellName (packPTH "QuizResult")))
+                          [((EmbedFieldDef (DBName (packPTH "quizid"))) Nothing) Nothing,
+                           ((EmbedFieldDef (DBName (packPTH "result"))) Nothing) Nothing,
+                           ((EmbedFieldDef (DBName (packPTH "passing"))) Nothing) Nothing]))])
+                [(((UniqueDef (HaskellName (packPTH "UniqueUsername")))
+                     (DBName (packPTH "unique_username")))
+                    [(HaskellName (packPTH "username"), DBName (packPTH "username"))])
+                   [],
+                 (((UniqueDef (HaskellName (packPTH "UniqueEmail")))
+                     (DBName (packPTH "unique_email")))
+                    [(HaskellName (packPTH "email"), DBName (packPTH "email"))])
+                   []])
+               [])
+              [packPTH "Eq", packPTH "Read", packPTH "Show", packPTH "Generic"])
+             (Data.Map.Internal.fromList []))
+            False
+      toPersistFields
+        (User x_atKv
+              x_atKw
+              x_atKx
+              x_atKy
+              x_atKz
+              x_atKA
+              x_atKB
+              x_atKC
+              x_atKD
+              x_atKE)
+        = [SomePersistField x_atKv, SomePersistField x_atKw,
+           SomePersistField x_atKx, SomePersistField x_atKy,
+           SomePersistField x_atKz, SomePersistField x_atKA,
+           SomePersistField x_atKB, SomePersistField x_atKC,
+           SomePersistField x_atKD, SomePersistField x_atKE]
+      fromPersistValues
+        [x1_atKG,
+         x2_atKH,
+         x3_atKI,
+         x4_atKJ,
+         x5_atKK,
+         x6_atKL,
+         x7_atKM,
+         x8_atKN,
+         x9_atKO,
+         x10_atKP]
+        = User
+            <$>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "username")))
+                 . fromPersistValue)
+                x1_atKG
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "password")))
+                 . fromPersistValue)
+                x2_atKH
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "email")))
+                 . fromPersistValue)
+                x3_atKI
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "avatar")))
+                 . fromPersistValue)
+                x4_atKJ
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "firstName")))
+                 . fromPersistValue)
+                x5_atKK
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "secondName")))
+                 . fromPersistValue)
+                x6_atKL
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "birthday")))
+                 . fromPersistValue)
+                x7_atKM
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "gender")))
+                 . fromPersistValue)
+                x8_atKN
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "createdQuizzes")))
+                 . fromPersistValue)
+                x9_atKO
+            <*>
+              ((Database.Persist.TH.mapLeft
+                  (Database.Persist.TH.fieldError (packPTH "passedQuizzes")))
+                 . fromPersistValue)
+                x10_atKP
+      fromPersistValues x_atKF
+        = (Left
+             $ ((mappend (packPTH "User: fromPersistValues failed on: "))
+                  (pack $ (show x_atKF))))
+      persistUniqueToFieldNames UniqueUsername {}
+        = [(HaskellName (packPTH "username"), DBName (packPTH "username"))]
+      persistUniqueToFieldNames UniqueEmail {}
+        = [(HaskellName (packPTH "email"), DBName (packPTH "email"))]
+      persistUniqueToValues (UniqueUsername x_atKQ)
+        = [toPersistValue x_atKQ]
+      persistUniqueToValues (UniqueEmail x_atKR)
+        = [toPersistValue x_atKR]
+      persistUniqueKeys
+        (User _username_atKS
+              _password_atKT
+              _email_atKU
+              _avatar_atKV
+              _firstName_atKW
+              _secondName_atKX
+              _birthday_atKY
+              _gender_atKZ
+              _createdQuizzes_atL0
+              _passedQuizzes_atL1)
+        = [UniqueUsername _username_atKS, UniqueEmail _email_atKU]
+      persistFieldDef UserId
+        = ((((((FieldDef (HaskellName (packPTH "Id")))
+                 (DBName (packPTH "id")))
+                ((FTTypeCon Nothing) (packPTH "UserId")))
+               SqlInt64)
+              [])
+             True)
+            ((ForeignRef (HaskellName (packPTH "User")))
+               ((FTTypeCon (Just (packPTH "Data.Int"))) (packPTH "Int64")))
+      persistFieldDef UserUsername
+        = ((((((FieldDef (HaskellName (packPTH "username")))
+                 (DBName (packPTH "username")))
+                ((FTTypeCon Nothing) (packPTH "Text")))
+               SqlString)
+              [])
+             True)
+            NoReference
+      persistFieldDef UserPassword
+        = ((((((FieldDef (HaskellName (packPTH "password")))
+                 (DBName (packPTH "password")))
+                ((FTTypeCon Nothing) (packPTH "ByteString")))
+               SqlBlob)
+              [])
+             True)
+            NoReference
+      persistFieldDef UserEmail
+        = ((((((FieldDef (HaskellName (packPTH "email")))
+                 (DBName (packPTH "email")))
+                ((FTTypeCon Nothing) (packPTH "Text")))
+               SqlString)
+              [])
+             True)
+            NoReference
+      persistFieldDef UserAvatar
+        = ((((((FieldDef (HaskellName (packPTH "avatar")))
+                 (DBName (packPTH "avatar")))
+                ((FTTypeCon Nothing) (packPTH "Text")))
+               SqlString)
+              [])
+             True)
+            NoReference
+      persistFieldDef UserFirstName
+        = ((((((FieldDef (HaskellName (packPTH "firstName")))
+                 (DBName (packPTH "first_name")))
+                ((FTTypeCon Nothing) (packPTH "Text")))
+               SqlString)
+              [packPTH "Maybe"])
+             True)
+            NoReference
+      persistFieldDef UserSecondName
+        = ((((((FieldDef (HaskellName (packPTH "secondName")))
+                 (DBName (packPTH "second_name")))
+                ((FTTypeCon Nothing) (packPTH "Text")))
+               SqlString)
+              [packPTH "Maybe"])
+             True)
+            NoReference
+      persistFieldDef UserBirthday
+        = ((((((FieldDef (HaskellName (packPTH "birthday")))
+                 (DBName (packPTH "birthday")))
+                ((FTTypeCon Nothing) (packPTH "UTCTime")))
+               SqlDayTime)
+              [packPTH "Maybe"])
+             True)
+            NoReference
+      persistFieldDef UserGender
+        = ((((((FieldDef (HaskellName (packPTH "gender")))
+                 (DBName (packPTH "gender")))
+                ((FTTypeCon Nothing) (packPTH "Gender")))
+               SqlString)
+              [packPTH "Maybe"])
+             True)
+            NoReference
+      persistFieldDef UserCreatedQuizzes
+        = ((((((FieldDef (HaskellName (packPTH "createdQuizzes")))
+                 (DBName (packPTH "created_quizzes")))
+                (FTList ((FTTypeCon Nothing) (packPTH "QuizId"))))
+               SqlString)
+              [])
+             True)
+            NoReference
+      persistFieldDef UserPassedQuizzes
+        = ((((((FieldDef (HaskellName (packPTH "passedQuizzes")))
+                 (DBName (packPTH "passed_quizzes")))
+                (FTList ((FTTypeCon Nothing) (packPTH "QuizResult"))))
+               SqlString)
+              [])
+             True)
+            (EmbedRef
+               ((EmbedEntityDef (HaskellName (packPTH "QuizResult")))
+                  [((EmbedFieldDef (DBName (packPTH "quizid"))) Nothing) Nothing,
+                   ((EmbedFieldDef (DBName (packPTH "result"))) Nothing) Nothing,
+                   ((EmbedFieldDef (DBName (packPTH "passing"))) Nothing) Nothing]))
+      persistIdField = UserId
+      fieldLens UserId
+        = (lensPTH entityKey)
+            (\ Entity _ value_atL2 key_atL3 -> (Entity key_atL3) value_atL2)
+      fieldLens UserUsername
+        = (lensPTH (userUsername . entityVal))
+            (\ Entity key_atL4 value_atL5 x_atL6
+               -> (Entity key_atL4) value_atL5 {userUsername = x_atL6})
+      fieldLens UserPassword
+        = (lensPTH (userPassword . entityVal))
+            (\ Entity key_atL4 value_atL5 x_atL6
+               -> (Entity key_atL4) value_atL5 {userPassword = x_atL6})
+      fieldLens UserEmail
+        = (lensPTH (userEmail . entityVal))
+            (\ Entity key_atL4 value_atL5 x_atL6
+               -> (Entity key_atL4) value_atL5 {userEmail = x_atL6})
+      fieldLens UserAvatar
+        = (lensPTH (userAvatar . entityVal))
+            (\ Entity key_atL4 value_atL5 x_atL6
+               -> (Entity key_atL4) value_atL5 {userAvatar = x_atL6})
+      fieldLens UserFirstName
+        = (lensPTH (userFirstName . entityVal))
+            (\ Entity key_atL4 value_atL5 x_atL6
+               -> (Entity key_atL4) value_atL5 {userFirstName = x_atL6})
+      fieldLens UserSecondName
+        = (lensPTH (userSecondName . entityVal))
+            (\ Entity key_atL4 value_atL5 x_atL6
+               -> (Entity key_atL4) value_atL5 {userSecondName = x_atL6})
+      fieldLens UserBirthday
+        = (lensPTH (userBirthday . entityVal))
+            (\ Entity key_atL4 value_atL5 x_atL6
+               -> (Entity key_atL4) value_atL5 {userBirthday = x_atL6})
+      fieldLens UserGender
+        = (lensPTH (userGender . entityVal))
+            (\ Entity key_atL4 value_atL5 x_atL6
+               -> (Entity key_atL4) value_atL5 {userGender = x_atL6})
+      fieldLens UserCreatedQuizzes
+        = (lensPTH (userCreatedQuizzes . entityVal))
+            (\ Entity key_atL4 value_atL5 x_atL6
+               -> (Entity key_atL4) value_atL5 {userCreatedQuizzes = x_atL6})
+      fieldLens UserPassedQuizzes
+        = (lensPTH (userPassedQuizzes . entityVal))
+            (\ Entity key_atL4 value_atL5 x_atL6
+               -> (Entity key_atL4) value_atL5 {userPassedQuizzes = x_atL6})
+    instance ToBackendKey MongoContext User where
+      toBackendKey = unUserKey
+      fromBackendKey = UserKey
+    instance aeson-1.2.4.0:Data.Aeson.Types.ToJSON.ToJSON Question where
+      aeson-1.2.4.0:Data.Aeson.Types.ToJSON.toJSON
+        (Question text_atL8 answer_atL9 variants_atLa)
+        = aeson-1.2.4.0:Data.Aeson.Types.Internal.object
+            [((pack "text")
+                aeson-1.2.4.0:Data.Aeson.Types.ToJSON..= text_atL8),
+             ((pack "answer")
+                aeson-1.2.4.0:Data.Aeson.Types.ToJSON..= answer_atL9),
+             ((pack "variants")
+                aeson-1.2.4.0:Data.Aeson.Types.ToJSON..= variants_atLa)]
+    instance aeson-1.2.4.0:Data.Aeson.Types.FromJSON.FromJSON Question where
+      aeson-1.2.4.0:Data.Aeson.Types.FromJSON.parseJSON
+        (aeson-1.2.4.0:Data.Aeson.Types.Internal.Object obj_atL7)
+        = ((((pure Question)
+               <*>
+                 (obj_atL7
+                    aeson-1.2.4.0:Data.Aeson.Types.FromJSON..: (pack "text")))
+              <*>
+                (obj_atL7
+                   aeson-1.2.4.0:Data.Aeson.Types.FromJSON..: (pack "answer")))
+             <*>
+               (obj_atL7
+                  aeson-1.2.4.0:Data.Aeson.Types.FromJSON..: (pack "variants")))
+      aeson-1.2.4.0:Data.Aeson.Types.FromJSON.parseJSON _
+        = GHC.Base.mzero
+    instance aeson-1.2.4.0:Data.Aeson.Types.ToJSON.ToJSON (Entity Question) where
+      aeson-1.2.4.0:Data.Aeson.Types.ToJSON.toJSON = entityIdToJSON
+    instance aeson-1.2.4.0:Data.Aeson.Types.FromJSON.FromJSON (Entity Question) where
+      aeson-1.2.4.0:Data.Aeson.Types.FromJSON.parseJSON
+        = entityIdFromJSON
+    instance aeson-1.2.4.0:Data.Aeson.Types.ToJSON.ToJSON Quiz where
+      aeson-1.2.4.0:Data.Aeson.Types.ToJSON.toJSON
+        (Quiz name_atLc
+              description_atLd
+              creationDate_atLe
+              passingNumber_atLf
+              questions_atLg)
+        = aeson-1.2.4.0:Data.Aeson.Types.Internal.object
+            [((pack "name")
+                aeson-1.2.4.0:Data.Aeson.Types.ToJSON..= name_atLc),
+             ((pack "description")
+                aeson-1.2.4.0:Data.Aeson.Types.ToJSON..= description_atLd),
+             ((pack "creationDate")
+                aeson-1.2.4.0:Data.Aeson.Types.ToJSON..= creationDate_atLe),
+             ((pack "passingNumber")
+                aeson-1.2.4.0:Data.Aeson.Types.ToJSON..= passingNumber_atLf),
+             ((pack "questions")
+                aeson-1.2.4.0:Data.Aeson.Types.ToJSON..= questions_atLg)]
+    instance aeson-1.2.4.0:Data.Aeson.Types.FromJSON.FromJSON Quiz where
+      aeson-1.2.4.0:Data.Aeson.Types.FromJSON.parseJSON
+        (aeson-1.2.4.0:Data.Aeson.Types.Internal.Object obj_atLb)
+        = ((((((pure Quiz)
+                 <*>
+                   (obj_atLb
+                      aeson-1.2.4.0:Data.Aeson.Types.FromJSON..: (pack "name")))
+                <*>
+                  (obj_atLb
+                     aeson-1.2.4.0:Data.Aeson.Types.FromJSON..: (pack "description")))
+               <*>
+                 (obj_atLb
+                    aeson-1.2.4.0:Data.Aeson.Types.FromJSON..: (pack "creationDate")))
+              <*>
+                (obj_atLb
+                   aeson-1.2.4.0:Data.Aeson.Types.FromJSON..: (pack "passingNumber")))
+             <*>
+               (obj_atLb
+                  aeson-1.2.4.0:Data.Aeson.Types.FromJSON..: (pack "questions")))
+      aeson-1.2.4.0:Data.Aeson.Types.FromJSON.parseJSON _
+        = GHC.Base.mzero
+    instance aeson-1.2.4.0:Data.Aeson.Types.ToJSON.ToJSON (Entity Quiz) where
+      aeson-1.2.4.0:Data.Aeson.Types.ToJSON.toJSON = entityIdToJSON
+    instance aeson-1.2.4.0:Data.Aeson.Types.FromJSON.FromJSON (Entity Quiz) where
+      aeson-1.2.4.0:Data.Aeson.Types.FromJSON.parseJSON
+        = entityIdFromJSON
+    instance aeson-1.2.4.0:Data.Aeson.Types.ToJSON.ToJSON QuizResult where
+      aeson-1.2.4.0:Data.Aeson.Types.ToJSON.toJSON
+        (QuizResult quizid_atLi result_atLj passing_atLk)
+        = aeson-1.2.4.0:Data.Aeson.Types.Internal.object
+            [((pack "quizid")
+                aeson-1.2.4.0:Data.Aeson.Types.ToJSON..= quizid_atLi),
+             ((pack "result")
+                aeson-1.2.4.0:Data.Aeson.Types.ToJSON..= result_atLj),
+             ((pack "passing")
+                aeson-1.2.4.0:Data.Aeson.Types.ToJSON..= passing_atLk)]
+    instance aeson-1.2.4.0:Data.Aeson.Types.FromJSON.FromJSON QuizResult where
+      aeson-1.2.4.0:Data.Aeson.Types.FromJSON.parseJSON
+        (aeson-1.2.4.0:Data.Aeson.Types.Internal.Object obj_atLh)
+        = ((((pure QuizResult)
+               <*>
+                 (obj_atLh
+                    aeson-1.2.4.0:Data.Aeson.Types.FromJSON..: (pack "quizid")))
+              <*>
+                (obj_atLh
+                   aeson-1.2.4.0:Data.Aeson.Types.FromJSON..: (pack "result")))
+             <*>
+               (obj_atLh
+                  aeson-1.2.4.0:Data.Aeson.Types.FromJSON..: (pack "passing")))
+      aeson-1.2.4.0:Data.Aeson.Types.FromJSON.parseJSON _
+        = GHC.Base.mzero
+    instance aeson-1.2.4.0:Data.Aeson.Types.ToJSON.ToJSON (Entity QuizResult) where
+      aeson-1.2.4.0:Data.Aeson.Types.ToJSON.toJSON = entityIdToJSON
+    instance aeson-1.2.4.0:Data.Aeson.Types.FromJSON.FromJSON (Entity QuizResult) where
+      aeson-1.2.4.0:Data.Aeson.Types.FromJSON.parseJSON
+        = entityIdFromJSON

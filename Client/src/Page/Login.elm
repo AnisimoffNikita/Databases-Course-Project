@@ -145,7 +145,7 @@ view =
                     [ Button.roleLink
                     , Button.attrs [ href <| routeToString Router.Register ]
                     ]
-                    [ text "Нет аккаунта?" ]
+                    [ text <| "Нет аккаунта?" ]
                 , form
                 ]
             ]

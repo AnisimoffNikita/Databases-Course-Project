@@ -25,8 +25,8 @@ import Language.Haskell.TH.Syntax
 
 import Model.Types
 
-
 share[mkPersist (mkPersistSettings (ConT ''MongoContext))] [persistLowerCase|
+
 Question json
   text     Text
   answer   Text
@@ -62,6 +62,7 @@ User
   UniqueEmail     email
   deriving        Eq Read Show Generic
 |]
+
 
 createIndexes :: ConnectionPool -> IO ()
 createIndexes pool = do 
